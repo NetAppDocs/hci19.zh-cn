@@ -1,0 +1,52 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_configure_new_vsphere.html 
+summary: 了解如何在 NetApp HCI 部署期间配置 VMware vSphere 。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= 配置新的 VMware vSphere 环境
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+您可以在 NetApp HCI 安装过程中通过提供 vSphere 应使用的一些网络信息来部署新的 vSphere 环境。请注意，如果使用 IP 地址配置 vSphere ，则在安装后无法更改此地址。
+
+您已获取规划的 vSphere 环境的网络信息。
+
+.步骤
+. 单击 * 配置新的 vSphere 部署 * 。
+. 选择系统应在部署期间安装的 vSphere 版本。
+. 使用以下选项之一配置新的 vSphere 环境：
++
+|===
+| 选项 | 步骤 
+
+
+| 使用域名（建议）。  a| 
+.. 单击 * 使用完全限定域名配置 * 。
+.. 在 * vCenter Server 完全限定域名 * 字段中输入 vCenter Server 域名。
+.. 在 * DNS 服务器 IP 地址 * 字段中输入 DNS 服务器 IP 地址。
+.. 单击 * 继续 * 。
+
+
+
+
+| 使用 IP 地址。  a| 
+.. 单击 * 使用 IP 地址配置 * 。
+.. 单击 * 继续 * 。
+
+
+|===
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

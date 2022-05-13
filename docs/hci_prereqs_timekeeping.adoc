@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_timekeeping.html 
+summary: 了解 NetApp HCI 的 DNS 和计时要求。 
+keywords: netapp, hci, timekeeping, NTP, DNS 
+---
+= DNS 和计时要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, timekeeping, NTP, DNS
+
+
+[role="lead"]
+在部署之前，您需要为 NetApp HCI 系统准备域名系统（ DNS ）记录并收集 NTP 服务器信息。要成功部署 NetApp HCI ，需要具有正确 DNS 条目的 DNS 服务器和 NTP 服务器。
+
+在部署 NetApp HCI 之前，请做好以下 DNS 和时间服务器准备：
+
+* 为主机（例如单个计算或存储节点）创建任何所需的 DNS 条目，并记录主机条目如何映射到相应的 IP 地址。在部署期间，您需要为存储集群分配一个前缀，以应用于每个主机；为避免混淆，请在选择前缀时牢记 DNS 命名计划。
+* 如果要使用完全限定域名在新的 VMware vSphere 安装中部署 NetApp HCI ，则必须在部署之前在使用的任何 DNS 服务器上为 vCenter Server 创建一个指针（ PTR ）记录和一个地址（ A ）记录。
+* 如果要在仅使用 IP 地址的新 vSphere 安装中部署 NetApp HCI ，则无需为 vCenter 创建新的 DNS 记录。
+* NetApp HCI 需要一个有效的 NTP 服务器来进行计时。如果您的环境中没有公共时间服务器，则可以使用该服务器。
+* 确保所有存储和计算节点时钟彼此同步，并且用于登录到 NetApp HCI 的设备时钟与 NetApp HCI 节点同步。
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

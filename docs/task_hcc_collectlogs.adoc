@@ -1,0 +1,168 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_collectlogs.html 
+summary: 您可以使用 NetApp 混合云控制从 NetApp HCI 或 Element 安装中收集日志，以帮助进行故障排除。 
+keywords: netapp, hci, logs, collection, troubleshooting, monitor 
+---
+= 收集日志以进行故障排除
+:allow-uri-read: 
+
+
+[role="lead"]
+如果您在安装 NetApp HCI 或 SolidFire 全闪存存储时遇到问题，可以收集日志并发送给 NetApp 支持部门，以帮助进行诊断。您可以使用 NetApp 混合云控制或 REST API 收集 NetApp HCI 或 Element 系统上的日志。
+
+.您需要什么？ #8217 ；将需要什么
+* 确保您的存储集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 确保已部署运行 11.3 或更高版本的管理节点。
+
+
+选择以下选项之一：
+
+* <<Use NetApp Hybrid Cloud Control to collect logs>>
+* <<Use the REST API to collect logs>>
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control 收集日志
+
+您可以从 NetApp Hybrid Cloud Control Dashboard 访问日志收集区域。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的菜单。
+. 选择 * 收集日志 * 。
++
+此时将显示 * 收集日志 * 页面。如果您之前已收集日志，则可以下载现有日志包或开始收集新的日志。
+
+. 在 * 日期范围 * 下拉菜单中选择一个日期范围，以指定日志应包含的日期。
++
+如果指定自定义开始日期，则可以选择开始日期范围的日期。将收集从该日期到目前为止的日志。
+
+. 在 * 日志收集 * 部分中，选择日志包应包含的日志文件类型。
++
+对于存储和计算日志，您可以展开存储或计算节点列表，并选择要从中收集日志的各个节点（或列表中的所有节点）。
+
+. 单击 * 收集日志 * 以开始收集日志。
++
+日志收集在后台运行，页面将显示进度。
+
++
+
+NOTE: 根据您收集的日志，进度条可能会以特定百分比保留几分钟，或者在某些时刻进度非常慢。
+
+. 单击 * 下载日志 * 以下载日志包。
++
+日志包采用压缩的 UNIX .tgz 文件格式。
+
+
+
+
+
+== 使用 REST API 收集日志
+
+您可以使用 REST API 收集 NetApp HCI 或 Element 日志。
+
+.步骤
+. 找到存储集群 ID ：
++
+.. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/logs/1/
+----
+.. 单击 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+... 单击 * 授权 * 开始会话。
+
+
+
+
+. 从 NetApp HCI 或 Element 收集日志：
++
+.. 单击 * 发布 /bundle* 。
+.. 单击 * 试用 * 。
+.. 根据需要收集的日志类型和时间范围，更改 * 请求正文 * 字段中以下参数的值：
++
+|===
+| 参数 | Type | Description 
+
+
+| `m二等 Since` | 日期字符串 | 仅包括在此日期和时间之后修改的日志。例如，值 "202020-07-14T20 ： 19 ： 00.000Z" 将开始日期定义为 2020 年 7 月 14 日 20 ： 19 UTC 。 
+
+
+| `计算日志` | 布尔值 | 将此参数设置为 `true` 以包含计算节点日志。 
+
+
+| `computeIds` | UUID array | 如果 `computeLogs` 设置为 `true` ，请使用计算节点的管理节点资产 ID 填充此参数，以将日志收集限制为这些特定计算节点。使用 `GET https://<ManagementNodeIP>/logs/1/bundle/options`[] Endpoint 以查看您可以使用的所有可能节点 ID 。 
+
+
+| `mnodeLogs` | 布尔值 | 将此参数设置为 `true` 以包含管理节点日志。 
+
+
+| `storageCrashD王牌` | 布尔值 | 将此参数设置为 `true` 以包含存储节点崩溃调试日志。 
+
+
+| `s存储日志` | 布尔值 | 将此参数设置为 `true` 以包含存储节点日志。 
+
+
+| `storageNodeIds` | UUID array | 如果将 `storageLogs` 设置为 `true` ，请使用存储集群节点 ID 填充此参数，以将日志收集限制为这些特定存储节点。使用 `GET https://<ManagementNodeIP>/logs/1/bundle/options`[] Endpoint 以查看您可以使用的所有可能节点 ID 。 
+|===
+.. 单击 * 执行 * 开始收集日志。响应应返回类似于以下内容的响应：
++
+[listing]
+----
+{
+  "_links": {
+    "self": "https://10.1.1.5/logs/1/bundle"
+  },
+  "taskId": "4157881b-z889-45ce-adb4-92b1843c53ee",
+  "taskLink": "https://10.1.1.5/logs/1/bundle"
+}
+----
+
+
+. 检查日志收集任务的状态：
++
+.. 单击 * 获取 /bundle* 。
+.. 单击 * 试用 * 。
+.. 单击 * 执行 * 以返回收集任务的状态。
+.. 滚动到响应正文的底部。
++
+您应看到一个 `percentComplete` 属性，详细说明了收集进度。如果收集完成，则 `downloadLink` 属性包含完整下载链接，其中包含日志包的文件名。
+
+.. 复制 `downloadLink` 属性末尾的文件名。
+
+
+. 下载收集的日志包：
++
+.. 单击 * 获取 /bundle/ ｛ filename ｝ * 。
+.. 单击 * 试用 * 。
+.. 将先前复制的文件名粘贴到 `filename` parameter 文本字段中。
+.. 单击 * 执行 * 。
++
+执行后，响应正文区域将显示下载链接。
+
+.. 单击 * 下载文件 * 并将生成的文件保存到您的计算机。
++
+日志包采用压缩的 UNIX .tgz 文件格式。
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

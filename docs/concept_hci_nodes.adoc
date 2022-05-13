@@ -1,0 +1,67 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_nodes.html 
+summary: 节点是指分组到集群中以块存储或计算资源形式访问的硬件。 
+keywords: netapp, hci, storage nodes, volumes, compute nodes, witness nodes, management node 
+---
+= 节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+节点是指分组到集群中以提供块存储和计算功能的硬件或虚拟资源。
+
+NetApp HCI 和 Element 软件为集群定义了各种节点角色。四种节点角色类型分别为 * 管理节点 * ， * 存储节点 * ， * 计算节点 * 和 * NetApp HCI 见证节点 * 。
+
+
+
+== 管理节点
+
+管理节点（有时缩写为 mNode ）与存储集群交互以执行管理操作，但不是存储集群的成员。管理节点会定期通过 API 调用收集有关集群的信息，并将此信息报告给 Active IQ 以进行远程监控（如果已启用）。管理节点还负责协调集群节点的软件升级。
+
+管理节点是与一个或多个基于 Element 软件的存储集群并行运行的虚拟机（ VM ）。除了升级之外，它还可用于提供包括监控和遥测在内的系统服务，管理集群资产和设置，运行系统测试和实用程序，以及启用 NetApp 支持访问以进行故障排除。从 Element 11.3 版开始，管理节点充当微服务主机，可以在主要版本之外更快地更新选定的软件服务。这些微服务或管理服务（例如 Active IQ 收集器，适用于 vCenter 插件的 QoSSIOC 以及管理节点服务）会作为服务包进行频繁更新。
+
+
+
+== 存储节点
+
+NetApp HCI 存储节点是为 NetApp HCI 系统提供存储资源的硬件。节点中的驱动器包含用于数据存储和数据管理的块和元数据空间。每个节点都包含 NetApp Element 软件的出厂映像。可以使用 NetApp Element 管理扩展点管理 NetApp HCI 存储节点。
+
+
+
+== 计算节点
+
+NetApp HCI 计算节点是一种硬件，用于提供在 NetApp HCI 安装中进行虚拟化所需的计算资源，例如 CPU ，内存和网络连接。由于每个服务器都运行 VMware ESXi ，因此必须在 vSphere 的主机和群集菜单中的插件外部执行 NetApp HCI 计算节点管理（添加或删除主机）。无论它是四节点存储集群还是双节点存储集群，对于 NetApp HCI 部署，计算节点的最小数量仍为 2 个。
+
+
+
+== 见证节点
+
+NetApp HCI 见证节点是指在计算节点上与基于 Element 软件的存储集群并行运行的 VM 。见证节点不托管分区或块服务。见证节点可在存储节点发生故障时启用存储集群可用性。您可以按照与其他存储节点相同的方式管理和升级见证节点。一个存储集群最多可以有四个见证节点。其主要目的是确保存在足够的集群节点以构成有效的集合仲裁。
+
+|===
+
+
+ a| 
+* 最佳实践： * 将见证节点 VM 配置为使用计算节点的本地数据存储库（默认设置为 NDE ），请勿在共享存储（例如 SolidFire 存储卷）上配置它们。要防止虚拟机自动迁移，请将见证节点虚拟机的分布式资源计划程序（ DRS ）自动化级别设置为 * 已禁用 * 。这样可以防止两个见证节点在同一计算节点上运行并创建非高可用性（ HA ）对配置。
+
+|===
+
+TIP: 了解更多信息 link:hci_prereqs_witness_nodes.html["见证节点资源要求"^] 和 link:hci_prereqs_ip_address.html["见证节点 IP 地址要求"^]。
+
+
+NOTE: 在双节点存储集群中，至少会部署两个见证节点，以便在见证节点出现故障时实现冗余。在 NetApp HCI 安装过程安装见证节点时， VMware vCenter 中会存储一个 VM 模板，您可以使用该模板重新部署见证节点，以防其意外删除，丢失或损坏。如果您需要更换托管见证节点的计算节点出现故障，也可以使用此模板重新部署见证节点。有关说明，请参见 * 重新部署双节点和三节点存储集群的见证节点 * 一节 link:task_hci_h410crepl.html["此处"^]。
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

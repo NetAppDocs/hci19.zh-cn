@@ -1,0 +1,335 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_upgrades.html 
+summary: 您可以使用 NetApp Hybrid Cloud Control 升级先前使用 HCC 安装的 NetApp HCI 上 Rancher 部署的组件。 
+keywords: netapp, hci, rancher, upgrade, hcc 
+---
+= 升级 NetApp HCI 上的 Rancher
+:allow-uri-read: 
+
+
+[role="lead"]
+要升级 Rancher 软件，您可以使用 NetApp Hybrid Cloud Control （ HCC ） UI 或 REST API 。HCC 提供了一个简单的按钮流程来升级 Rancher 部署的组件，包括 Rancher 服务器， Rancher Kubernetes 引擎（ RKE） 和管理集群的节点操作系统（用于安全更新）。您也可以使用 API 帮助自动升级。
+
+升级按组件进行，而不是累积软件包。因此，某些组件升级（例如 Ubuntu 操作系统）的速度更快。升级仅会影响 Rancher 服务器实例以及部署 Rancher 服务器的管理集群。升级到管理集群节点的 Ubuntu 操作系统仅适用于关键安全修补程序，不适用于升级操作系统。无法从 NetApp Hybrid Cloud Control 升级用户集群。
+
+.您需要什么？ #8217 ；将需要什么
+* * 管理员权限 * ：您拥有执行升级的存储集群管理员权限。
+* * 管理服务 * ：您已将管理服务捆绑包更新到最新版本。
+
+
+
+IMPORTANT: 要使用 Rancher 功能，您必须升级到最新的管理服务包 2.17 或更高版本。
+
+* * 系统端口 * ：如果您使用 NetApp Hybrid Cloud Control 进行升级，则已确保必要的端口处于打开状态。请参见 link:rancher_prereqs_overview.html#required-ports["网络端口"] 有关详细信息 ...
+* *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级Rancher部署：
++
+.. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+.. 选择靠近接口右上角的 * 升级 * 。
+.. 此时将弹出EULA。向下滚动、选择*我接受当前更新和所有未来更新*、然后选择*保存*。
++
+
+NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启用自动下载功能。您将收到有关NetApp软件更新和升级的更新、您可以在方便时自行决定安装这些更新。您可以通过禁用与NetApp联机软件存储库的网络连接来禁用自动下载功能。
+
+
+
+
+
+选择以下升级过程之一：
+
+* <<Use NetApp Hybrid Cloud Control UI to upgrade a Rancher deployment>>
+* <<Use NetApp Hybrid Cloud Control API to upgrade a Rancher deployment>>
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control UI 升级 Rancher 部署
+
+使用 NetApp Hybrid Cloud Control UI ，您可以升级 Rancher 部署中的以下任一组件：
+
+* Rancher 服务器
+* Rancher Kubernetes Engine （ RKE）
+* 节点操作系统安全更新
+
+
+.您需要什么？ #8217 ；将需要什么
+* 互联网连接良好。无法进行非公开站点升级（在没有外部连接的站点上升级）。
+
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 选择靠近接口右上角的 * 升级 * 。
+. 在 * 升级 * 页面上，选择 * Rancher* 。
+. 选择要升级的软件的 * 操作 * 菜单。
++
+** Rancher 服务器
+** Rancher Kubernetes Engine （ RKE）
+** 节点操作系统安全更新
+
+
+. 对于 Rancher 服务器或 RKE 升级，请选择 * 升级 * ；对于节点操作系统安全更新，请选择 * 应用升级 * 。
++
+
+NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您将重新启动每个节点，以使安全更新生效。
+
+
+
+此时将显示一个横幅，指示组件升级成功。在 NetApp Hybrid Cloud Control UI 显示更新后的版本号之前，可能会有长达 2 分钟的延迟。
+
+
+
+== 使用 NetApp Hybrid Cloud Control API 升级 Rancher 部署
+
+您可以使用 API 升级 Rancher 部署中的以下任一组件：
+
+* Rancher 服务器
+* Rancher Kubernetes Engine （ RKE）
+* 节点操作系统（用于安全更新）
+
+
+您可以使用您选择的自动化工具运行管理节点上可用的 API 或 REST API UI 。
+
+.选项
+* <<Upgrade Rancher Server>>
+* <<Upgrade RKE>>
+* <<Apply node OS security updates>>
++
+
+NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您将重新启动每个节点，以使安全更新生效。
+
+
+
+
+
+=== 升级 Rancher 服务器
+
+.API 命令
+. 启动列表升级版本请求：
++
+[listing]
+----
+curl -X POST "https://<managementNodeIP>/k8sdeployer/1/upgrade/rancher-versions" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
++
+
+NOTE: 您可以找到 API 命令使用的承载 ` $ ｛ token ｝` link:task_mnode_api_get_authorizationtouse.html["授权"]。承载 ` $ ｛ token ｝` 位于 cURL 响应中。
+
+. 使用先前命令中的任务 ID 获取任务状态，并从响应中复制最新版本号：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+. 启动 Rancher 服务器升级请求：
++
+[listing]
+----
+curl -X PUT "https://<mNodeIP>/k8sdeployer/1/upgrade/rancher/<version number>" -H "accept: application/json" -H "Authorization: Bearer"
+----
+. 使用升级命令响应中的任务 ID 获取任务状态：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+
+
+.REST API UI 步骤
+. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/k8sdeployer/api/
+----
+. 选择 * 授权 * 并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 选择 * 授权 * 以开始会话。
+.. 关闭授权窗口。
+
+
+. 检查最新的升级包：
++
+.. 从 REST API UI 中，运行 * POST /v upgrade​ /rancher-versions * 。
+.. 从响应中，复制任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+
+
+. 在 * / task​ / ｛ taskID ｝ * 响应中，复制要用于升级的最新版本号。
+. 运行 Rancher 服务器升级：
++
+.. 从 REST API UI 中，使用上一步中的最新版本号运行 * PUT upgrade​ /v í rancher​ / ｛ version ｝ * 。
+.. 从响应中，复制任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+
+
+
+
+当 `PercentComplete` 指示 `100` ， `results` 指示升级后的版本号时，升级已成功完成。
+
+
+
+=== 升级 RKE
+
+.API 命令
+. 启动列表升级版本请求：
++
+[listing]
+----
+curl -X POST "https://<mNodeIP>/k8sdeployer/1/upgrade/rke-versions" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
++
+
+NOTE: 您可以找到 API 命令使用的承载 ` $ ｛ token ｝` link:task_mnode_api_get_authorizationtouse.html["授权"]。承载 ` $ ｛ token ｝` 位于 cURL 响应中。
+
+. 使用先前命令中的任务 ID 获取任务状态，并从响应中复制最新版本号：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+. 启动 RKE- 升级请求
++
+[listing]
+----
+curl -X PUT "https://<mNodeIP>/k8sdeployer/1/upgrade/rke/<version number>" -H "accept: application/json" -H "Authorization: Bearer"
+----
+. 使用升级命令响应中的任务 ID 获取任务状态：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+
+
+.REST API UI 步骤
+. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/k8sdeployer/api/
+----
+. 选择 * 授权 * 并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 选择 * 授权 * 以开始会话。
+.. 关闭授权窗口。
+
+
+. 检查最新的升级包：
++
+.. 从 REST API UI 中，运行 * POST /t upgrade​ /RKE-Versions * 。
+.. 从响应中，复制任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+
+
+. 在 * / task​ / ｛ taskID ｝ * 响应中，复制要用于升级的最新版本号。
+. 运行 RKE- 升级：
++
+.. 从 REST API UI 中，使用上一步中的最新版本号运行 * PUT /upgrade/RKE/ ｛ version ｝ * 。
+.. 复制响应中的任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+
+
+
+
+当 `PercentComplete` 指示 `100` ， `results` 指示升级后的版本号时，升级已成功完成。
+
+
+
+=== 应用节点操作系统安全更新
+
+.API 命令
+. 启动检查升级请求：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/upgrade/checkNodeUpdates" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
++
+
+NOTE: 您可以找到 API 命令使用的承载 ` $ ｛ token ｝` link:task_mnode_api_get_authorizationtouse.html["授权"]。承载 ` $ ｛ token ｝` 位于 cURL 响应中。
+
+. 使用先前命令中的任务 ID 获取任务状态，并验证响应中是否提供了最新版本号：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+. 应用节点更新：
++
+[listing]
+----
+curl -X POST "https://<mNodeIP>/k8sdeployer/1/upgrade/applyNodeUpdates" -H "accept: application/json" -H "Authorization: Bearer"
+----
++
+
+NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您可以按顺序重新启动每个节点，以使安全更新生效。
+
+. 使用升级中的任务 ID 获取任务状态 `applyNodeUpdates` response ：
++
+[listing]
+----
+curl -X GET "https://<mNodeIP>/k8sdeployer/1/task/<taskID>" -H "accept: application/json" -H "Authorization: Bearer ${TOKEN}"
+----
+
+
+.REST API UI 步骤
+. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/k8sdeployer/api/
+----
+. 选择 * 授权 * 并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 选择 * 授权 * 以开始会话。
+.. 关闭授权窗口。
+
+
+. 验证是否有可用的升级软件包：
++
+.. 从 REST API UI 中，运行 * 获取 /upgrade/checkNodeUpdates* 。
+.. 从响应中，复制任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+.. 在 * / task​ / ｛ taskID ｝ * 响应中，验证是否存在比当前应用于节点的版本号更新的版本号。
+
+
+. 应用节点操作系统升级：
++
+
+NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您可以按顺序重新启动每个节点，以使安全更新生效。
+
++
+.. 从 REST API UI 中，运行 * POST upgrade​ /applyNodeUpdates* 。
+.. 从响应中，复制任务 ID 。
+.. 使用上一步中的任务 ID 运行 * 获取 / task​ / ｛ taskID ｝ * 。
+.. 在 * / task​ / ｛ taskID ｝ * 响应中，验证是否已应用升级。
+
+
+
+
+当 `PercentComplete` 指示 `100` ， `results` 指示升级后的版本号时，升级已成功完成。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

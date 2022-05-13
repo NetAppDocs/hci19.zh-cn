@@ -1,0 +1,40 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_overview.html 
+summary: 了解 NetApp HCI 部署要求。 
+keywords: netapp, hci, deployment, requirements 
+---
+= NetApp HCI 部署要求概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, environment, requirements
+
+
+[role="lead"]
+要使 NetApp HCI 在数据中心中正常运行，需要满足特定的物理和网络要求。在开始部署之前，请确保实施以下要求和建议。
+
+在收到 NetApp HCI 硬件之前，请确保您已完成 NetApp 专业服务提供的部署前工作簿中的检查清单项。本文档全面列出了为成功部署 NetApp HCI 而准备网络和环境所需完成的任务。
+
+以下是要求和部署前任务的链接：
+
+* link:hci_prereqs_required_network_ports.html["网络端口要求"]
+* link:hci_prereqs_network_switch.html["网络和交换机要求"]
+* link:hci_prereqs_network_cables.html["网络缆线要求"]
+* link:hci_prereqs_ip_address.html["IP 地址要求"]
+* link:hci_prereqs_network_configuration.html["网络配置："]
+* link:hci_prereqs_timekeeping.html["DNS 和计时要求"]
+* link:hci_prereqs_environmental.html["环境要求"]
+* link:hci_prereqs_protection_domains.html["保护域"]
+* link:hci_prereqs_witness_nodes.html["见证双节点存储集群的节点资源要求"]
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

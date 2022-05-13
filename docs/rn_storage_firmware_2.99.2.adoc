@@ -1,0 +1,161 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_storage_firmware_2.99.2.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, storage firmware 
+---
+= 存储固件包 2.99.2 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+从 Element 12.0 和管理服务版本 2.14 开始，您可以使用 NetApp Hybrid Cloud Control UI 和 REST API 在存储节点上执行纯固件升级。此操作步骤不会升级 Element 软件，您可以通过它在主要 Element 版本之外升级存储固件。
+
+
+
+== 新增功能
+
+存储固件包版本 2.99.2 包含各种错误修复和新功能，包括安全漏洞修复。您可以按照中的说明升级存储固件 link:task_hcc_upgrade_storage_firmware.html["升级存储固件"]。
+
+
+
+=== 已更新固件组件
+
+此固件包包含以下硬件组件固件版本，更新版本以粗体显示：
+
+|===
+| 组件 | SolidFire SF 系列 | H410s | H610S 
+
+
+| BIOS | 不包括 | NA2.1 | 2006 年 3 月 
+
+
+| BMC | 不包括 | 6.84.00 | * 。 3.91.07* 
+
+
+| NIC/Mellanox | 不包括 | 14.25.1020 | 14.25.1020 
+
+
+| RMS200 | ae3b8cc | ae3b8cc | - 
+
+
+| RMS300 | 7d8422bc | 7d8422bc | - 
+
+
+| NVDIMM ，智能 | - | - | 3.1. 
+
+
+| BPM ，智能 | - | - | 2.16 
+
+
+| NVDIMM ， Micron Gen1 | - | - | 26.2c 
+
+
+| NVDIMM ， Micron Gen2 | - | - | 25.3c 
+
+
+| PGEM ， Micron | - | - | 1.40 
+
+
+| PM863 ， SED | GXT7404Q | GXT7404Q | - 
+
+
+| PM863 ， NSED | GXT5103Q | GXT5103Q | - 
+
+
+| PM883 ， SED | HXT7904Q | HXT7904Q | - 
+
+
+| Hawk-4 ， SED | 8ENP7101 | 8ENP7101 | - 
+
+
+| Hawk-4 ， NSED | 8ENP6101 | 8ENP6101 | - 
+
+
+| PM963 ， SED | - | - | CXV8202Q 
+
+
+| PM963 ， NSED | - | - | CXV8501Q 
+
+
+| PM983 ， SED | - | - | EDA5402Q 
+
+
+| PM983 ， NSED | - | - | EDA5700Q 
+
+
+| CD5 ， SED | - | - | 0109 
+
+
+| CD5 ， NSED | - | - | 0109 
+
+
+| CD5 ， FIPS | - | - | 0108 
+|===
+
+
+== 存储固件组件的更改
+
+|===
+
+
+| 组件 | 改进 / 变更 
+
+
+| H610S BMC 3.91.07  a| 
+* 提高 BMC 闪存耗损利用率
+
+
+|===
+
+
+== 已解决的问题和已知问题
+
+请参见 https://mysupport.netapp.com/site/bugs-online/product["Bug Online 工具"^] 有关已解决问题以及任何新问题的详细信息。
+
+
+
+=== 访问 Bug Online 工具
+
+. 导航到  https://mysupport.netapp.com/site/bugs-online/product["Bug Online 工具"^] 并从下拉列表中选择 * Element Software* ：
++
+image::bol_dashboard.png[存储固件包发行说明]
+
+. 在关键字搜索字段中，键入 " 存储固件捆绑包 " 并单击 * 新建搜索 * ：
++
+image::storage_firmware_bundle_choice.png[存储固件包发行说明]
+
+. 此时将显示已解决或已打开的错误列表。您可以进一步细化结果，如下所示：
++
+image::bol_list_bugs_found.png[存储固件包发行说明]
+
+
+
+
+
+== 已解决安全漏洞
+
+以下是此版本中已解决的安全漏洞：
+
+
+
+=== H610S BMC 3.91.07
+
+* CVE-2019-20636
+* CVE-2019-11599 ， CVE-2020-12826 ， CVE-2020-12464 ， CVE-2020-12114
+* CVE-2016-3706 ， CVE-2011-5320 ， CVE-2015-8984 ， CVE-2015-8983 ， CVE-2015-8982 ， CVE-2006-7254 ， CVE-2015-3590
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/hci/index.jsp["NetApp HCI 文档中心"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_to_update_iDRAC%2F%2FBIOS_firmware_on_SF_Series_nodes["知识库：如何更新 SF 系列节点上的 iDRAC 或 BIOS 固件"^]
+

@@ -1,0 +1,84 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_rancher_product_overview.html 
+summary: 在 NetApp HCI 上部署 Rancher 可部署 Rancher 控制平面（也称为 Rancher 服务器），从而可以创建内部 Kubernetes 集群。 
+keywords: netapp, hci, rancher, architecture, kubernetes, cluster 
+---
+= NetApp HCI 上的 Rancher 概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Rancher 是一个完整的软件堆栈，适用于采用容器的团队。Rancher 可解决跨不同基础架构管理多个 Kubernetes 集群所面临的操作和安全挑战，同时为 DevOps 团队提供用于运行容器化工作负载的集成工具。
+
+在 NetApp HCI 上部署 Rancher 可部署 Rancher 控制平面（也称为 _Rancher 服务器 _ ），并可用于创建内部 Kubernetes 集群。您可以使用 NetApp Hybrid Cloud Control 部署 Rancher 控制平台。
+
+部署完成后，使用 Rancher 控制平台配置，管理和监控开发和运营团队使用的 Kubernetes 集群。开发和运营团队可以使用 Rancher 在 NetApp HCI 自身，公有云提供商或 Rancher 支持的任何其他基础架构上的用户集群上执行活动。
+
+
+
+== Rancher 在 NetApp HCI 上的优势
+
+* 易于安装：您无需了解如何安装和配置 Rancher 。您可以部署由 NetApp HCI 和 Rancher 联合开发的基于模板的实施。
+* 生命周期管理：在手动实施 Rancher 时，不会自动更新 Rancher 服务器应用程序或 Rancher Kubernetes Engine （ RKE） 集群。NetApp HCI 上的 Rancher 可以更新管理集群，包括 Rancher 服务器和 RKE.
+
+
+
+
+== 在 NetApp HCI 上使用 Rancher 可以执行的操作
+
+借助 NetApp HCI 上的 Rancher ，您可以：
+
+* 跨云提供商和私有云部署服务。
+* 在混合云架构中移植应用程序和数据，而不受云位置的限制，而不会影响服务级别协议。
+* 自行启动云原生应用程序。
+* 集中管理多个集群（新集群和现有集群）。
+* 对基于 Kubernetes 的混合云应用程序执行流程编排。
+
+
+
+
+== 技术支持选项
+
+在 NetApp HCI 和 Kubernetes 开源软件上使用 Rancher 可以免费部署和使用。不需要许可证密钥。
+
+您可以选择 NetApp Rancher 支持选项以获得基于核心的 Rancher 企业级支持。
+
+
+NOTE: 您的 NetApp Support Edge 协议不包含 Rancher 支持。有关选项，请联系 NetApp 销售人员或您的经销商。如果您从 NetApp 购买 Rancher 支持，则会收到一封电子邮件，其中包含相关说明。
+
+
+
+== 基于 NetApp HCI 架构和组件的 Rancher
+
+下面简要介绍了 NetApp HCI 上的 Rancher 的各种组件：
+
+image::rancher_architecture_diagram1.png[基于 NetApp HCI 架构的 Rancher]
+
+* * NetApp 混合云控制 * ：通过此界面，您可以在 NetApp HCI 和 NetApp Element 软件上部署 Rancher ，这是 NetApp HCI 上的 Rancher 所需的。
++
+
+TIP: 您还可以使用 NetApp Hybrid Cloud Control 升级管理服务，扩展系统，收集日志和监控安装。
+
+* * 管理服务 * ：管理服务在管理节点上运行，使您能够使用 NetApp 混合云控制在 NetApp HCI 上部署 Rancher 。
+* * 管理集群 * ： NetApp HCI 上的 Rancher 在 Rancher 管理集群上部署三个虚拟机，您可以使用 NetApp Hybrid Cloud Control ， vCenter Server 或 Rancher 用户界面查看这些虚拟机。管理集群虚拟机托管 Rancher 服务器， Rancher Kubernetes 引擎（ RKEE ）和 Linux 操作系统。
+
+
+
+TIP: 为了获得最佳性能和更高的安全性，请考虑为 Rancher 管理服务器使用专用的 Kubernetes 集群。您不应在管理集群上运行用户工作负载。
+
+* * 用户集群 * ：下游 Kubernetes 用户集群运行您的应用程序和服务。从 Rancher 部署或导入到 Rancher 的任何集群都是用户集群。
+* * Trident 目录： Trident 目录可供 NetApp HCI 上的 Rancher 使用，并在用户集群中运行。包含此目录可简化向用户集群部署 Trident 的过程。
+
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

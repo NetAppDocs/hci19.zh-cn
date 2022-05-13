@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_disable_lacp_individual.html 
+summary: '了解如何在部署 NetApp HCI 后在已配置的交换机上禁用 `lac-individual` 命令。' 
+keywords: netapp, hci, deployment, review, deploy 
+---
+= 在已配置的交换机上禁用 lac-individual 命令
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+默认情况下， Mellanox switch `lac-individual` 命令和 Cisco switch `lacp suspend-individual` 命令会在部署后保持配置状态。安装后不需要使用此命令；如果仍然配置此命令，则在对交换机进行故障排除或重新启动时可能会出现发生原因卷访问问题。部署后，您应检查每个 Mellanox 交换机和 Cisco 交换机配置，并删除 `lac-individual` 或 `lacp suspend-individual` 命令。
+
+.步骤
+. 使用 SSH 打开与交换机的会话。
+. 显示正在运行的配置：
++
+`s如何运行配置`
+
+. 检查 `lac-individual` 或 `lacp suspend-individual` 命令的交换机配置输出。
++
+
+NOTE: `xxx-xxx` 是用户提供的接口编号。如果需要，您可以通过显示多机箱链路聚合组接口来访问此接口编号： `sMLAG 接口的方式`
+
++
+.. 对于 Mellanox 交换机，请检查输出是否包含以下行：
++
+`interface MLAG-port-channel xxx-xxx lac-individual enable force`
+
+.. 对于 Cisco 交换机，请检查输出是否包含以下行：
++
+`interface MLAG-port-channel xxx-xxx lacp suspend-individual enable force`
+
+
+
+. 如果存在此命令，请将其从配置中删除。
++
+.. 对于 Mellanox 交换机：
++
+`无接口 MLAG-port-channel xxx-xxx lac-individual enable force`
+
+.. 对于 Cisco 交换机： `no interface MLAG-port-channel xxx-xxx lacp suspend-individual enable force`
+
+
+. 对配置中的每个交换机重复上述步骤。
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/SolidFire_Bond10G_goes_down_when_flapping_an_interface_during_troubleshooting["在故障排除期间，存储节点关闭"^]
+

@@ -1,0 +1,45 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_remove_assets.html 
+summary: 了解如何使用 REST API 从系统中删除计算节点资产。 
+keywords: netapp, hci, api, REST, remove, compute, asset 
+---
+= 从管理节点中删除资产
+:allow-uri-read: 
+
+
+[role="lead"]
+如果您以物理方式更换计算节点或需要将其从 NetApp HCI 集群中删除，则必须使用管理节点 API 删除计算节点资产。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的存储集群运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您已部署运行 11.3 或更高版本的管理节点。
+
+
+.步骤
+. 输入管理节点 IP 地址，后跟 ` /mnode/1/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/1/
+----
+. 单击 * 授权 * 或任何锁定图标，然后输入集群管理员凭据以获得使用 API 的权限。
++
+.. 输入集群用户名和密码。
+.. 如果尚未选择此值，请从类型下拉列表中选择 * 请求正文 * 。
+.. 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+.. 请勿输入客户端密钥值。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 关闭 * 可用授权 * 对话框。
+. 单击 * 获取 / 资产 * 。
+. 单击 * 试用 * 。
+. 单击 * 执行 * 。
+. 在响应正文中向下滚动到 * 计算 * 部分，然后复制故障计算节点的 `父级` 和 `id` 值。
+. 单击 * 删除 / 资产 / ｛ asset_id ｝ /compute-nodes/｛ compute_id ｝ * 。
+. 单击 * 试用 * 。
+. 输入您在上一步中复制的 `parent` 和 `id` 值。
+. 单击 * 执行 * 。
+

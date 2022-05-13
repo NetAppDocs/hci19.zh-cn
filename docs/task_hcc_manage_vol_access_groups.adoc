@@ -1,0 +1,83 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_manage_vol_access_groups.html 
+summary: 了解如何添加新的卷访问组以使用 NetApp HCI 存储卷，从系统中删除卷访问组，编辑现有卷访问组以及查看卷访问组的详细信息。 
+keywords: netapp, hci, on premise, cluster, element 
+---
+= 创建和管理卷访问组
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用 NetApp Hybrid Cloud Control 创建新的卷访问组，更改访问组的名称，关联启动程序或关联卷，或者删除现有卷访问组。
+
+.您需要什么？ #8217 ；将需要什么
+* 您拥有此 NetApp HCI 系统的管理员凭据。
+* 您已将管理服务至少升级到版本 2.15.28 。NetApp Hybrid Cloud Control 存储管理在早期的服务包版本中不可用。
+* 确保为卷访问组提供了一个逻辑命名方案。
+
+
+
+
+== 添加卷访问组
+
+您可以使用 NetApp Hybrid Cloud Control 将卷访问组添加到存储集群。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，在左侧导航菜单上展开存储集群的名称。
+. 选择 * 卷 * 。
+. 选择 * 访问组 * 选项卡。
+. 选择 * 创建访问组 * 按钮。
+. 在显示的对话框中，输入新卷访问组的名称。
+. （可选）在 * 启动程序 * 部分中，选择一个或多个要与新卷访问组关联的启动程序。
++
+如果将某个启动程序与卷访问组关联，则该启动程序可以访问该组中的每个卷，而无需进行身份验证。
+
+. （可选）在 * 卷 * 部分中，选择要包含在此卷访问组中的一个或多个卷。
+. 选择 * 创建访问组 * 。
+
+
+
+
+== 编辑卷访问组
+
+您可以使用 NetApp Hybrid Cloud Control 编辑现有卷访问组的属性。您可以更改访问组的名称，关联启动程序或关联卷。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，在左侧导航菜单上展开存储集群的名称。
+. 选择 * 卷 * 。
+. 选择 * 访问组 * 选项卡。
+. 在访问组表的 * 操作 * 列中，展开要编辑的访问组的选项菜单。
+. 在选项菜单中，选择 * 编辑 * 。
+. 对名称，关联启动程序或关联卷进行任何必要的更改。
+. 选择 * 保存 * 以确认所做的更改。
+. 在 * 访问组 * 表中，验证访问组是否反映了您所做的更改。
+
+
+
+
+== 删除卷访问组
+
+您可以使用 NetApp Hybrid Cloud Control 删除卷访问组，同时从系统中删除与此访问组关联的启动程序。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，在左侧导航菜单上展开存储集群的名称。
+. 选择 * 卷 * 。
+. 选择 * 访问组 * 选项卡。
+. 在访问组表的 * 操作 * 列中，展开要删除的访问组的选项菜单。
+. 在选项菜单中，选择 * 删除 * 。
+. 如果不想删除与访问组关联的启动程序，请取消选中 * 删除此访问组中的启动程序 * 复选框。
+. 选择 * 是 * 确认删除操作。
+
+
+[discrete]
+== 了解更多信息
+
+* link:concept_hci_volume_access_groups.html["了解卷访问组"]
+* link:task_hcc_manage_initiators.html#add-initiators-to-a-volume-access-group["将启动程序添加到卷访问组"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

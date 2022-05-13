@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_hci_power_on_compute.html 
+summary: 了解如何启动 NetApp HCI 计算节点。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= 启动 NetApp HCI 系统的计算资源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+您可以在计划内中断完成后启动 NetApp HCI 系统的计算资源。
+
+.步骤
+. 使用与启动存储节点相同的步骤启动计算节点。
+. 当所有计算节点均正常运行时，登录到运行 vCSA 的 ESXi 主机。
+. 登录到计算主机并验证它是否可以看到所有 NetApp HCI 数据存储库。对于典型的 NetApp HCI 系统，您应看到所有 ESXi 本地数据存储库以及至少以下共享数据存储库：
+
+
+[listing]
+----
+NetApp-HCI-Datastore-[01,02]
+----
+. 假设所有存储均可访问，请按如下所示启动 vCSA 以及任何其他所需虚拟机：
++
+.. 在导航器中选择虚拟机，选择要启动的所有虚拟机，然后单击 * 启动 * 按钮。
+
+
+. 启动虚拟机后，请等待大约 5 分钟，然后使用 Web 浏览器导航到 vCSA 应用程序的 IP 地址或 FQDN 。
++
+如果等待的时间不够长，则会显示一条消息，指出 vSphere Client Web 服务器正在初始化。
+
+. vSphere Client 初始化后，登录并验证所有 ESXi 主机和虚拟机是否均已联机。
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

@@ -1,0 +1,354 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_install.html 
+summary: 您可以为运行 NetApp Element 软件的集群安装管理节点。 
+keywords: netapp, element, management node, mnode, storage, install 
+---
+= 安装管理节点
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用适用于您的配置的映像为运行 NetApp Element 软件的集群手动安装管理节点。
+
+此手动过程适用于未使用 NetApp 部署引擎安装管理节点的 SolidFire 全闪存存储管理员和 NetApp HCI 管理员。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您的安装使用 IPv4 。管理节点 11.3 不支持 IPv6 。
++
+
+NOTE: 如果需要 IPv6 支持，可以使用管理节点 11.1 。
+
+* 您有权从 NetApp 支持站点下载软件。
+* 您已确定适用于您的平台的管理节点映像类型：
++
+[cols="30,30"]
+|===
+| 平台 | 安装映像类型 
+
+
+| Microsoft Hyper-V | ISO 
+
+
+| KVM | ISO 
+
+
+| VMware vSphere | .iso ， .ova 
+
+
+| Citrix XenServer | ISO 
+
+
+| OpenStack | ISO 
+|===
+* （使用代理服务器的管理节点 12.0 及更高版本）在配置代理服务器之前，您已将 NetApp Hybrid Cloud Control 更新为管理服务版本 2.16 。
+
+
+Element 12.2 管理节点是一种可选升级。现有部署不需要此功能。
+
+在遵循此操作步骤之前，您应了解 link:concept_hci_volumes.html#persistent-volumes["永久性卷"] 以及是否要使用它们。永久性卷是可选的，但建议在虚拟机丢失时用于管理节点配置数据恢复。
+
+.步骤
+. <<Download ISO or OVA and deploy the VM>>
+. <<Create the management node admin and configure the network>>
+. <<Configure time sync>>
+. <<Set up the management node>>
+. <<Configure controller assets>>
+. <<Configure compute node assets,（仅限 NetApp HCI ）配置计算节点资产>>
+
+
+
+
+== 下载 ISO 或 OVA 并部署虚拟机
+
+. 从下载适用于您的安装的 OVA 或 ISO https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp HCI"^] NetApp 支持站点上的页面：
++
+.. 选择 * 下载最新版本 * 并接受 EULA 。
+.. 选择要下载的管理节点映像。
+
+
+. 如果您下载了 OVA ，请按照以下步骤操作：
++
+.. 部署 OVA 。
+.. 如果您的存储集群与管理节点（ eth0 ）位于不同的子网中，并且您希望使用永久性卷，请向存储子网上的虚拟机（例如 eth1 ）添加另一个网络接口控制器（ Network Interface Controller ， NIC ），或者确保管理网络可以路由到存储网络。
+
+
+. 如果您下载了 ISO ，请按照以下步骤操作：
++
+.. 使用以下配置从虚拟机管理程序创建新的 64 位虚拟机：
++
+*** 6 个虚拟 CPU
+*** 24 GB RAM
+*** 存储适配器类型设置为 LSI Logic Parallel
++
+
+IMPORTANT: 管理节点的默认值可能为 LSI Logic SAS 。在 * 新建虚拟机 * 窗口中，选择 * 自定义硬件 * > * 虚拟硬件 * 以验证存储适配器配置。如果需要，请将 LSI Logic SAS 更改为 * LSI Logic Parallel * 。
+
+*** 400 GB 虚拟磁盘，精简配置
+*** 一个可访问 Internet 和存储 MVIP 的虚拟网络接口。
+*** （对于 SolidFire 全闪存存储为可选）一个可通过管理网络访问存储集群的虚拟网络接口。如果存储集群与管理节点（ eth0 ）位于不同的子网中，并且您希望使用永久性卷，请向存储子网（ eth1 ）上的虚拟机添加另一个网络接口控制器（ Network Interface Controller ， NIC ），或者确保管理网络可以路由到存储网络。
++
+
+IMPORTANT: 请勿在此操作步骤中指示稍后启动虚拟机的步骤之前启动虚拟机。
+
+
+
+.. 将 ISO 连接到虚拟机并启动到 .iso 安装映像。
++
+
+NOTE: 使用映像安装管理节点可能会导致在显示启动屏幕之前出现 30 秒的延迟。
+
+
+
+. 安装完成后，启动管理节点的虚拟机。
+
+
+
+
+== 创建管理节点管理员并配置网络
+
+. 使用终端用户界面（ TUI ）创建管理节点管理员用户。
++
+
+TIP: 要浏览菜单选项，请按向上或向下箭头键。要在各个按钮之间移动，请按 Tab 。要从按钮移至字段，请按 Tab 。要在字段之间导航，请按向上或向下箭头键。
+
+. 配置管理节点网络（ eth0 ）。
++
+
+NOTE: 如果需要使用额外的 NIC 来隔离存储流量，请参见有关配置另一个 NIC 的说明： link:task_mnode_install_add_storage_NIC.html["配置存储网络接口控制器（ NIC ）"]。
+
+
+
+
+
+== 配置时间同步
+
+. 确保使用 NTP 在管理节点和存储集群之间同步时间：
++
+
+NOTE: 从 Element 12.3.1 开始，系统会自动执行子步骤（ a ）到（ e ）。对于管理节点 12.3.1 ，请继续执行 <<substep_f_install_config_time_sync,子步骤（ f ）>> 以完成时间同步配置。
+
++
+.. 使用 SSH 或虚拟机管理程序提供的控制台登录到管理节点。
+.. 停止 NTPD ：
++
+[listing]
+----
+sudo service ntpd stop
+----
+.. 编辑 NTP 配置文件 ` /etc/ntp.conf` ：
++
+... 通过在每个服务器前面添加一个 ` #` 来注释掉默认服务器（ `s服务器 0.gentoo.pool.ntp.org` ）。
+... 为要添加的每个默认时间服务器添加一个新行。默认时间服务器必须与要在中使用的存储集群上使用的 NTP 服务器相同 link:task_mnode_install.html#set-up-the-management-node["后续步骤"]。
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+... 完成后保存配置文件。
+
+
+.. 强制与新添加的服务器进行 NTP 同步。
++
+[listing]
+----
+sudo ntpd -gq
+----
+.. 重新启动 NTPD 。
++
+[listing]
+----
+sudo service ntpd start
+----
+.. 【 substed_f_install_config_time_sync]] 通过虚拟机管理程序禁用与主机的时间同步（以下是 VMware 示例）：
++
+
+NOTE: 如果您在 VMware 以外的虚拟机管理程序环境中部署 mNode ，例如在 OpenStack 环境中从 .ISO 映像部署，请参见虚拟机管理程序文档以了解等效命令。
+
++
+... 禁用定期时间同步：
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+... 显示并确认服务的当前状态：
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+... 在 vSphere 中，验证 VM 选项中的 `S将子系统时间与主机同步` 框是否未选中。
++
+
+NOTE: 如果您将来对虚拟机进行更改，请勿启用此选项。
+
+
+
+
+
+
+
+
+NOTE: 完成时间同步配置后，请勿编辑 NTP ，因为它会在运行时影响 NTP link:task_mnode_install.html#set-up-the-management-node["设置命令"] 在管理节点上。
+
+
+
+== 设置管理节点
+
+. 配置并运行管理节点设置命令：
++
+
+NOTE: 系统将提示您在安全提示符处输入密码。如果集群使用代理服务器，则必须配置代理设置，才能访问公有网络。
+
++
+[listing]
+----
+/sf/packages/mnode/setup-mnode --mnode_admin_user [username] --storage_mvip [mvip] --storage_username [username] --telemetry_active [true]
+----
++
+.. 替换以下每个必需参数的方括号（包括方括号）中的值：
++
+
+NOTE: 命令名称的缩写形式为圆括号（），可替换为全名。
+
++
+*** *-mnode_admin_user （ -mu ） [username]* ：管理节点管理员帐户的用户名。这可能是您用于登录到管理节点的用户帐户的用户名。
+*** *-storage_mvip （ -SM ） [MVIP address]* ：运行 Element 软件的存储集群的管理虚拟 IP 地址（ MVIP ）。使用与期间相同的存储集群配置管理节点 link:task_mnode_install.html#configure-time-sync["NTP 服务器配置"]。
+*** * — storage_username （ -su ） ` username* ：由` — -storage_mvip 参数指定的集群的存储集群管理员用户名。
+*** * — -metry_active （ -t ） [true]* ：保留值 true ，以便通过 Active IQ 收集数据以进行分析。
+
+
+.. （可选）：将 Active IQ 端点参数添加到命令中：
++
+*** *-remote_host （ -rh ） [AIQ_endpoint]* ：发送 Active IQ 遥测数据进行处理的端点。如果不包括参数，则使用默认端点。
+
+
+.. （建议）：添加以下永久性卷参数。请勿修改或删除为永久性卷功能创建的帐户和卷，否则会导致管理功能丢失。
++
+*** *-use_persistent_volumes （ -pv ） [true/false ， default ： false]* ：启用或禁用永久性卷。输入值 true 可启用永久性卷功能。
+*** *-persistent_volumes_account （ -PVA ） [account_name]* ：如果将 ` -use_persistent_volumes` 设置为 true ，请使用此参数并输入要用于永久性卷的存储帐户名称。
++
+
+NOTE: 为永久性卷使用与集群上任何现有帐户名称不同的唯一帐户名称。请务必将永久性卷的帐户与环境的其余部分分开。
+
+*** *-persistent_volumes_mvip （ -pVM ） /mvip* ：输入运行 Element 软件并与永久性卷结合使用的存储集群的管理虚拟 IP 地址（ MVIP ）。只有当管理节点管理多个存储集群时，才需要执行此操作。如果未管理多个集群，则会使用默认集群 MVIP 。
+
+
+.. 配置代理服务器：
++
+*** *-use_proxy （ -up ） [true/false ， default ： false]* ：启用或禁用代理。要配置代理服务器，需要使用此参数。
+*** *-proxy_hostname_or_IP （ -PI ） [host]* ：代理主机名或 IP 。如果要使用代理，则必须执行此操作。如果指定此参数，系统将提示您输入 ` -proxy_port` 。
+*** *-proxy_username （ -pu ） [username]* ：代理用户名。此参数是可选的。
+*** *-proxy_password （ -pp ） [password]* ：代理密码。此参数是可选的。
+*** *-proxy_port （ -pq ） [port ， default ： 0]* ：代理端口。如果指定此参数，系统将提示您输入代理主机名或 IP （` -proxy_hostname_or_IP` ）。
+*** *-proxy_ssh_port （ -ps ） [port ， default ： 443]* ： SSH 代理端口。此端口默认为端口 443 。
+
+
+.. （可选）如果需要有关每个参数的追加信息，请使用参数 help ：
++
+*** *-help （ -h ） * ：返回有关每个参数的信息。根据初始部署，参数定义为必需或可选。升级和重新部署参数要求可能有所不同。
+
+
+.. 运行 `setup-mnode` 命令。
+
+
+
+
+
+
+== 配置控制器资产
+
+. 找到安装 ID ：
++
+.. 从浏览器登录到管理节点 REST API UI ：
+.. 转至存储 MVIP 并登录。此操作将接受此证书以执行下一步。
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+
+
+.. 从 REST API UI 中，选择 * 获取​ /Installations * 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从代码 200 响应正文中，复制并保存 `id` 以供安装后使用。
++
+您的安装具有在安装或升级期间创建的基本资产配置。
+
+
+
+. （仅限 NetApp HCI ）在 vSphere 中找到计算节点的硬件标记：
++
+.. 在 vSphere Web Client 导航器中选择主机。
+.. 选择 * 监控 * 选项卡，然后选择 * 硬件运行状况 * 。
+.. 列出了节点 BIOS 制造商和型号。复制并保存 `tag` 的值，以供后续步骤使用。
+
+
+. 将用于 NetApp HCI 监控（仅限 NetApp HCI 安装）和混合云控制（适用于所有安装）的 vCenter 控制器资产添加到管理节点的已知资产中：
++
+.. 输入管理节点 IP 地址并后跟 ` /mnode` 来访问管理节点上的 mnode 服务 API UI ：
++
+[listing]
+----
+https:/<ManagementNodeIP>/mnode
+----
+.. 选择 * 授权 * 或任何锁定图标并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭窗口。
+
+
+.. 选择 * POST /assets/ ｛ asset_id ｝ /controllers* 以添加控制器子资产。
++
+
+NOTE: 建议您在 vCenter 中创建新的 NetApp HCC 角色以添加控制器子资产。这一新的 NetApp HCC 角色会将管理节点服务视图限制为纯 NetApp 资产。请参见 link:task_mnode_create_netapp_hcc_role_vcenter.html["在 vCenter 中创建 NetApp HCC 角色"]。
+
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。
+.. 输入类型为 `vCenter` 和 vCenter 凭据的所需有效负载值。
+.. 选择 * 执行 * 。
+
+
+
+
+
+
+== （仅限 NetApp HCI ）配置计算节点资产
+
+. （仅限 NetApp HCI ）将计算节点资产添加到管理节点的已知资产：
++
+.. 选择 * POST /assets/ ｛ asset_id ｝ /compute-nodes* 以使用计算节点资产的凭据添加计算节点子资产。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。
+.. 在有效负载中，输入 " 型号 " 选项卡中定义的所需有效负载值。输入 `ESXi Host` as `type` ，然后输入您在上一步中为 `hardware_tag` 保存的硬件标记。
+.. 选择 * 执行 * 。
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* link:concept_hci_volumes.html#persistent-volumes["永久性卷"]
+* link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]
+* link:task_mnode_install_add_storage_NIC.html["配置存储 NIC"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

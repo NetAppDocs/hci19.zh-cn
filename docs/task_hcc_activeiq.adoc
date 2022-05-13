@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_activeiq.html 
+summary: 您可以使用 SolidFire Active IQ 监控集群运行状况。 
+keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance 
+---
+= 使用 SolidFire Active IQ 监控性能，容量和集群运行状况
+:allow-uri-read: 
+
+
+[role="lead"]
+通过使用 SolidFire Active IQ ，您可以监控集群的事件，性能和容量。您可以从 NetApp 混合云控制信息板访问 SolidFire Active IQ 。
+
+* 开始之前 *
+
+* 要利用此服务，您必须拥有 NetApp 支持帐户。
+* 要使用管理节点 REST API ，您必须获得授权。
+* 您已部署运行 12.0 或更高版本的管理节点。
+* 您的集群版本运行的是 NetApp Element 软件 12.0 或更高版本。
+* 您可以访问 Internet 。不能从非公开站点使用 Active IQ 收集器服务。
+
+
+* 关于此任务 * 您可以获取持续更新的集群范围统计信息历史视图。您可以设置通知，以便就集群上的指定事件，阈值或指标向您发出警报，以便快速解决这些问题。
+
+在您的正常支持合同中， NetApp 支持部门会监控此数据并提醒您可能出现的系统问题。
+
+* 步骤 *
+
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的菜单。
+. 选择 * 查看 Active IQ * 。
++
+。 link:https://activeiq.solidfire.com["SolidFire Active IQ 信息板"^] 显示。
+
+. 要了解 SolidFire Active IQ ，请在信息板中单击右上角的菜单图标，然后单击 * 文档 * 。
+. 在 SolidFire Active IQ 界面中，验证 NetApp HCI 计算和存储节点是否已向 Active IQ 正确报告遥测：
++
+.. 如果安装了多个 NetApp HCI ，请单击 * 选择集群 * 并从列表中选择集群。
+.. 在左侧导航窗格中，单击 * 节点 * 。
+
+
+. 如果列表中缺少一个或多个节点，请联系 NetApp 支持部门。
+
+
+
+TIP: 要查看存储和计算资源的数量，请查看混合云控制（ HCC ）信息板。请参见 link:task_hcc_dashboard.html["使用 HCC 信息板监控存储和计算资源"]。
+
+[discrete]
+== 了解更多信息
+
+* https://help.monitoring.solidfire.com["NetApp SolidFire Active IQ 文档"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

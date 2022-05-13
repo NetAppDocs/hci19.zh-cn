@@ -1,0 +1,278 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_getstarted.html 
+summary: 按照以下说明安装和部署 NetApp HCI 。 
+keywords: netapp, hci, install, deploy, get started 
+---
+= NetApp HCI 安装和部署概述
+:allow-uri-read: 
+
+
+[role="lead"]
+按照以下说明安装和部署 NetApp HCI 。这些说明包含指向更多详细信息的链接。
+
+以下是此过程的概述：
+
+* <<Prepare for installation>>
+* <<Validate network readiness with NetApp Active IQ Config Advisor>>
+* <<Work with your NetApp team>>
+* <<Install NetApp HCI hardware>>
+* <<Complete optional tasks after installing hardware>>
+* <<Deploy NetApp HCI using the NetApp Deployment Engine (NDE)>>
+* <<Manage NetApp HCI using the vCenter Plug-in>>
+* <<Monitor or upgrade NetApp HCI with the Hybrid Cloud Control>>
+
+
+
+
+== 准备安装
+
+开始安装之前，请在收到硬件之前填写发送给您的 _NetApp HCI 安装发现工作簿 _ 预检清单。
+
+
+
+=== 准备网络和安装站点
+
+下面是经过简化的 NetApp HCI 网络拓扑安装：
+
+image::hci_topology_simple_network.png[简化的 NetApp HCI 网络拓扑图]
+
+这是一个存储节点和一个计算节点的简化网络拓扑。NetApp HCI 的最小集群为两个存储节点和两个计算节点。
+
+
+NOTE: 您的网络拓扑可能与此处显示的不同。这只是一个示例。
+
+此设置使用计算节点上的两根网络缆线连接到所有 NetApp HCI 网络。 
+
+阅读以下资源：
+
+* 在安装之前，请使用 NetApp HCI 安装发现工作簿 _ 配置网络。
+* 有关详细信息以及其他支持的配置，请参见 https://www.netapp.com/us/media/tr-4820.pdf["_TR-4820 ：《 NetApp HCI 网络快速规划指南》"] 和 https://library.netapp.com/ecm/ecm_download_file/ECMLP2856176["_NetApp HCI 安装和设置说明 _"]。
+* 有关小于四个存储节点的 NetApp HCI 配置的信息，请参见 https://www.netapp.com/us/media/tr-4823.pdf["_TR-4823 ： NetApp HCI 双节点存储集群 _"^]。
+* 有关在每个存储节点所使用的交换机端口上配置链路聚合控制协议（ LACP ）的详细信息，请参见 link:hci_prereqs_LACP_configuration.html["配置 LCAP 以获得最佳存储性能"]。
+
+
+此设置可将所有流量整合到两个物理冗余端口上，从而减少布线并简化网络配置。此配置要求存储， vMotion 和任何虚拟机网段都使用 VLAN 标记。管理网段可以使用原生或带标记的 VLAN ；但是，原生 VLAN 是首选模式，因此 NetApp 部署引擎（ NDE ）可以自动分配网络资源（ Zero CONF ）。
+
+此模式需要 vSphere 分布式交换机（ vSphere Distributed Switches ， VDS ），这需要 VMware vSphere Enterprise Plus 许可。
+
+
+
+=== 开始之前的网络连接要求
+
+下面是前提条件的重点。
+
+有关前提条件的详细信息，请参见 link:hci_prereqs_overview.html["NetApp HCI 部署要求概述"]。
+
+* Bond1G 是一种逻辑接口，它将存储节点上的 1GbE 网络端口与计算节点上的管理接口结合在一起。此网络用于 NDE API 流量。所有节点都必须能够通过同一 L2 网络中的管理接口进行通信。
+* Bond10G 是一个逻辑接口，它将 10/25GbE 端口组合在一起，供 NDE 用于信标和清单。所有节点都必须能够使用非碎片化巨型帧通过绑定 10G 接口进行通信。
+* NDE 要求在一个存储节点上的绑定 1G 接口上至少手动分配一个 IP 地址。NDE 将从此节点运行。
+* 所有节点都将通过 NDE 发现分配临时 IP 地址，此操作通过自动专用 IP 寻址（ APIPA ）完成。
+
+
+
+NOTE: 在 NDE 过程中，所有节点都将分配永久 IP 地址，并且所有 APIPA 分配的临时 IP 都将被释放。
+
+* NDE 需要在交换机网络上预配置的单独的管理网络， iSCSI 网络和 vMotion 网络。
+
+
+
+
+== 使用 NetApp Active IQ Config Advisor 验证网络就绪情况
+
+要确保 NetApp HCI 网络就绪，请安装 NetApp Active IQ Config Advisor 5.8.1 或更高版本。此网络验证工具与其他一起提供 link:https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp 支持工具"^]。使用此工具可验证连接， VLAN ID ， IP 地址要求，交换机连接等。
+
+有关详细信息，请参见 link:hci_prereqs_task_validate_config_advisor.html["使用 Active IQ Config Advisor 验证您的环境"]
+
+
+
+== 与您的 NetApp 团队合作
+
+您的 NetApp 团队使用 NetApp Active IQ Config Advisor 报告和 _Discovery 工作簿 _ 来验证您的网络环境是否已准备就绪。
+
+
+
+== 安装 NetApp HCI 硬件
+
+NetApp HCI 可以安装在不同的配置中：
+
+* H410C 计算节点：双缆线配置或六缆线配置
+* H610C 计算节点：双缆线配置
+* H615C 计算节点：双缆线配置
+* H410S 存储节点
+* H610S 存储节点
+
+
+
+CAUTION: 有关预防措施和详细信息，请参见 link:task_hci_installhw.html["安装 H 系列硬件"]。
+
+.步骤
+. 安装导轨和机箱。
+. 在机箱中安装节点并为存储节点安装驱动器。（只有在 NetApp H 系列机箱中安装 H410C 和 H410S 时才适用。）
+. 安装交换机。
+. 为计算节点布线。
+. 为存储节点布线。
+. 连接电源线。
+. 打开 NetApp HCI 节点的电源。
+
+
+
+
+== 安装硬件后完成可选任务
+
+安装 NetApp HCI 硬件后，您应执行一些可选但建议执行的任务。
+
+
+
+=== 管理所有机箱的存储容量
+
+确保存储容量均匀分布在包含存储节点的所有机箱中。
+
+
+
+=== 为每个节点配置 IPMI
+
+在对 NetApp HCI 硬件进行机架安装，布线和加电后，您可以为每个节点配置智能平台管理接口（ IPMI ）访问。为每个 IPMI 端口分配一个 IP 地址，并在对节点具有远程 IPMI 访问权限后立即更改默认管理员 IPMI 密码。
+
+请参见 link:hci_prereqs_final_prep.html["配置 IPMI"]。
+
+
+
+== 使用 NetApp 部署引擎（ NDE ）部署 NetApp HCI
+
+NDE UI 是用于安装 NetApp HCI 的软件向导界面。
+
+
+
+=== 启动 NDE UI
+
+NetApp HCI 使用存储节点管理网络 IPv4 地址对 NDE 进行初始访问。最佳做法是，从第一个存储节点进行连接。
+
+.前提条件
+* 您已手动或使用 DHCP 分配初始存储节点管理网络 IP 地址。
+* 您必须对 NetApp HCI 安装具有物理访问权限。
+
+
+.步骤
+. 如果您不知道初始存储节点管理网络 IP ，请使用终端用户界面（ Terminal User Interface ， TUI ），此界面可通过存储节点或上的键盘和显示器进行访问 link:task_nde_access_dhcp.html["使用 U 盘"]。
++
+有关详细信息，请参见 link:concept_nde_access_overview.html["_ 访问 NetApp 部署引擎 _"]。
+
+. 如果您知道 IP 地址，请通过 Web 浏览器，而不是 HTTPS ，通过 HTTP 连接到主节点的绑定 1G 地址。
++
+* 示例 * ： `http://<IP_address>:442/nde/`
+
+
+
+
+
+=== 使用 NDE UI 部署 NetApp HCI
+
+. 在 NDE 中，接受前提条件，选中使用 Active IQ 并接受许可协议。
+. （可选）启用 ONTAP Select 的 Data Fabric 文件服务并接受 ONTAP Select 许可证。
+. 配置新的 vCenter 部署。单击 * 使用完全限定域名配置 * ，然后输入 vCenter Server 域名和 DNS 服务器 IP 地址。
++
+
+NOTE: 强烈建议在 vCenter 安装中使用 FQDN 方法。
+
+. 查看所有节点的清单评估是否已成功完成。
++
+已检查运行 NDE 的存储节点。
+
+. 选择所有节点并单击 * 继续 * 。
+. 配置网络设置。有关要使用的值，请参见 _Microsoft NetApp HCI 安装发现工作簿 _ 。
+. 单击蓝色框以启动简易表单。
++
+image::hci_nde_network_settings_ui.png[NDE 网络设置页面]
+
+. 在 Network Settings Easy 表单上：
++
+.. 键入命名前缀。（请参见 _NetApp HCI 安装发现工作簿 _ 的系统详细信息。）
+.. 单击 * 否 * ，查看是否分配 VLAN ID ？（稍后可在主网络设置页面中进行分配。）
+.. 根据您的工作簿键入管理， vMotion 和 iSCI 网络的子网 CIDR ，默认网关和起始 IP 地址。（ NetApp HCI 有关这些值，请参见 _IP 安装发现工作簿 _ 的 "IP 分配方法 " 部分。）
+.. 单击 * 应用于网络设置 * 。
+
+
+. 加入 link:task_nde_join_existing_vsphere.html["现有 vCenter"] （可选）。
+. 将节点序列号记录在 _RAID NetApp HCI 安装发现工作簿 _ 中。
+. 为 vMotion 网络以及任何需要 VLAN 标记的网络指定 VLAN ID 。请参见 NetApp HCI 安装发现工作簿 _ 。
+. 将配置下载为 .CSV 文件。
+. 单击 * 开始部署 * 。
+. 复制并保存显示的 URL 。
++
+
+NOTE: 完成部署可能需要大约 45 分钟。
+
+
+
+
+
+=== 使用 vSphere Web Client 验证安装
+
+. 启动 vSphere Web Client 并使用 NDE 使用期间指定的凭据登录。
++
+您必须在用户名后附加 `@vsphere.local` 。
+
+. 确认不存在任何警报。
+. 验证 vCenter ， mNode 和 ONTAP Select （可选）设备是否在运行时未显示警告图标。
+. 请注意，已创建两个默认数据存储库（ NetApp-HCI-Datastore_01 和 02 ）。
+. 选择每个数据存储库，并确保所有计算节点均列在主机选项卡中。
+. 验证 vMotion 和 Datastore-02 。
++
+.. 将 vCenter Server 迁移到 NetApp-HCI-Datastore-02 （仅限存储 vMotion ）。
+.. 将 vCenter Server 迁移到每个计算节点（仅计算 vMotion ）。
+
+
+. 转至适用于 vCenter Server 的 NetApp Element 插件，并确保集群可见。
+. 确保信息板上未显示任何警报。
+
+
+
+
+== 使用 vCenter 插件管理 NetApp HCI
+
+安装 NetApp HCI 后，您可以配置集群，卷，数据存储库，日志，访问组， 启动程序和服务质量（ QoS ）策略。 NetApp Element
+
+有关详细信息，请参见 https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件文档 _"^]。
+
+image::vcp_shortcuts_page.png[vSphere Client 快捷方式页面]
+
+
+
+== 使用混合云控制监控或升级 NetApp HCI
+
+您可以选择使用 NetApp HCI 混合云控制来监控，升级或扩展系统。
+
+您可以通过浏览到管理节点的 IP 地址登录到 NetApp Hybrid Cloud Control 。
+
+使用 Hybrid Cloud Control ，您可以执行以下操作：
+
+* link:task_hcc_dashboard.html["监控 NetApp HCI 安装"]
+* link:concept_hci_upgrade_overview.html["升级 NetApp HCI 系统"]
+* link:concept_hcc_expandoverview.html["扩展 NetApp HCI 存储或计算资源"]
+
+
+* 步骤 *
+
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
++
+此时将显示 NetApp Hybrid Cloud Control 界面。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* link:../media/hseries-isi.pdf["《 NetApp HCI 安装和设置说明》"^]
+* https://www.netapp.com/us/media/tr-4820.pdf["TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件文档"^]
+* https://mysupport-beta.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
+* https://help.monitoring.solidire.com["NetApp SolidFire Active IQ 文档"^]
+

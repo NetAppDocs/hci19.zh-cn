@@ -1,0 +1,41 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_nde_access_overview.html 
+summary: 在部署 NetApp HCI 之前，请根据您的环境使用以下几种方法之一访问 NetApp 部署引擎。 
+keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access 
+---
+= NetApp 部署引擎访问选项概述
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+要部署 NetApp HCI ，您需要通过分配给绑定 1G 接口的 IPv4 地址访问其中一个 NetApp H 系列存储节点上的 NetApp 部署引擎，绑定 1G 接口是一个逻辑接口，用于为存储节点组合端口 A 和 B 。此存储节点将成为部署过程的控制存储节点。根据您的环境，您需要配置 IPv4 地址或从其中一个存储节点检索此地址。
+
+
+NOTE: 您只能使用存储节点的绑定 1G 接口访问 NetApp 部署引擎。不支持使用绑定 10G 接口将存储节点的端口 C 和 D 组合在一起的逻辑接口。
+
+请使用以下最符合您的网络环境的方法之一来访问 NetApp 部署引擎：
+
+|===
+| 场景 | 方法 
+
+
+| 您的环境中没有 DHCP | link:task_nde_access_no_dhcp.html["在不使用 DHCP 的环境中访问 NetApp 部署引擎"] 
+
+
+| 您的环境中有 DHCP | link:task_nde_access_dhcp.html["在使用 DHCP 的环境中访问 NetApp 部署引擎"] 
+
+
+| 您希望手动分配所有 IP 地址 | link:task_nde_access_manual_ip.html["手动分配 IP 地址以访问 NetApp 部署引擎"] 
+|===
+[discrete]
+== 了解更多信息
+
+* link:task_nde_access_ui_fqdn.html["配置完全限定域名 Web UI 访问"^]
+

@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_hwmainoverview.html 
+summary: 您可以执行硬件维护任务，例如更换节点，更换存储节点中的驱动器，更换电源设备等。 
+keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, rails, h-series, nodes 
+---
+= H 系列硬件维护概述
+:allow-uri-read: 
+
+
+[role="lead"]
+您应执行硬件维护任务，例如更换故障节点，更换存储节点中的故障驱动器等，以确保系统以最佳状态运行。
+
+下面是硬件维护任务的链接：
+
+* link:task_hci_hserieschassisrepl.html["更换 2U H 系列机箱"^]
+* link:task_hci_dcpsurepl.html["更换 H615C 和 H610S 节点中的直流电源设备"^]
+* link:task_hci_dimmcomputerepl.html["更换计算节点中的 DIMM"^]
+* link:task_hci_driverepl.html["更换存储节点的驱动器"^]
+* link:task_hci_h410crepl.html["更换 H410C 节点"^]
+* link:task_hci_h410srepl.html["更换 H410S 节点"^]
+* link:task_hci_h610ch615crepl.html["更换 H610C 和 H615C 节点"^]
+* link:task_hci_h610srepl.html["更换 H610S 节点"^]
+* link:task_hci_psurepl.html["更换电源设备"^]
+* link:task_hci_snswitches.html["更换 SN2010 ， SN2100 和 SN2700 交换机"]
+* link:task_hci_2noderepl.html["更换双节点集群中的存储节点"^]
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/media/tr-4820.pdf["_TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
+* https://mysupport.netapp.com/site/tools["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
+

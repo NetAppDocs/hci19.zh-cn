@@ -1,0 +1,184 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_dashboard.html 
+summary: 您可以在 NetApp 混合云控制信息板上查看存储和计算资源。此外，您还可以监控存储容量，存储性能和计算利用率。 
+keywords: netapp, hci, on premise, hcc, hybrid cloud control, storage, compute, storage performance, utilization, capacity 
+---
+= 在混合云控制信息板上监控存储和计算资源
+:allow-uri-read: 
+
+
+[role="lead"]
+借助 NetApp 混合云控制信息板，您可以一目了然地查看所有存储和计算资源。此外，您还可以监控存储容量，存储性能和计算利用率。
+
+
+NOTE: 首次启动新的 NetApp Hybrid Cloud Control 会话时，如果管理节点管理多个集群，则加载 NetApp Hybrid Cloud Control Dashboard 视图可能会出现延迟。加载时间因管理节点主动管理的集群数量而异。对于后续发布，您将体验到更快的加载速度。
+
+在混合云控制信息板上，仅会显示 H 系列硬件中至少有一个受管节点的受管计算节点和集群。
+
+* <<Access the NetApp HCC Dashboard>>
+* <<Monitor storage resources>>
+* <<Monitor compute resources>>
+* <<Monitor storage capacity>>
+* <<Monitor storage performance>>
+* <<Monitor compute utilization>>
+
+
+
+
+== 访问 NetApp HCC 信息板
+
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 查看混合云控制信息板。
++
+image::hcc_dashboard_all.png[HCC 信息板]
+
+
+
+
+TIP: 根据您的安装，您可能会看到部分或全部窗格。例如，对于纯存储安装， Hybrid Cloud Control Dashboard 仅显示存储窗格，存储容量窗格和存储性能窗格。
+
+
+
+== 监控存储资源
+
+使用 * 存储 * 窗格查看您的整体存储环境。您可以监控存储集群，存储节点和卷总数。
+
+要查看详细信息，请在存储窗格中选择 * 显示详细信息 * 。
+
+image::hcc_dashboard_storage_node_number.PNG[存储视图]
+
+
+NOTE: 存储节点总数不包括双节点存储集群中的见证节点。见证节点包含在该集群的详细信息部分的节点编号中。
+
+
+TIP: 要查看最新的存储集群数据，请使用存储集群页面，其中轮询频率高于信息板上的轮询频率。
+
+
+
+== 监控计算资源
+
+使用 * 计算 * 窗格查看您的 NetApp H 系列计算环境总量。您可以监控计算集群的数量和计算节点的总数。
+
+要查看详细信息，请在计算窗格中选择 * 显示详细信息 * 。
+
+
+NOTE: 只有当至少有一个 NetApp HCI 计算节点与此实例关联时，您的 vCenter 实例才会显示在计算窗格中。要列出在 NetApp Hybrid Cloud Control 中链接的 vCenter 实例，您可以使用 link:task_mnode_edit_vcenter_assets.html["API"]。
+
+
+NOTE: 要在 NetApp Hybrid Cloud Control 中管理计算节点，您必须 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/How_to_set_up_compute_node_management_in_NetApp_Hybrid_Cloud_Control["将计算节点添加到 vCenter 主机集群"^]。
+
+
+
+== 监控存储容量
+
+监控环境的存储容量至关重要。使用存储容量窗格，您可以确定在启用或不启用数据压缩，重复数据删除和精简配置功能的情况下存储容量效率的提高。
+
+您可以在 * 原始 * 选项卡上查看集群中可用的总物理存储空间，并在 * 有效 * 选项卡上查看有关已配置存储的信息。
+
+image::hcc_dashboard_storage_capacity_effective.png[HCC 信息板 > 存储容量窗格]
+
+
+TIP: 要查看集群运行状况，另请查看 SolidFire Active IQ 信息板。请参见 link:task_hcc_activeiq.html["在 NetApp SolidFire Active IQ 中监控性能，容量和集群运行状况"]。
+
+.步骤
+. 选择 * 原始 * 选项卡可查看集群中已用和可用的总物理存储空间。
++
+查看垂直线以确定您的已用容量小于总容量还是小于警告，错误或严重阈值。将鼠标悬停在这些行上方可查看详细信息。
+
++
+
+NOTE: 您可以设置 " 警告 " 阈值，该阈值默认为比 " 错误 " 阈值低 3% 。" 错误 " 和 " 严重 " 阈值是预设的，不能根据设计进行配置。错误阈值指示集群中剩余的容量节点少于一个。有关设置阈值的步骤，请参见 https://docs.netapp.com/us-en/element-software/storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["设置集群全满阈值"^]。
+
++
+
+TIP: 有关相关集群阈值 Element API 的详细信息，请参见 https://docs.netapp.com/us-en/element-software/api/reference_element_api_getclusterfullthreshold.html["GetClusterFullThreshold"^] 在 _Element 软件 API 文档 _ 中。要查看有关块和元数据容量的详细信息，请参见 https://docs.netapp.com/us-en/element-software/storage/concept_monitor_understand_cluster_fullness_levels.html["了解集群填充度级别"^] 在 _Element 软件文档 _ 中。
+
+. 选择 * 有效 * 选项卡可查看有关配置给已连接主机的总存储空间的信息并查看效率等级。
++
+.. 或者，选中 * 包括精简配置 * 以在有效容量条形图中查看精简配置效率比率。
+.. * 有效容量条形图 * ：查看垂直线，确定已用容量小于总容量还是小于警告，错误或严重阈值。与原始选项卡类似，您可以将鼠标悬停在垂直线上方以查看详细信息。
+.. * 效率 * ：查看这些评级，确定启用了数据压缩，重复数据删除和精简配置功能后存储容量效率的提高。例如，如果数据压缩显示为 "1.3 倍 " ，则表示启用数据压缩后的存储效率比不启用数据压缩时高 1.3 倍。
++
+
+NOTE: 总效率等于（ maxUsedSpace * 效率因子） /2 ，其中 efficiencyFactor = （ thinkProvisioningFactor * deDuplicationFactor * compressionFactor ）。如果未选中精简配置，则它不会包含在总效率中。
+
+.. 如果有效存储容量接近 " 错误 " 或 " 严重 " 阈值，请考虑清除系统上的数据。或者，也可以考虑扩展系统。
++
+请参见 link:concept_hcc_expandoverview.html["扩展概述"]。
+
+
+
+. 有关详细分析和历史背景信息，请查看 https://activeiq.solidfire.com/["NetApp SolidFire Active IQ 详细信息"]。
+
+
+
+
+== 监控存储性能
+
+您可以使用存储性能窗格查看可以从集群中获得多少 IOPS 或吞吐量，而不会超过该资源的有用性能。存储性能是指在延迟变为问题描述之前获得最大利用率的时间点。
+
+存储性能窗格可帮助您确定工作负载增加时性能是否会下降。
+
+此窗格上的信息每 10 秒刷新一次，并显示图形上所有点的平均值。
+
+有关关联 Element API 方法的详细信息，请参见 https://docs.netapp.com/us-en/element-software/api/reference_element_api_getclusterstats.html["GetClusterStats"^] 方法。
+
+.步骤
+. 查看存储性能窗格。有关详细信息，请将鼠标悬停在图中的点上。
++
+.. * IOPS * 选项卡：查看当前每秒操作数。查看数据或峰值趋势。例如，如果您看到最大 IOPS 为 160 ， 000 ，其中 100 ， 000 为可用或可用 IOPS ，则可以考虑为此集群添加更多工作负载。另一方面，如果您发现只有 140K 可用，则可以考虑卸载工作负载或扩展系统。
++
+image::hcc_dashboard_storage_perform_iops.png[存储性能 > IOPS 选项卡]
+
+.. * 吞吐量 * 选项卡：监控吞吐量模式或峰值。此外，还要监控持续较高的吞吐量值，这可能表示您已接近资源的最大可用性能。
++
+image::hcc_dashboard_storage_perform_throughput.png[存储性能 > 吞吐量选项卡]
+
+.. * 利用率 * 选项卡：监控与集群级别可用总 IOPS 相关的 IOPS 利用率。
++
+image::hcc_dashboard_storage_perform_utlization.png[存储性能 > 利用率选项卡]
+
+
+
+. 要进行进一步分析，请使用适用于 vCenter Server 的 NetApp Element 插件查看存储性能。
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["适用于 vCenter Server 的 NetApp Element 插件中显示的性能"^]。
+
+
+
+
+
+== 监控计算利用率
+
+除了监控存储资源的 IOPS 和吞吐量之外，您还可能希望查看计算资产的 CPU 和内存使用情况。节点可以提供的总 IOPS 取决于节点的物理特征，例如 CPU 数量， CPU 速度和 RAM 量。
+
+.步骤
+. 查看 * 计算利用率 * 窗格。同时使用 CPU 和内存选项卡，查找利用率的模式或峰值。此外，还应注意利用率是否持续较高，这表示您可能已接近计算集群的最大利用率。
++
+
+NOTE: 此窗格仅显示此安装所管理的计算集群的数据。
+
++
+image::hcc_dashboard_compute_util_cpu.png[计算利用率窗格]
+
++
+.. * CPU * 选项卡：查看计算集群上的当前 CPU 利用率平均值。
+.. * 内存 * 选项卡：查看计算集群上的当前平均内存使用量。
+
+
+. 有关计算信息的进一步分析，请参见 https://activeiq.solidfire.com["NetApp SolidFire Active IQ ，用于提供历史数据"]。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

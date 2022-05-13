@@ -1,0 +1,97 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_network_configuration.html 
+summary: 了解 NetApp HCI 的网络配置选项。 
+keywords: netapp, hci, cabling, network configuration 
+---
+= 网络配置：
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, cabling, network configuration
+
+
+[role="lead"]
+NetApp HCI 可以使用多种不同的网络布线和 VLAN 配置。请务必规划网络配置，以确保成功部署。
+
+
+
+== 所需的网段
+
+NetApp HCI 至少需要三个网段：管理，存储和虚拟化流量（包括虚拟机和 VMware vMotion 流量）。您还可以将虚拟机和 vMotion 流量分开。在 NetApp HCI 网络基础架构中，这些网段通常以逻辑隔离的 VLAN 形式存在。
+
+计算和存储节点如何连接到这些网络取决于您设计网络和为节点布线的方式。本指南中的示例网络图采用以下网络：
+
+|===
+| 网络名称 | VLAN ID 
+
+
+| 管理 | 100 
+
+
+| 存储 | 105. 
+
+
+| VMotion | 107. 
+
+
+| 虚拟机 | 200 ， 201 
+|===
+要在 NetApp 部署引擎中自动发现和配置 NetApp HCI 节点，您必须在节点上用于 SFP+/SFP28 接口的所有交换机端口上使用一个可用作未标记或原生 VLAN 的网段。这将在所有节点之间提供第 2 层通信，以便进行发现和部署。如果没有原生 VLAN ，则必须手动为所有节点的 SFP+/SFP28 接口配置 VLAN 和 IPv4 地址，以使其可发现。在本文档中的网络配置示例中，将使用管理网络（ VLAN ID 100 ）来实现此目的。
+
+通过 NetApp 部署引擎，您可以在初始部署期间快速为计算和存储节点配置网络。您可以将某些内置管理组件（例如 vCenter 和管理节点）置于其自己的网段上。这些网段需要路由才能使 vCenter 和管理节点与存储和计算管理网络进行通信。在大多数部署中，这些组件使用相同的管理网络（在此示例中为 VLAN ID 100 ）。
+
+
+NOTE: 您可以使用 vCenter 配置虚拟机网络。NetApp HCI 部署中的默认虚拟机网络（端口组 "VM_Network" ）未配置 VLAN ID 。如果您计划使用多个带标记的虚拟机网络（上例中的 VLAN ID 200 和 201 ），请确保在初始网络规划中包括这些网络。
+
+
+
+== 网络配置和布线选项
+
+您可以对 H410C 计算节点使用双缆线网络配置，从而简化缆线布线。此配置使用两个 SFP+/SFP28 接口以及一个可选（但建议使用） RJ45 接口进行 IPMI 通信。这些节点还可以使用具有两个 RJ45 和四个 SFP28/FSFP+ 接口的六缆线配置。
+
+H410S 和 H610S 存储节点支持使用四个网络端口（端口 A 到 D ）的网络拓扑。
+
+计算节点支持三种网络拓扑，具体取决于硬件平台：
+
+|===
+| 配置选项 | 为 H410C 节点布线 | 为 H610C 节点布线 | 为 H615C 节点布线 
+
+
+| 选项 A | 使用端口 D 和 E 的两根缆线 | 使用端口 C 和 D 的两根缆线 | 使用端口 A 和 B 的两根缆线 
+
+
+| 选项 B | 使用端口 A 到 F 的六根缆线 | 不可用 | 不可用 
+
+
+| 选项 C 3+| 与选项 B 类似，但交换机上用于管理，存储和 vMotion 网络的原生 VLAN （或 " 访问端口 " ） 
+|===
+连接的缆线数量不正确的节点不能参与部署。例如，如果某个计算节点仅连接了端口 D 和 E ，则无法在六缆线配置中部署该节点。
+
+
+NOTE: 您可以在部署后调整 NetApp HCI 网络配置，以满足基础架构需求。但是，在扩展 NetApp HCI 资源时，请记住，新节点必须与现有计算和存储节点具有相同的缆线配置。
+
+[NOTE]
+====
+如果 NetApp 部署引擎因您的网络不支持巨型帧而失败，您可以执行以下解决方法之一：
+
+* 在绑定 10G 网络上，使用静态 IP 地址并手动将最大传输单元（ MTU ）设置为 9000 字节。
+* 配置动态主机配置协议，以便在绑定 10G 网络上公布 9000 字节的接口 MTU 。
+
+
+====
+.网络配置选项
+* link:hci_prereqs_network_configuration_option_A.html["网络配置选项 A"]
+* link:hci_prereqs_network_configuration_option_B.html["网络配置选项 B"]
+* link:hci_prereqs_network_configuration_option_C.html["网络配置选项 C"]
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

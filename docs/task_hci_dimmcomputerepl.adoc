@@ -1,0 +1,281 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_dimmcomputerepl.html 
+summary: 您可以更换 NetApp HCI 计算节点中出现故障的双列直插式内存模块（ DIMM ），而不是更换整个节点。 
+keywords: netapp, hci, dimm, compute nodes 
+---
+= 更换计算节点中的 DIMM
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以更换 NetApp HCI 计算节点中出现故障的双列直插式内存模块（ DIMM ），而不是更换整个节点。
+
+.您需要什么？ #8217 ；将需要什么
+* 在启动此操作步骤之前，您应已联系 NetApp 支持部门并收到更换部件。在安装更换件期间，将会提供支持。如果您尚未执行此操作，请联系 https://www.netapp.com/us/contact-us/support.aspx["支持"]。
+* 您已计划系统停机，因为您需要关闭节点电源或重新启动节点，然后将节点启动到 NetApp 安全模式以访问终端用户界面（ TUI ）。
+
+
+此操作步骤适用场景支持以下计算节点型号：
+
+* H410C 节点。H410C 节点插入 2U NetApp HCI 机箱。
+* H610C 节点。H610C 节点内置在机箱中。
+* H615C 节点。H615C 节点内置在机箱中。
++
+
+IMPORTANT: H410C 和 H615C 节点包含来自不同供应商的 DIMM 。请确保不要在一个机箱中混用不同供应商的 DIMM 。
+
++
+
+NOTE: 对于 H610C 和 H615C ，术语 " 机箱 " 和 " 节点 " 可以互换使用，因为节点和机箱并非独立的组件。
+
+
+
+以下是更换计算节点中的 DIMM 所涉及的步骤：
+
+* <<Prepare to replace the DIMM>>
+* <<Replace the DIMM from the chassis>>
+
+
+
+
+== 准备更换 DIMM
+
+当 DIMM 出现问题时， VMware ESXi 会显示警报，例如 `Memory Configuration Error` ， `Memory Uncorrectable ECC` ， `Memory transition to critical` 和 `Memory Critical Overtemperature` 。即使警报在一段时间后消失，硬件问题也可能持续存在。您应诊断并解决故障 DIMM 。您可以从 vCenter Server 获取有关故障 DIMM 的信息。如果您需要的信息多于 vCenter Server 提供的信息，则必须在 TUI 中运行硬件检查。
+
+.步骤
+. 确定记录错误的插槽，如下所示：
++
+.. 对于 H615C ，请执行以下操作：
++
+... 登录到 BMC UI 。
+... 选择 * 日志和报告 * > * IPMI 事件日志 * 。
+... 在事件日志中，找到内存错误并确定记录此错误的插槽。
++
+image::h615c_bmc_memoryerror.png[显示了 H615C 节点的 BMC UI 中不可更正的内存错误]
+
+
+
+.. 对于 H410C ，请执行以下操作：
++
+... 登录到 BMC UI 。
+... 选择 * 服务器运行状况 * > * 运行状况事件日志 * 。
+... 在事件日志中，找到内存错误并确定记录此错误的插槽。
++
+image::dimm_h410c_bmc.png[显示了 H410C 节点的 BMC UI 中的内存错误。]
+
+
+
+
+
+. 执行以下步骤以确定 DIMM 制造商部件号。
++
+
+IMPORTANT: H410C 和 H615C 节点包含来自不同制造商的 DIMM 。不应在同一机箱中混用不同类型的 DIMM 。您应确定出现故障的 DIMM 的制造商，并订购相同类型的更换件。
+
++
+.. 登录到 BMC 以启动节点上的控制台。
+.. 按键盘上的 * F2 * 进入 * 自定义系统 / 查看日志 * 菜单。
+.. 根据提示输入密码。
++
+
+NOTE: 此密码应与您在设置 NetApp HCI 时在 NetApp 部署引擎中配置的密码匹配。
+
++
+image::node_console_step1.png[显示了用于输入密码以登录到节点上的控制台的窗口。]
+
+.. 在 System Customization 菜单中，按向下箭头导航到 Troubleshooting Options ，然后按 * Enter * 。
++
+image::node_console_step2.png[显示了系统自定义菜单。]
+
+.. 在 Troubleshooting Mode Options 菜单中，使用向上或向下箭头启用 ESXi Shell 和 SSH ，默认情况下这些功能处于禁用状态。
+.. 按两次 <Esc> 键退出 "Troubleshooting Options" 。
+.. 使用以下选项之一运行 `smbiosDump` 命令：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 选项 A  a| 
+... 使用主机的 IP 地址和您定义的根凭据连接到 ESXi 主机（计算节点）。
+... 运行 `smbiosDump` 命令。请参见以下示例输出：
+
+
+[listing]
+----
+`Memory Device:#30
+Location: "P1-DIMMA1"
+Bank: "P0_Node0_Channel0_Dimm0"
+Manufacturer:"Samsung"
+Serial: "38EB8380"
+Asset Tag: "P1-DIMMA1_AssetTag (date:18/15)"
+Part Number: "M393A4K40CB2-CTD"
+Memory Array: #29
+Form Factor: 0x09(DIMM)
+Type: 0x1a (DDR4)
+Type Detail: 0x0080 (Synchronous)
+Data Width: 64 bits (+8 ECC bits)
+Size: 32 GB`
+----
+
+
+| 选项 B  a| 
+... 按 * Alt + F1* 进入 shell ，然后登录到节点以运行命令。
+
+
+|===
+
+
+. 请联系 NetApp 支持部门，以帮助您完成后续步骤。NetApp 支持部门需要提供以下信息才能处理部件更换：
++
+** 节点序列号
+** Cluster name
+** BMC UI 中的系统事件日志详细信息
+** `smbiosDump` 命令的输出
+
+
+
+
+
+
+== 更换机箱中的 DIMM
+
+在物理卸下并更换机箱中的故障 DIMM 之前，请确保已执行所有 link:task_hci_dimmcomputerepl.html#prepare-to-replace-the-dimm["准备步骤"]。
+
+
+IMPORTANT: DIMM 应与从其卸下的插槽相同。
+
+.步骤
+. 登录到 vCenter Server 以访问节点。
+. 右键单击报告错误的节点，然后选择将节点置于维护模式的选项。
+. 将虚拟机（ VM ）迁移到另一个可用主机。
++
+
+NOTE: 有关迁移步骤，请参见 VMware 文档。
+
+. 关闭机箱或节点的电源。
++
+
+NOTE: 对于 H610C 或 H615C 机箱，关闭机箱电源。对于 2U 四节点机箱中的 H410C 节点，请仅关闭具有故障 DIMM 的节点。
+
+. 拔下电源线和网络缆线，小心地将节点或机箱滑出机架，然后将其放在防静电的平面上。
++
+
+TIP: 考虑对缆线使用绞线。
+
+. 打开机箱盖以更换 DIMM 之前，请启用防静电保护。
+. 执行与您的节点型号相关的步骤：
++
+[cols="2*"]
+|===
+| 节点型号 | 步骤 
+
+
+| H410C  a| 
+.. 通过将前面记下的插槽编号 /ID 与主板上的编号进行匹配来查找故障 DIMM 。以下是显示主板上 DIMM 插槽编号的示例图：
++
+image::h410c_dimmslot.png[显示了 H410C 节点主板上的 DIMM 插槽编号。]
+
++
+image::h410c_dimmslot_2.png[显示了 H410C 节点主板上 DIMM 插槽编号的特写视图。]
+
+.. 将两个固定夹向外按，然后小心地将 DIMM 向上拉。下面是一个显示固定夹的示例图：
++
+image::h410c_dimm_clips.png[显示了 H410C 节点中 DIMM 的固定夹。]
+
+.. 正确安装更换用的 DIMM 。将 DIMM 正确插入插槽后，两个卡夹将锁定到位。
++
+
+IMPORTANT: 确保您仅接触 DIMM 的后端。如果按压 DIMM 的其他部分，可能会导致硬件损坏。
+
+.. 将节点安装在 NetApp HCI 机箱中，确保将其滑入到位时节点发出卡嗒声。
+
+
+
+
+| H610C  a| 
+.. 如下图所示提起盖板：
++
+image::h610c_airflowcover.png[显示了 H610C 节点上抬起的盖板。]
+
+.. 松开节点背面的四个蓝色锁定螺钉。以下是一个示例图，显示了两个锁定螺钉的位置；另外两个位于节点的另一侧：
++
+image::h610c_lockscrews.png[显示了 H610C 节点背面的锁定螺钉。]
+
+.. 卸下两个 PCI 卡挡片。
+.. 卸下 GPU 和通风盖。
+.. 通过将前面记下的插槽编号 /ID 与主板上的编号进行匹配来查找故障 DIMM 。以下是显示主板上 DIMM 插槽编号位置的示例图：
++
+image::h610c_dimmslot.png[显示了 H610C 主板上的 DIMM 插槽编号。]
+
+.. 将两个固定夹向外按，然后小心地将 DIMM 向上拉。
+.. 正确安装更换用的 DIMM 。将 DIMM 正确插入插槽后，两个卡夹将锁定到位。
++
+
+IMPORTANT: 确保您仅接触 DIMM 的后端。如果按压 DIMM 的其他部分，可能会导致硬件损坏。
+
+.. 更换已卸下的所有组件： GPU ，气流盖板和 PCI 挡片。
+.. 拧紧锁定螺钉。
+.. 将外盖放回到节点上。
+.. 将 H610C 机箱安装到机架中，确保将其滑入到位时机箱发出卡嗒声。
+
+
+
+
+| H615C  a| 
+.. 如下图所示提起盖板：
++
+image::h615c_airflowcover.png[显示了 H615C 节点上抬起的盖板。]
+
+.. 卸下 GPU （如果您的 H615C 节点安装了 GPU ）和通风盖。
++
+image::h615c_gpu.png[显示了 H615C 节点上卸下的气流盖板。]
+
+.. 通过将前面记下的插槽编号 /ID 与主板上的编号进行匹配来查找故障 DIMM 。以下是显示主板上 DIMM 插槽编号位置的示例图：
++
+image::h615c_dimmslot.png[显示了 H615C 主板上的 DIMM 插槽编号。]
+
+.. 将两个固定夹向外按，然后小心地将 DIMM 向上拉。
+.. 正确安装更换用的 DIMM 。将 DIMM 正确插入插槽后，两个卡夹将锁定到位。
++
+
+IMPORTANT: 确保您仅接触 DIMM 的后端。如果按压 DIMM 的其他部分，可能会导致硬件损坏。
+
+.. 更换通风盖。
+.. 将外盖放回到节点上。
+.. 将 H610C 机箱安装到机架中，确保将其滑入到位时机箱发出卡嗒声。
+
+
+|===
+. 插入电源线和网络缆线。确保所有端口指示灯均已打开。
+. 如果在安装节点时节点未自动启动，请按节点正面的电源按钮。
+. 在 vSphere 中显示节点后，右键单击此名称并使此节点退出维护模式。
+. 按如下所示验证硬件信息：
++
+.. 登录到基板管理控制器（ Baseboard Management Controller ， BMC ） UI 。
+.. 选择 * 系统 > 硬件信息 * ，然后检查列出的 DIMM 。
+
+
+
+
+节点恢复正常运行后，在 vCenter 中，检查摘要选项卡以确保内存容量符合预期。
+
+
+NOTE: 如果 DIMM 安装不正确，则节点将正常运行，但内存容量低于预期。
+
+
+TIP: 更换 DIMM 操作步骤后，您可以清除 vCenter 中硬件状态选项卡上的警告和错误。如果要擦除与所更换硬件相关的错误历史记录，可以执行此操作。 https://kb.vmware.com/s/article/2011531["了解更多信息。"^]。
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

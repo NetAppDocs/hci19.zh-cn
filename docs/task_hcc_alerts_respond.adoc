@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: docs/hcc_dashboard.html 
+summary: 您可以对混合云控制信息板上的警报做出响应。 
+keywords: netapp, hci, hcc, on premise, alerts, warnings 
+---
+= 响应混合云控制信息板上的警报
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在混合云控制信息板上快速查看和响应警报。
+
+
+
+== 步骤
+
+. 转至 https://fabric.netapp.io["NetApp Fabric Orchestrator"^] 登录页面。
+. 输入 Cloud Central 登录凭据，然后单击 * 登录 * 。
++
+
+TIP: 如果您未看到列出任何系统，请确保已将 NetApp HCI 管理员添加到您的 NetApp Cloud Central 帐户中。
+
+. 如果您没有 Cloud Central 帐户，请在 Cloud Central 登录页面上单击 * 注册 * 。
++
+使用 Cloud Central ，您可以将帐户设置为单个帐户或联合帐户：
+
++
+.. 您可以使用名称，电子邮件和密码创建一个新帐户，然后您将登录。这是最简单的帐户类型。
+.. 如果您是 Cloud Central 联合组织的成员，请输入您的电子邮件，然后将其路由到该组织的登录名。
+
+
+. 从其他 Cloud Central 产品中，选择 * 产品 * > * NetApp Fabric Orchestrator * 。
+
+
+[discrete]
+== 了解更多信息
+
+* https://cloud.netapp.com/home["NetApp Cloud Central"^]
+* https://docs.netapp.com/us-en/cloud/["NetApp Cloud 文档"^]
+

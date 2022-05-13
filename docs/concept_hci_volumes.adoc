@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_volumes.html 
+summary: 卷 
+keywords: netapp, hci, storage volume, solidfire volume, element volume, persistent volume 
+---
+= Volumes
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+存储在 NetApp Element 系统中配置为卷。卷是指使用 iSCSI 或光纤通道客户端通过网络访问的块设备。
+
+通过适用于 vCenter Server 的 NetApp Element 插件，您可以创建，查看，编辑，删除，克隆， 为用户帐户备份或还原卷。您还可以管理集群上的每个卷，以及在卷访问组中添加或删除卷。
+
+
+
+== 永久性卷
+
+通过永久性卷，可以将管理节点配置数据存储在指定的存储集群上，而不是本地 VM 上，以便在管理节点丢失或删除时可以保留这些数据。永久性卷是一种可选的管理节点配置，但建议使用此配置。
+
+如果使用 NetApp 部署引擎为 NetApp HCI 部署管理节点，则会自动启用并配置永久性卷。
+
+部署新管理节点时，安装和升级脚本中包含一个启用永久性卷的选项。永久性卷是指基于 Element 软件的存储集群上的卷，其中包含主机管理节点虚拟机的管理节点配置信息，这些信息会在虚拟机生命周期结束后持续存在。如果管理节点丢失，替代管理节点 VM 可以重新连接到丢失的 VM 并恢复其配置数据。
+
+如果在安装或升级期间启用了永久性卷功能，则会自动创建多个卷，并在分配的集群上预先指定 NetApp-HCI-名称 。与任何基于 Element 软件的卷一样，这些卷可以使用 Element 软件 Web UI ，适用于 vCenter Server 的 NetApp Element 插件或 API 进行查看，具体取决于您的首选项和安装。永久性卷必须已启动且正在运行，并与管理节点建立 iSCSI 连接，以维护可用于恢复的当前配置数据。
+
+
+NOTE: 与管理服务关联的永久性卷会在安装或升级期间创建并分配给新帐户。如果您使用的是永久性卷，请勿修改或删除这些卷或其关联帐户。
+
+
+
+== 了解更多信息
+
+* link:hci_task_manage_vol_management.html["管理卷"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

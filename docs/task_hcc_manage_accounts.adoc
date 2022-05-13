@@ -1,0 +1,198 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_manage_accounts.html 
+summary: 了解如何创建用户帐户并将其与卷关联。 
+keywords: netapp, hci, on premise, cluster, element, account, user, volume, hybrid cloud control, hcc 
+---
+= 使用 NetApp Hybrid Cloud Control 创建和管理用户帐户
+:allow-uri-read: 
+
+
+[role="lead"]
+在基于 Element 的存储系统中，可以创建权威集群用户，以便根据您要授予 " 管理员 " 或 " 只读 " 用户的权限，启用对 NetApp Hybrid Cloud Control 的登录访问。除了集群用户之外，还提供了卷帐户，客户端可以通过这些帐户连接到存储节点上的卷。 
+
+管理以下类型的帐户：
+
+* <<Manage authoritative cluster accounts>>
+* <<Manage volume accounts>>
+
+
+
+
+== 启用 LDAP ：
+
+要对任何用户帐户使用 LDAP ，必须先启用 LDAP 。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的选项图标并选择 * 用户管理 * 。
+. 在用户页面中，单击 * 配置 LDAP* 。
+. 定义 LDAP 配置。
+. 选择 " 搜索和绑定 " 或 " 直接绑定 " 身份验证类型。
+. 保存更改之前，请单击页面顶部的 * 测试 LDAP 登录 * ，输入已知存在的用户的用户名和密码，然后单击 * 测试 * 。
+. 单击 * 保存 * 。
+
+
+
+
+== 管理权威集群帐户
+
+link:concept_cg_hci_accounts.html#authoritative-user-accounts["权威用户帐户"] 可从 NetApp Hybrid Cloud Control 中右上角的 User Management 选项菜单进行管理。通过这些类型的帐户，您可以针对与节点和集群的 NetApp Hybrid Cloud Control 实例关联的任何存储资产进行身份验证。使用此帐户，您可以管理所有集群中的卷，帐户，访问组等。
+
+
+
+=== 创建权威集群帐户
+
+您可以使用 NetApp Hybrid Cloud Control 创建帐户。
+
+此帐户可用于登录到混合云控制，集群的每节点 UI 以及 NetApp Element 软件中的存储集群。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的选项图标并选择 * 用户管理 * 。
+. 选择 * 创建用户 * 。
+. 选择集群或 LDAP 的身份验证类型。
+. 完成以下操作之一：
++
+** 如果选择 LDAP ，请输入 DN 。
++
+
+TIP: 要使用 LDAP ，必须先启用 LDAP 或 LDAPS 。请参见 <<Enable LDAP>>。
+
+** 如果您选择集群作为身份验证类型，请输入新帐户的名称和密码。
+
+
+. 选择管理员或只读权限。
++
+
+TIP: 要从 NetApp Element 软件查看权限，请单击 * 显示原有权限 * 。如果选择这些权限的一部分，则会为帐户分配只读权限。如果选择所有旧权限，则会为帐户分配管理员权限。
+
++
+
+TIP: 要确保组的所有子级都继承权限，请在 LDAP 服务器中创建一个 DN 组织管理组。该组的所有子帐户都将继承这些权限。
+
+. 选中指示 " 我已阅读并接受 NetApp 最终用户许可协议 " 的复选框。
+. 单击 * 创建用户 * 。
+
+
+
+
+=== 编辑权威集群帐户
+
+您可以使用 NetApp Hybrid Cloud Control 更改用户帐户的权限或密码。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的图标，然后选择 * 用户管理 * 。
+. 也可以选择 * 集群 * ， * LDAP * 或 * IdP * 来筛选用户帐户列表。
++
+如果您在存储集群上为用户配置了 LDAP ，则这些帐户的用户类型将显示为 "ldap" 。 如果您在存储集群上为用户配置了 IdP ，则这些帐户的用户类型将显示为 "IdP 。 "
+
+. 在表的 * 操作 * 列中，展开帐户的菜单并选择 * 编辑 * 。
+. 根据需要进行更改。
+. 选择 * 保存 * 。
+. 注销 NetApp Hybrid Cloud Control 。
+. link:task_mnode_manage_storage_cluster_assets.html#edit-the-stored-credentials-for-a-storage-cluster-asset["更新凭据"] 用于使用 NetApp Hybrid Cloud Control API 的权威集群资产。
++
+
+NOTE: NetApp Hybrid Cloud Control UI 可能需要长达 2 分钟的时间来刷新清单。要手动刷新清单，请访问 REST API UI 清单服务 `https://<ManagementNodeIP>/inventory/1/` ，然后对集群运行 `get / installations​ ｛ id ｝` 。
+
+. 登录到 NetApp Hybrid Cloud Control 。
+
+
+
+
+=== 删除权威用户帐户
+
+您可以删除不再需要的一个或多个帐户。您可以删除 LDAP 用户帐户。
+
+您不能删除权威集群的主管理员用户帐户。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，单击右上角的图标，然后选择 * 用户管理 * 。
+. 在用户表的 * 操作 * 列中，展开帐户的菜单并选择 * 删除 * 。
+. 选择 * 是 * 确认删除。
+
+
+
+
+== 管理卷帐户
+
+link:concept_cg_hci_accounts.html#volume-accounts["卷帐户"] 在 NetApp Hybrid Cloud Control Volumes 表中进行管理。这些帐户仅特定于创建它们的存储集群。通过这些类型的帐户，您可以在网络中为卷设置权限，但在这些卷之外不起作用。
+
+卷帐户包含访问分配给它的卷所需的 CHAP 身份验证。
+
+
+
+=== 创建卷帐户
+
+创建特定于此卷的帐户。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，选择 * 存储 * > * 卷 * 。
+. 选择 * 帐户 * 选项卡。
+. 选择 * 创建帐户 * 按钮。
+. 输入新帐户的名称。
+. 在 CHAP Settings 部分中，输入以下信息：
++
+** 用于 CHAP 节点会话身份验证的启动程序密钥
+** 用于 CHAP 节点会话身份验证的目标密钥
++
+
+NOTE: 要自动生成任一密码，请将凭据字段留空。
+
+
+
+. 选择 * 创建帐户 * 。
+
+
+
+
+=== 编辑卷帐户
+
+您可以更改 CHAP 信息并更改帐户是处于活动状态还是已锁定。
+
+
+IMPORTANT: 删除或锁定与管理节点关联的帐户会导致管理节点无法访问。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，选择 * 存储 * > * 卷 * 。
+. 选择 * 帐户 * 选项卡。
+. 在表的 * 操作 * 列中，展开帐户的菜单并选择 * 编辑 * 。
+. 根据需要进行更改。
+. 选择 * 是 * 确认更改。
+
+
+
+
+=== 删除卷帐户
+
+删除不再需要的帐户。
+
+在删除卷帐户之前，请先删除并清除与该帐户关联的所有卷。
+
+
+IMPORTANT: 删除或锁定与管理节点关联的帐户会导致管理节点无法访问。
+
+
+NOTE: 与管理服务关联的永久性卷会在安装或升级期间分配给新帐户。如果您使用的是永久性卷，请勿修改或删除这些卷或其关联帐户。如果删除这些帐户，则可能会使管理节点不可用。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，选择 * 存储 * > * 卷 * 。
+. 选择 * 帐户 * 选项卡。
+. 在表的 * 操作 * 列中，展开帐户的菜单并选择 * 删除 * 。
+. 选择 * 是 * 确认删除。
+
+
+[discrete]
+== 了解更多信息
+
+* link:concept_hci_accounts.html["了解客户信息"]
+* http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-E93D3BAF-5A60-414D-86AF-0C1F86D43F26.html["使用用户帐户"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

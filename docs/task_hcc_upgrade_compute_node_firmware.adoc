@@ -1,0 +1,627 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_upgrade_compute_node_firmware.html 
+summary: 在 NetApp HCI 系统升级过程中，您可以升级计算节点固件。 
+keywords: netapp, hci, on premise, cluster, element, compute node, vmware, upgrade firmware 
+---
+= 升级计算节点固件
+:allow-uri-read: 
+
+
+[role="lead"]
+对于 H 系列计算节点，您可以升级 BMC ， BIOS 和 NIC 等硬件组件的固件。要升级计算节点固件，您可以使用 NetApp Hybrid Cloud Control UI ， REST API ，具有最新固件映像的 USB 驱动器或 BMC UI 。
+
+升级后，计算节点将启动到 ESXi 并像以前一样工作，从而保留配置。
+
+.您需要什么？ #8217 ；将需要什么
+* * 计算驱动程序 * ：您已升级计算节点驱动程序。如果计算节点驱动程序与新固件不兼容，则升级将无法启动。请参见 https://mysupport.netapp.com/matrix["互操作性表工具（ IMT ）"^] 有关驱动程序和固件兼容性的信息，请查看最新信息 link:rn_relatedrn.html["计算节点固件发行说明"] 了解重要的最新固件和驱动程序详细信息。
+* * 管理员权限 * ：您具有集群管理员和 BMC 管理员权限来执行升级。
+* * 系统端口 * ：如果您使用 NetApp Hybrid Cloud Control 进行升级，则已确保必要的端口处于打开状态。请参见 link:hci_prereqs_required_network_ports.html["网络端口"] 有关详细信息 ...
+* * 最低 BMC 和 BIOS 版本 * ：要使用 NetApp Hybrid Cloud Control 升级的节点满足以下最低要求：
++
+[cols="3*"]
+|===
+| 型号 | 最低 BMC 版本 | 最低 BIOS 版本 
+
+
+| H410C​ | 支持的所有版本（无需升级）​ | 支持的所有版本（无需升级）​ 
+
+
+| H610C​ | 3.96.07​ | 3B01 
+
+
+| H615C​ | 4.68.07 | 3B08.CO ​​ 
+|===
++
+
+NOTE: H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 link:rn_compute_firmware_2.27.html["计算固件包 2.27"] 使 NetApp Hybrid Cloud Control 能够执行未来的固件升级。
+
++
+
+NOTE: 有关适用于您的硬件的完整固件和驱动程序固件列表，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["此知识库文章"^] （需要登录）。
+
+* * BIOS 启动顺序 * ：在 BIOS 设置中手动更改每个节点的启动顺序，以确保启动列表中显示 `USB CD/DVD` 。请参见此内容 link:https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Known_issues_and_workarounds_for_Compute_Node_upgrades#BootOrder["文章"^] 有关详细信息 ...
+* * BMC 凭据 * ：更新 NetApp Hybrid Cloud Control 用于连接到计算节点 BMC 的凭据。您可以使用 NetApp Hybrid Cloud Control 之一执行此操作 link:task_hcc_edit_bmc_info.html#use-netapp-hybrid-cloud-control-to-edit-bmc-information["用户界面"] 或 link:task_hcc_edit_bmc_info.html#use-the-rest-api-to-edit-bmc-information["API"]。在升级之前更新 BMC 信息可刷新清单，并确保管理节点服务能够识别完成升级所需的所有硬件参数。
+* * 已连接介质 * ：在开始升级计算节点之前，请断开任何物理 USB 或 ISO 的连接。
+* * KVM ESXi 控制台 * ：在开始升级计算节点之前，请关闭 BMC UI 中所有打开的 LAN 上串行（ Serial Over LAN ， SOL ）会话和活动的 KVM 会话。
+* * 见证节点要求 * ：在双节点和三节点存储集群中，一个 link:concept_hci_nodes.html["见证节点"] 必须始终在 NetApp HCI 安装中运行。
+* * 计算节点运行状况检查 * ：您已验证此节点是否已做好升级准备。请参见 link:task_upgrade_compute_prechecks.html["在升级计算固件之前运行计算节点运行状况检查"]。
+* *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级计算节点固件：
++
+.. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+.. 选择靠近接口右上角的 * 升级 * 。
+.. 此时将弹出EULA。向下滚动、选择*我接受当前更新和所有未来更新*、然后选择*保存*。
++
+
+NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启用自动下载功能。您将收到有关NetApp软件更新和升级的更新、您可以在方便时自行决定安装这些更新。您可以通过禁用与NetApp联机软件存储库的网络连接来禁用自动下载功能。
+
+
+
+
+
+在生产环境中，一次升级一个计算节点上的固件。
+
+
+NOTE: 在运行运行运行状况检查并继续固件升级之前，必须使 ESXi 主机退出锁定模式。请参见 link:https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_disable_lockdown_mode_on_ESXi_host["如何在 ESXi 主机上禁用锁定模式"^] 和 link:https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-F8F105F7-CF93-46DF-9319-F8991839D265.html["VMware 锁定模式行为"^] 有关详细信息 ...
+
+对于 NetApp Hybrid Cloud Control UI 或 API 升级，如果您具有 DRS 功能并需要许可，则 ESXi 主机将在升级过程中自动置于维护模式。节点将重新启动，升级过程完成后， ESXi 主机将退出维护模式。对于 USB 和 BMC UI 选项，您需要手动将 ESXi 主机置于维护模式，如每个操作步骤中所述。
+
+
+NOTE: 在升级之前，请确保检查当前的 ESXi 驱动程序版本。如果此驱动程序已过期，请先升级此驱动程序。然后升级计算节点的计算固件。
+
+选择与您的升级情形相关的选项：
+
+* <<Use NetApp Hybrid Cloud Control UI to upgrade a compute node>> （建议）
+* <<Use NetApp Hybrid Cloud Control API to upgrade a compute node>>
+* <<Use a USB drive imaged with the latest compute node firmware bundle ISO>>
+* <<Use the Baseboard Management Controller (BMC) user interface (UI)>>
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control UI 升级计算节点
+
+从管理服务 2.14 开始，您可以使用 NetApp Hybrid Cloud Control UI 升级计算节点。从节点列表中，您必须选择要升级的节点。当前版本 * 选项卡显示当前固件版本， * 建议版本 * 选项卡显示可用的升级版本（如果有）。
+
+
+TIP: 要成功升级，请确保已成功对 vSphere 集群执行运行状况检查。
+
+
+TIP: 对于非公开站点升级，如果升级软件包和管理节点都位于本地，则可以缩短上传时间。
+
+
+NOTE: 根据管理节点与 BMC 主机之间的网络连接速度，每个节点升级 NIC ， BIOS 和 BMC 可能需要大约 60 分钟的时间。
+
+
+NOTE: 不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <<manual_method_USB,USB 驱动器>> 或 <<manual_method_BMC,BMC 用户界面>> 挂载计算固件 ISO 。
+
+.您需要什么？ #8217 ；将需要什么
+* 如果您的管理节点未连接到 Internet ，则表示您已从下载计算节点固件包 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle["NetApp 支持站点"^]。
++
+
+NOTE: 您应将 `TAR.GZ` 文件提取到 `TAR` 文件中，然后将 `TAR` 文件提取到 ISO 中。
+
+
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 选择靠近接口右上角的 * 升级 * 。
+. 在 * 升级 * 页面上，选择 * 计算固件 * 。
+. 从以下选项中进行选择，并执行一组适用于您的集群的步骤：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您的管理节点具有外部连接。  a| 
+.. 选择要升级的集群。
++
+如果可以升级，您将看到集群中的节点以及当前固件版本和更高版本。
+
+.. 选择升级软件包。
+.. 选择 * 开始升级 * 。
++
+选择 * 开始升级 * 后，此窗口将显示失败的运行状况检查（如果有）。
+
++
+
+CAUTION: 开始升级后，升级无法暂停。固件将按以下顺序更新： NIC ， BIOS 和 BMC 。升级期间请勿登录到 BMC UI 。登录到 BMC 将终止用于监控升级过程的混合云控制 LAN 上串行（ Serial Over LAN ， SOL ）会话。
+
+.. 如果在集群或节点级别通过运行状况检查并显示警告，但未发生严重故障，则您将看到 * 已做好升级准备 * 。选择 * 升级节点 * 。
+
+
+
+NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。在升级期间， UI 会显示有关升级状态的各种消息。
+
+
+CAUTION: 升级 H610C 和 H615S 计算节点上的固件时，请勿通过 BMC Web UI 打开 LAN 上串行（ Serial Over LAN ， SOL ）控制台。这可能发生原因会导致升级失败。
+
+升级完成后， UI 将显示一条消息。升级完成后，您可以下载日志。
+
+
+
+| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
+.. 选择要升级的集群。
+.. 选择 * 浏览 * 可上传从下载的升级软件包https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp 支持站点"^]。
+.. 等待上传完成。进度条会显示上传状态。
+
+
+
+TIP: 如果您离开浏览器窗口，则文件上传将在后台进行。
+
+成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。升级完成后，您可以下载日志。有关各种升级状态更改的信息，请参见 <<Upgrade status changes>>。
+
+|===
+
+
+
+TIP: 如果升级期间发生故障， NetApp Hybrid Cloud Control 将重新启动节点，使其退出维护模式，并显示故障状态，并提供指向错误日志的链接。您可以下载错误日志，其中包含特定说明或 KB 文章链接，以诊断和更正任何问题描述。有关使用 NetApp Hybrid Cloud Control 的计算节点固件升级问题的更多见解，请参见此文档 link:https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Known_issues_and_workarounds_for_Compute_Node_upgrades["知识库"^] 文章。
+
+
+
+=== 升级状态更改
+
+以下是用户界面在升级过程之前，期间和之后显示的不同状态：
+
+[cols="2*"]
+|===
+| 升级状态 | Description 
+
+
+| 节点未通过一个或多个运行状况检查。展开以查看详细信息。 | 一个或多个运行状况检查失败。 
+
+
+| error | 升级期间发生错误。您可以下载错误日志并将其发送给 NetApp 支持部门。 
+
+
+| 无法检测 | NetApp Hybrid Cloud Control 无法通过外部连接访问联机软件存储库。如果在计算节点资产没有硬件标记时， NetApp Hybrid Cloud Control 无法查询计算节点，则也会显示此状态。 
+
+
+| 已做好升级准备。 | 所有运行状况检查均已成功通过，并且节点已做好升级准备。 
+
+
+| 升级期间发生错误。 | 发生严重错误时，升级将失败并显示此通知。选择 * 下载日志 * 链接以下载日志以帮助解决此错误。解决此错误后，您可以尝试重新升级。 
+
+
+| 正在升级节点。 | 正在升级。进度条会显示升级状态。 
+|===
+
+
+== 使用 NetApp Hybrid Cloud Control API 升级计算节点
+
+您可以使用 API 将集群中的每个计算节点升级到最新固件版本。您可以使用自己选择的自动化工具来运行 API 。此处介绍的 API 工作流使用管理节点上提供的 REST API UI 作为示例。
+
+
+NOTE: 不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <<manual_method_USB,USB 驱动器>> 或 <<manual_method_BMC,BMC 用户界面>> 挂载计算固件 ISO 。
+
+计算节点资产（包括 vCenter 和硬件资产）必须为管理节点资产所知。您可以使用清单服务 API 来验证资产（`https://<ManagementNodeIP>/inventory/1/` ）。
+
+.步骤
+. 根据您的连接执行以下操作之一：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您的管理节点具有外部连接。  a| 
+.. 验证存储库连接：
++
+... 在管理节点上打开软件包服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭授权窗口。
+
+
+... 从 REST API UI 中，选择 * 获取​ / packages​ / 远程 - repository​ / 连接 * 。
+... 选择 * 试用 * 。
+... 选择 * 执行 * 。
+... 如果返回代码 200 ，请转至下一步。如果未连接到远程存储库，请建立连接或使用非公开站点选项。
+
+
+.. 查找升级软件包 ID ：
++
+... 从 REST API UI 中，选择 * 获取 /packages* 。
+... 选择 * 试用 * 。
+... 选择 * 执行 * 。
+... 在响应中，复制并保存升级软件包名称（` packageName` ）和软件包版本（` packageVersion` ），以供后续步骤使用。
+
+
+
+
+
+
+| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
+.. 转到 NetApp HCI 软件 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle["下载页面"^] 并将最新的计算节点固件映像下载到可供管理节点访问的设备。
++
+
+TIP: 对于非公开站点升级，如果升级软件包和管理节点都位于本地，则可以缩短上传时间。
+
+.. 将计算固件升级软件包上传到管理节点：
++
+... 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭授权窗口。
+
+
+... 从 REST API UI 中，选择 * POST /packages* 。
+... 选择 * 试用 * 。
+... 选择 * 浏览 * 并选择升级软件包。
+... 选择 * 执行 * 以启动上传。
+... 在响应中，复制并保存软件包 ID （` "id"` ）以供后续步骤使用。
+
+
+.. 验证上传状态。
++
+... 从 REST API UI 中，选择 * GET​ /v í packages​ / ｛ id ｝​ /status* 。
+... 选择 * 试用 * 。
+... 在 * id * 中输入上一步复制的软件包 ID 。
+... 选择 * 执行 * 以启动状态请求。
++
+完成后，此响应会将 `state` 指示为 `Success` 。
+
+... 在响应中，复制并保存升级软件包名称（` "name"` ）和软件包版本（` "version"` ），以供后续步骤使用。
+
+
+
+
+|===
+. 找到要升级的节点的计算控制器 ID 和节点硬件 ID ：
++
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 从 REST API UI 中，选择 * 获取 /installations * 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从响应中复制安装资产 ID （` "id"` ）。
+.. 从 REST API UI 中，选择 * 获取 /installations/ ｛ id ｝ * 。
+.. 选择 * 试用 * 。
+.. 将安装资产 ID 粘贴到 * id * 字段中。
+.. 选择 * 执行 * 。
+.. 在响应中，复制并保存集群控制器 ID （` "controllerId"` ）和节点硬件 ID （` "hardwareId"` ），以供后续步骤使用：
++
+[listing, subs="+quotes"]
+----
+"compute": {
+  "errors": [],
+  "inventory": {
+    "clusters": [
+      {
+        "clusterId": "Test-1B",
+        *"controllerId": "a1b23456-c1d2-11e1-1234-a12bcdef123a",*
+----
++
+[listing, subs="+quotes"]
+----
+"nodes": [
+  {
+    "bmcDetails": {
+      "bmcAddress": "10.111.0.111",
+      "credentialsAvailable": true,
+      "credentialsValidated": true
+    },
+    "chassisSerialNumber": "111930011231",
+    "chassisSlot": "D",
+    *"hardwareId": "123a4567-01b1-1243-a12b-11ab11ab0a15",*
+    "hardwareTag": "00000000-0000-0000-0000-ab1c2de34f5g",
+    "id": "e1111d10-1a1a-12d7-1a23-ab1cde23456f",
+    "model": "H410C",
+----
+
+
+. 运行计算节点固件升级：
++
+.. 在管理节点上打开硬件服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/hardware/2/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 选择 * POST /nodes/｛ hardware_id ｝ /upgrades* 。
+.. 选择 * 试用 * 。
+.. 在参数字段中输入硬件主机资产 ID （` "hardwareId"` Saved from a previous step ）。
+.. 对有效负载值执行以下操作：
++
+... 保留值 ` force" ： false` 和 ` "maintenanceMode" ： true"` ，以便在节点上执行运行状况检查，并将 ESXi 主机设置为维护模式。
+... 输入集群控制器 ID （` "controllerId"` 已从上一步保存）。
+... 输入您在上一步中保存的软件包名称和软件包版本。
++
+[listing]
+----
+{
+  "config": {
+    "force": false,
+    "maintenanceMode": true
+  },
+  "controllerId": "a1b23456-c1d2-11e1-1234-a12bcdef123a",
+  "packageName": "compute-firmware-12.2.109",
+  "packageVersion": "12.2.109"
+}
+----
+
+
+.. 选择 * 执行 * 以启动升级。
++
+
+CAUTION: 开始升级后，升级无法暂停。固件将按以下顺序更新： NIC ， BIOS 和 BMC 。升级期间请勿登录到 BMC UI 。登录到 BMC 将终止用于监控升级过程的混合云控制 LAN 上串行（ Serial Over LAN ， SOL ）会话。
+
+.. 复制响应中资源链接（` resourcesLink` ） URL 中的升级任务 ID 。
+
+
+. 验证升级进度和结果：
++
+.. 选择 * 获取 /task/ ｛ task_id ｝ /logs* 。
+.. 选择 * 试用 * 。
+.. 在 * 任务 ID * 中输入上一步中的任务 ID 。
+.. 选择 * 执行 * 。
+.. 如果在升级期间出现问题或存在特殊要求，请执行以下操作之一：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您需要更正响应正文中出现的 `failedHealthChecks` 消息导致的集群运行状况问题。  a| 
+... 转至为每个问题描述列出的特定知识库文章，或者执行指定的补救措施。
+... 如果指定了 KB ，请完成相关知识库文章中所述的过程。
+... 解决集群问题后，如果需要，请重新进行身份验证，然后选择 * 发布 /nodes/｛ hardware_id ｝ /upgrades* 。
+... 重复上述升级步骤中的步骤。
+
+
+
+
+| 升级失败，并且升级日志中未列出缓解步骤。  a| 
+... 请参见此内容 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Known_issues_and_workarounds_for_Compute_Node_upgrades["知识库文章"^] （需要登录）。
+
+
+|===
+.. 根据需要多次运行 * 获取​ /task/ ｛ task_id ｝ /logs* API ，直到此过程完成。
++
+在升级期间，如果未遇到任何错误，则 `stStatus` 会指示 `Running` 。每个步骤完成后， `stStatus` 值将更改为 `completed` 。
+
++
+当每个步骤的状态为 `completed` 且 `percentageCompleted"` 值为 `100` 时，升级已成功完成。
+
+
+
+. （可选）确认每个组件的升级固件版本：
++
+.. 在管理节点上打开硬件服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/hardware/2/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 从 REST API UI 中，选择 * 获取​ / nodes​ / ｛ hardware_id ｝​ / 升级 * 。
+.. （可选）输入日期和状态参数以筛选结果。
+.. 在参数字段中输入硬件主机资产 ID （` "hardwareId"` Saved from a previous step ）。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 在响应中验证所有组件的固件是否已成功从先前版本升级到最新固件。
+
+
+
+
+
+
+== 使用已使用最新计算节点固件包 ISO 映像的 USB 驱动器
+
+您可以将下载了最新计算节点固件 ISO 的 USB 驱动器插入计算节点上的 USB 端口。除了使用此操作步骤中所述的 U 盘方法之外，您还可以使用基板管理控制器（ BMC ）界面中虚拟控制台中的 * 虚拟 CD/DVD * 选项在计算节点上挂载 ISO 。BMC 方法所需时间比 U 盘方法要长得多。确保您的工作站或服务器具有所需的网络带宽，并且您与 BMC 的浏览器会话不会超时。
+
+.步骤
+. 浏览到 https://mysupport.netapp.com/site/downloads["NetApp 软件下载"^] 页面上，选择 * NetApp HCI * ，然后选择正确版本的 NetApp HCI 的下载链接。
+. 接受最终用户许可协议。
+. 在 * 计算和存储节点 * 部分下，下载计算节点映像。
+. 使用 Etcher 实用程序将计算节点固件 ISO 闪存到 USB 驱动器。
+. 使用 VMware vCenter 将计算节点置于维护模式，并从主机中清空所有虚拟机。
++
+
+NOTE: 如果在集群上启用了 VMware 分布式资源计划程序（ DRS ）（这是 NetApp HCI 安装中的默认设置），则虚拟机将自动迁移到集群中的其他节点。
+
+. 将 U 盘插入计算节点上的 USB 端口，然后使用 VMware vCenter 重新启动计算节点。
+. 在计算节点开机自检周期内，按 * F11 * 以打开启动管理器。您可能需要快速连续按多次 * 。您可以通过连接视频 / 键盘或使用 `BMC` 中的控制台来执行此操作。
+. 从显示的菜单中选择 * 一个激发 * > * USB 闪存驱动器 * 。如果此 U 盘未显示在菜单中，请验证此 USB 闪存驱动器是否属于系统 BIOS 的原有启动顺序。
+. 按 * 输入 * 从 U 盘启动系统。此时将开始固件刷新过程。
++
+固件刷新完成且节点重新启动后，可能需要几分钟时间才能启动 ESXi 。
+
+. 重新启动完成后，使用 vCenter 退出升级后的计算节点上的维护模式。
+. 从升级后的计算节点中删除 USB 闪存驱动器。
+. 对 ESXi 集群中的其他计算节点重复此任务，直到所有计算节点都升级为止。
+
+
+
+
+== 使用基板管理控制器（ Baseboard Management Controller ， BMC ）用户界面（ UI ）
+
+您必须执行顺序步骤以加载计算节点固件 ISO 并将节点重新启动到 ISO ，以确保升级成功。ISO 应位于托管 Web 浏览器的系统或虚拟机（ VM ）上。在开始此过程之前，请确保已下载 ISO 。
+
+
+TIP: 建议将系统或虚拟机与节点置于同一网络上。
+
+
+NOTE: 通过 BMC UI 进行升级大约需要 25 到 30 分钟。
+
+* <<Upgrade firmware on H410C and H300E/H500E/H700E nodes>>
+* <<Upgrade firmware on H610C/H615C nodes>>
+
+
+
+
+=== 升级 H410C 和 H300E/H500E/H700E 节点上的固件
+
+如果您的节点属于集群，则必须在升级之前将此节点置于维护模式，并在升级后使其退出维护模式。
+
+
+TIP: 忽略在此过程中看到的以下信息消息： `使用了 Untrusty 调试固件密钥， SecureFlash 当前处于调试模式`
+
+.步骤
+. 如果节点属于集群，请按如下所示将其置于维护模式。如果没有，请跳到步骤 2 。
++
+.. 登录到 VMware vCenter Web 客户端。
+.. 右键单击主机（计算节点）名称，然后选择 * 维护模式 > 进入维护模式 * 。
+.. 选择 * 确定 * 。主机上的 VM 将迁移到另一个可用主机。虚拟机迁移可能需要一些时间，具体取决于需要迁移的虚拟机数量。
++
+
+CAUTION: 请确保主机上的所有 VM 均已迁移，然后再继续操作。
+
+
+
+. 导航到 BMC UI `https://BMCIP/#login` ，其中 BMCIP 是 BMC 的 IP 地址。
+. 使用凭据登录。
+. 选择 * 远程控制 > 控制台重定向 * 。
+. 选择 * 启动控制台 * 。
++
+
+NOTE: 您可能需要安装或更新 Java 。
+
+. 打开控制台后，选择 * 虚拟介质 > 虚拟存储 * 。
+. 在 * 虚拟存储 * 屏幕上，选择 * 逻辑驱动器类型 * ，然后选择 * ISO 文件 * 。
++
+image:BIOS_H410C_iso.png["显示了用于选择 ISO 文件的导航路径。"]
+
+. 选择 * 打开映像 * 以浏览到下载 ISO 文件的文件夹，然后选择 ISO 文件。
+. 选择 * 插件 * 。
+. 当连接状态显示 `Device# ： VM Plug-in OK ！！` 时，选择 * 确定 * 。
+. 按 * F12* 并选择 * 重新启动 * 或选择 * 电源控制 > 设置电源重置 * ，以重新启动节点。
+. 重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。在显示启动菜单之前，您可能需要按几次 F11 。
++
+此时将显示以下屏幕：
+
++
+image:boot_option_iso_h410c.png["显示了虚拟 ISO 启动到的屏幕。"]
+
+. 在上述屏幕上，按 * 输入 * 。根据您的网络，按 * 输入 * 可能需要几分钟的时间才能开始升级。
++
+
+NOTE: 某些固件升级可能会对控制台进行发生原因以断开连接，并 / 或对 BMC 上的会话执行发生原因以断开连接。您可以重新登录到 BMC ，但由于固件升级，某些服务（例如控制台）可能不可用。升级完成后，节点将执行冷重新启动，这可能需要大约五分钟的时间。
+
+. 重新登录到 BMC UI 并选择 * 系统 * ，以在启动到操作系统后验证 BIOS 版本和构建时间。如果升级已正确完成，您将看到新的 BIOS 和 BMC 版本。
++
+
+NOTE: 在节点完全启动之前， BIOS 版本不会显示升级后的版本。
+
+. 如果节点属于集群，请完成以下步骤。如果此节点为独立节点，则无需执行进一步操作。
++
+.. 登录到 VMware vCenter Web 客户端。
+.. 使主机退出维护模式。这可能会显示一个已断开连接的红色标志。请等待所有状态均已清除。
+.. 打开已关闭的其余任何 VM 的电源。
+
+
+
+
+
+
+=== 升级 H610C/H615C 节点上的固件
+
+根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤可能需要大约 25 分钟，其中包括关闭节点电源，上传 ISO ，刷新设备以及在升级后重新启动节点。
+
+.步骤
+. 如果节点属于集群，请按如下所示将其置于维护模式。如果没有，请跳到步骤 2 。
++
+.. 登录到 VMware vCenter Web 客户端。
+.. 右键单击主机（计算节点）名称，然后选择 * 维护模式 > 进入维护模式 * 。
+.. 选择 * 确定 * 。主机上的 VM 将迁移到另一个可用主机。虚拟机迁移可能需要一些时间，具体取决于需要迁移的虚拟机数量。
++
+
+CAUTION: 请确保主机上的所有 VM 均已迁移，然后再继续操作。
+
+
+
+. 导航到 BMC UI `https://BMCIP/#login` ，其中 BMC IP 是 BMC 的 IP 地址。
+. 使用凭据登录。
+. 选择 * 远程控制 > 启动 KVM （ Java ） * 。
+. 在控制台窗口中，选择 * 介质 > 虚拟介质向导 * 。
++
+image::bmc_wizard.gif[从 BMC UI 启动虚拟介质向导。]
+
+. 选择 * 浏览 * 并选择计算固件 ` .iso` 文件。
+. 选择 * 连接 * 。此时将显示一个弹出窗口，指示成功，底部将显示路径和设备。您可以关闭 * 虚拟介质 * 窗口。
++
+image::virtual_med_popup.gif[显示 ISO 上传成功的弹出窗口。]
+
+. 按 * F12* 并选择 * 重新启动 * 或选择 * 电源控制 > 设置电源重置 * ，以重新启动节点。
+. 重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。
+. 从显示的列表中选择 * AMI Virtual CDRO* ，然后选择 * 输入 * 。如果列表中未显示 AMI 虚拟光盘，请转到 BIOS 并在启动列表中启用它。保存后，节点将重新启动。在重新启动期间，按 * F11 * 。
++
+image::boot_device.gif[显示了可用于选择启动设备的窗口。]
+
+. 在显示的屏幕上，选择 * 输入 * 。
++
+
+NOTE: 某些固件升级可能会对控制台进行发生原因以断开连接，并 / 或对 BMC 上的会话执行发生原因以断开连接。您可以重新登录到 BMC ，但由于固件升级，某些服务（例如控制台）可能不可用。升级完成后，节点将执行冷重新启动，这可能需要大约五分钟的时间。
+
+. 如果与控制台断开连接，请选择 * 远程控制 * 并选择 * 启动 KVM* 或 * 启动 KVM （ Java ） * 以重新连接并验证节点何时完成启动备份。您可能需要多次重新连接，以验证节点是否已成功启动。
++
+
+CAUTION: 在启动过程中，大约 5 分钟内， KVM 控制台将显示 * 无信号 * 。
+
+. 打开节点电源后，选择 * 信息板 > 设备信息 > 更多信息 * 以验证 BIOS 和 BMC 版本。此时将显示升级后的 BIOS 和 BMC 版本。只有在节点完全启动后，才会显示升级后的 BIOS 版本。
+. 如果将节点置于维护模式，则在节点启动到 ESXi 后，右键单击主机（计算节点）名称，然后选择 * 维护模式 > 退出维护模式 * ，并将 VM 迁移回主机。
+. 在 vCenter 中，选择主机名后，配置并验证 BIOS 版本。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,258 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_h610ch615crepl.html 
+summary: 您应更换机箱以修复与 CPU ，主板或未通电相关的计算节点故障。如果运行 NetApp HCI Bootstrap OS 1.6 或更高版本的 H610C 计算节点中的 DIMM 出现故障，则可以更换 DIMM ，而无需更换机箱。对于 H615C 节点，如果 DIMM 发生故障，您无需更换机箱；您只能更换发生故障的 DIMM 。 
+keywords: netapp, hci, H610C, H615C, chassis replacement, node replacement 
+---
+= 更换 H610C 和 H615C 节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您应更换机箱以修复与 CPU ，主板或未通电相关的计算节点故障。如果运行 NetApp HCI Bootstrap OS 1.6 或更高版本的 H610C 计算节点中的 DIMM 出现故障，则可以更换 DIMM ，而无需更换机箱。对于 H615C 节点，如果 DIMM 发生故障，您无需更换机箱；您只能更换发生故障的 DIMM 。
+
+
+NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件。
+
+.您需要什么？ #8217 ；将需要什么
+* 您已验证此节点是否出现故障。
+* 您有一个替代机箱。要订购更换部件，您应联系 NetApp 支持部门。
+* 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。
+* 您已为连接到机箱的每个缆线贴上标签。
+
+
+当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
+
+下面简要概述了此操作步骤中的步骤：<<Prepare to replace the node>>
+<<Replace the node>>
+<<Add the node to the cluster>>
+<<Install the GPU drivers>>
+
+
+
+== 准备更换节点
+
+在更换节点之前，您应将节点上托管的虚拟机（ VM ）迁移到可用主机，并从集群中删除此节点。您应获取有关节点的详细信息，例如序列号和网络信息。
+
+
+NOTE: 如果组件出现故障，而节点仍处于联机状态且正常运行，例如双列直插内存模块（ Dual Inline Memory Module ， DIMM ）出现故障，则应先从集群中删除驱动器，然后再删除故障节点。
+
+.步骤
+. 在 VMware vSphere Web Client 中，执行以下步骤将 VM 迁移到其他可用主机。
++
+
+NOTE: 有关迁移步骤，请参见 VMware 文档。
+
+. 选择故障节点，然后选择 * 监控 > 硬件状态 > 传感器 * 。
+. 记下故障节点的序列号。以下屏幕截图仅为示例：
++
+image::h610c serial number.gif[显示了 VMware vSphere Web Client 中故障节点的序列号。]
+
++
+您需要使用序列号来标识机箱，方法是将节点背面标签上的序列号与您记下的序列号进行匹配。
+
+. 右键单击故障节点，然后选择 * 连接 > 断开连接 * 。
+. 选择 * 是 * 确认操作。
+. 右键单击故障节点，然后选择 * 从清单中删除 * 。
+. 单击 * 是 * 确认操作。
+
+
+
+
+== 更换节点
+
+从集群中删除故障节点后，您可以删除故障机箱并安装替代机箱。
+
+
+NOTE: 在执行此处的步骤之前，请确保您已获得防静电保护。
+
+.步骤
+. 拆开新机箱的包装，将其放在水平面上。请保留包装材料，以便在将故障机箱退回 NetApp 时使用。
+. 为要卸下的机箱背面插入的每个缆线贴上标签。安装新机箱后，必须将缆线重新插入原始端口。
+. 断开机箱背面的所有缆线。
+. 拧下安装耳上的翼形螺钉，以卸下机箱。您必须将故障机箱打包并退回给 NetApp 。
+. 将替代机箱滑入导轨。
++
+
+CAUTION: 确保将机箱滑入导轨时不会用力过大。
+
+. 仅适用于 H615C 。从故障机箱中取出 DIMM ，然后将这些 DIMM 插入更换机箱。
++
+
+NOTE: 您应更换故障节点中从其卸下的相同插槽中的 DIMM 。
+
+. 卸下故障机箱两侧的两个电源设备，然后将其插入更换机箱。
+. 将缆线重新连接到最初断开缆线连接的端口。断开电缆连接后在这些电缆上添加的标签将有助于指导您完成此操作。
++
+
+CAUTION: 如果机箱后部的通风孔被缆线或标签挡住，则可能会因过热而导致组件过早出现故障。请勿将缆线强行插入端口；否则可能会损坏缆线，端口或两者。
+
+. 打开机箱电源。
+
+
+
+
+== 将节点添加到集群
+
+您应将 NetApp HCI 配置为使用新计算节点。
+
+.您需要什么？ #8217 ；将需要什么
+* 如果要将节点添加到使用虚拟分布式交换机的部署中，则 NetApp HCI 所使用的 vSphere 实例具有 vSphere Enterprise Plus 许可。
+* 与 NetApp HCI 一起使用的 vCenter 或 vSphere 实例的许可证均未过期。
+* 与现有节点位于同一网段上的 IPv4 地址可用且未使用（新节点必须与此类型的现有节点安装在同一网络上）。
+* 您已准备好 vCenter 管理员帐户凭据。
+
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在 Expand Installation 窗格中，选择 * 展开 * 。浏览器将打开 NetApp 部署引擎。
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 部署引擎。
+. 在 Welcome 页面上，选择 * 是 * 。
+. 在最终用户许可证页面上，执行以下操作：
++
+.. 阅读 VMware 最终用户许可协议。
+.. 如果您接受这些条款，请在协议文本末尾选择 * 我接受 * 。
+
+
+. 单击 Continue （继续）。
+. 在 vCenter 页面上，执行以下步骤：
++
+.. 输入与您的 NetApp HCI 安装关联的 vCenter 实例的 FQDN 或 IP 地址以及管理员凭据。
+.. 选择 * 继续 * 。
+.. 选择要添加新计算节点的现有 vSphere 数据中心，或者选择创建新数据中心将新计算节点添加到新数据中心。
++
+
+NOTE: 如果选择创建新数据中心，则会自动填充集群字段。
+
+.. 如果选择了现有数据中心，请选择应与新计算节点关联的 vSphere 集群。
++
+
+NOTE: 如果 NetApp HCI 无法识别您选择进行扩展的集群的网络设置，请确保将用于管理，存储和 vMotion 网络的 vmkernel 和 vmnic 映射设置为部署默认值。
+
+.. 选择 * 继续 * 。
+
+
+. 在 "ESXi Credentials" 页面上，为要添加的计算节点输入 ESXi 根密码。您应使用在初始 NetApp HCI 部署期间创建的相同密码。
+. 选择 * 继续 * 。
+. 如果您创建了新的 vSphere 数据中心集群，请在网络拓扑页面上选择与要添加的新计算节点匹配的网络拓扑。
++
+
+NOTE: 只有当您的计算节点使用双缆线拓扑且现有 NetApp HCI 部署配置了 VLAN ID 时，才能选择双缆线选项。
+
+. 在 Available Inventory 页面上，选择要添加到现有 NetApp HCI 安装中的节点。
++
+
+TIP: 对于某些计算节点，您可能需要先在 vCenter 版本支持的最高级别启用 EVC ，然后才能将其添加到安装中。您应使用 vSphere 客户端为这些计算节点启用 EVC 。启用后，请刷新 Inventory 页面并重新尝试添加计算节点。
+
+. 选择 * 继续 * 。
+. 可选：如果您创建了新的 vSphere 数据中心集群，请在网络设置页面上选中 * 从现有集群复制设置 * 复选框，以从现有 NetApp HCI 部署导入网络信息。此操作将填充每个网络的默认网关和子网信息。
+. 在 Network Settings 页面上，已从初始部署中检测到一些网络信息。每个新计算节点都会按序列号列出，您应为此节点分配新的网络信息。对于每个新计算节点，请执行以下步骤：
++
+.. 如果 NetApp HCI 检测到命名前缀，请从检测到的命名前缀字段中复制该前缀，然后将其作为您在主机名字段中添加的新唯一主机名的前缀插入。
+.. 在 Management IP Address 字段中，输入管理网络子网中计算节点的管理 IP 地址。
+.. 在 vMotion IP Address 字段中，为 vMotion 网络子网中的计算节点输入 vMotion IP 地址。
+.. 在 iSCSI A - IP Address 字段中，输入 iSCSI 网络子网中计算节点的第一个 iSCSI 端口的 IP 地址。
+.. 在 iSCSI B - IP Address 字段中，输入 iSCSI 网络子网中计算节点的第二个 iSCSI 端口的 IP 地址。
+
+
+. 选择 * 继续 * 。
+. 在 "Review" 页面的 "Network Settings" 部分中，新节点以粗体文本显示。如果需要更改任何部分中的信息，请执行以下步骤：
++
+.. 为该部分选择 * 编辑 * 。
+.. 完成更改后，在任何后续页面上选择 * 继续 * 以返回到 " 审阅 " 页面。
+
+
+. 可选：如果您不想将集群统计信息和支持信息发送到 NetApp 托管的 SolidFire Active IQ 服务器，请清除最后一个复选框。此操作将禁用对 NetApp HCI 的实时运行状况和诊断监控。禁用此功能后， NetApp 将无法主动支持和监控 NetApp HCI ，以便在生产受到影响之前检测和解决问题。
+. 选择 * 添加节点 * 。您可以在 NetApp HCI 添加和配置资源时监控进度。
+. 可选：验证 vCenter 中是否显示任何新计算节点。
+
+
+
+
+== 安装 GPU 驱动程序
+
+采用 NVIDIA 图形处理单元（ GPU ）的计算节点（如 H610C 节点）需要在 VMware ESXi 中安装 NVIDIA 软件驱动程序，以便能够利用增强的处理能力。要安装 GPU 驱动程序，计算节点必须具有 GPU 卡。
+
+.步骤
+. 打开浏览器，然后通过以下 URL 浏览到 NVIDIA 许可门户： `https://nvid.nvidia.com/dashboard/`
+. 根据您的环境，将以下驱动程序软件包之一下载到您的计算机：
++
+[cols="2*"]
+|===
+| vSphere 版本 | 驱动程序包 
+
+
+| vSphere 6.0  a| 
+NVIDIA-GRID-vSphere-6.0-390.94-390.96-392.05.zip
+
+
+
+| vSphere 6.5  a| 
+NVIDIA-GRID-vSphere-6.5-410.92-410.91-412.16.zip
+
+
+
+| vSphere 6.7  a| 
+NVIDIA-GRID-vSphere-6.7-410.92-410.91-412.16.zip
+
+|===
+. 在您的计算机上解压缩驱动程序软件包。生成的 .VIB 文件为未压缩的驱动程序文件。
+. 将 .VIB 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。以下每个版本的示例命令均假定此驱动程序位于管理主机上的 $HOME/NVIDIA/ESX6.x/ 目录中。SCP 实用程序可在大多数 Linux 分发版中随时使用，也可作为适用于所有 Windows 版本的可下载实用程序使用：
++
+[cols="2*"]
+|===
+| 选项 | Description 
+
+
+| ESXi 6.0  a| 
+SCP $HOME/NVIDIA/ESX6.0/NVIDIN.vib root@ <ESXI_IP_ADDR> ： / 。
+
+
+
+| ESXi 6.5  a| 
+SCP $HOME/NVIDIA/ESX6.5/NVIDIa.vib root@ <ESXI_IP_ADDR> ： / 。
+
+
+
+| ESXi 6.7  a| 
+SCP $HOME/NVIDIA/ESX6.7/NVIDIa.vib root@ <ESXi_IP_ADDR> ： / 。
+
+|===
+. 按照以下步骤以 root 用户身份登录到 ESXi 主机，并在 ESXi 中安装 NVIDIA vGPU 管理器。
++
+.. 运行以下命令以 root 用户身份登录到 ESXi 主机： `ssh root@ <esxi_ip_address>`
+.. 运行以下命令以验证当前是否未安装任何 NVIDIA GPU 驱动程序： `nvidia-smi` 此命令应返回消息 `nvidia-smi ： not found` 。
+.. 运行以下命令在主机上启用维护模式，并从 VIB 文件安装 NVIDIA vGPU Manager ： `esxcli system maintenanceMode set -enable true` `esxcli software vib install -v /nvidia4.vib` You should see the message `Operation finished successfully` .
+.. 运行以下命令并验证所有八个 GPU 驱动程序是否均已在命令输出中列出： `nvidia-smi`
+.. 运行以下命令以验证是否已正确安装和加载 NVIDIA vGPU 软件包： `vmkload_mod -l | grep nvidia` 此命令应返回类似于以下内容的输出： `nvidia 816 13808`
+.. 运行以下命令退出维护模式并重新启动主机： `esxcli system maintenanceMode set – enable false` `reboot -f`
+
+
+. 对使用 NVIDIA GPU 的任何其他新部署的计算节点重复步骤 4-6 。
+. 按照 NVIDIA 文档站点中的说明执行以下任务：
++
+.. 安装 NVIDIA 许可证服务器。
+.. 为虚拟机子系统配置 NVIDIA vGPU 软件。
+.. 如果您在虚拟桌面基础架构 (VDI) 环境中使用启用了 vGPU 的桌面，请为 NVIDIA vGPU 软件配置 VMware Horizon View 。
+
+
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

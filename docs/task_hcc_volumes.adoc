@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_volumes.html 
+summary: 您可以使用 Hybrid Cloud Control Volumes 页面监控系统中的卷。 
+keywords: netapp, hci, on premise, volumes, storage, access groups, initiators, capacity, data protection, QoS 
+---
+= 监控存储集群上的卷
+:allow-uri-read: 
+
+
+[role="lead"]
+SolidFire 系统使用卷配置存储。卷是 iSCSI 或光纤通道客户端通过网络访问的块设备。您可以监控有关访问组，帐户，启动程序，已用容量， Snapshot 数据保护状态， iSCSI 会话数以及与卷关联的服务质量（ QoS ）策略的详细信息。
+
+您还可以查看有关活动卷和已删除卷的详细信息。
+
+在此视图中，您可能需要先监控已用容量列。
+
+只有当您拥有 NetApp Hybrid Cloud Control 管理权限时，才能访问此信息。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在左侧导航蓝色框中，选择 NetApp HCI 安装。
++
+此时将显示混合云控制信息板。
+
+. 在左侧导航栏中，选择集群并选择 * 存储 * > * 卷 * 。
++
+image::hcc_volumes_overview_active.png[HCC 卷页面 > 概述选项卡图]
+
+. 在卷页面上，使用以下选项：
++
+image::hcc_volumes_icons.png[HCC 卷页面图标]
+
++
+.. 单击 * 筛选器 * 图标筛选结果。
+.. 通过单击 * 隐藏 / 显示 * 图标隐藏或显示列。
+.. 单击 * 刷新 * 图标刷新数据。
+.. 单击 * 下载 * 图标下载 CSV 文件。
+
+
+. 监控已用容量列。如果达到 " 警告 " ， " 错误 " 或 " 严重 " 阈值，则颜色表示已用容量状态：
++
+.. 警告—黄色
+.. 错误—橙色
+.. 严重—红色
+
+
+. 在卷视图中，单击选项卡以查看有关卷的其他详细信息：
++
+.. * 访问组 * ：您可以查看从启动程序映射到一组卷的卷访问组，以实现安全访问。
++
+请参见有关的信息 link:concept_hci_volume_access_groups.html["卷访问组"]。
+
+.. * 帐户 * ：您可以查看用户帐户，从而使客户端能够连接到节点上的卷。创建卷时，卷会分配给特定的用户帐户。
++
+请参见有关的信息 link:concept_cg_hci_accounts.html["NetApp HCI 用户帐户"]。
+
+.. * 启动程序 * ：您可以查看卷的 iSCSI 启动程序 IQN 或光纤通道 WWPN 。添加到访问组的每个 IQN 都可以访问组中的每个卷，而无需 CHAP 身份验证。添加到访问组的每个 WWPN 都可以通过光纤通道网络访问访问此访问组中的卷。
+.. * QoS 策略 * ：您可以查看应用于卷的 QoS 策略。QoS 策略会将最小 IOPS ，最大 IOPS 和突发 IOPS 的标准化设置应用于多个卷。
++
+请参见有关的信息 link:concept_hci_performance#qos-performance.html["性能和 QoS 策略"]。
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 文档"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,243 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_required_network_ports.html 
+summary: NetApp HCI 使用的 TCP 和 UDP 端口。 
+keywords: netapp, hci, ports, tcp, udp 
+---
+= 网络端口要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, ports, tcp, udp
+
+
+[role="lead"]
+您可能需要允许以下端口通过数据中心的边缘防火墙，以便可以远程管理系统，允许数据中心外部的客户端连接到资源，并确保内部服务能够正常运行。其中某些端口， URL 或 IP 地址可能不是必需的，具体取决于您使用系统的方式。除非另有说明，否则所有端口均为 TCP 。
+
+[NOTE]
+====
+NetApp Hybrid Cloud Control Web UI和API可从NetApp联机软件存储库下载软件包。因此，根据内容交付网络，某些 URL 或 IP 地址可能会解析为其他 URL 或 IP 地址。如果可能，您应与网络工程师合作，使用以下常规步骤将这些 URL 或 IP 地址添加到防火墙规则中：
+
+.步骤
+. 使用wget或cURL实用程序访问URL (例如support-sg-nawest.netapp.com)。
+. 检查连接、如以下示例所示：
++
+image::network_ports.PNG[检查端口连接]
+
+. 无法访问此URL (与support-sg-nawest.netapp.com不同)。
+. 编辑防火墙规则以允许使用新 URL 。
+. 重复上述步骤，直到访问尝试成功为止。
+
+
+====
+下表使用了以下缩写词：
+
+* mip ：管理 IP 地址，每节点地址
+* SIP ：存储 IP 地址，每个节点的地址
+* MVIP ：管理虚拟 IP 地址
+* SVIP ：存储虚拟 IP 地址
+
+
+除非另有说明，否则表中的所有端口均为 TCP 。
+
+|===
+| 源 | 目标 | Port | Description 
+
+
+| 计算节点 BMC/IPMI | 管理节点 | 111 TCP/UDP | NetApp Hybrid Cloud Control API 通信 
+
+
+| 计算节点 BMC/IPMI | 管理节点 | 137-138 UDP | NetApp Hybrid Cloud Control API 通信 
+
+
+| 计算节点 BMC/IPMI | 管理节点 | 445 | NetApp Hybrid Cloud Control API 通信 
+
+
+| 计算节点 BMC/IPMI | 管理节点 | 623 UDP | 远程管理控制协议（ RMCP ）端口。NetApp Hybrid Cloud Control 计算固件升级需要此功能。 
+
+
+| 计算节点 BMC/IPMI | 管理节点 | 2049 TCP/UDP | NetApp Hybrid Cloud Control API 通信 
+
+
+| iSCSI 客户端 | 存储集群 MVIP | 443. | （可选） UI 和 API 访问 
+
+
+| iSCSI 客户端 | 存储集群 SVIP | 3260 | 客户端 iSCSI 通信 
+
+
+| iSCSI 客户端 | 存储节点 SIP | 3260 | 客户端 iSCSI 通信 
+
+
+| 管理节点 | `sfsupport.solidfire.com` | 22. | 反向 SSH 通道以访问支持 
+
+
+| 管理节点 | 存储节点 MIP | 22. | SSH 访问以获得支持 
+
+
+| 管理节点 | DNS 服务器 | 53 TCP/UDP | DNS 查找 
+
+
+| 管理节点 | 计算节点 BMC/IPMI | 139. | NetApp Hybrid Cloud Control API 通信 
+
+
+| 管理节点 | 存储节点 MIP | 442 | 通过 UI 和 API 访问存储节点和 Element 软件升级 
+
+
+| 管理节点 | 存储节点 MVIP | 442 | 通过 UI 和 API 访问存储节点和 Element 软件升级 
+
+
+| 管理节点 | `23.32.54.122` ， `216.240.21.15` | 443. | Element 软件升级 
+
+
+| 管理节点 | 基板管理控制器（ BMC ） | 443. | 硬件监控和清单连接（ Redfish 和 IPMI 命令） 
+
+
+| 管理节点 | 计算节点 BMC/IPMI | 443. | NetApp Hybrid Cloud Control HTTPS 通信 
+
+
+| 管理节点 | `monitoring.solidfire.com` | 443. | 存储集群向 Active IQ 报告 
+
+
+| 管理节点  a| 
+新版本通知：
+
+* `https://support.netapp.com/aods/`
+
+
+软件下载：
+
+* `https://support-sg-emea.netapp.com`
+* `https://support-sg-naeast.netapp.com`
+* `https://support-sg-nawest.netapp.com`
+
+| 443. | 管理节点服务升级 
+
+
+| 管理节点 | 存储集群 MVIP | 443. | 通过 UI 和 API 访问存储节点和 Element 软件升级 
+
+
+| 管理节点 | VMware vCenter | 443. | NetApp Hybrid Cloud Control HTTPS 通信 
+
+
+| 管理节点 | 计算节点 BMC/IPMI | 623 UDP | 远程管理控制协议（ RMCP ）端口。NetApp Hybrid Cloud Control 计算固件升级需要此功能。 
+
+
+| 管理节点 | VMware vCenter | 598-5989 | NetApp Hybrid Cloud Control HTTPS 通信 
+
+
+| 管理节点 | 见证节点 | 9442 | 每节点配置 API 服务 
+
+
+| 管理节点 | vCenter Server | 9443 | vCenter 插件注册。注册完成后，可以关闭此端口。 
+
+
+| SNMP 服务器 | 存储集群 MVIP | 161/UDP | SNMP 轮询 
+
+
+| SNMP 服务器 | 存储节点 MIP | 161/UDP | SNMP 轮询 
+
+
+| 存储节点 MIP | DNS 服务器 | 53 TCP/UDP | DNS 查找 
+
+
+| 存储节点 MIP | 管理节点 | 80 | Element 软件升级 
+
+
+| 存储节点 MIP | S3/Swift endpoint | 80 | （可选）与 S3/Swift 端点进行 HTTP 通信以实现备份和恢复 
+
+
+| 存储节点 MIP | NTP 服务器 | 123/UDP | NTP 
+
+
+| 存储节点 MIP | 管理节点 | 162 UDP | （可选） SNMP 陷阱 
+
+
+| 存储节点 MIP | SNMP 服务器 | 162 UDP | （可选） SNMP 陷阱 
+
+
+| 存储节点 MIP | LDAP 服务器 | 389 TCP/UDP | （可选） LDAP 查找 
+
+
+| 存储节点 MIP | 管理节点 | 443. | Element 软件升级 
+
+
+| 存储节点 MIP | 远程存储集群 MVIP | 443. | 远程复制集群配对通信 
+
+
+| 存储节点 MIP | 远程存储节点 MIP | 443. | 远程复制集群配对通信 
+
+
+| 存储节点 MIP | S3/Swift endpoint | 443. | （可选）与 S3/Swift 端点进行 HTTPS 通信以进行备份和恢复 
+
+
+| 存储节点 MIP | LDAPS 服务器 | 636 TCP/UDP | LDAPS 查找 
+
+
+| 存储节点 MIP | 管理节点 | 10514 TCP/UDP ， 514 TCP/UDP | 系统日志转发 
+
+
+| 存储节点 MIP | 系统日志服务器 | 10514 TCP/UDP ， 514 TCP/UDP | 系统日志转发 
+
+
+| 存储节点 MIP | 远程存储节点 MIP | 2181 | 用于远程复制的集群间通信 
+
+
+| 存储节点 SIP | S3/Swift endpoint | 80 | （可选）与 S3/Swift 端点进行 HTTP 通信以实现备份和恢复 
+
+
+| 存储节点 SIP | 计算节点 SIP | 442 | 计算节点 API ，配置和验证以及对软件清单的访问 
+
+
+| 存储节点 SIP | S3/Swift endpoint | 443. | （可选）与 S3/Swift 端点进行 HTTPS 通信以进行备份和恢复 
+
+
+| 存储节点 SIP | 远程存储节点 SIP | 2181 | 用于远程复制的集群间通信 
+
+
+| 存储节点 SIP | 存储节点 SIP | 3260 | 节点间 iSCSI 
+
+
+| 存储节点 SIP | 远程存储节点 SIP | 4000 到 4020 | 远程复制节点到节点数据传输 
+
+
+| 系统管理员 PC | 存储节点 MIP | 80 | （仅限 NetApp HCI ） NetApp 部署引擎的登录页面 
+
+
+| 系统管理员 PC | 管理节点 | 442 | 对管理节点的 HTTPS UI 访问 
+
+
+| 系统管理员 PC | 存储节点 MIP | 442 | 对存储节点的 HTTPS UI 和 API 访问，（仅限 NetApp HCI ） NetApp 部署引擎中的配置和部署监控 
+
+
+| 系统管理员 PC | 管理节点 | 443. | 对管理节点的 HTTPS UI 和 API 访问 
+
+
+| 系统管理员 PC | 存储集群 MVIP | 443. | 对存储集群的 HTTPS UI 和 API 访问 
+
+
+| 系统管理员 PC | 存储节点 MIP | 443. | HTTPS 存储集群创建，存储集群的部署后 UI 访问 
+
+
+| 系统管理员 PC | 见证节点 | 8080 | 见证节点每节点 Web UI 
+
+
+| vCenter Server | 存储集群 MVIP | 443. | vCenter 插件 API 访问 
+
+
+| vCenter Server | 管理节点 | 8443 | （可选） vCenter 插件 QoSSIOC 服务。 
+
+
+| vCenter Server | 存储集群 MVIP | 8444 | vCenter VASA Provider 访问（仅限 VVol ） 
+
+
+| vCenter Server | 管理节点 | 9443 | vCenter 插件注册。注册完成后，可以关闭此端口。 
+|===
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

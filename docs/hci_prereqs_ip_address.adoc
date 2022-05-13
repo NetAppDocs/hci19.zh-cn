@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_ip_address.html 
+summary: 了解 NetApp HCI IP 地址要求。 
+keywords: netapp, hci, IP address, requirements 
+---
+= IP 地址要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, IP address, requirements
+
+
+[role="lead"]
+NetApp HCI 具有特定的 IP 地址要求，具体取决于您的部署规模。请注意，默认情况下，在使用 NetApp 部署引擎部署系统之前为每个节点分配的初始 IP 地址是临时的，不能重复使用。您需要留出第二组未使用的永久 IP 地址，以便在最终部署期间分配这些地址。
+
+
+
+== 每个 NetApp HCI 部署所需的 IP 地址数
+
+NetApp HCI 存储网络和管理网络均应使用单独的连续 IP 地址范围。使用下表确定您的部署需要多少 IP 地址：
+
+|===
+| 系统组件 | 所需的管理网络 IP 地址 | 所需的存储网络 IP 地址 | 所需的 VMotion 网络 IP 地址 | 每个组件所需的总 IP 地址数 
+
+
+| 计算节点 | 1. | 2. | 1. | 4. 
+
+
+| 存储节点 | 1. | 1. |  | 2. 
+
+
+| 存储集群 | 1. | 1. |  | 2. 
+
+
+| VMware vCenter | 1. |  |  | 1. 
+
+
+| 管理节点 | 1. | 1. |  | 2. 
+
+
+| 见证节点 | 1. | 1. |  | 每个见证节点 2 个（每个双节点或三节点存储集群部署两个见证节点） 
+|===
+
+
+== NetApp HCI 预留的 IP 地址
+
+NetApp HCI 会为系统组件保留以下 IP 地址范围。在规划网络时，请避免使用以下 IP 地址：
+
+|===
+| IP 地址范围 | Description 
+
+
+| 10.0.0/24 | Docker 覆盖网络 
+
+
+| 10.0.1.0/24 | Docker 覆盖网络 
+
+
+| 10.255.255.0/16 | Docker Swarm 入口网络 
+
+
+| 169.254.100.1/22 | Docker 网桥网络 
+
+
+| 169.254.104.104.0/22 | Docker 网桥网络 
+|===
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

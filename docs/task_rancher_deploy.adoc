@@ -1,0 +1,162 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_deploy.html 
+summary: 了解在 NetApp HCI 上安装 Rancher 后可能需要执行的任务。 
+keywords: netapp, hci, rancher, deploy, cluster, kubernetes 
+---
+= 在 NetApp HCI 上部署 Rancher
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+要在 NetApp HCI 环境中使用 Rancher ，请首先在 NetApp HCI 上部署 Rancher 。
+
+
+TIP: 在开始部署之前，请务必检查数据存储库的可用空间以及其他空间 link:rancher_prereqs_overview.html["NetApp HCI 上的 Rancher 的要求"]。
+
+
+NOTE: 您的 NetApp Support Edge 协议不包含 Rancher 支持。有关选项，请联系 NetApp 销售人员或您的经销商。如果您从 NetApp 购买 Rancher 支持，则会收到一封电子邮件，其中包含相关说明。
+
+
+
+== 在 NetApp HCI 上部署 Rancher 时会发生什么情况？
+
+此部署涉及以下步骤，每个步骤将进一步说明：
+
+* 使用 NetApp Hybrid Cloud Control 启动部署。
+* Rancher 部署会创建一个管理集群，其中包括三个虚拟机。
++
+系统会为每个虚拟机分配控制平面和工作节点的所有 Kubernetes 角色。这意味着 Rancher UI 可在每个节点上使用。
+
+* 此外，还会使用 Rancher 中的 NetApp HCI 节点模板安装 Rancher 控制平面（或 _Rancher Server_ ），以便于部署。Rancher 控制平面会自动与用于构建 NetApp HCI 基础架构的 NetApp 部署引擎中使用的配置配合使用。
+* 部署后，您将收到 NetApp 发送的电子邮件，其中提供了在 NetApp HCI 上注册 Rancher 部署 NetApp 支持的选项。
+* 部署完成后，开发和运营团队便可像部署任何 Rancher 一样部署其用户集群。
+
+
+
+
+== 在 NetApp HCI 上部署 Rancher 的步骤
+
+* <<Access the NetApp Hybrid Cloud Control>>
+* <<Deploy Rancher on NetApp HCI>>
+* <<Verify your deployment by using vCenter Server>>
+
+
+
+
+=== 访问 NetApp Hybrid Cloud Control
+
+要开始部署，请访问 NetApp Hybrid Cloud Control 。
+
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
++
+此时将显示 NetApp Hybrid Cloud Control 界面。
+
+
+
+
+
+=== 在 NetApp HCI 上部署 Rancher
+
+. 在 Hybrid Cloud Control 中，单击导航栏左下方的 * Rancher* 图标。
++
+image::rancher_hcc_dashboard.png[NetApp Hybrid Cloud Control 信息板和 Rancher 图标]
+
++
+此时将弹出一个窗口，其中显示一条有关 Rancher 入门的消息。
+
++
+image::rancher_hcc_getstarted.png[Rancher Getting Started 图]
+
+. 单击 * 部署 Rancher* 。
++
+此时将显示 Rancher UI 。
+
++
+image::rancher_hcc_deploy_vcenter.png[Rancher 部署页面]
+
++
+您的 vCenter 凭据将根据您的 NetApp 部署引擎安装收集。
+
+. 输入 * vCenter resources* 信息。下面将介绍一些字段。
++
+** * 数据中心 * ：选择数据中心。选择数据中心后，所有其他字段都会预先填充，但您可以对其进行更改。
+** * 数据存储库 * ：选择 NetApp HCI 存储节点上的数据存储库。此数据存储库应具有故障恢复能力，并可供所有 VMware 主机访问。请勿选择只能由其中一台主机访问的本地数据存储库。
+** * 管理网络 * ：应可从管理工作站以及要托管用户集群的虚拟机网络访问此网络。
+
+
+. 输入 * 部署设置 * 信息：
++
+** * DNS 服务器 * ：可选。如果使用负载平衡，请输入内部 DNS 服务器信息。
+** * Rancher 服务器 FQDN* ：要确保 Rancher 服务器在节点故障期间保持可用，请提供一个完全限定域名（ FQDN ）， DNS 服务器可以将该域名解析为分配给 Rancher 服务器集群节点的任何 IP 地址。此前缀为 "https" 的 FQDN 将成为 Rancher URL ，您将使用此 URL 访问 Rancher 实施。
++
+如果未提供域名，则会改用通配符 DNS ，您可以使用部署完成后提供的其中一个 URL 来访问 Rancher 服务器。
+
+
+
+. 输入 * 高级设置 * 信息：
++
+** * 分配静态 IP 地址 * ：如果启用静态 IP 地址，请按顺序为三个 IPv4 地址提供起始 IP 地址，每个管理集群虚拟机提供一个。NetApp HCI 上的 Rancher 部署三个管理集群虚拟机。
+** * 配置代理服务器 * ：
+
+
+. 查看并选中 Rancher 最终用户许可协议对应的复选框。
+. 查看并选中此复选框以确认有关 Rancher 软件的信息。
+. 单击 * 部署 * 。
++
+条形表示部署进度。
+
++
+
+TIP: 部署 Rancher 可能需要大约 15 分钟。
+
++
+部署完成后， Rancher 将显示一条有关完成情况的消息，并提供 Rancher URL 。
+
++
+image::rancher_deploy_complete_url.png[Rancher 部署完成和 URL]
+
+. 记录部署结束时显示的 Rancher URL 。您将使用此 URL 访问 Rancher UI 。
+
+
+
+
+=== 使用 vCenter Server 验证您的部署
+
+在 vSphere 客户端中，您可以看到 Rancher 管理集群，其中包括三个虚拟机。
+
+
+IMPORTANT: 完成部署后，请勿修改 Rancher 服务器虚拟机集群的配置或删除虚拟机。NetApp HCI 上的 Rancher 依靠已部署的 RKE- 管理集群配置来正常运行。
+
+
+
+== 下一步是什么？
+
+部署后，您可以执行以下操作：
+
+* link:task_rancher_post-deploy.html["完成部署后任务"]
+* link:task_rancher_trident.html["在 NetApp HCI 上安装带有 Rancher 的 Trident"]
+* link:task_rancher_deploy_user_clusters.html["部署用户集群和应用程序"]
+* link:task_rancher_manage.html["在 NetApp HCI 上管理 Rancher"]
+* link:task_rancher_monitor.html["监控 NetApp HCI 上的 Rancher"]
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/NetApp_HCI_and_Rancher_troubleshooting["Rancher 部署故障排除"]
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

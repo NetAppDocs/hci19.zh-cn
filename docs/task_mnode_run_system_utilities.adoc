@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_run_system_utilities.html 
+summary: 您可以创建或删除集群支持包，重置节点配置设置或重新启动网络连接。 
+keywords: netapp, element, management node ui, mnode ui, system utilities 
+---
+= 从管理节点运行系统实用程序
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用管理节点的每节点 UI 创建或删除集群支持包，重置节点配置设置或重新启动网络连接。
+
+.步骤
+. 使用管理节点管理员凭据打开每节点管理节点 UI 。
+. 单击 * 系统实用程序 * 。
+. 单击要运行的实用程序对应的按钮：
++
+.. * 控制电源 * ：重新启动，重新启动或关闭节点。指定以下任一选项。
++
+
+IMPORTANT: 此操作会导致网络连接暂时断开。
+
++
+*** * 操作 * ：选项包括 `Restart` 和 `halt` （关闭电源）。
+*** * 唤醒延迟 * ：节点恢复联机之前的任何其他时间。
+
+
+.. * 创建集群支持包 * ：创建集群支持包，以帮助 NetApp 支持部门对集群中的一个或多个节点进行诊断评估。指定以下选项：
++
+*** * 捆绑包名称 * ：创建的每个支持包的唯一名称。如果未提供名称，则使用 "supportbundle" 和节点名称作为文件名。
+*** * Mvip* ：集群的 MVIP 。从集群中的所有节点收集捆绑包。如果未指定 Nodes 参数，则需要此参数。
+*** * 节点 * ：要从中收集捆绑包的节点的 IP 地址。使用 Nodes 或 Mvip 指定要从中收集捆绑包的节点，但不能同时使用这两者。如果未指定 Mvip ，则需要此参数。
+*** * 用户名 * ：集群管理员用户名。
+*** * 密码 * ：集群管理员密码。
+*** * 允许不完整 * ：如果无法从一个或多个节点收集软件包，则允许脚本继续运行。
+*** * 额外的 args* ：此参数将馈送到 `sf_make_support_bundle` 脚本。只有在 NetApp 支持部门要求时，才应使用此参数。
+
+
+.. * 删除所有支持包 * ：删除管理节点上的任何当前支持包。
+.. * 重置节点 * ：将管理节点重置为新安装映像。此操作会将网络配置以外的所有设置更改为默认状态。指定以下选项：
++
+*** * 构建 * ：节点将重置到的远程 Element 软件映像的 URL 。
+*** * 选项 * ：运行重置操作的规范。如果需要， NetApp 支持部门将提供详细信息。
++
+
+IMPORTANT: 此操作会导致网络连接暂时断开。
+
+
+
+.. * 重新启动网络 * ：重新启动管理节点上的所有网络服务。
++
+
+IMPORTANT: 此操作会导致网络连接暂时断开。
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

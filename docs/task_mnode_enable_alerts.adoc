@@ -1,0 +1,81 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_enable_alerts.html 
+summary: 您可以配置设置以监控 NetApp HCI 系统上的警报。 
+keywords: netapp, element, management node, mnode, ui, alerts, alert monitoring 
+---
+= 在 NetApp HCI 上配置警报监控
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以配置设置以监控 NetApp HCI 系统上的警报。
+
+NetApp HCI 警报监控功能会将 NetApp HCI 存储集群系统警报转发到 vCenter Server ，使您能够从 vSphere Web Client 界面查看 NetApp HCI 的所有警报。
+
+
+NOTE: 这些工具不会配置或用于纯存储集群，例如 SolidFire 全闪存存储。运行这些集群的工具会导致以下 405 错误，在配置下，此错误是预期的： `webUIParseError ：服务器响应无效。405`
+
+. 打开每节点管理节点 UI （`https://[IP address] ： 442` ）。
+. 单击 * 警报监控 * 选项卡。
+. 配置警报监控选项。
+
+
+
+
+== 警报监控选项
+
+[cols="2*"]
+|===
+| 选项 | Description 
+
+
+| 运行警报监控测试  a| 
+运行监控系统测试以检查以下内容：
+
+* NetApp HCI 和 VMware vCenter 连接
+* 通过 QoSSIOC 服务提供的数据存储库信息对 NetApp HCI 和 VMware vCenter 进行配对
+* 当前 NetApp HCI 警报和 vCenter 警报列表
+
+
+
+
+| 收集警报 | 启用或禁用向 vCenter 转发 NetApp HCI 存储警报。您可以从下拉列表中选择目标存储集群。此选项的默认设置为 `Enabled` 。 
+
+
+| 收集最佳实践警报 | 启用或禁用向 vCenter 转发 NetApp HCI 存储最佳实践警报。最佳实践警报是指由次优系统配置触发的故障。此选项的默认设置为 `D已标记` 。禁用后， NetApp HCI 存储最佳实践警报不会显示在 vCenter 中。 
+
+
+| 将支持数据发送到 AIQ  a| 
+控制从 VMware vCenter 到 NetApp SolidFire Active IQ 的支持和监控数据流。
+
+选项如下：
+
+* Enabled ：所有 vCenter 警报， NetApp HCI 存储警报和支持数据都会发送到 NetApp SolidFire Active IQ 。这样， NetApp 就可以主动支持和监控 NetApp HCI 安装，以便在影响系统之前检测到并解决可能的问题。
+* Disabled ：不会向 NetApp SolidFire Active IQ 发送 vCenter 警报， NetApp HCI 存储警报或支持数据。
+
+
+
+NOTE: 如果您使用 NetApp 部署引擎关闭了 * 向 AIQ* 发送数据选项，则需要执行以下操作 link:task_mnode_enable_activeIQ.html["启用遥测"] 再次使用管理节点 REST API 从此页面配置服务。
+
+
+
+| 将计算节点数据发送到 AIQ  a| 
+控制从计算节点到 NetApp SolidFire Active IQ 的支持和监控数据流。
+
+选项如下：
+
+* Enabled ：有关计算节点的支持和监控数据会传输到 NetApp SolidFire Active IQ ，以便为计算节点硬件提供主动式支持。
+* Disabled ：有关计算节点的支持和监控数据不会传输到 NetApp SolidFire Active IQ 。
+
+
+
+NOTE: 如果您使用 NetApp 部署引擎关闭了 * 向 AIQ* 发送数据选项，则需要执行以下操作 link:task_mnode_enable_activeIQ.html["启用遥测"] 再次使用管理节点 REST API 从此页面配置服务。
+
+|===
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

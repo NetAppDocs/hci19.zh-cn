@@ -1,0 +1,137 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_H610S_BMC_3.84.07.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, compute firmware 
+---
+= H610S BMC 3.84.07 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+可下载的 BMC 更新包含适用于 NetApp H610S 节点的 BMC 功能增强功能和错误修复。
+
+
+
+== 新增功能
+
+H610S BMC 3.84.07 包含各种错误修复和新功能。此版本在后续 Element 软件和存储固件捆绑包版本之前推出了现场关键型更新 BMC 固件，其中也包括适用于 H610S 节点的此更新 BMC 固件。
+
+Element 版本 118 ， 12.0 和 12.2 支持此固件包。您可以直接带外升级 H610S BMC 固件，有关升级说明，请参见 <<Upgrading BMC firmware on H610S nodes>>。
+
+
+
+== 新增功能
+
+以下是此版本中的新增功能和变更：
+
+* 已启用 initrd 支持
+* 已更新有关 X.509 证书的 SSL 帮助消息
+* 已禁用 TLS 1.0 和 1.1 支持
+* 增加了 Redfish 远程介质支持
+* 添加了 H5Viewer RKVM 功能
+* 增加了远程系统日志支持
+
+
+
+
+== 已解决的问题
+
+以下是此版本中已解决的问题：
+
+|===
+| 问题描述 | Description 
+
+
+| 不适用 | 重置 BMC 后，调试用户 sysadmin 可以使用 SSH 登录。 
+
+
+| 不适用 | 使用控制台对 BMC IP 地址执行 ping 操作时， BMC 不会做出响应。 
+
+
+| 不适用 | 在交流电源重启压力测试期间， SOLSSH 配置文件的访问权限将丢失。 
+
+
+| CSESF-116 | 在交流电源重启压力测试期间， BMC 日志中会显示 "PROCHOT" CPU 散热警告。 
+
+
+| CSESF-121 | 创建和更新服务帐户 API 所用时间超出预期。 
+
+
+| CSD-3321 /CSESF-129 | H610S BMC 可能挂起并无法访问，并显示错误 "BMC Self Test Failed" 。 
+
+
+| CSESF-197 | BMC Web UI 清单 API 返回错误的内存序列号格式。 
+|===
+
+
+== 已知问题
+
+此版本没有已知问题。
+
+
+
+== 升级 H610S 节点上的 BMC 固件
+
+执行以下步骤以升级 H610S 节点上的 BMC 固件版本。完成操作步骤大约需要 30 分钟。
+
+.您需要什么？ #8217 ；将需要什么
+* 您已通过单击 NetApp Element 软件 Web UI 中的 * 报告 * > * 警报 * 来检查警报，以确保没有错误。
+* 您已下载 BMC 更新软件包。下载 BMC 更新软件包 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/H610S_BMC_3.84["此处"^]。
+
+
+
+NOTE: 此更新软件包包含 `RO.IMA_enc` 文件以及固件更新所需的所有文件。
+
+* 您已确保用于执行更新的 BMC 和计算机位于同一网络上。
+* 您已联系 NetApp 支持部门以获得 BMC 升级方面的帮助。
+
+
+.步骤
+. 使用 Web 浏览器登录到 BMC 控制台： `https://<BMC_IP>/#login` ，其中 ` <BMC_IP>` 是 BMC 的 IP 地址。
+. 单击 * 维护 * 。
+. 单击 * 保留配置 * 。
+. 执行以下操作：
++
+.. 禁用 * 全部选中 * 复选框。
+.. 启用 * IPMI * 复选框。
+.. 启用 * 网络 * 复选框。
+.. 启用 * 身份验证 * 复选框。
++
+*** "*IPMI* " 设置用于保留现有用户帐户。
+*** 使用 * 网络 * 设置保留 DHCP 分配的 BMC IP 地址。
+*** "* 身份验证 * " 设置用于保留为 BMC 登录配置的自定义帐户。
+
+
+
+
+. 单击 * 保存 * 。
+. 单击 * 固件更新 * 。
+. 禁用 * 保留所有配置 * 复选框。
++
+
+NOTE: 确保已禁用 * 保留所有配置 * 复选框。
+
+. 在用于执行更新的计算机上，提取 BMC 更新软件包的内容。
+. 在 BMC Web UI 中的 * 固件更新 * 页面的 * 选择固件映像 * 部分下，单击 * 选择文件 * 。
+. 浏览到解压缩的软件包内容中的 `RO.IMA_enc` 文件并将其选中。
+. 单击 * 开始固件更新 * ，并在出现提示询问您是否要继续时单击 * 确定 * 。
+. 当出现提示指出正在进行固件重置时，单击 * 确定 * 。
+. 几分钟后，使用新的浏览器选项卡登录到 BMC Web UI 。
+. 在 BMC 信息板上，转到 * 设备信息 * > * 更多信息 * 。
+. 确认 * 固件版本 * 为 * 。 3.84.07* 。
+. 对集群中的其余 H610S 存储节点执行此操作步骤。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

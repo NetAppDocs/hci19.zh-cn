@@ -1,0 +1,439 @@
+---
+settings:
+  name: HCI
+  internal:
+    pdf_enabled: true
+  prod:
+    pdf_enabled: true
+    harmony_enabled: false
+  langs: zh-cn,us-en,ja-jp,zh-tw,ko-kr
+sidebar:
+  entries:
+  - title: NetApp HCI 文档
+    url: "/index.html"
+  - title: NetApp HCI 解决方案
+    url: https://docs.netapp.com/us-en/hci-solutions/index.html
+  - title: 发行说明
+    entries:
+    - title: NetApp HCI 中的新增功能
+      url: "/docs/rn_whatsnew.html"
+    - title: 其他版本信息
+      url: "/docs/rn_relatedrn.html"
+  - title: 概念
+    entries:
+    - title: 产品概述
+      url: "/docs/concept_hci_product_overview.html"
+    - title: "—帐户"
+      url: "/docs/concept_cg_hci_accounts.html"
+    - title: 数据保护
+      url: "/docs/concept_hci_dataprotection.html"
+    - title: 集群
+      url: "/docs/concept_hci_clusters.html"
+    - title: 节点
+      url: "/docs/concept_hci_nodes.html"
+    - title: 存储
+      entries:
+      - title: 维护模式
+        url: "/docs/concept_hci_storage_maintenance_mode.html"
+      - title: Volumes
+        url: "/docs/concept_hci_volumes.html"
+      - title: 卷访问组
+        url: "/docs/concept_hci_volume_access_groups.html"
+      - title: 启动程序
+        url: "/docs/concept_hci_initiators.html"
+      - title: 自定义保护域
+        url: "/docs/concept_hcc_custom_protection_domains.html"
+    - title: 许可
+      url: "/docs/concept_cg_hci_licensing.html"
+    - title: NetApp Hybrid Cloud Control 配置上限
+      url: "/docs/reference_hcc_config_maximums.html"
+    - title: 安全性
+      url: "/docs/concept_cg_hci_security.html"
+    - title: 性能
+      url: "/docs/concept_hci_performance.html"
+  - title: 要求和部署前任务
+    entries:
+    - title: NetApp HCI 部署要求
+      url: "/docs/hci_prereqs_overview.html"
+    - title: 管理节点要求
+      url: "/docs/hci_prereqs_management_node.html"
+    - title: 网络端口要求
+      url: "/docs/hci_prereqs_required_network_ports.html"
+    - title: 网络和交换机要求
+      url: "/docs/hci_prereqs_network_switch.html"
+    - title: 网络缆线要求
+      url: "/docs/hci_prereqs_network_cables.html"
+    - title: IP 地址要求
+      url: "/docs/hci_prereqs_ip_address.html"
+    - title: 网络配置：
+      entries:
+      - title: 网络配置选项概述
+        url: "/docs/hci_prereqs_network_configuration.html"
+      - title: 网络配置选项 A
+        url: "/docs/hci_prereqs_network_configuration_option_A.html"
+      - title: 网络配置选项 B
+        url: "/docs/hci_prereqs_network_configuration_option_B.html"
+      - title: 网络配置选项 C
+        url: "/docs/hci_prereqs_network_configuration_option_C.html"
+    - title: DNS 和计时要求
+      url: "/docs/hci_prereqs_timekeeping.html"
+    - title: 环境要求
+      url: "/docs/hci_prereqs_environmental.html"
+    - title: 保护域
+      url: "/docs/hci_prereqs_protection_domains.html"
+    - title: 见证双节点存储集群的节点资源要求
+      url: "/docs/hci_prereqs_witness_nodes.html"
+  - title: 开始使用 NetApp HCI
+    entries:
+    - title: NetApp HCI 安装和部署概述
+      url: "/docs/task_hci_getstarted.html"
+    - title: 安装 H 系列硬件
+      url: "/docs/task_hci_installhw.html"
+    - title: 配置 LACP 以获得最佳存储性能
+      url: "/docs/hci_prereqs_LACP_configuration.html"
+    - title: 使用 Active IQ Config Advisor 验证您的环境
+      url: "/docs/hci_prereqs_task_validate_config_advisor.html"
+    - title: 为每个节点配置 IPMI
+      url: "/docs/hci_prereqs_final_prep.html"
+  - title: 部署 NetApp HCI
+    entries:
+    - title: 访问 NetApp 部署引擎
+      entries:
+      - title: NetApp 部署引擎访问选项概述
+        url: "/docs/concept_nde_access_overview.html"
+      - title: 在不使用 DHCP 的环境中访问 NetApp 部署引擎
+        url: "/docs/task_nde_access_no_dhcp.html"
+      - title: 在使用 DHCP 的环境中访问 NetApp 部署引擎
+        url: "/docs/task_nde_access_dhcp.html"
+      - title: 手动分配 IP 地址以访问 NetApp 部署引擎
+        url: "/docs/task_nde_access_manual_ip.html"
+    - title: 开始部署
+      url: "/docs/task_nde_start_deployment.html"
+    - title: 导入安装配置文件
+      url: "/docs/task_nde_import_installation_profile.html"
+    - title: 配置 VMware vSphere
+      entries:
+      - title: vSphere 配置概述
+        url: "/docs/concept_nde_config_vsphere_overview.html"
+      - title: 配置新的 VMware vSphere 环境
+        url: "/docs/task_nde_configure_new_vsphere.html"
+      - title: 加入现有的 VMware vSphere 部署
+        url: "/docs/task_nde_join_existing_vsphere.html"
+    - title: 配置 NetApp HCI 凭据
+      url: "/docs/task_nde_configure_credentials.html"
+    - title: 选择网络拓扑
+      url: "/docs/task_nde_select_net_topology.html"
+    - title: 清单选择
+      entries:
+      - title: 清单选择和节点兼容性
+        url: "/docs/concept_nde_node_compatibility.html"
+      - title: 选择清单
+        url: "/docs/task_nde_select_inventory.html"
+    - title: 配置网络设置
+      url: "/docs/task_nde_configure_net_settings.html"
+    - title: 查看和部署
+      url: "/docs/task_nde_review_deploy.html"
+    - title: 部署后任务
+      entries:
+      - title: 部署后任务概述
+        url: "/docs/concept_nde_post_deployment_overview.html"
+      - title: 支持的网络更改
+        url: "/docs/task_nde_supported_net_changes.html"
+      - title: 在 NetApp HCI 计算节点上禁用 smartd 服务
+        url: "/docs/task_nde_disable_smartd.html"
+      - title: 在已配置的交换机上禁用 "lac-individual" 命令
+        url: "/docs/task_nde_disable_lacp_individual.html"
+      - title: 在 vCenter 中创建 NetApp HCC 角色
+        url: "/docs/task_mnode_create_netapp_hcc_role_vcenter.html"
+      - title: 使 VMware vSphere 保持最新
+        url: "/docs/task_nde_update_vsphere.html"
+      - title: 为启用了 GPU 的计算节点安装 GPU 驱动程序
+        url: "/docs/task_nde_install_GPU_drivers.html"
+      - title: 访问 NetApp Hybrid Cloud Control
+        url: "/docs/task_nde_access_hcc.html"
+      - title: 减少 NetApp HCI 计算节点上的启动介质损耗
+        url: "/docs/task_reduce_boot_media_wear.html"
+  - title: 管理 NetApp HCI
+    entries:
+    - title: 管理 NetApp HCI 概述
+      url: "/docs/task_hci_manage_overview.html"
+    - title: 配置完全限定域名 Web UI 访问
+      url: "/docs/task_nde_access_ui_fqdn.html"
+    - title: 在 NetApp HCI 中更改凭据
+      url: "/docs/task_post_deploy_credentials.html"
+    - title: 更新 vCenter 和 ESXi 凭据
+      url: "/docs/task_hci_credentials_vcenter_esxi.html"
+    - title: 管理 NetApp HCI 存储
+      entries:
+      - title: 管理 NetApp HCI 存储概述
+        url: "/docs/task_hcc_manage_storage_overview.html"
+      - title: 创建和管理用户帐户
+        url: "/docs/task_hcc_manage_accounts.html"
+      - title: 添加和管理存储集群
+        url: "/docs/task_hcc_manage_storage_clusters.html"
+      - title: 创建和管理卷
+        url: "/docs/task_hcc_manage_vol_management.html"
+      - title: 创建和管理卷访问组
+        url: "/docs/task_hcc_manage_vol_access_groups.html"
+      - title: 创建和管理启动程序
+        url: "/docs/task_hcc_manage_initiators.html"
+      - title: 创建和管理卷 QoS 策略
+        url: "/docs/task_hcc_qos_policies.html"
+    - title: 使用管理节点
+      entries:
+      - title: 管理节点概述
+        url: "/docs/task_mnode_work_overview.html"
+      - title: 安装或恢复管理节点
+        entries:
+        - title: 安装管理节点
+          url: "/docs/task_mnode_install.html"
+        - title: 配置存储网络接口控制器（ NIC ）
+          url: "/docs/task_mnode_install_add_storage_NIC.html"
+        - title: 恢复管理节点
+          url: "/docs/task_mnode_recover.html"
+      - title: 访问管理节点
+        url: "/docs/task_mnode_access_ui.html"
+      - title: 使用管理节点 UI
+        entries:
+        - title: 管理节点 UI 概述
+          url: "/docs/task_mnode_work_overview_UI.html"
+        - title: 在 NetApp HCI 上配置警报监控
+          url: "/docs/task_mnode_enable_alerts.html"
+        - title: 修改并测试管理节点网络，集群和系统设置
+          url: "/docs/task_mnode_settings.html"
+        - title: 从管理节点运行系统实用程序
+          url: "/docs/task_mnode_run_system_utilities.html"
+      - title: 使用管理节点 REST API
+        entries:
+        - title: 管理节点 REST API UI 概述
+          url: "/docs/task_mnode_work_overview_API.html"
+        - title: 获取使用 REST API 的授权
+          url: "/docs/task_mnode_api_get_authorizationtouse.html"
+        - title: 启用 Active IQ 和 NetApp HCI 监控
+          url: "/docs/task_mnode_enable_activeIQ.html"
+        - title: 为多个 vCenter 配置 NetApp Hybrid Cloud Control
+          url: "/docs/task_mnode_multi_vcenter_config.html"
+        - title: 向管理节点添加计算和控制器资产
+          url: "/docs/task_mnode_add_assets.html"
+        - title: 如何查找计算节点的硬件标记
+          url: "/docs/task_mnode_locate_hardware_tag.html"
+        - title: 创建和管理存储集群资产
+          url: "/docs/task_mnode_manage_storage_cluster_assets.html"
+        - title: 查看或编辑现有控制器资产
+          url: "/docs/task_mnode_edit_vcenter_assets.html"
+        - title: 从管理节点中删除资产
+          url: "/docs/task_mnode_remove_assets.html"
+        - title: 为管理节点配置代理服务器
+          url: "/docs/task_mnode_configure_proxy_server.html"
+        - title: 验证管理节点操作系统和服务版本
+          url: "/docs/task_mnode_api_find_mgmt_svcs_version.html"
+        - title: 从管理服务获取日志
+          url: "/docs/task_mnode_logs.html"
+      - title: 管理支持连接
+        entries:
+        - title: 启动远程 NetApp 支持会话
+          url: "/docs/task_mnode_enable_remote_support_connections.html"
+        - title: 在管理节点上管理 SSH 功能
+          url: "/docs/task_mnode_ssh_management.html"
+    - title: 关闭或打开 NetApp HCI 系统
+      entries:
+      - title: NetApp HCI 电源概述
+        url: "/docs/concept_nde_hci_power_off_on.html"
+      - title: 关闭 NetApp HCI 系统的计算资源
+        url: "/docs/task_nde_hci_power_off_compute.html"
+      - title: 关闭 NetApp HCI 系统的存储资源
+        url: "/docs/task_nde_hci_power_off_storage.html"
+      - title: 启动 NetApp HCI 系统的存储资源
+        url: "/docs/task_nde_hci_power_on_storage.html"
+      - title: 启动 NetApp HCI 系统的计算资源
+        url: "/docs/task_nde_hci_power_on_compute.html"
+  - title: 使用 NetApp 混合云控制监控您的 NetApp HCI 系统
+    entries:
+    - title: 查看 NetApp Hybrid Cloud Control 信息板上的资源
+      url: "/docs/task_hcc_dashboard.html"
+    - title: 在 NetApp Hybrid Cloud Control 的 Nodes 页面上查看您的清单
+      url: "/docs/task_hcc_nodes.html"
+    - title: 使用 NetApp Hybrid Cloud Control 编辑 BMC 连接信息
+      url: "/docs/task_hcc_edit_bmc_info.html"
+    - title: 使用 NetApp Hybrid Cloud Control 监控存储集群上的卷
+      url: "/docs/task_hcc_volumes.html"
+    - title: 使用 NetApp Hybrid Cloud Control 连接到 Active IQ ，监控性能，容量和集群运行状况
+      url: "/docs/task_hcc_activeiq.html"
+    - title: 收集日志以进行故障排除
+      url: "/docs/task_hcc_collectlogs.html"
+  - title: 升级 NetApp HCI 系统版本 1.9 或 1.9P1
+    entries:
+    - title: 升级顺序概述
+      url: "/docs/concept_hci_upgrade_overview.html"
+    - title: 系统升级过程
+      entries:
+      - title: 更新管理服务
+        url: "/docs/task_hcc_update_management_services.html"
+      - title: 升级到最新的 HealthTools
+        url: "/docs/task_upgrade_element_latest_healthtools.html"
+      - title: 在升级存储之前，请运行 Element 存储运行状况检查
+        url: "/docs/task_hcc_upgrade_element_prechecks.html"
+      - title: 升级 Element 软件
+        url: "/docs/task_hcc_upgrade_element_software.html"
+      - title: 升级存储固件
+        url: "/docs/task_hcc_upgrade_storage_firmware.html"
+      - title: 升级管理节点
+        url: "/docs/task_hcc_upgrade_management_node.html"
+      - title: 升级适用于 vCenter Server 的 NetApp Element 插件
+        url: "/docs/task_vcp_upgrade_plugin.html"
+      - title: 在升级计算固件之前运行计算节点运行状况检查
+        url: "/docs/task_upgrade_compute_prechecks.html"
+      - title: 更新计算节点驱动程序
+        url: "/docs/task_hcc_upgrade_compute_node_drivers.html"
+      - title: 升级计算节点固件
+        url: "/docs/task_hcc_upgrade_compute_node_firmware.html"
+      - title: 利用 Ansible 自动升级计算节点固件
+        url: "/docs/task_hcc_upgrade_compute_firmware_ansible.html"
+    - title: 使用适用于 vCenter Server 的 Element 插件升级适用于 NetApp HCI 系统的 vSphere 组件
+      url: "/docs/task_hci_upgrade_all_vsphere.html"
+  - title: 扩展 NetApp HCI 系统
+    entries:
+    - title: 展开概述
+      url: "/docs/concept_hcc_expandoverview.html"
+    - title: 展开 NetApp HCI 存储资源
+      url: "/docs/task_hcc_expand_storage.html"
+    - title: 展开 NetApp HCI 计算资源
+      url: "/docs/task_hcc_expand_compute.html"
+    - title: 扩展 NetApp 存储和计算资源
+      url: "/docs/task_hcc_expand_compute_and_storage.html"
+    - title: 扩展集群后删除见证节点
+      url: "/docs/task_hci_removewn.html"
+  - title: 在 NetApp HCI 上使用 Rancher
+    entries:
+    - title: NetApp HCI 上的 Rancher 概述
+      url: "/docs/concept_rancher_product_overview.html"
+    - title: 概念
+      url: "/docs/concept_rancher_concepts.html"
+    - title: NetApp HCI 上的 Rancher 的要求
+      url: "/docs/rancher_prereqs_overview.html"
+    - title: 在 NetApp HCI 上部署 Rancher
+      url: "/docs/task_rancher_deploy.html"
+    - title: 部署后任务
+      entries:
+      - title: 部署后任务概述
+        url: "/docs/concept_rancher_post_deployment_overview.html"
+      - title: 确保 Rancher 支持奇偶校验
+        url: "/docs/task_rancher_ensure_rancher_support_parity.html"
+      - title: 提高 Rancher VM 的故障恢复能力
+        url: "/docs/task_rancher_config_anti_affinity.html"
+      - title: 配置监控
+        url: "/docs/task_rancher_enable_monitoring.html"
+      - title: 安装 Trident
+        url: "/docs/task_rancher_trident.html"
+      - title: 为用户集群启用 Trident 支持
+        url: "/docs/task_trident_configure_networking.html"
+    - title: 部署用户集群和应用程序
+      url: "/docs/task_rancher_deploy_user_clusters.html"
+    - title: 在 NetApp HCI 上管理 Rancher
+      url: "/docs/task_rancher_manage.html"
+    - title: 监控 NetApp HCI 上的 Rancher
+      url: "/docs/task_rancher_monitor.html"
+    - title: 升级 NetApp HCI 上的 Rancher
+      url: "/docs/task_rancher_upgrades.html"
+    - title: 删除 NetApp HCI 上的 Rancher 安装
+      url: "/docs/task_rancher_remove_deployment.html"
+  - title: 维护 H 系列硬件
+    entries:
+    - title: H 系列硬件维护概述
+      url: "/docs/task_hci_hwmainoverview.html"
+    - title: 更换 2U H 系列机箱
+      url: "/docs/task_hci_hserieschassisrepl.html"
+    - title: 更换 H615C 和 H610S 节点中的直流电源设备
+      url: "/docs/task_hci_dcpsurepl.html"
+    - title: 更换计算节点中的 DIMM
+      url: "/docs/task_hci_dimmcomputerepl.html"
+    - title: 更换存储节点的驱动器
+      url: "/docs/task_hci_driverepl.html"
+    - title: 更换 H410C 节点
+      url: "/docs/task_hci_h410crepl.html"
+    - title: 更换 H410S 节点
+      url: "/docs/task_hci_h410srepl.html"
+    - title: 更换 H610C 和 H615C 节点
+      url: "/docs/task_hci_h610ch615crepl.html"
+    - title: 更换 H610S 节点
+      url: "/docs/task_hci_h610srepl.html"
+    - title: 更换电源设备
+      url: "/docs/task_hci_psurepl.html"
+    - title: 更换 SN2010 ， SN2100 和 SN2700 交换机
+      url: "/docs/task_hci_snswitches.html"
+    - title: 更换双节点集群中的存储节点
+      url: "/docs/task_hci_2noderepl.html"
+  - title: 早期版本
+    url: "/docs/reference_earlier_versions.html"
+  - title: 法律声明
+    url: "/docs/reference_notices_hci.html"
+homepage:
+  tiles:
+  - title: 入门
+    links:
+    - title: 产品概述
+      url: "/docs/concept_hci_product_overview.html"
+    - title: 发行说明
+      url: "/docs/rn_relatedrn.html"
+    - title: 新增功能
+      url: "/docs/rn_whatsnew.html"
+  - title: 安装维护硬件
+    links:
+    - title: H 系列硬件安装
+      url: "/docs/task_hci_installhw.html"
+    - title: H 系列硬件维护
+      url: "/docs/task_hci_hwmainoverview.html"
+  - title: 安装 NetApp HCI
+    links:
+    - title: 安装和部署概述
+      url: "/docs/task_hci_getstarted.html"
+    - title: 使用 NetApp 部署引擎开始部署
+      url: "/docs/concept_nde_access_overview.html"
+    - title: 执行部署后任务
+      url: "/docs/concept_nde_post_deployment_overview.html"
+  - title: 使用 NetApp HCI
+    links:
+    - title: 使用 NetApp Hybrid Cloud Control 进行管理
+      url: "/docs/task_nde_access_hcc.html"
+    - title: 使用管理节点
+      url: "/docs/task_mnode_work_overview.html"
+    - title: 使用适用于 vCenter Server 的 NetApp Element 插件
+      url: https://docs.netapp.com/us-en/vcp/index.html
+    - title: 使用 Rancher
+      url: "/docs/concept_rancher_product_overview.html"
+    - title: 展开 NetApp HCI
+      url: "/docs/concept_hcc_expandoverview.html"
+    - title: 升级 NetApp HCI
+      url: "/docs/concept_hci_upgrade_overview.html"
+  - title: 故障排除
+    links:
+    - title: 对 NetApp HCI 和 Rancher 进行故障排除
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/NetApp_HCI_and_Rancher_troubleshooting
+    - title: 重置计算节点上的 BMC
+      url: https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_reset_BMC_on_NetApp_HCI_compute_nodes
+    - title: 更多知识库文章
+      url: https://kb.netapp.com/Special:Search?query=netapp+hci&type=wiki
+  - title: 解决方案
+    links:
+    - title: NetApp HCI 资源页面
+      url: https://www.netapp.com/hybrid-cloud/hci-documentation/
+    - title: NetApp 解决方案
+      url: https://docs.netapp.com/us-en/netapp-solutions/index.html
+  - title: 演示教程
+    links:
+    - title: NetApp HCI 视频库
+      url: https://tv.netapp.com/category/videos/netapp-hci
+    - title: NetApp 学习服务
+      url: https://www.netapp.com/support-and-training/netapp-university/
+  - title: 博客社区
+    links:
+    - title: NetApp 社区
+      url: https://community.netapp.com/t5/forums/searchpage/tab/message?advanced=false&allow_punctuation=false&q=hci
+    - title: 如何获取帮助
+      url: https://mysupport.netapp.com/site/products/all/details/netapp-hci/guideme-tab
+  - title: 早期版本
+    links:
+    - title: NetApp HCI 1.8 文档
+      url: https://docs.netapp.com/us-en/hci18/index.html
+    - title: NetApp HCI 文档中心
+      url: https://docs.netapp.com/hci/index.jsp

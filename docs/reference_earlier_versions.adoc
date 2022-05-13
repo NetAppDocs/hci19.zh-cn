@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: docs/reference_earlier_versions.html 
+keywords: documentation, earlier, previous, versions 
+summary: 如果您未运行最新版本，可以参考先前版本的 NetApp HCI 文档。 
+---
+= 早期版本的 NetApp HCI 文档
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, earlier, documentation, versions
+
+
+[role="lead"]
+如果您未运行最新版本，可以参考先前版本的 NetApp HCI 文档。
+
+* http://docs.netapp.com/us-en/hci18/docs/index.html["NetApp HCI 1.8P1"^]
+* https://docs.netapp.com/hci/index.jsp["NetApp HCI 1.8 及更早版本"^]
+

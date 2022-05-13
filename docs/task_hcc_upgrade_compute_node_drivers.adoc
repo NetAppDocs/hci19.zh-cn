@@ -1,0 +1,63 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_upgrade_compute_node_drivers.html 
+summary: 在 NetApp HCI 系统升级过程中，您可以升级计算节点驱动程序。 
+keywords: netapp, hci, on premise, cluster, element, compute node 
+---
+= 更新计算节点驱动程序
+:allow-uri-read: 
+
+
+[role="lead"]
+对于任何 H 系列计算节点，您都可以使用 VMware Update Manager 更新节点上使用的驱动程序。
+
+请参见中适用于您的硬件的固件和驱动程序列表 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["此 NetApp 知识库文章"^] （需要登录）。
+
+一次仅执行其中一个更新操作。
+
+在尝试升级计算固件之前，应检查当前 ESXi 驱动程序版本。如果此驱动程序已过期，请先升级此驱动程序。然后升级计算节点的计算固件。
+
+.步骤
+. 浏览到 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp HCI 软件下载"^] 页面并选择正确版本的 NetApp HCI 的下载链接。
+. 从下拉列表中选择 * ESXi_drivers* 。
+. 接受最终用户许可协议。
+. 下载适用于您的节点类型和 ESXi 版本的驱动程序软件包。
+. 在本地计算机上解压缩下载的驱动程序包。
++
+
+NOTE: NetApp 驱动程序包包含一个或多个 VMware 脱机捆绑包 ZIP 文件；请勿提取这些 ZIP 文件。
+
+. 转至 VMware vCenter 中的 * VMware Update Manager* 。
+. 将计算节点的驱动程序脱机捆绑包文件导入到 * 修补程序存储库 * 中。
++
+** 对于 VMware ESXi 7.0 ， NetApp H610C ， H615C ， H410C 和 Hx00E 计算节点及其内置系统组件的所有必要驱动程序均包含在标准 VMware ESXi 7.0 安装 ISO 映像中。对于运行 VMware ESXi 7.0 （和更新）的 NetApp HCI 计算节点，您不需要其他或更新驱动程序。
+** 对于 VMware ESXi 6.x ，请执行以下步骤以导入驱动程序脱机捆绑包文件：
++
+... 选择 * 更新 * 选项卡。
+... 选择 * 从文件上传 * 。
+... 浏览到先前下载的脱机捆绑包并选择 * 导入 * 。
+
+
+
+
+. 为计算节点创建新的主机基线。
+. 为名称和类型选择 * 主机扩展 * ，然后选择要包含在新基线中的所有导入驱动程序软件包。
+. 在 vCenter 的 * 主机和集群 * 菜单中，选择包含要更新的计算节点的集群，然后导航到 * 更新管理器 * 选项卡。
+. 选择 * 修复 * ，然后选择新创建的主机基线。确保已选择基线中包含的驱动程序。
+. 继续执行向导中的 * 主机修复选项 * ，并确保已选择 * 不更改虚拟机电源状态 * 选项，以便在驱动程序更新期间使虚拟机保持联机。
++
+
+NOTE: 如果在集群上启用了 VMware 分布式资源计划程序（ DRS ）（这是 NetApp HCI 安装中的默认设置），则虚拟机将自动迁移到集群中的其他节点。
+
+. 继续到向导中的 * 准备完成 * 页面，然后选择 * 完成 * 。
++
+集群中所有计算节点的驱动程序一次更新一个节点，而虚拟机保持联机状态。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

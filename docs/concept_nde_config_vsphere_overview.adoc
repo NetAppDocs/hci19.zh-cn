@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_nde_config_vsphere_overview.html 
+summary: 了解如何在 NetApp HCI 部署期间配置 VMware vSphere 。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= VMware vSphere 配置
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+NetApp HCI 使用 VMware vSphere 的 vCenter Server 和 ESXi 组件。vCenter Server 用于管理和监控每个计算节点上安装的 VMware ESXi 虚拟机管理程序。您可以安装和配置新的 vSphere 部署，也可以安装适用于 vCenter Server 的 NetApp Element 插件，也可以加入和扩展现有 vSphere 部署。
+
+在使用 NetApp 部署引擎安装新的 vSphere 部署时，请注意以下注意事项：
+
+* NetApp 部署引擎将安装具有 " 小型部署大小 " 选项的新 vCenter Server 设备。
+* vCenter Server 许可证是一种临时评估许可证。要在评估期过后继续操作，您需要从 VMware 获取新的许可证密钥并将其添加到 vCenter Server 许可证清单中。
+
+
+
+NOTE: 如果您的 vSphere 清单配置使用文件夹将 NetApp HCI 集群存储在 vCenter 数据中心内，则某些操作（例如扩展 NetApp HCI 计算资源）将失败。确保 NetApp HCI 集群位于 vSphere Web Client 清单树中数据中心的正下方，而不是存储在文件夹中。有关详细信息，请参见 NetApp 知识库文章。
+
+如果您安装新的 vCenter Server ，则可以在网络配置期间安装 vSphere 标准交换机或 vSphere 分布式交换机（ vSphere Distributed Switch ， VDS ）。通过 VDS ，可以在部署 NetApp HCI 后对虚拟机网络配置进行简化的集中管理。NetApp HCI 上的云数据服务功能需要使用 VDS ；云数据服务不支持 vSphere 标准交换机。
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

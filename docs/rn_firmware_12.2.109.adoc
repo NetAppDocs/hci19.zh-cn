@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_firmware_12.2.109.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, compute firmware 
+---
+= 计算固件包 12.2.109 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+可下载的计算节点固件包可为所有受支持的 NetApp HCI 计算节点提供最新的 BIOS 和 BMC 功能增强功能，错误修复以及硬件支持。
+
+
+
+== 新增功能
+
+12.2.109 版引入了 BMC 对 DMTF Redfap API 的支持，可为 NetApp Hybrid Cloud Control 未来的功能提供支持。固件更新还包含常规错误修复并解决内存问题。H300E ， H500E 和 H700E 计算节点的 BMC 更新可解决多个安全漏洞，包括 CVE-2019-16649 ， CVE-2019-16650 和 CVE-2019-6260 。
+
+此固件包包含以下硬件组件固件版本，更新版本以粗体显示：
+
+|===
+| 组件 | H300E ， H500E ， H700E | H410C | H610C | H615C 
+
+
+| BIOS | NA2.1 | * NA3.7* | * 3B01* | 3B06.CO 
+
+
+| BMC | * 。 6.84.00* | 6.71.6. | * 。 3.96.07* | * 。 4.64.07* 
+
+
+| NIC/Mellanox | 14.21.1000 | 14.21.1000 | 14.22.1002. | 14.23.1020 
+|===
+要下载计算固件包，请转到 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle["NetApp HCI 计算固件包"^] 页面。
+
+请访问 link:task_hcc_upgrade_compute_node_firmware.html#use-the-baseboard-management-controller-bmc-user-interface-ui["更新计算节点固件"^] 有关更新计算节点固件的说明。
+
+
+
+== 已解决的问题
+
+以下是此版本中已解决的问题。
+
+|===
+| 问题描述 | Description 
+
+
+| PE-10306 | 在 Element 11.8 存储节点上升级 BMC 软件时， BMC 用户凭据将丢失。 
+
+
+| CSESF-26 | 在某些情况下， H610C 节点可能会出现间歇性风扇噪声。 
+
+
+| CSESF-293 | 在 H410C ， H610C ， H300E ， H500E 或 H700E 节点上升级到 12.2.92 版计算节点固件时， 已安装 Mellanox 网络接口卡（ Network Interface Card ， NIC ）固件版本 14.21.1000 ，即使该固件先前版本较新也是如此。 
+
+
+| CSESF-352 | TLS 1.0 和 1.1 版存在安全漏洞。此版本会对 H610C 和 H615C 计算节点禁用 TLS 1.0 和 1.1 。 
+|===
+
+
+== 已知问题
+
+以下是此版本中的已知问题，可能会影响某些环境的日常操作。
+
+|===
+| 问题描述 | Description | 临时解决策 
+
+
+| CSESF-295 | 如果您使用可下载的固件包更新 H410C 节点上的固件，则计算节点固件更新过程将失败并显示 BIOS 更新错误。 | 手动将 H410C 节点上的 BIOS 更新为版本 NA3.7 ： 1.浏览到 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp HCI 下载页面"^]。2. 在下拉列表文本字段中输入 `H410C_BIOS_3.7` 。3. 单击 * 执行 * 。有关更新的说明，请参见下载页面上的 PDF 格式。更新 BIOS 和 BMC 后，请使用计算固件 12.2.109 软件包更新 H410C 节点固件。 
+|===

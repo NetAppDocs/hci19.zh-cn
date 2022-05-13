@@ -1,0 +1,113 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_expand_compute.html 
+summary: 完成 NetApp HCI 部署后，您可以使用 NetApp 混合云控制扩展和配置 NetApp HCI 存储资源。 
+keywords: netapp, hci, on premise, expand, compute, cluster 
+---
+= 展开 NetApp HCI 计算资源
+:allow-uri-read: 
+
+
+[role="lead"]
+完成 NetApp HCI 部署后，您可以使用 NetApp 混合云控制扩展和配置 NetApp HCI 计算资源。
+
+.开始之前
+* 如果要使用虚拟分布式交换机扩展部署，请确保 NetApp HCI 的 vSphere 实例使用的是 vSphere Enterprise Plus 许可。
+* 确保与 NetApp HCI 一起使用的 vCenter 或 vSphere 实例的许可证均未过期。
+* 确保与现有节点位于同一网段上的 IPv4 地址可用且未使用（每个新节点都必须与此类型的现有节点安装在同一网络上）。
+* 确保已准备好 vCenter 管理员帐户凭据。
+* 确保已对每个新节点执行以下操作：
++
+** 已按照说明在 NetApp HCI 机箱中安装新节点 link:task_hci_installhw.html["安装说明"]。
+** 已为新节点布线并打开电源
+
+
+* 确保每个新节点使用与现有存储或计算集群相同的网络拓扑和布线。
+
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 单击界面右上角的 * 展开 * 。
++
+浏览器将打开 NetApp 部署引擎。
+
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 部署引擎。
+. 在 * 欢迎 * 页面上，单击 * 是 * ，然后单击 * 继续 * 。
+. 在 * 最终用户许可 * 页面上，阅读 VMware 最终用户许可协议并单击 * 我接受 * 接受条款，然后单击 * 继续 * 。
+. 在 * vCenter * 页面上，完成以下步骤：
++
+.. 输入与您的 NetApp HCI 安装关联的 vCenter 实例的 FQDN 或 IP 地址以及管理员凭据。
+.. 单击 * 继续 * 。
+.. 选择要添加计算节点的 vSphere 数据中心，或者单击 * 创建新数据中心 * 将计算节点添加到新数据中心。
++
+
+NOTE: 如果单击创建新数据中心，则会自动填充集群字段。
+
+.. 如果选择了现有数据中心，请选择应与新计算节点关联的 vSphere 集群。
++
+
+NOTE: 如果 NetApp HCI 无法识别您为扩展选择的集群的网络设置，请确保将管理，存储和 vMotion 网络的 vmkernel 和 vmnic 映射设置为部署默认值。请参见 link:task_nde_supported_net_changes.html["支持的网络更改"] 有关详细信息 ...
+
+.. 单击 * 继续 * 。
+
+
+. 在 * ESXi Credentials* 页面上，为要添加的计算节点输入 ESXi 根密码。
++
+您应使用在初始 NetApp HCI 部署期间创建的相同密码。
+
+. 单击 * 继续 * 。
+. 如果您创建了新的 vSphere 数据中心集群，请在 * 网络拓扑 * 页面上选择与要添加的新计算节点匹配的网络拓扑。
++
+
+NOTE: 只有当您的计算节点使用双缆线拓扑且现有 NetApp HCI 部署配置了 VLAN ID 时，才可以选择双缆线选项。
+
+. 在 * 可用清单 * 页面上，选择要添加到现有 NetApp HCI 安装中的节点。
++
+
+IMPORTANT: 对于某些计算节点，您可能需要先在 vCenter 版本支持的最高级别启用 EV ，然后才能将其添加到安装中。您需要使用 vSphere 客户端为这些计算节点启用 EVC 。启用后，请刷新 Inventory 页面并重新尝试添加计算节点。
+
+. 单击 * 继续 * 。
+. * 可选 * ：如果创建了新的 vSphere 数据中心集群，请在 * 网络设置 * 页面上选中 * 从现有集群复制设置 * 复选框，以从现有 NetApp HCI 部署导入网络信息。
++
+此操作将填充每个网络的默认网关和子网信息。
+
+. 在 * 网络设置 * 页面上，已从初始部署中检测到一些网络信息。每个新计算节点都会按序列号列出，您需要为其分配新的网络信息。对于每个新计算节点，请完成以下步骤：
++
+.. * 主机名 * ：如果 NetApp HCI 检测到命名前缀，请从 * 检测到的命名前缀 * 字段中复制该前缀，然后将其插入为新主机名的前缀。
+.. * 管理 IP 地址 * ：输入管理网络子网中新计算节点的管理 IP 地址。
+.. * vMotion IP Address* ：为 vMotion 网络子网中的新计算节点输入 vMotion IP 地址。
+.. * iSCSI A - IP 地址 * ：输入 iSCSI 网络子网中计算节点的第一个 iSCSI 端口的 IP 地址。
+.. * iSCSI B - IP Address* ：输入 iSCSI 网络子网中计算节点的第二个 iSCSI 端口的 IP 地址
+.. 单击 * 继续 * 。
+
+
+. 在 "Network Settings" 部分的 * 查看 * 页面上，新节点以粗体显示。要在任何部分中进行更改，请执行以下操作：
++
+.. 单击该部分的 * 编辑 * 。
+.. 完成后，在任何后续页面上单击 * 继续 * 以返回到 * 审阅 * 页面。
+
+
+. * 可选 * ：如果您不想将集群统计信息和支持信息发送到 NetApp 托管的 SolidFire Active IQ 服务器，请清除最后一个复选框。
++
+此操作将禁用对 NetApp HCI 的实时运行状况和诊断监控。禁用此功能后， NetApp 将无法主动支持和监控 NetApp HCI ，以便在生产受到影响之前检测和解决问题。
+
+. 单击 * 添加节点 * 。
++
+您可以在 NetApp HCI 添加和配置资源时监控进度。
+
+. * 可选 * ：验证是否可以在 VMware vSphere Web Client 中看到任何新的计算节点。
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2856176["《 NetApp HCI 计算和存储节点安装和设置说明》"^]
+* https://kb.vmware.com/s/article/1003212["VMware 知识库：增强的 vMotion 兼容性（ EVC ）处理器支持"^]
+

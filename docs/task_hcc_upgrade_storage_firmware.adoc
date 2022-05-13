@@ -1,0 +1,454 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_upgrade_storage_firmware.html 
+summary: 在 NetApp HCI 系统升级过程中，您可以升级与存储节点关联的固件。 
+keywords: netapp, element, hcc, firmware, storage firmware 
+---
+= 升级存储固件
+:allow-uri-read: 
+
+
+[role="lead"]
+从 Element 12.0 和管理服务版本 2.14 开始，您可以使用 NetApp Hybrid Cloud Control UI 和 REST API 在存储节点上执行纯固件升级。此操作步骤不会升级 Element 软件，您可以通过它在主要 Element 版本之外升级存储固件。
+
+.您需要什么？ #8217 ；将需要什么
+* * 管理员权限 * ：您拥有执行升级的存储集群管理员权限。
+* * 系统时间同步 * ：您已确保所有节点上的系统时间均已同步，并且已为存储集群和节点正确配置 NTP 。必须在每个节点 Web UI （`https://[IP address] ： 442` ）中为每个节点配置一个 DNS 命名服务器，并且不会出现与时间偏差相关的未解决集群故障。
+* * 系统端口 * ：如果您使用 NetApp Hybrid Cloud Control 进行升级，则已确保必要的端口处于打开状态。请参见 link:hci_prereqs_required_network_ports.html["网络端口"] 有关详细信息 ...
+* * 管理节点 * ：对于 NetApp Hybrid Cloud Control UI 和 API ，您环境中的管理节点运行的是 11.3 版。
+* * 管理服务 * ：您已将管理服务捆绑包更新到最新版本。
+
+
+
+IMPORTANT: 对于运行 Element 软件 12.0 版的 H610S 存储节点，在升级到存储固件包 2.27 之前，应应用 D-patch SUST-909 。在升级之前，请联系 NetApp 支持部门获取 D-patch 。请参见 link:http://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.27.html["存储固件包 2.27 发行说明"^]。
+
+
+IMPORTANT: 在升级存储节点上的固件之前，您必须升级到最新的管理服务包。如果要将 Element 软件更新到 12.2 或更高版本，则需要使用管理服务 2.14.60 或更高版本才能继续。
+
+
+IMPORTANT: 要更新 iDRAC 或 BIOS 固件，请联系 NetApp 支持部门。对于追加信息，请参见此内容 link:https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_to_update_iDRAC%2F%2FBIOS_firmware_on_SF_Series_nodes["知识库文章"^]。
+
+* * 集群运行状况 * ：您已运行运行运行状况检查。请参见 link:task_hcc_upgrade_element_prechecks.html["在升级存储之前，请运行 Element 存储运行状况检查"]。
+* * 已更新 H610S 节点的 BMC * ：您已升级 H610S 节点的 BMC 版本。请参见 link:rn_H610S_BMC_3.84.07.html["发行说明和升级说明"^]。
+
+
+
+NOTE: 有关适用于您的硬件的固件和驱动程序固件的完整列表，请参见此内容 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["知识库文章"^] （需要登录）。
+
+* *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级存储固件：
++
+.. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+.. 选择靠近接口右上角的 * 升级 * 。
+.. 此时将弹出EULA。向下滚动、选择*我接受当前更新和所有未来更新*、然后选择*保存*。
++
+
+NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启用自动下载功能。您将收到有关NetApp软件更新和升级的更新、您可以在方便时自行决定安装这些更新。您可以通过禁用与NetApp联机软件存储库的网络连接来禁用自动下载功能。
+
+
+
+
+
+选择以下存储固件升级选项之一：
+
+* <<Use NetApp Hybrid Cloud Control UI to upgrade storage firmware>>
+* <<Use NetApp Hybrid Cloud Control API to upgrade storage firmware>>
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control UI 升级存储固件
+
+您可以使用 NetApp Hybrid Cloud Control UI 升级集群中存储节点的固件。
+
+如果您的管理节点未连接到 Internet ，则表示您已连接到 Internet https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/Storage_Firmware_Bundle["已下载 NetApp HCI 存储集群的存储固件包"^]。
+
+
+CAUTION: 有关使用 NetApp Hybrid Cloud Control 升级存储集群时的潜在问题及其解决方法，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["知识库文章"^]。
+
+
+TIP: 每个存储节点的升级过程大约需要 30 分钟。如果要将 Element 存储集群升级到版本 2.76 以上的存储固件，则只有在将新固件写入节点后，各个存储节点才会在升级期间重新启动。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 选择靠近接口右上角的 * 升级 * 。
+. 在 * 升级 * 页面上，选择 * 存储 * 。
++
+
+NOTE: * 存储 * 选项卡列出了安装过程中的存储集群。如果 NetApp Hybrid Cloud Control 无法访问某个集群，则该集群将不会显示在 * 升级 * 页面上。如果您的集群运行的是 Element 12.0 或更高版本，则会看到为这些集群列出的当前固件包版本。如果一个集群中的节点具有不同的固件版本，或者升级过程中，您将在 * 当前固件包版本 * 列中看到 * 多个 * 。您可以选择 * 多个 * 以导航到 * 节点 * 页面以比较固件版本。如果所有集群运行的 Element 版本均早于 12.0 ，则您将看不到有关固件包版本号的任何信息。此信息也可从 * 节点 * 页面获得。请参见 link:task_hcc_nodes.html["查看清单"]。如果集群是最新的且 / 或没有可用的升级软件包，则不会显示 * 元素 * 和 * 仅固件 * 选项卡。在升级过程中，也不会显示这些选项卡。如果显示的是 * 元素 * 选项卡，而不是 * 仅固件 * 选项卡，则表示没有可用的固件包。
+
+. 从以下选项中进行选择，并执行一组适用于您的集群的步骤：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您的管理节点具有外部连接。  a| 
+.. 选择要升级的集群旁边的下拉箭头。
+.. 选择 * 仅固件 * ，然后从可用的升级版本中进行选择。
+.. 选择 * 开始升级 * 。
+
+
+
+TIP: 升级期间， * 升级状态 * 会发生更改，以反映此过程的状态。它也会根据您执行的操作而发生更改，例如暂停升级或升级返回错误。请参见 <<Upgrade status changes>>。
+
+
+NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。如果集群行已折叠，则此页面不会动态更新状态和当前版本。必须展开集群行才能更新此表，您也可以刷新此页面。
+
+升级完成后，您可以下载日志。
+
+
+
+| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
+.. 选择要升级的集群旁边的下拉箭头。
+.. 选择 * 浏览 * 上传您下载的升级软件包。
+.. 等待上传完成。进度条会显示上传状态。
+
+
+
+CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
+
+成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。如果在此阶段离开浏览器窗口，则会保留文件上传。升级完成后，您可以下载日志。有关各种升级状态更改的信息，请参见 <<Upgrade status changes>>。
+
+|===
+
+
+
+
+=== 升级状态更改
+
+以下是用户界面中的 * 升级状态 * 列在升级过程之前，期间和之后显示的不同状态：
+
+[cols="2*"]
+|===
+| 升级状态 | Description 
+
+
+| 最新 | 集群已升级到最新可用 Element 版本，或者固件已升级到最新版本。 
+
+
+| 无法检测 | 如果 NetApp Hybrid Cloud Control 无法通过外部连接访问联机软件存储库，则会显示此状态，而不是显示 * 可用版本 * 。如果存储服务 API 返回的升级状态不在可能升级状态的枚举列表中，则也会显示此状态。 
+
+
+| 可用版本 | 可以升级较新版本的 Element 和 / 或存储固件。 
+
+
+| 正在进行中 | 正在升级。进度条会显示升级状态。屏幕上的消息还会显示节点级别的故障，并在升级过程中显示集群中每个节点的节点 ID 。您可以使用 Element UI 或适用于 vCenter Server 的 NetApp Element 插件 UI 监控每个节点的状态。 
+
+
+| 升级暂停 | 您可以选择暂停升级。根据升级过程的状态，暂停操作可能会成功或失败。您将看到一个 UI 提示，要求您确认暂停操作。要确保集群在暂停升级之前处于安全位置，可能需要长达两个小时才能完全暂停升级操作。要恢复升级，请选择 * 恢复 * 。 
+
+
+| 已暂停 | 您已暂停升级。选择 * 恢复 * 以恢复此过程。 
+
+
+| error | 升级期间发生错误。您可以下载错误日志并将其发送给 NetApp 支持部门。解决此错误后，您可以返回到页面并选择 * 恢复 * 。恢复升级时，进度条会后退几分钟，而系统会运行运行状况检查并检查升级的当前状态。 
+|===
+
+
+== 使用 NetApp Hybrid Cloud Control 升级失败时会发生什么情况
+
+如果驱动器或节点在升级期间发生故障， Element UI 将显示集群故障。升级过程不会继续到下一个节点，而是等待集群故障解决。UI 中的进度条显示升级正在等待集群故障解决。在此阶段，在 UI 中选择 * 暂停 * 将不起作用，因为升级会等待集群运行正常。您需要联系 NetApp 支持部门以协助进行故障调查。
+
+NetApp Hybrid Cloud Control 具有预先设置的三小时等待时间，在此期间可能会发生以下情况之一：
+
+* 集群故障将在三小时内得到解决，升级将继续进行。在这种情况下，您无需执行任何操作。
+* 此问题在三小时后仍然存在，并且升级状态显示 * 错误 * 并显示红色横幅。解决问题后，您可以通过选择 * 恢复 * 来恢复升级。
+* NetApp 支持部门已确定需要暂时中止升级，以便在三小时内采取更正措施。支持人员将使用 API 中止升级。
+
+
+
+CAUTION: 在更新节点时中止集群升级可能会导致驱动器异常地从节点中删除。如果驱动器被异常删除，则在升级期间重新添加驱动器需要 NetApp 支持部门手动干预。节点执行固件更新或更新后同步活动可能需要较长时间。如果升级进度似乎停滞，请联系 NetApp 支持部门以获得帮助。
+
+
+
+== 使用 NetApp Hybrid Cloud Control API 升级存储固件
+
+您可以使用 API 将集群中的存储节点升级到最新的 Element 软件版本。您可以使用自己选择的自动化工具来运行 API 。此处介绍的 API 工作流使用管理节点上提供的 REST API UI 作为示例。
+
+.步骤
+. 根据您的连接执行以下操作之一：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您的管理节点具有外部连接。  a| 
+.. 验证存储库连接：
++
+... 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭授权窗口。
+
+
+... 从 REST API UI 中，选择 * 获取​ / packages​ / 远程 - repository​ / 连接 * 。
+... 选择 * 试用 * 。
+... 选择 * 执行 * 。
+... 如果返回代码 200 ，请转至下一步。如果未连接到远程存储库，请建立连接或使用非公开站点选项。
+
+
+.. 查找升级软件包 ID ：
++
+... 从 REST API UI 中，选择 * 获取 /packages* 。
+... 选择 * 试用 * 。
+... 选择 * 执行 * 。
+... 在响应中，复制并保存固件包 ID ，以供后续步骤使用。
+
+
+
+
+
+
+| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
+.. 将最新的存储固件升级软件包下载到可供管理节点访问的设备；转到 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab/download/62654/Storage_Firmware_Bundle["Element 软件存储固件捆绑包页面"^] 并下载最新的存储固件映像。
+.. 将存储固件升级软件包上传到管理节点：
++
+... 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭授权窗口。
+
+
+... 从 REST API UI 中，选择 * POST /packages* 。
+... 选择 * 试用 * 。
+... 选择 * 浏览 * 并选择升级软件包。
+... 选择 * 执行 * 以启动上传。
+... 在响应中，复制并保存软件包 ID （` "id"` ）以供后续步骤使用。
+
+
+.. 验证上传状态。
++
+... 从 REST API UI 中，选择 * GET​ /v í packages​ / ｛ id ｝​ /status* 。
+... 选择 * 试用 * 。
+... 在 * id* 中输入上一步复制的固件包 ID 。
+... 选择 * 执行 * 以启动状态请求。
++
+完成后，此响应会将 `state` 指示为 `Success` 。
+
+
+
+
+
+|===
+. 找到安装资产 ID ：
++
+.. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 从 REST API UI 中，选择 * 获取 /installations * 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从响应中复制安装资产 ID （`id` ）。
++
+[listing, subs="+quotes"]
+----
+*"id": "abcd01e2-xx00-4ccf-11ee-11f111xx9a0b",*
+"management": {
+  "errors": [],
+  "inventory": {
+    "authoritativeClusterMvip": "10.111.111.111",
+    "bundleVersion": "2.14.19",
+    "managementIp": "10.111.111.111",
+    "version": "1.4.12"
+----
+.. 从 REST API UI 中，选择 * 获取 /installations/ ｛ id ｝ * 。
+.. 选择 * 试用 * 。
+.. 将安装资产 ID 粘贴到 * id * 字段中。
+.. 选择 * 执行 * 。
+.. 在此响应中，复制并保存要升级的集群的存储集群 ID （` "id"` ），以便日后使用。
++
+[listing, subs="+quotes"]
+----
+"storage": {
+  "errors": [],
+  "inventory": {
+    "clusters": [
+      {
+        "clusterUuid": "a1bd1111-4f1e-46zz-ab6f-0a1111b1111x",
+        *"id": "a1bd1111-4f1e-46zz-ab6f-a1a1a111b012",*
+----
+
+
+. 运行存储固件升级：
++
+.. 在管理节点上打开存储 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭窗口。
+
+
+.. 选择 * POST /upgrades* 。
+.. 选择 * 试用 * 。
+.. 在参数字段中输入升级软件包 ID 。
+.. 在参数字段中输入存储集群 ID 。
+.. 选择 * 执行 * 以启动升级。
++
+响应应指示状态为 `initializing` ：
+
++
+[listing, subs="+quotes"]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  *"state": "initializing",*
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. 复制响应中的升级 ID （` "upgradeId"` ）。
+
+
+. 验证升级进度和结果：
++
+.. 选择 * 获取​ /upgrades/｛ upgradeId ｝ * 。
+.. 选择 * 试用 * 。
+.. 在 * 升级 Id* 中输入上一步中的升级 ID 。
+.. 选择 * 执行 * 。
+.. 如果在升级期间出现问题或存在特殊要求，请执行以下操作之一：
++
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 您需要更正响应正文中出现的 `failedHealthChecks` 消息导致的集群运行状况问题。  a| 
+... 转至为每个问题描述列出的特定知识库文章，或者执行指定的补救措施。
+... 如果指定了 KB ，请完成相关知识库文章中所述的过程。
+... 解决集群问题后，如果需要，请重新进行身份验证，然后选择 * PUT ​ /upgrades/｛ upgradeId ｝ * 。
+... 选择 * 试用 * 。
+... 在 * 升级 Id* 中输入上一步中的升级 ID 。
+... 在请求正文中输入 ` action" ： "resume"` 。
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... 选择 * 执行 * 。
+
+
+
+
+| 由于维护窗口正在关闭或其他原因，您需要暂停升级。  a| 
+... 如果需要，请重新进行身份验证并选择 * PUT ​ /upgrades/｛ upgradeId ｝ * 。
+... 选择 * 试用 * 。
+... 在 * 升级 Id* 中输入上一步中的升级 ID 。
+... 在请求正文中输入 ` action" ： "pause"` 。
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... 选择 * 执行 * 。
+
+
+|===
+.. 根据需要多次运行 * 获取​ /upgrades/｛ upgradeId ｝ * API ，直到此过程完成。
++
+在升级期间，如果未遇到任何错误，则 `stStatus` 会指示 `Running` 。升级每个节点后， `step` 值将更改为 `NodeFinished` 。
+
++
+当 `Percent` 值为 `100` 且 `state` 指示 `finished` 时，升级已成功完成。
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

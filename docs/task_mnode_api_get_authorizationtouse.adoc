@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_api_get_authorizationtouse.html 
+summary: 您必须先进行授权，然后才能在 REST API UI 中对管理服务使用 API 。 
+keywords: netapp, hci, management node, mnode, api, token 
+---
+= 获取使用 REST API 的授权
+:allow-uri-read: 
+
+
+[role="lead"]
+您必须先进行授权，然后才能在 REST API UI 中对管理服务使用 API 。您可以通过获取访问令牌来执行此操作。
+
+要获取令牌，请提供集群管理员凭据和客户端 ID 。每个令牌的有效期大约为 10 分钟。令牌过期后，您可以重新授权获取新的访问令牌。
+
+在管理节点安装和部署期间，系统会为您设置授权功能。令牌服务基于您在设置期间定义的存储集群。
+
+.开始之前
+* 您的集群版本应运行 NetApp Element 软件 11.3 或更高版本。
+* 您应已部署运行 11.3 或更高版本的管理节点。
+
+
+.API 命令
+[listing]
+----
+TOKEN=`curl -k -X POST https://MVIP/auth/connect/token -F client_id=mnode-client -F grant_type=password -F username=CLUSTER_ADMIN -F password=CLUSTER_PASSWORD|awk -F':' '{print $2}'|awk -F',' '{print $1}'|sed s/\"//g`
+----
+.REST API UI 步骤
+. 通过输入管理节点 IP 地址并后跟服务名称来访问此服务的 REST API UI ，例如 ` /mnode/` ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 单击 * 授权 * 。
++
+
+NOTE: 或者，您也可以单击任何服务 API 旁边的锁定图标。
+
+. 完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 请勿输入客户端密钥值。
+.. 单击 * 授权 * 开始会话。
+
+
+. 关闭 * 可用授权 * 对话框。
++
+
+NOTE: 如果您尝试在令牌过期后运行命令，则会显示 `401 Error ： Unauthorized` 消息。如果看到此信息，请重新授权。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,75 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_monitor.html 
+summary: 了解如何在 NetApp HCI 上监控 Rancher 。 
+keywords: netapp, hci, rancher, deploy, cluster, kubernetes, control plane, monitor, user cluster, workload 
+---
+= 监控 NetApp HCI 实施中的 Rancher
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+监控 Rancher 服务器，管理集群和其他详细信息的方法有多种。
+
+* NetApp Hybrid Cloud Control
+* Rancher UI
+* NetApp Active IQ
+* vCenter Server
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control 监控 Rancher
+
+使用 NetApp Hybrid Cloud Control ，您可以查看 Rancher URL 和 Rancher 服务器集群状态。您还可以监控正在运行 Rancher 的节点。
+
+. 通过提供 Element 存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 在信息板中，单击右上角的选项图标并选择 * 配置 * 。
++
+image::hcc_configure.png[Rancher 配置页面]
+
+. 要查看节点信息，请从混合云控制信息板中展开存储集群的名称，然后单击 * 节点 * 。
+
+
+
+
+== 使用 Rancher UI 监控 Rancher
+
+使用 Rancher UI ，您可以查看有关 NetApp HCI 管理集群和用户集群上的 Rancher 的信息。
+
+
+TIP: 在 Rancher UI 中，管理集群称为 " 本地集群 " 。
+
+. 使用 Rancher 部署结束时提供的 URL 访问 Rancher UI 。
+. 请参见 https://rancher.com/docs/rancher/v2.x/en/monitoring-alerting/v2.5/["在 Rancher v2.5 中进行监控"]。
+
+
+
+
+== 使用 NetApp Active IQ 监控 Rancher
+
+使用 NetApp Active IQ ，您可以查看 Rancher 遥测，例如安装信息，节点，集群，状态，命名空间信息， 等等。
+
+. 通过提供 Element 存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 从右上角的菜单中选择 * NetApp Active IQ * 。
+
+
+
+
+== 使用 vCenter Server 监控 Rancher
+
+您可以使用 vCenter Server 监控 Rancher 虚拟机。
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

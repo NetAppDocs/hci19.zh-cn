@@ -1,0 +1,88 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_api_find_mgmt_svcs_version.html 
+summary: 您可以使用 REST API 查找管理节点使用的管理节点操作系统和管理服务版本。 
+keywords: netapp, hci, management node, management services, version, bundle version, what is 
+---
+= 验证管理节点操作系统和服务版本
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用管理节点中的 REST API 验证管理节点操作系统，管理服务包以及管理节点上运行的各个服务的版本号。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的集群运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您已部署运行 11.3 或更高版本的管理节点。
+
+
+.选项
+* <<API commands>>
+* <<REST API UI steps>>
+
+
+
+
+== API 命令
+
+* 获取有关管理节点上运行的管理节点操作系统，管理服务包和管理节点 API （ mnode-API ）服务的版本信息：
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/about" -H  "accept: application/json"
+----
+* 获取有关在管理节点上运行的各个服务的版本信息：
++
+[listing]
+----
+curl -X GET "https://<ManagementNodeIP>/mnode/services?status=running" -H  "accept: */*" -H  "Authorization: Bearer ${TOKEN}"
+----
++
+
+NOTE: 您可以找到 API 命令使用的承载 ` $ ｛ token ｝` link:task_mnode_api_get_authorizationtouse.html["授权"]。承载 ` $ ｛ token ｝` 位于 cURL 响应中。
+
+
+
+
+
+== REST API UI 步骤
+
+. 输入管理节点 IP 地址并后跟 ` /mnode/` 来访问此服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. 执行以下操作之一：
++
+** 获取有关管理节点上运行的管理节点操作系统，管理服务包和管理节点 API （ mnode-API ）服务的版本信息：
++
+... 选择 * 获取 /about * 。
+... 选择 * 试用 * 。
+... 选择 * 执行 * 。
++
+管理服务捆绑包版本（` "mnode_bundle_version"` ），管理节点操作系统版本（` "OS_version"` ）和管理节点 API 版本（` "version"` ）均在响应正文中指示。
+
+
+
+** 获取有关在管理节点上运行的各个服务的版本信息：
++
+... 选择 * 获取 /services* 。
+... 选择 * 试用 * 。
+... 选择状态为 * 正在运行 * 。
+... 选择 * 执行 * 。
++
+管理节点上运行的服务会在响应正文中指示。
+
+
+
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

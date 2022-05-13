@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_start_deployment.html 
+summary: 开始部署 NetApp HCI 。 
+keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access 
+---
+= 开始部署
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+在继续部署 NetApp HCI 之前，您需要阅读并了解最终用户许可协议。
+
+.步骤
+. 在 * 欢迎使用 NetApp HCI * 页面上，单击 * 开始使用 * 。
+. 在 * 前提条件 * 页面上，执行以下操作：
++
+.. 确保满足每个前提条件，然后单击每个关联复选框进行确认。
+.. 单击 * 继续 * 。
+
+
+. 在 * 最终用户许可证 * 页面上，执行以下操作：
++
+.. 阅读 NetApp 最终用户许可协议。
+.. 如果您接受这些条款，请单击协议文本底部的 * 我接受 * 。
+.. 阅读 VMware 最终用户许可协议。
+.. 如果您接受这些条款，请单击协议文本底部的 * 我接受 * 。
+.. 单击 * 继续 * 。
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

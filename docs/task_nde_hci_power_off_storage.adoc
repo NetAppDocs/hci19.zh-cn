@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_hci_power_off_storage.html 
+summary: 了解如何关闭 NetApp HCI 计算节点。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= 关闭 NetApp HCI 系统的存储资源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+关闭 NetApp HCI 的存储资源时，您需要使用 `Shutdown` Element API 方法正确暂停存储节点。
+
+关闭计算资源后，您可以使用 Web 浏览器关闭 NetApp HCI 存储集群的所有节点。
+
+. 登录到存储集群并验证是否已连接到正确的 MVIP 。
+. 验证 iSCSI 会话计数是否为零。
+. 导航到 * 集群 > 节点 > 活动 * ，并记录集群中所有活动节点的节点 ID 。
+. 要关闭 NetApp HCI 存储集群，请打开 Web 浏览器并使用以下 URL 调用关闭并暂停操作步骤。 其中， ` ｛ MVIP ｝` 是 NetApp HCI 存储系统的管理 IP 地址，而 `nodes=[]` 阵列包含您在步骤 2 中记录的节点 ID 。例如：
++
+[listing]
+----
+https://{MVIP}/json-rpc/1.0?method=Shutdown&nodes=[1,2,3,4]&option=halt
+----
+. 输入集群管理员用户名和密码。
+. 通过验证 `s所有存储集群节点是否包含在 API 结果的 " 成功` " 部分中，验证是否已成功返回 API 调用。
++
+您已成功关闭所有 NetApp HCI 存储节点。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

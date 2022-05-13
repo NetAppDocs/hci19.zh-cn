@@ -1,0 +1,72 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_cg_hci_security.html 
+summary: 使用 NetApp HCI 时，您的数据会受到行业标准安全协议的保护。 
+keywords: netapp, hci, security 
+---
+= NetApp HCI 安全性
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 NetApp HCI 时，您的数据会受到行业标准安全协议的保护。
+
+
+
+== 存储节点的空闲加密
+
+使用 NetApp HCI 可以对存储集群上存储的所有数据进行加密。
+
+存储节点中支持加密的所有驱动器都在驱动器级别使用 AES 256 位加密。每个驱动器都有自己的加密密钥，该密钥是在首次初始化驱动器时创建的。启用加密功能后，系统将创建一个存储集群范围的密码，然后将该密码块分发到集群中的所有节点。没有一个节点存储整个密码。然后，使用此密码对所有驱动器访问进行密码保护。您需要使用密码来解锁驱动器，由于驱动器正在对所有数据进行加密，因此您的数据始终是安全的。
+
+启用空闲加密后，存储集群的性能和效率不受影响。此外，如果使用 Element API 或 Element UI 从存储集群中删除启用了加密的驱动器或节点，则驱动器上会禁用空闲加密，并且驱动器会安全擦除，从而保护先前存储在这些驱动器上的数据。删除驱动器后，您可以使用 `SecureEraseDrives` API 方法安全地擦除该驱动器。如果您强制从存储集群中删除某个驱动器或节点，则数据仍受集群范围密码和驱动器的各个加密密钥的保护。
+
+有关启用和禁用空闲加密的信息，请参见 http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-EE404D52-B621-4DE5-B141-2559768FB1D0.html["为集群启用和禁用加密"] 在 SolidFire 和 Element 文档中心中。
+
+
+
+== 空闲软件加密
+
+通过软件空闲加密，可以对写入存储集群中 SSD 的所有数据进行加密。这样可以在 SolidFire 企业 SDS 节点中提供一个主加密层，其中不包括自加密驱动器（ SED ）。
+
+
+
+== 外部密钥管理
+
+您可以将 Element 软件配置为使用符合 KMIP 的第三方密钥管理服务（ Key Management Service ， KMS ）来管理存储集群加密密钥。启用此功能后，存储集群的集群范围驱动器访问密码加密密钥将由您指定的 KMS 管理。Element 可以使用以下密钥管理服务：
+
+* Gemalto SafeNet KeySecure
+* KeySecure 上的 SafeNet
+* HyTrust KeyControl
+* Vormetric Data Security Manager
+* IBM 安全密钥生命周期管理器
+
+
+有关配置外部密钥管理的详细信息，请参见 http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-057D852C-9C1C-458A-9161-328EDA349B00.html["外部密钥管理入门"] 在 SolidFire 和 Element 文档中心中。
+
+
+
+== 多因素身份验证
+
+通过多因素身份验证（ Multi-Factor Authentication ， MFA ），您可以要求用户在登录时提供多种类型的证据，以便通过 NetApp Element Web UI 或存储节点 UI 进行身份验证。您可以将 Element 配置为仅接受与现有用户管理系统和身份提供程序集成的登录的多因素身份验证。您可以将 Element 配置为与现有 SAML 2.0 身份提供程序集成，此身份提供程序可强制实施多种身份验证方案，例如密码和文本消息，密码和电子邮件消息或其他方法。
+
+您可以将多因素身份验证与通用 SAML 2.0 兼容身份提供程序（ IdP ）配对，例如 Microsoft Active Directory 联合身份验证服务（ Active Directory Federation Services ， ADFS ）和 Shibboleth 。
+
+要配置 MFA ，请参见 http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-B1C8D8E2-CE95-41FD-9A3E-A0C424EC84F3.html["启用多因素身份验证"] 在 SolidFire 和 Element 文档中心中。
+
+
+
+== 用于 HTTPS 和空闲数据加密的 FIPS 140-2
+
+NetApp SolidFire 存储集群和 NetApp HCI 系统支持符合联邦信息处理标准（ FIPS ） 140-2 加密模块要求的加密。您可以在 NetApp HCI 或 SolidFire 集群上为 HTTPS 通信和驱动器加密启用 FIPS 140-2 合规性。
+
+在集群上启用 FIPS 140-2 操作模式后，集群将激活 NetApp 加密安全模块（ NetApp Cryptographic Security Module ， NCSM ），并利用 FIPS 140-2 1 级认证加密通过 HTTPS 与 NetApp Element UI 和 API 进行所有通信。您可以将 `EnableFeature` Element API 与 `FIPS` 参数结合使用，以启用 FIPS 140-2 HTTPS 加密。在具有 FIPS 兼容硬件的存储集群上，您还可以使用 `EnableFeature` Element API 和 `FipsDrives` 参数为空闲数据启用 FIPS 驱动器加密。
+
+有关为 FIPS 140-2 加密准备新存储集群的详细信息，请参见 http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-4645FF0D-3FCD-4440-91A9-A47F7BCC5C50.html["创建支持 FIPS 驱动器的集群"]。
+
+有关在已准备好的现有集群上启用 FIPS 140-2 的详细信息，请参见 http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-api/GUID-F2726BCA-D59C-47EE-B86C-DC465C96563B.html["EnableFeature Element API"]。

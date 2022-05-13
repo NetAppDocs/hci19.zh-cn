@@ -1,0 +1,106 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_final_prep.html 
+summary: 了解部署 NetApp HCI 之前需要完成的最终准备和配置。 
+keywords: netapp, hci, final preparations, requirements 
+---
+= 为每个节点配置 IPMI
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, final preparations, IPMI
+
+
+[role="lead"]
+在对 NetApp HCI 硬件进行机架安装，布线和加电后，您可以为每个节点配置智能平台管理接口（ IPMI ）访问。为每个 IPMI 端口分配一个 IP 地址，并在对节点具有远程 IPMI 访问权限后立即更改默认 IPMI 管理员密码。
+
+
+
+== 前提条件
+
+验证您的环境是否已准备好支持 NetApp HCI 并解决任何潜在问题后，您需要在部署之前完成最后一些任务。
+
+* 确保您已从 Active IQ Config Advisor 获得成功的报告。
+* 收集有关您的网络，当前或计划的 VMware 基础架构以及计划内用户凭据的所有相关信息。
+* 将 NetApp HCI 安装装入机架，布线并接通电源。
+
+
+
+
+== 手动分配 IPMI 端口 IP 地址
+
+默认情况下，为每个 NetApp HCI 节点的 IPMI 端口启用动态主机配置协议（ DHCP ）。如果 IPMI 网络不使用 DHCP ，则可以手动为 IPMI 端口分配静态 IPv4 地址。
+
+确保您有一个键盘，视频和鼠标（ KVM ）开关或显示器和键盘，可用于访问每个节点的 BIOS 。
+
+使用箭头键在 BIOS 中导航。按 `Enter` 选择一个选项卡或选项。按 `ESC` 返回上一屏幕。
+
+.步骤
+. 打开节点电源。
+. 启动时，按 `Del` 键进入 BIOS 。
+. 选择 IPMI 选项卡。
+. 选择 * BMC Network Configuration* ，然后按 `Enter` 。
+. 选择 * 是 * ，然后按 `Enter` 。
+. 选择 * 配置地址源 * ，然后按 `Enter` 。
+. 选择 * 静态 * 并按 `Enter` 。
+. 选择 * 工作站 IP 地址 * ，然后为 IPMI 端口输入新的 IP 地址。完成后，按 `Enter` 。
+. 选择 * 子网掩码 * 并为 IPMI 端口输入新的子网掩码。完成后，按 `Enter` 。
+. 选择 * 网关 IP 地址 * ，然后为 IPMI 端口输入新的网关 IP 地址。完成后，按 `Enter` 。
+. 将以太网缆线的一端连接到 IPMI 端口，将另一端连接到交换机。
++
+此节点的 IPMI 端口已准备就绪，可以使用。
+
+. 对未配置 IPMI 端口的任何其他 NetApp HCI 节点重复此操作步骤。
+
+
+
+
+== 更改 H410C 和 H410S 节点的默认 IPMI 密码
+
+配置 IPMI 网络端口后，应立即更改每个计算和存储节点上 IPMI 管理员帐户的默认密码。
+
+您已为每个计算和存储节点配置 IPMI IP 地址。
+
+.步骤
+. 在可以访问 IPMI 网络的计算机上打开 Web 浏览器，然后浏览到此节点的 IPMI IP 地址。
+. 在登录提示符处输入用户名 `admin` 和密码 `admin` 。
+. 登录后，单击 * 配置 * 选项卡。
+. 单击 * 用户 * 。
+. 选择 `admin` user ，然后单击 * 修改用户 * 。
+. 选中 * 更改密码 * 复选框。
+. 在 * 密码 * 和 * 确认密码 * 字段中输入新密码。
+. 单击 * 修改 * ，然后单击 * 确定 * 。
+. 对具有默认 IPMI 密码的任何其他 NetApp HCI H410C 和 H410S 节点重复此操作步骤。
+
+
+
+
+== 更改 H610C ， H615C 和 H610S 节点的默认 IPMI 密码
+
+配置 IPMI 网络端口后，应立即更改每个计算和存储节点上 IPMI 管理员帐户的默认密码。
+
+您已为每个计算和存储节点配置 IPMI IP 地址。
+
+.步骤
+. 在可以访问 IPMI 网络的计算机上打开 Web 浏览器，然后浏览到此节点的 IPMI IP 地址。
+. 在登录提示符处输入用户名 `root` 和密码 `calvin` 。
+. 登录后，单击页面左上角的菜单导航图标以打开边栏抽屉。
+. 单击 * 设置 * 。
+. 单击 * 用户管理 * 。
+. 从列表中选择 * 管理员 * 用户。
+. 启用 * 更改密码 * 复选框。
+. 在 * 密码 * 和 * 确认密码 * 字段中输入新的强密码。
+. 单击页面底部的 * 保存 * 。
+. 对具有默认 IPMI 密码的任何其他 NetApp HCI H610C ， H615C 或 H610S 节点重复此操作步骤。
+
+
+[discrete]
+== 了解更多信息
+
+* https://help.monitoring.solidire.com["NetApp SolidFire Active IQ 文档"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

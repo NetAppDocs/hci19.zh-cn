@@ -1,0 +1,60 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_select_inventory.html 
+summary: 了解如何在部署期间选择 NetApp HCI 节点清单。 
+keywords: netapp, hci, deployment, compatibility, nodes 
+---
+= 选择清单
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 * 清单 * 页面上， NetApp 部署引擎会自动检测可用的计算和存储节点，以便您选择所有 NetApp HCI 资源并将其添加到部署中。如果节点不满足部署要求，则无法选择此节点，并将问题指示为错误。您可以将光标置于节点行中的错误上方以查看相关说明。在清单页面上选择节点清单时，系统会自动选择托管 NetApp 部署引擎的存储节点，您无法取消选择它。
+
+要正确检测清单，必须启用巨型帧。如果清单中未显示任何节点或仅显示部分节点，请验证用于 NetApp HCI 节点的交换机端口（所有 SFP+/SFP28 接口）是否配置了巨型帧。
+
+.步骤
+. 在 * 清单 * 页面上，查看可用节点的列表。
++
+如果系统无法检测到任何清单，则会显示错误。请先更正此错误，然后再继续。如果系统使用 DHCP 分配 IP 地址，则存储和计算资源可能不会立即显示在清单中。
+
+. 可选：如果某个资源未立即显示在清单中，或者您解决了错误并需要刷新清单，请单击 * 刷新清单 * 。您可能需要多次刷新清单。
+. 可选：要按节点属性（如节点类型）筛选清单，请执行以下操作：
++
+.. 单击 * 计算节点 * 或 * 存储节点 * 列表标题中的 * 筛选器 * 。
+.. 从下拉列表中选择条件。
+.. 在下拉列表下方，输入满足条件的信息。
+.. 单击 * 添加筛选器 * 。
+.. 单击活动筛选器旁边的 * X * 清除各个筛选器，或者单击筛选器列表上方的 * X * 清除所有筛选器。
+
+
+. 从 * 计算节点 * 列表中选择系统随附的所有计算节点。
++
+您需要至少选择两个计算节点才能继续部署。
+
+. 从 * 存储节点 * 列表中选择系统随附的所有存储节点。
++
+您需要至少选择两个存储节点才能继续部署。
+
+. 可选：如果标记了存储节点选择框，则此存储节点将超过存储集群总容量的 33% 。执行以下操作：
++
+** 清除标记的存储节点的选择框。
+** 选择其他存储节点，以便在节点之间更均匀地分布存储集群容量。
+
+
+. 单击 * 继续 * 。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

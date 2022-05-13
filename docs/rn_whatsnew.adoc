@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_whatsnew.html 
+summary: 了解此版本的 NetApp HCI 中的新增功能。 
+keywords: netapp, hci, element, new, whatsnew 
+---
+= NetApp HCI 中的新增功能
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, cloud, onprem, documentation, help, element
+
+
+[role="lead"]
+NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1 包括适用于存储集群的 Element 12.3.2 。
+
+* 。 <<NetApp HCI 1.9P1>> 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。
+* 。 <<Element 12.3.2>> 第节介绍 NetApp Element 12.3.2 中的新增功能和更新。
+
+
+
+
+== NetApp HCI 1.9P1
+
+NetApp HCI 1.9P1 改进了安全性和稳定性。
+
+
+
+== Element 12.3.2
+
+Element 软件 12.3.2 版包含一些缓解措施，可消除 Element 软件受到 Apache Log4j 漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["《 NetApp 混合云控制和管理服务发行说明》"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件的固件和驱动程序版本"^]
+

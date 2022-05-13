@@ -1,0 +1,140 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_supported_net_changes.html 
+summary: 了解部署 NetApp HCI 后应执行的部署后任务。 
+keywords: netapp, hci, deployment, review, deploy 
+---
+= 支持的网络更改
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+部署 NetApp HCI 后，您可以对默认网络配置进行有限的更改。但是，要实现平稳运行和正确的网络检测，需要进行某些设置。更改这些设置将导致发生原因出现意外行为，并可能阻止您扩展计算和存储资源。
+
+部署系统后，您可以根据网络要求对 VMware vSphere 中的默认网络配置进行以下更改：
+
+* 更改 vSwitch 名称
+* 更改端口组名称
+* 添加和删除其他端口组
+* 更改已添加的任何其他端口组的 vmnic 接口故障转移顺序
+
+
+
+
+== H300E ， H500E ， H700E 和 H410C 计算节点
+
+NetApp HCI 要求 H300E ， H500E ， H700E 和 H410C 节点采用以下网络配置。
+
+以下是采用 VMware vSphere 分布式交换（ VDS ）的六接口配置。只有在与 VMware vSphere 分布式交换机结合使用时，才支持此配置，并且需要获得 VMware vSphere Enterprise Plus 许可。
+
+|===
+| 网络功能 | VMkernel | vmnic （物理接口） 
+
+
+| 管理 | vmk0 | vmnic2 （端口 A ）， vmnic3 （端口 B ） 
+
+
+| iSCSI-A | vmk1 | vmnic5 （端口 E ） 
+
+
+| iSCSI-B | vmk2. | vmnic1 （端口 D ） 
+
+
+| VMotion | vmk3. | vmnic4 （端口 C ）， vmnic0 （端口 F ） 
+|===
+以下是采用 VMware vSphere 标准交换（ VSS ）的六接口配置。此配置使用 VMware vSphere 标准交换机（ VSS ）。
+
+|===
+| 网络功能 | VMkernel | vmnic （物理接口） 
+
+
+| 管理 | vmk0 | vmnic2 （端口 A ）， vmnic3 （端口 B ） 
+
+
+| iSCSI-A | vmk2. | vmnic1 （端口 E ） 
+
+
+| iSCSI-B | vmk3. | vmnic5 （端口 D ） 
+
+
+| VMotion | vmk1 | vmnic4 （端口 C ）， vmnic0 （端口 F ） 
+|===
+以下是双接口配置。只有在与 VMware vSphere 分布式交换机（ VDS ）结合使用时，才支持此配置，并且需要获得 VMware vSphere Enterprise Plus 许可。
+
+|===
+| 网络功能 | VMkernel | vmnic （物理接口） 
+
+
+| 管理 | vmk0 | vmnic1 （端口 D ）， vmnic5 （端口 E ） 
+
+
+| iSCSI-A | vmk1 | vmnic1 （端口 E ） 
+
+
+| iSCSI-B | vmk2. | vmnic5 （端口 D ） 
+
+
+| VMotion | vmk3. | vmnic1 （端口 C ）， vmnic5 （端口 F ） 
+|===
+
+
+== H610C 计算节点
+
+NetApp HCI 要求 H610C 节点采用以下网络配置。
+
+只有在与 VMware vSphere 分布式交换机（ VDS ）结合使用时，才支持此配置，并且需要获得 VMware vSphere Enterprise Plus 许可。
+
+
+NOTE: H610C 上未使用端口 A 和 B 。
+
+|===
+| 网络功能 | VMkernel | vmnic （物理接口） 
+
+
+| 管理 | vmk0 | vmnic2 （端口 C ）， vmnic3 （端口 D ） 
+
+
+| iSCSI-A | vmk1 | vmnic3 （端口 D ） 
+
+
+| iSCSI-B | vmk2. | vmnic2 （端口 C ） 
+
+
+| VMotion | vmk3. | vmnic2 （端口 C ）， vmnic3 （端口 D ） 
+|===
+
+
+== H615C 计算节点
+
+NetApp HCI 要求 H615C 节点采用以下网络配置。
+
+只有在与 VMware vSphere 分布式交换机（ VDS ）结合使用时，才支持此配置，并且需要获得 VMware vSphere Enterprise Plus 许可。
+
+|===
+| 网络功能 | VMkernel | vmnic （物理接口） 
+
+
+| 管理 | vmk0 | vmnic0 （端口 A ）， vmnic1 （端口 B ） 
+
+
+| iSCSI-A | vmk1 | vmnic0 （端口 B ） 
+
+
+| iSCSI-B | vmk2. | vmnic1 （端口 A ） 
+
+
+| VMotion | vmk3. | vmnic0 （端口 A ）， vmnic1 （端口 B ） 
+|===
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

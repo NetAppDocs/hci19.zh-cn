@@ -1,0 +1,130 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_task_validate_config_advisor.html 
+summary: 了解如何使用 Active IQ Config Advisor 验证部署前配置。 
+keywords: netapp, hci, element, configuration, validation 
+---
+= 使用 Active IQ Config Advisor 验证您的环境
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, element, configuration, validation
+
+
+[role="lead"]
+在将 NetApp HCI 硬件装入机架并安装 NetApp HCI 之前，您需要验证您的环境是否满足 NetApp HCI 网络连接要求。Active IQ Config Advisor 通过验证网络，交换机和 VMware vSphere 配置来对您的环境运行检查。该工具会生成一个报告，您可以使用该报告帮助解决问题，您可以将该报告转发给您的专业服务工程师，以便准备和计划安装。
+
+
+
+== 安装 Active IQ Config Advisor
+
+在可访问 NetApp HCI 网络的 PC 上下载并安装 Active IQ Config Advisor 。
+
+.步骤
+. 在 Web 浏览器中，从 "NetApp 支持 " 菜单中选择 * 工具 * ，搜索 Active IQ Config Advisor 并下载此工具。
++
+https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp 支持站点管理工具"^]。
+
++
+在您同意最终用户许可协议（ EULA ）后，将显示 Download 页面。Microsoft Windows ， Linux 和 Mac 二进制文件可在 * 客户端工具 * 窗格中找到。
+
+. 运行可执行文件。
+. 选择一种语言，然后单击 * 确定 * 。
+. 单击 * 下一步 * 。
+. 阅读 EULA 并单击 * 我同意 * 。
+. 单击 * 安装 * 。
+. 确保已选择 * 运行 Active IQ Config Advisor * ，然后单击 * 完成 * 。
++
+经过短暂延迟后， Active IQ Config Advisor UI 将在新的浏览器窗口或选项卡中打开。
+
+
+
+
+
+== 使用 Active IQ Config Advisor
+
+Active IQ Config Advisor 在浏览器窗口中运行，收集有关您的网络和环境的信息，并生成一份报告，用于解决可能会影响 NetApp HCI 部署的任何网络或配置问题。
+
+您已在可访问管理网络， VMware vCenter Server 网络连接（如果要加入现有 VMware 安装）以及要用于 NetApp HCI 的交换机的设备上安装了 Active IQ Config Advisor 。
+
+
+NOTE: 如果您使用的是 Mellanox 交换机，而 NetApp 专业服务正在部署过程中对其进行配置，则无需提供交换机信息。
+
+Active IQ Config Advisor 仅执行只读检查以收集信息。在收集过程中，不会修改任何配置。
+
+.步骤
+. 打开 Active IQ Config Advisor 。
++
+Config Advisor 会在 Web 浏览器中显示，并显示 * 基本设置 * 窗口。您可以在此处定义全局收集设置并对收集结果进行加密。
+
+. 在 * 加密设置 * 部分中输入密码短语以对收集项目进行加密。
++
+这样可以确保只有您才能在创建此收集项目后加载它。
+
+. 在 * 用户验证 * 部分中输入您的姓名和电子邮件地址，将此收集报告标识为您的。
+. 单击 * 保存 * 。
+. 单击 * 创建新数据收集 * 。
+. 在 * 收集类型 * 下拉菜单中选择 * 基于解决方案 * 。
+. 在 * 配置文件 * 下拉菜单中选择 * NetApp HCI 预部署 * 。
+. 对于 * 类型 * 列中的每种设备，请从 * 操作 * 下拉菜单中选择 NetApp HCI 网络中该类型设备的数量。
++
+例如，如果您有三个 Cisco 交换机，请从该行的 * 操作 * 列下拉菜单中选择 3 。此时将显示三行，您确定的每个 Cisco 交换机对应一行。
+
++
+
+NOTE: 如果您使用的是 Mellanox 交换机，而 NetApp 专业服务正在部署过程中对其进行配置，则无需提供交换机信息。
+
+. 对于您确定的任何交换机，输入管理 IP 地址和管理员凭据。
+. 对于您确定的任何 VMware vCenter Server ，请执行以下操作之一：
++
+** 如果要部署新的 vCenter Server ，请提供为该服务器规划的 IP 地址或完全限定域名（ FQDN ）。
+** 如果要加入现有 vCenter Server ，请提供此服务器的 IP 地址或 FQDN 以及管理员凭据。
+
+
+. 可选：如果您添加了交换机的信息，请在 * 交换机验证 * 部分中输入计算和存储节点的数量。
+. 在 * 计算节点网络 * 部分中选择您计划使用的计算节点布线配置。
+. 在 * 计算节点网络 * 部分中输入要用于任何交换机的管理， vMotion 和存储网络的各个交换机端口和任何 VLAN 标记。
+. 在 * 存储节点网络 * 部分中输入要用于任何交换机的管理和存储网络的各个交换机端口以及任何 VLAN 标记。
+. 在 * 网络设置检查 * 部分中，输入管理网络的 IP 地址和网关 IP 地址，然后输入 DNS ， NTP 和 vCenter Server 的服务器列表（如果要使用 NetApp HCI 部署新的 vCenter Server ）。
++
+通过本节， Active IQ Config Advisor 可以确保管理网络可用，并确保 DNS 和 NTP 等服务正常运行。
+
+. 单击 * 验证 * 以确保您输入的所有 IP 地址信息和凭据均有效。
+. 单击 * 保存或收集 * 。
++
+此时将启动收集过程，您可以在收集运行时查看进度，并查看收集命令的实时日志。"* 进度 * " 列显示了每个收集任务的彩色进度条。
+
++
+image::config_advisor_job_progress_bar.png[Active IQ Config Advisor 作业进度条]
+
++
+进度条使用以下颜色显示状态：
+
++
+** * 绿色 * ：收集已完成，没有命令失败。您可以单击 * 操作 * 菜单中的 * 查看和分析 * 图标来查看部署风险和建议。
+** * 黄色 * ：收集已完成，但出现一些命令失败。您可以单击 * 操作 * 菜单中的 * 查看和分析 * 图标来查看部署风险和建议。
+** * 红色 * ：收集失败。您需要解决错误并重新运行收集。
+
+
+. 可选：收集完成后，您可以单击任何收集行的双目图标以查看已运行的命令以及收集的数据。
+. 选择 * 查看和分析 * 选项卡。
++
+此页面将显示您的环境的常规运行状况报告。您可以选择饼图的一个部分来查看有关这些特定检查或问题说明的更多详细信息，以及有关解决可能影响成功部署的任何问题的建议。您可以自行解决这些问题，也可以向 NetApp 专业服务请求帮助。
+
+. 单击 * 导出 * 以将收集报告导出为 PDF 或 Microsoft Word 文档。
++
+
+NOTE: PDF 和 Microsoft Word 文档输出包含适用于您的部署的交换机配置信息， NetApp 专业服务使用这些信息来验证网络设置。
+
+. 将导出的报告文件发送给您的 NetApp 专业服务代表。
+
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

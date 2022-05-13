@@ -1,0 +1,294 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_snswitches.html 
+summary: 您可以按照 NetApp 提供的最佳实践和步骤无中断更换出现故障的 SN2000 系列交换机。 
+keywords: netapp, hci, SSDs, drives, replace drives, H410S, H610S 
+---
+= 更换 SN2010 ， SN2100 和 SN2700 交换机
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以按照 NetApp 提供的最佳实践和步骤无中断更换出现故障的 SN2000 系列交换机。
+
+.您需要什么？ #8217 ；将需要什么
+* 确保笔记本电脑上已安装 Putty ，并且您已捕获输出。请观看此视频，了解如何配置 Putty 以捕获输出会话。
+
+
+video::2LZfWH8HffA[youtube, ]
+* 确保在更换之前和之后运行 NetApp Config Advisor 。这有助于在维护开始之前确定其他问题。下载并安装 Config Advisor ，然后从访问快速入门指南 link:https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor/download["此处（需要登录）"^]。
+* 获取电源线，基本手动工具和标签。
+* 确保您已计划两到四小时的维护时段。
+* 熟悉以下交换机端口：
+
+
+[#img-sn2010]
+.SN2010 交换机面板和端口
+image::sn2010.png[SN2010,600,400]
+
+[#img-sn2100]
+.SN2100 交换机面板和端口
+image::sn2100.png[SN2100,600,400]
+
+[#img-sn2010/2100]
+.SN2010 和 SN2100 交换机背面
+image::sn2010_rear.png[SN2010 和 SN2100 背面,600,400]
+
+[#img-sn2700]
+.SN2700 交换机的正面和背面
+image::SN2700.png[SN2700 前部和后部,600,400]
+
+您应按以下顺序执行此操作步骤中的步骤。这是为了确保停机时间最短，并且更换交换机之前已预先配置好更换的交换机。
+
+
+NOTE: 如需指导，请联系 NetApp 支持部门。
+
+下面简要介绍了操作步骤中的步骤：<<Prepare to replace the faulty switch>>
+<<Create the configuration file>>
+<<Remove the faulty switch and install the replacement>>
+<<Verify the operating system version on the switch>>
+<<Configure the replacement switch>>
+<<Complete the replacement>>
+
+
+
+== 准备更换故障交换机
+
+在更换故障交换机之前，请执行以下步骤。
+
+.步骤
+. 验证更换用的交换机是否与故障交换机型号相同。
+. 为连接到故障交换机的所有缆线贴上标签。
+. 确定保存交换机配置文件的外部文件服务器。
+. 确保已获取以下信息：
++
+.. 用于初始配置的接口： RJ-45 端口或串行终端接口。
+.. 交换机访问所需的凭据：无故障交换机和故障交换机的管理端口的 IP 地址。
+.. 用于管理访问的密码。
+
+
+
+
+
+
+== 创建配置文件
+
+您可以使用创建的配置文件配置交换机。从以下选项中选择一项，为交换机创建配置文件。
+
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 从故障交换机创建备份配置文件  a| 
+. 使用 SSH 远程连接到交换机，如以下示例所示：
++
+[listing]
+----
+ssh admin@<switch_IP_address
+----
+. 进入配置模式，如以下示例所示：
++
+[listing]
+----
+switch > enable
+switch # configure terminal
+----
+. 找到可用的配置文件，如以下示例所示：
++
+[listing]
+----
+switch (config) #
+switch (config) # show configuration files
+----
+. 将活动箱配置文件保存到外部服务器：
++
+[listing]
+----
+switch (config) # configuration upload my-filename scp://myusername@my-server/path/to/my/<file>
+----
+
+
+
+
+| 通过修改另一个交换机上的文件来创建备份配置文件  a| 
+. 使用 SSH 远程连接到交换机，如以下示例所示：
++
+[listing]
+----
+ssh admin@<switch_IP_address
+----
+. 进入配置模式，如以下示例所示：
++
+[listing]
+----
+switch > enable
+switch # configure terminal
+----
+. 将基于文本的配置文件从交换机上传到外部服务器，如以下示例所示：
++
+[listing]
+----
+switch (config) #
+switch (config) # configuration text file my-filename upload scp://root@my-server/root/tmp/my-filename
+----
+. 修改文本文件中的以下字段以匹配故障交换机：
++
+[listing]
+----
+## Network interface configuration
+##
+no interface mgmt0 dhcp
+   interface mgmt0 ip address XX.XXX.XX.XXX /22
+
+##
+## Other IP configuration
+##
+   hostname oldhostname
+----
+
+
+|===
+
+
+== 拆下故障交换机并安装更换件
+
+执行以下步骤以卸下出现故障的交换机并安装更换的交换机。
+
+.步骤
+. 找到故障交换机上的电源线。
+. 在交换机重新启动后，标记并拔下电源线。
+. 为故障交换机上的所有缆线贴上标签并拔下，然后将其固定好，以防止在更换交换机期间损坏。
+. 从机架中卸下交换机。
+. 在机架中安装替代交换机。
+. 连接电源线和管理端口缆线。
++
+
+NOTE: 交换机会在接通交流电源后自动打开电源。没有电源按钮。系统状态 LED 可能需要长达五分钟才能变为绿色。
+
+. 使用 RJ-45 管理端口或串行终端接口连接到交换机。
+
+
+
+
+== 验证交换机上的操作系统版本
+
+验证交换机上的操作系统软件版本。故障交换机上的版本与运行正常的交换机上的版本应匹配。
+
+.步骤
+. 使用 SSH 远程连接到交换机。
+. 进入配置模式。
+. 运行 `show version` 命令。请参见以下示例：
++
+[listing]
+----
+SFPS-HCI-SW02-A (config) #show version
+Product name:      Onyx
+Product release:   3.7.1134
+Build ID:          #1-dev
+Build date:        2019-01-24 13:38:57
+Target arch:       x86_64
+Target hw:         x86_64
+Built by:          jenkins@e4f385ab3f49
+Version summary:   X86_64 3.7.1134 2019-01-24 13:38:57 x86_64
+
+Product model:     x86onie
+Host ID:           506B4B3238F8
+System serial num: MT1812X24570
+System UUID:       27fe4e7a-3277-11e8-8000-506b4b891c00
+
+Uptime:            307d 3h 6m 33.344s
+CPU load averages: 2.40 / 2.27 / 2.21
+Number of CPUs:    4
+System memory:     3525 MB used / 3840 MB free / 7365 MB total
+Swap:              0 MB used / 0 MB free / 0 MB total
+
+----
+. 如果版本不匹配，则应升级操作系统。请参见 link:https://community.mellanox.com/s/article/howto-upgrade-switch-os-software-on-mellanox-switch-systems["Mellanox 软件升级指南"^] 了解详细信息。
+
+
+
+
+== 配置替代交换机
+
+执行以下步骤以配置更换用的交换机。请参见 link:https://docs.mellanox.com/display/MLNXOSv381000/Configuration+Management["Mellanox 配置管理"^] 了解详细信息。
+
+.步骤
+. 从适用场景 You ：
+
+
+[cols="2*"]
+|===
+| 选项 | 步骤 
+
+
+| 从 Bin 配置文件  a| 
+. 提取箱配置文件，如以下示例所示：
++
+[listing]
+----
+switch (config) # configuration fetch scp://myusername@my-server/path/to/my/<file>
+----
+. 加载上一步提取的箱配置文件，如以下示例所示：
++
+[listing]
+----
+switch (config) # configuration switch-to my-filename
+----
+. 键入 `yes` 确认重新启动。
+
+
+
+
+| 从文本文件中  a| 
+. 将交换机重置为出厂默认设置：
++
+[listing]
+----
+switch (config) # reset factory keep-basic
+----
+. 应用基于文本的配置文件：
++
+[listing]
+----
+switch (config) # configuration text file my-filename apply
+----
+. 将基于文本的配置文件从交换机上传到外部服务器，如以下示例所示：
++
+[listing]
+----
+switch (config) #
+switch (config) # configuration text file my-filename upload scp://root@my-server/root/tmp/my-filename
+----
++
+
+NOTE: 应用此文本文件时，不需要重新启动。
+
+
+
+|===
+
+
+== 完成更换
+
+执行以下步骤以完成替代操作步骤。
+
+.步骤
+. 使用标签插入缆线以引导您。
+. 运行 NetApp Config Advisor 。从访问快速入门指南 link:https://mysupport.netapp.com/site/tools/tool-eula/activeiq-configadvisor/download["此处（需要登录）"^]。
+. 验证您的存储环境。
+. 将出现故障的交换机返回给 NetApp 。
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

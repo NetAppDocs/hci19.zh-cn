@@ -1,0 +1,164 @@
+---
+sidebar: sidebar 
+permalink: docs/rancher_prereqs_overview.html 
+summary: 了解成功安装 Rancher on NetApp HCI 的要求。 
+keywords: netapp, hci, Rancher, install, installation, requirements 
+---
+= NetApp HCI 上的 Rancher 的要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 NetApp HCI 上安装 Rancher 之前，请确保您的环境和 NetApp HCI 系统满足这些要求。
+
+
+NOTE: 如果在 NetApp HCI 上意外部署 Rancher 时信息不正确（例如 Rancher 服务器 FQDN 不正确），则在删除此部署并重新部署之前，无法更正此部署。您需要删除 NetApp HCI 实例上的 Rancher ，然后从 NetApp 混合云控制 UI 中重新部署 NetApp HCI 上的 Rancher 。请参见 link:task_rancher_remove_deployment.html["删除 NetApp HCI 上的 Rancher 安装"^] 有关详细信息 ...
+
+
+
+== 节点要求
+
+* 确保您的 NetApp HCI 系统至少具有三个计算节点；这是实现完全故障恢复能力所必需的。仅存储配置不支持 NetApp HCI 上的 Rancher 。
+* 确保要用于 NetApp HCI 上的 Rancher 部署的数据存储库至少具有 60GB 的可用空间。
+* 确保 NetApp HCI 集群运行的是管理服务版本 2.17 或更高版本。
+
+
+
+
+=== 节点详细信息
+
+NetApp HCI 上的 Rancher 部署一个三节点管理集群。
+
+所有节点都具有以下特征：
+
+[cols="15,15, 15"]
+|===
+| vCPU | RAM （ GB ） | 磁盘（ GB ） 
+
+
+| 2. | 8. | 20 
+|===
+
+
+== 网络要求
+
+* 确保要在 NetApp HCI 管理集群上部署 Rancher 的网络具有指向管理节点管理网络的路由。
+* NetApp HCI 上的 Rancher 支持控制平面（ Rancher 服务器）和用户集群的 DHCP 地址，但我们建议在生产环境中使用静态 IP 地址。如果要在生产环境中部署，请确保已分配必要的静态 IP 地址。
++
+** Rancher 服务器需要三个静态 IP 地址。
+** 每个用户集群所需的静态 IP 地址数与集群中的节点数相同。例如，包含四个节点的用户集群需要四个静态 IP 地址。
+** 如果您计划对 Rancher 控制平面或用户集群使用 DHCP 地址，请确保 DHCP 租约有效期至少为 24 小时。
+
+
+* 如果需要使用 HTTP 代理为 NetApp HCI 上的 Rancher 启用 Internet 访问，则需要对管理节点进行部署前更改。使用 SSH 登录到管理节点，然后按照进行操作 https://docs.docker.com/config/daemon/systemd/#httphttps-proxy["说明"^] 在 Docker 文档中手动更新 Docker 的代理设置。
+* 如果在部署期间启用并配置代理服务器，则以下 IP 地址范围和域将自动添加到 Rancher 服务器 noProxy 设置中：
++
+[listing]
+----
+127.0.0.0/8, 10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16, .svc, .cluster.local
+----
+* 确保管理节点可以使用 DNS 将主机名 ` <any IP address>.nip.io` 解析为 IP 地址。这是部署期间使用的 DNS 提供程序；如果管理节点无法解析此 URL ，则部署将失败。
+* 确保已为所需的每个静态 IP 地址设置 DNS 记录。
+
+
+
+
+== VMware vSphere 要求
+
+* 确保您正在使用的 VMware vSphere 实例为 6.5 ， 6.7 或 7.0 版。
+* 您可以使用 vSphere 标准交换机（ VSS ）网络配置，但如果使用，请确保用于 Rancher VM 的虚拟交换机和物理主机可以访问所有相同的端口组，访问方式与常规 VM 相同。
+
+
+
+
+== 部署注意事项
+
+您可能需要查看以下注意事项：
+
+* 部署类型
++
+** 演示部署
+** 生产部署
+
+
+* Rancher FQDN
+
+
+
+TIP: 除非您配置某种类型的网络负载平衡，否则 NetApp HCI 上的 Rancher 无法对节点故障进行故障恢复。作为一个简单的解决方案，为为 Rancher 服务器预留的三个静态 IP 地址创建一个轮循 DNS 条目。这些 DNS 条目应解析为 Rancher 服务器 FQDN ，您将使用此 FQDN 访问 Rancher 服务器主机，该主机在部署完成后为 Rancher Web UI 提供服务。
+
+
+
+=== 部署类型
+
+您可以通过以下方式在 NetApp HCI 上部署 Rancher ：
+
+* * 演示部署 * ：如果目标部署环境中提供了 DHCP ，而您希望演示基于 NetApp HCI 的 Rancher 功能，则 DHCP 部署最有意义。
++
+在此部署模式下，可以从管理集群中三个节点中的每个节点访问 Rancher UI 。
+
++
+如果您的组织不使用 DHCP ，您仍然可以使用部署前分配的四个静态 IP 地址来尝试，就像在生产部署中一样。
+
+* * 生产部署 * ：对于生产部署或目标部署环境中没有 DHCP 时，需要执行更多的部署前工作。第一步是连续获取三个 IP 地址。您可以在部署期间输入第一个。
++
+建议在生产环境中使用 L4 负载平衡或轮循 DNS 配置。这需要第四个 IP 地址以及 DNS 配置中的单独条目。
+
++
+** * 第 4 层负载平衡 * ：这是一种技术，其中，托管像 nginx 这样的应用程序的虚拟机或容器配置为在管理集群的三个节点之间分发请求。
+** * 轮循 DNS* ：这是一种在 DNS 系统中配置单个主机名的技术，用于在构成管理集群的三个主机之间轮换请求。
+
+
+
+
+
+
+=== Rancher FQDN
+
+安装需要分配 Rancher URL ，其中包括安装完成后要提供 Rancher UI 的主机的完全限定域名（ FQDN ）。
+
+在所有情况下，均可通过 https 协议（端口 443 ）在浏览器中访问 Rancher UI 。
+
+生产部署需要配置 FQDN ，以便在管理集群节点之间进行负载平衡。如果不使用 FQDN 和负载平衡，此环境将无法恢复，并且仅适用于演示环境。
+
+
+
+== 所需端口
+
+确保官方 * Rancher Nodes* 部分的 "Ports for RKE" 部分中的端口列表 https://rancher.com/docs/rancher/v2.x/en/installation/requirements/ports/#ports-for-rancher-server-nodes-on-rke["Rancher 文档"^] 在防火墙配置中打开与运行 Rancher 服务器的节点之间的连接。
+
+
+
+== 所需的 URL
+
+应可从 Rancher 控制平面所在的主机访问以下 URL ：
+
+|===
+| URL | Description 
+
+
+| https://charts.jetstack.io/[] | Kubernetes 集成 
+
+
+| https://releases.rancher.com/server-charts/stable[] | Rancher 软件下载 
+
+
+| https://entropy.ubuntu.com/[] | 用于生成随机数字的 Ubuntu entropy 服务 
+
+
+| https://raw.githubusercontent.com/vmware/cloud-init-vmware-guestinfo/v1.3.1/install.sh[] | 添加 VMware 子系统 
+
+
+| https://download.docker.com/linux/ubuntu/gpg[] | Docker Ubuntu GPG 公有密钥 
+
+
+| https://download.docker.com/linux/ubuntu[] | Docker 下载链接 
+
+
+| https://hub.docker.com/[] | 适用于 NetApp Hybrid Cloud Control 的 Docker Hub 
+|===

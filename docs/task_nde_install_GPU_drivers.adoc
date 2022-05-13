@@ -1,0 +1,124 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_install_GPU_drivers.html 
+summary: 了解如何在部署 NetApp HCI 后为支持 GPU 的计算节点安装 GPU 驱动程序。 
+keywords: netapp, hci, deployment, review, GPU, install, driver, drivers 
+---
+= 为启用了 GPU 的计算节点安装 GPU 驱动程序
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+采用 NVIDIA 图形处理单元（ GPU ）的计算节点（如 H610C ）需要在 VMware ESXi 中安装 NVIDIA 软件驱动程序，以便能够利用增强的处理能力。使用 GPU 部署计算节点后，您需要在每个启用了 GPU 的计算节点上执行这些步骤，以便在 ESXi 中安装 GPU 驱动程序。
+
+.步骤
+. 打开浏览器并通过以下 URL 浏览到 NVIDIA 许可门户：
++
+[listing]
+----
+https://nvid.nvidia.com/dashboard/
+----
+. 根据您的环境，将以下驱动程序软件包之一下载到您的计算机：
++
+|===
+| vSphere 版本 | 驱动程序包 
+
+
+| vSphere 6.5 | `nvidia-grid-vsphere-6.5-410.92-410.91-412.16.zip` 
+
+
+| vSphere 6.7 | `nvidia-grid-vsphere-6.7-410.92-410.91-412.16.zip` 
+|===
+. 在您的计算机上解压缩驱动程序软件包。
++
+生成的 .VIB 文件为未压缩的驱动程序文件。
+
+. 将 ` .VIB` 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。以下每个版本的命令示例假设该驱动程序位于管理主机上的 ` $HOME/NVIDIA/ESX6.x/` 目录中。SCP 实用程序可在大多数 Linux 分发版中随时使用，也可作为适用于所有 Windows 版本的可下载实用程序使用：
++
+|===
+| ESXi 版本 | Description 
+
+
+| ESXi 6.5 | `sCP $HOME/NVIDIA/ESX6.5/NVIDIa.vib root@ <ESXi_IP_ADDR> ： / 。` 
+
+
+| ESXi 6.7 | `sCP $HOME/NVIDIA/ESX6.7/NVIDIa.vib root@ <ESXi_IP_ADDR> ： / 。` 
+|===
+. 按照以下步骤以 root 用户身份登录到 ESXi 主机，并在 ESXi 中安装 NVIDIA vGPU Manager 。
++
+.. 运行以下命令以 root 用户身份登录到 ESXi 主机：
++
+[listing]
+----
+ssh root@<ESXi_IP_ADDRESS>
+----
+.. 运行以下命令以验证当前是否未安装任何 NVIDIA GPU 驱动程序：
++
+[listing]
+----
+nvidia-smi
+----
++
+此命令应返回消息 `nvidia-smi ： not found` 。
+
+.. 运行以下命令以在主机上启用维护模式，并从 VIB 文件安装 NVIDIA vGPU Manager ：
++
+[listing]
+----
+esxcli system maintenanceMode set --enable true
+esxcli software vib install -v /NVIDIA**.vib
+----
++
+此时应显示消息 `Operation finished successfully` 。
+
+.. 运行以下命令并验证所有八个 GPU 驱动程序是否均已在命令输出中列出：
++
+[listing]
+----
+nvidia-smi
+----
+.. 运行以下命令以验证是否已正确安装和加载 NVIDIA vGPU 软件包：
++
+[listing]
+----
+vmkload_mod -l | grep nvidia
+----
++
+此命令应返回类似于以下内容的输出： `nvidia 816 13808`
+
+.. 运行以下命令重新启动主机：
++
+[listing]
+----
+reboot -f
+----
+.. 运行以下命令以退出维护模式：
++
+[listing]
+----
+esxcli system maintenanceMode set --enable false
+----
+
+
+. 对使用 NVIDIA GPU 的任何其他新部署的计算节点重复步骤 4-6 。
+. 按照 NVIDIA 文档站点中的说明执行以下任务：
++
+.. 安装 NVIDIA 许可证服务器。
+.. 为虚拟机子系统配置 NVIDIA vGPU 软件。
+.. 如果您在虚拟桌面基础架构 (VDI) 环境中使用启用了 vGPU 的桌面，请为 NVIDIA vGPU 软件配置 VMware Horizon View 。
+
+
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

@@ -1,0 +1,43 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_import_installation_profile.html 
+summary: 了解如何导入 NetApp HCI 安装配置文件，以使 NetApp HCI 能够自动填写 NetApp 部署引擎向导的字段。 
+keywords: netapp, hci, deployment, compatibility, nodes, installation, profile, import, settings, auto, fill 
+---
+= 导入安装配置文件
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您已获得 NetApp https://configbuilder.netapp.com/["ConfigBuilder"^] 配置文件输出。对于您的安装，您可以在 NetApp HCI 安装过程中导入此配置文件，以自动填写 NetApp 部署引擎中的字段。这是一个可选步骤。
+
+如果导入安装配置文件，则仍需要在 NetApp 部署引擎的 * 凭据 * 页面上输入 NetApp HCI 要使用的凭据。
+
+
+NOTE: 如果安装配置文件中的字段留空或输入不正确，您可能需要在 NetApp 部署引擎页面中手动输入或更正此信息。如果需要添加或更正信息，请确保更新记录和安装配置文件中的信息。
+
+.导入配置文件
+. 在 * 安装配置文件 * 页面上，单击 * 浏览 * 以搜索并上传您的安装配置文件。
+. 在文件对话框中，选择并打开配置文件 JSON 文件。
+. 成功导入配置文件后，单击 * 继续 * 。
++
+您可以逐步浏览 NetApp 部署引擎的每个页面，并验证从安装配置文件导入的设置。
+
+
+
+.继续操作而不导入配置文件
+. 要跳过导入步骤，请在 * 安装配置文件 * 页面上单击 * 继续 * 。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

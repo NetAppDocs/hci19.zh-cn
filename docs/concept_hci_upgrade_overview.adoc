@@ -1,0 +1,78 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_upgrade_overview.html 
+summary: 您可以升级 NetApp HCI 及其所有组件。 
+keywords: netapp, hci, on premise, cluster, upgrade, element 
+---
+= 升级顺序概述
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以通过按顺序升级所有 NetApp HCI 软件组件，在部署后使 NetApp HCI 系统保持最新。
+
+这些组件包括管理服务， HealthTools ， NetApp Hybrid Cloud Control ， Element 软件，管理节点，计算固件，计算驱动程序， 和适用于 vCenter Server 的 Element 插件。​
+
+。 <<sys_upgrade_seq,系统升级顺序>> 内容介绍了完成 NetApp HCI 系统升级所需的任务。理想情况下，您可以在较大的升级序列中执行这些过程，而不是孤立执行这些过程。如果需要基于组件的升级或更新，请参见操作步骤前提条件以确保解决其他复杂问题。
+
+。 xref:task_hci_upgrade_all_vsphere.adoc[vSphere 升级顺序] 包括适用于 vCenter Server 的 Element 插件内容介绍了重新安装适用于 vCenter Server 的 Element 插件所需的其他升级前和升级后步骤。
+
+.您需要什么？ #8217 ；将需要什么
+* 您正在运行管理节点 11.3 或更高版本。较新版本的管理节点采用模块化架构，可提供单个服务。
++
+
+TIP: 要检查版本，请登录到管理节点并在登录横幅中查看 Element 版本号。如果您没有 11.3 ，请参见 link:task_hcc_upgrade_management_node.html["升级管理节点"]。
+
+* 您已将管理服务至少升级到 2.1.326 版。
++
+早期版本的服务包不支持使用 NetApp Hybrid Cloud Control 进行升级。
+
+* 您已确保所有节点上的系统时间均已同步，并且已为存储集群和节点正确配置 NTP 。必须在每个节点 Web UI （`https://[IP address] ： 442` ）中为每个节点配置一个 DNS 命名服务器，并且不会出现与时间偏差相关的未解决集群故障。
+
+
+
+
+== 系统升级顺序
+
+您可以按以下顺序升级 NetApp HCI 系统。
+
+.步骤
+. link:task_hcc_update_management_services.html["从 Hybrid Cloud Control 更新管理服务"]。
++
+
+IMPORTANT: 如果要将管理服务更新到版本 2.16 或更高版本，并且运行的是管理节点 11.3 到 11.8 ，则在更新管理服务之前，需要增加管理节点 VM 的 RAM 。
+
++
+
+IMPORTANT: 在升级 Element 软件之前，您必须更新到最新的管理服务包。
+
+. link:task_upgrade_element_latest_healthtools.html["（可选）升级到最新的 HealthTools"]。
++
+
+NOTE: 只有在运行的管理节点和 Element 软件为 11.1 或更早版本时，才需要升级 HealthTools 。使用 NetApp Hybrid Cloud Control 执行 Element 升级不需要 HealthTools 。
+
+. link:task_hcc_upgrade_element_prechecks.html["在升级存储之前，请运行 Element 存储运行状况检查"]。
+. link:task_hcc_upgrade_element_software.html["升级 Element 软件和存储固件"]。
+. link:task_hcc_upgrade_storage_firmware.html["（可选）仅升级 Element 存储固件"]。
++
+
+NOTE: 如果在主要版本之外可以进行新的存储固件升级，则可以执行此任务。
+
+. link:task_hcc_upgrade_management_node.html["（可选）升级管理节点"]。
++
+
+NOTE: 升级存储集群上的 Element 软件不再需要升级管理节点操作系统。如果管理节点为 11.3 或更高版本，您只需将管理服务升级到最新版本，即可使用 NetApp Hybrid Cloud Control 执行 Element 升级。如果您希望出于安全修复等其他原因升级管理节点操作系统，请按照适用于您的方案的管理节点升级操作步骤进行操作。
+
+. link:task_vcp_upgrade_plugin.html["升级适用于 vCenter Server 的 Element 插件"]。
+. link:task_upgrade_compute_prechecks.html["在升级计算固件之前运行计算节点运行状况检查"]。
+. link:task_hcc_upgrade_compute_node_drivers.html["更新计算节点驱动程序"]。
+. link:task_hcc_upgrade_compute_node_firmware.html["使用 NetApp Hybrid Cloud Control 更新计算节点固件"] 或 link:task_hcc_upgrade_compute_firmware_ansible.html["利用 Ansible 自动升级计算固件"]。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/upgrade/task_sf_upgrade_all.html["升级 NetApp SolidFire 全闪存存储系统"^]
+

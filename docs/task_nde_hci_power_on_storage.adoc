@@ -1,0 +1,30 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_hci_power_on_storage.html 
+summary: 了解如何关闭 NetApp HCI 计算节点。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= 启动 NetApp HCI 系统的存储资源
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+您可以在计划内中断完成后启动 NetApp HCI 。
+
+.步骤
+. 使用物理电源按钮或 BMC 打开所有存储节点的电源。
+. 如果使用 BMC ，请登录到每个节点并导航到 * 远程控制 > 电源控制 > 打开服务器电源 * 。
+. 当所有存储节点联机后，登录到 NetApp HCI 存储系统并验证所有节点是否均正常运行。
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

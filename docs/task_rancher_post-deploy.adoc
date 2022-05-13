@@ -1,0 +1,33 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_post-deploy.html 
+summary: 了解在 NetApp HCI 上安装 Rancher 后完成的任务。 
+keywords: netapp, hci, rancher, deploy, cluster, kubernetes 
+---
+= 完成 NetApp HCI 上 Rancher 的部署后活动
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 NetApp HCI 上部署 Rancher 后，您应完成部署后活动，以便成功实施。
+
+部署后，您可以执行以下操作：
+
+* link:task_rancher_trident.html["在 NetApp HCI 上安装带有 Rancher 的 Trident"]
+* link:task_rancher_load_balancing.html["配置负载平衡"]
+* link:task_rancher_resiliency.html["配置故障恢复能力"]
+
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

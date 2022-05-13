@@ -1,0 +1,108 @@
+---
+sidebar: sidebar 
+permalink: docs/task_vcp_upgrade_plugin.html 
+summary: 在 NetApp HCI 系统升级过程中，您可以升级适用于 vCenter Server 的 Element 插件。 
+keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9 
+---
+= 升级适用于 vCenter Server 的 Element 插件
+:allow-uri-read: 
+
+
+[role="lead"]
+对于已注册适用于vCenter Server的NetApp Element 插件的现有vSphere环境、您可以在首次更新包含此插件服务的管理服务包后更新此插件注册。
+
+您可以使用注册实用程序在 vCenter Server 虚拟设备（ vCSA ）或 Windows 上更新插件注册。您必须在需要使用 vCenter 插件的每个 vCenter Server 上更改此插件的注册。
+
+此升级操作步骤包括以下升级情形：
+
+* 您要升级到适用于VMware vCenter Server 4.9、4.8、4.7、4.6、4.5或4.4的Element插件。
+* 您要升级到 7.0 ， 6.7 或 6.5 HTML5 vSphere Web Client 。
++
+
+IMPORTANT: 此插件与适用于VMware vCenter Server 4.6、4.7和4.8的VMware vCenter Server 6.5 for Element插件不兼容。
+
+* 您要升级到 6.7 Flash vSphere Web Client 。
++
+
+IMPORTANT: 此插件与 HTML5 vSphere Web Client 的 6.7 U2 内部版本 13007421 以及更新 2a （内部版本 13643870 ）之前发布的其他 6.7 U2 内部版本不兼容。有关受支持的 vSphere 版本的详细信息，请参见的发行说明 https://docs.netapp.com/us-en/vcp/rn_relatedrn_vcp.html#netapp-element-plug-in-for-vcenter-server["您的插件版本"^]。
+
+
+
+.您需要什么？ #8217 ；将需要什么
+* * 管理员权限 * ：您具有 vCenter 管理员角色权限来安装插件。
+* * vSphere 升级 * ：在升级适用于 vCenter Server 的 NetApp Element 插件之前，您已执行任何所需的 vCenter 升级。此操作步骤假定 vCenter 升级已完成。
+* * vCenter Server* ：您的 vCenter 插件 4.x 版已注册到 vCenter Server 。从注册实用程序（`https://[management node IP] ： 9443` ）中，选择 * 注册状态 * ，填写必要字段，然后选择 * 检查状态 * 以验证 vCenter 插件是否已注册以及当前安装的版本号。
+* * 管理服务更新 * ：您已更新 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服务包"^] 到最新版本。vCenter 插件的更新通过在 NetApp HCI 主要产品版本之外发布的管理服务更新进行分发。
+* * 管理节点升级 * ：您正在运行的管理节点已 link:task_hcc_upgrade_management_node.html["已升级"] 到 11.3 或更高版本。vCenter 插件 4.4 或更高版本要求使用 11.3 或更高版本的管理节点，该节点采用可提供单个服务的模块化架构。必须打开管理节点的电源，并配置其 IP 地址或 DHCP 地址。
+* * Element 存储升级 * ：您的集群运行的是 NetApp Element 软件 11.3 或更高版本。
+* * vSphere Web Client* ：在开始任何插件升级之前，您已从 vSphere Web Client 中注销。如果您未注销， Web 客户端将无法识别在此过程中对插件所做的更新。
+
+
+.步骤
+. 在浏览器中输入管理节点的 IP 地址，包括要注册的 TCP 端口： `https://[management node IP] ： 9443` 注册实用程序 UI 将打开至该插件的 * 管理 QoSSIOC 服务凭据 * 页面。
++
+image::vcp_registration_utility_ui_qossioc.png[描绘了此插件的注册实用程序 UI]
+
+. 选择 * vCenter 插件注册 * 。
++
+image::vcp_registration_utility_ui.png[描绘了此插件的注册实用程序 UI]
+
+. 在 * 管理 vCenter 插件 * 中，选择 * 更新插件 * 。
+. 确认或更新以下信息：
++
+.. 要注册此插件的 vCenter 服务的 IPv4 地址或 FQDN 。
+.. vCenter 管理员用户名。
++
+
+NOTE: 您输入的用户名和密码凭据必须适用于具有 vCenter 管理员角色特权的用户。
+
+.. vCenter 管理员密码。
+.. （对于内部服务器 / 非公开站点）插件 ZIP 的自定义 URL 。
++
+
+NOTE: 如果您使用的是 HTTP 或 HTTPS 服务器（非公开站点）或修改了 ZIP 文件名或网络设置，则可以选择 * 自定义 URL* 自定义 URL 。有关自定义 URL 的其他配置步骤，请参见适用于 vCenter Server 的 Element 插件文档，了解有关修改内部（非公开站点） HTTP 服务器的 vCenter 属性的信息。
+
+
+
+. 选择 * 更新 * 。
++
+注册成功后，注册实用程序 UI 中将显示一个横幅。
+
+. 以 vCenter 管理员身份登录到 vSphere Web Client 。如果您已登录到 vSphere Web Client ，则必须先注销，等待两到三分钟，然后重新登录。
++
+
+NOTE: 此操作将创建一个新数据库并在 vSphere Web Client 中完成安装。
+
+. 在 vSphere Web Client 中，请在任务监控器中查找以下已完成的任务，以确保安装已完成： `download plug-in` 和 `DeDeploy plug-in` 。
+. 验证 NetApp Element 配置和管理扩展点是否显示在 vSphere Web Client 的 * 快捷方式 * 选项卡以及侧面板中。
++
+image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装后的插件扩展点]
+
++
+[NOTE]
+====
+如果不显示 vCenter 插件图标，请参见 link:https://review.docs.netapp.com/us-en/vcp_2.19_vcp4.8_release_vcp_repo/vcp_reference_troubleshoot_vcp.html#plug-in-registration-successful-but-icons-do-not-appear-in-web-client["适用于 vCenter Server 的 Element 插件"^] 有关插件故障排除的文档。
+
+使用VMware vCenter Server 6.7U1升级到VCP 4.8或更高版本后、如果NetApp Element 配置的*集群*和* QoSSIOC设置*部分未列出存储集群或显示服务器错误、请参见 link:https://review.docs.netapp.com/us-en/vcp_2.19_vcp4.8_release_vcp_repo/vcp_reference_troubleshoot_vcp.html#errors-after-vcp-4-8-upgrade-with-vmware-vcenter-server-6-7u1["适用于 vCenter Server 的 Element 插件"^] 有关对这些错误进行故障排除的文档。
+
+====
+. 在插件的 * NetApp Element Configuration* 扩展点中的 * 关于 * 选项卡中验证版本更改。
++
+您应看到以下版本详细信息或较新版本的详细信息：
+
+
+
+[listing]
+----
+NetApp Element Plug-in Version: 4.9
+NetApp Element Plug-in Build Number: 14
+----
+
+NOTE: vCenter 插件包含联机帮助内容。要确保帮助包含最新内容，请在升级插件后清除浏览器缓存。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

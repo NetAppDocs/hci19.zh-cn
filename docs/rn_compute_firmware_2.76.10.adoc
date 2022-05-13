@@ -1,0 +1,129 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_compute_firmware_2.76.10.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, compute firmware 
+---
+= 计算固件包 2.76.10 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+可下载的计算节点固件包可为所有受支持的 NetApp HCI 计算节点提供最新的 BIOS 和 BMC 功能增强功能，错误修复以及硬件支持。
+
+
+
+== 新增功能
+
+2.76.10 版包含常规错误修复。
+
+
+
+=== 已更新固件组件
+
+此固件包包含以下硬件组件固件版本，更新版本以粗体显示：
+
+|===
+| 组件 | H300E ， H500E ， H700E | H410C | H610C | H615C 
+
+
+| BIOS | NA2.1 | NATP3.9 | 2003 年 3 月 | 3B08.CO 
+
+
+| BMC | 6.84.00 | * 。 6.71.20 | 4.00.07 | 4.68.07 
+
+
+| NIC/Mellanox | 14.25.1020 | 14.25.1020 | 14.25.1020 | 14.24.1000 
+|===
+
+
+=== 固件组件更改
+
+下面详细介绍了每个新固件组件中的改进和更改：
+
+|===
+| 节点和固件组件 | 改进和变更 
+
+
+| NATP3.9  a| 
+* CSESF-284-Tatooine + BMC 6.71.18 不会报告 PPR 函数工作成功事件的时间。
+* CSESF-289NA3.7 BIOS 无法在 hPPR （硬 PPR ）上报告成功。
+* 已将 SKX Ucode 更新为 0x6906 ，并将 CLX Ucode 更新为 0x2F01 。
+
+
+|===
+
+
+=== Mellanox NIC 固件驱动程序兼容性
+
+更新的 Mellanox 固件版本 14.25.1020 和 14.24.1000 仅与以下版本的 VMware ESXi 驱动程序兼容：
+
+* * ESXi 7.0* ： H300E/H500E/H700E/H410C ：版本 4.19.16.1
+* * ESXi 7.0* ： H610C/H615C ： 4.17.15.16 版
+* * ESXi 6.7* ：版本 4.17.15.16
+* * ESXi 6.5* ：版本 4.16.13.5
+
+
+
+NOTE: 在升级到 2.76.10 版之前，请确保检查当前的 ESXi 驱动程序版本。如果此驱动程序已过期，请先升级此驱动程序。然后，将计算节点的计算固件升级到版本 2.99 。请访问 link:task_hcc_upgrade_compute_node_drivers.html["更新计算节点驱动程序"^] 有关更新计算节点驱动程序的说明，其中包括 ESXi 驱动程序。
+
+虽然 NetApp 部署引擎 1.8P1 不部署 ESXi 7.0 版，但支持将 ESXi 7.0 作为自安装或手动升级选项。手动安装或升级主机操作系统时， NetApp 无法控制这些操作系统的驱动程序和固件。
+
+
+
+== 下载计算固件包 2.76.10
+
+要下载计算固件包，请转到 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle["NetApp HCI 计算固件包"^] 页面。
+
+请访问 link:task_hcc_upgrade_compute_node_firmware.html#use-the-baseboard-management-controller-bmc-user-interface-ui["更新计算节点固件"^] 有关更新计算节点固件的说明。
+
+
+
+== 已解决安全漏洞
+
+以下是此版本中已解决的安全漏洞：
+
+
+
+=== H410C BMC 6.71.20
+
+* CVE-2019-1010022 ， CVE-2019-9169 ， CVE-2017-15804 ， CVE-2018-11236 ， CVE-2017-156.7 ， CVE-2019-1010023 ， CVE-2015-8982 ， CVE-2015-8983 ， CVE-2017-16997 ， CVE-2019-20838 ，
+* CVE-2017-1000408 ， CVE-2017-1000409 ， CVE-2018-1000001 ， CVE-2018-19591 ， CVE-2009-5155 ， CVE-2018-20796 ， CVE-2016-3706 ， CVE-2020-1752 ， CVE-2019-1010024 ， CVE-2019-1010025 ，
+* CVE-2017-15671 ， CVE-2015-8985 ， CVE-2016-4429 ， CVE-2016-10739 ， CVE-2018-6485 ， CVE-2020-10029 ， CVE-2020-14155
+
+
+
+
+== 已解决的问题和已知问题
+
+请参见 https://mysupport.netapp.com/site/bugs-online/product["Bug Online 工具"^] 有关已解决问题以及任何新问题的详细信息。
+
+
+
+=== 访问 BOL 工具
+
+. 导航到  https://mysupport.netapp.com/site/bugs-online/product["BOL 工具"^] 并从下拉列表中选择 * Element Software* ：
++
+image::bol_dashboard.png[存储固件包发行说明]
+
+. 在关键字搜索字段中，键入 "Compute Firmware Bundle" ，然后单击 * 新建搜索 * ：
++
+image::compute_firmware_bundle_choice.png[存储固件包发行说明]
+
+. 此时将显示已解决或已打开的错误列表。您可以进一步细化结果，如下所示：
++
+image::bol_list_bugs_found.png[存储固件包发行说明]
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

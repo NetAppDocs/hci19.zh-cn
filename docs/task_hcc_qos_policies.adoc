@@ -1,0 +1,167 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_qos_policies.html 
+summary: 您可以设置和修改 QoS 策略以应用于存储集群中的卷。 
+keywords: netapp, qos policy, quality of service, qos policies, volumes, element 
+---
+= 创建和管理卷 QoS 策略
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过 QoS （服务质量）策略，您可以创建和保存可应用于多个卷的标准化服务质量设置。要使用 QoS 策略，选定集群必须为 Element 10.0 或更高版本；否则， QoS 策略功能将不可用。
+
+
+NOTE: 有关使用的详细信息，请参见 NetApp HCI 概念内容 link:concept_hci_performance.html#qos-policies["QoS 策略"] 而不是单个卷 link:concept_hci_performance.html["QoS"]。
+
+使用 NetApp Hybrid Cloud Control ，您可以通过完成以下任务来创建和管理 QoS 策略：
+
+* <<Create a QoS policy>>
+* <<Apply a QoS policy to a volume>>
+* <<Change the QoS policy assignment of a volume>>
+* <<Edit a QoS policy>>
+* <<Delete a QoS policy>>
+
+
+
+
+== 创建 QoS 策略
+
+您可以创建 QoS 策略并将其应用于性能应相当的卷。
+
+
+NOTE: 如果使用的是 QoS 策略，请勿对卷使用自定义 QoS 。自定义 QoS 将覆盖和调整卷 QoS 设置的 QoS 策略值。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，展开存储集群的菜单。
+. 选择 * 存储 > 卷 * 。
+. 单击 * QoS 策略 * 选项卡。
+. 单击 * 创建策略 * 。
+. 输入 * 策略名称 * 。
++
+
+TIP: 使用描述性命名最佳实践。如果您的环境中使用了多个集群或 vCenter Server ，这一点尤其重要。
+
+. 输入最小 IOPS ，最大 IOPS 和突发 IOPS 值。
+. 单击 * 创建 QoS 策略 * 。
++
+系统会为此策略生成一个系统 ID ，此策略会显示在 QoS 策略页面上，并显示为其分配的 QoS 值。
+
+
+
+
+
+== 将 QoS 策略应用于卷
+
+您可以使用 NetApp Hybrid Cloud Control 为卷分配现有 QoS 策略。
+
+要分配的 QoS 策略已完成 <<Create a QoS policy,已创建>>。
+
+此任务介绍如何通过更改卷的设置为单个卷分配 QoS 策略。最新版本的 NetApp Hybrid Cloud Control 没有适用于多个卷的批量分配选项。在未来版本提供批量分配功能之前，您可以使用 Element Web UI 或 vCenter 插件 UI 批量分配 QoS 策略。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，展开存储集群的菜单。
+. 选择 * 存储 > 卷 * 。
+. 单击要修改的卷旁边的 * 操作 * 菜单。
+. 在显示的菜单中，选择 * 编辑 * 。
+. 在对话框中，启用 * 分配 QoS 策略 * ，然后从下拉列表中选择要应用于选定卷的 QoS 策略。
++
+
+NOTE: 分配 QoS 将覆盖先前应用的任何单个卷 QoS 值。
+
+. 单击 * 保存 * 。
++
+已更新的卷将分配有 QoS 策略，并显示在概述页面上。
+
+
+
+
+
+== 更改卷的 QoS 策略分配
+
+您可以从卷中删除 QoS 策略的分配，也可以选择其他 QoS 策略或自定义 QoS 。
+
+要修改的卷为 <<Apply a QoS policy to a volume,已分配>> QoS 策略。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，展开存储集群的菜单。
+. 选择 * 存储 > 卷 * 。
+. 单击要修改的卷旁边的 * 操作 * 菜单。
+. 在显示的菜单中，选择 * 编辑 * 。
+. 在对话框中，执行以下操作之一：
++
+** 禁用 * 分配 QoS 策略 * 并修改单个卷 QoS 的 * 最小 IOPS* ， * 最大 IOPS* 和 * 突发 IOPS* 值。
++
+
+NOTE: 禁用 QoS 策略后，除非另有修改，否则卷将使用默认 QoS IOPS 值。
+
+** 从下拉列表中选择其他 QoS 策略以应用于选定卷。
+
+
+. 单击 * 保存 * 。
++
+更新后的卷将显示在 " 概述 " 页面上。
+
+
+
+
+
+== 编辑 QoS 策略
+
+您可以更改现有 QoS 策略的名称或编辑与该策略关联的值。更改 QoS 策略性能值会影响与此策略关联的所有卷的 QoS 。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，展开存储集群的菜单。
+. 选择 * 存储 > 卷 * 。
+. 单击 * QoS 策略 * 选项卡。
+. 单击要修改的 QoS 策略旁边的 * 操作 * 菜单。
+. 单击 * 编辑 * 。
+. 在 * 编辑 QoS 策略 * 对话框中，更改以下一项或多项：
++
+** * 名称 * ：用户为 QoS 策略定义的名称。
+** * 最小 IOPS* ：卷保证的最小 IOPS 数。默认值 = 50 。
+** * 最大 IOPS* ：卷允许的最大 IOPS 数。默认值为 15 ， 000 。
+** * 突发 IOPS* ：卷在短时间内允许的最大 IOPS 数。默认值为 15 ， 000 。
+
+
+. 单击 * 保存 * 。
++
+更新后的 QoS 策略将显示在 QoS 策略页面上。
+
++
+
+TIP: 您可以单击某个策略的 * 活动卷 * 列中的链接，以显示分配给该策略的卷的筛选列表。
+
+
+
+
+
+== 删除 QoS 策略
+
+您可以删除不再需要的 QoS 策略。删除 QoS 策略时，使用该策略分配的所有卷都会保留先前由该策略定义的 QoS 值，但会保留为单个卷 QoS 。系统将删除与已删除 QoS 策略的任何关联。
+
+.步骤
+. 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在信息板中，展开存储集群的菜单。
+. 选择 * 存储 > 卷 * 。
+. 单击 * QoS 策略 * 选项卡。
+. 单击要修改的 QoS 策略旁边的 * 操作 * 菜单。
+. 单击 * 删除 * 。
+. 确认操作。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

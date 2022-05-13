@@ -1,0 +1,420 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_upgrade_element_prechecks.html 
+summary: 在 NetApp HCI 系统升级过程中，您需要对 NetApp Element 软件运行状况检查。 
+keywords: netapp, storage prechecks, element upgrade, healthtools, sfupgradecheck 
+---
+= 在升级存储之前，请运行 Element 存储运行状况检查
+:allow-uri-read: 
+
+
+[role="lead"]
+您必须在升级 Element 存储之前运行运行运行状况检查，以确保集群中的所有存储节点均已准备好进行下一次 Element 存储升级。
+
+.您需要什么？ #8217 ；将需要什么
+* *管理服务*：您已更新到最新的管理服务包(2.10.27或更高版本)。
++
+
+IMPORTANT: 在升级 Element 软件之前，您必须升级到最新的管理服务包。
+
+* *管理节点*：正在运行管理节点11.3或更高版本。
+* * Element Software*：您的集群版本运行的是NetApp Element 软件11.3或更高版本。
+* *最终用户许可协议(EULA)*：从管理服务来看、在使用NetApp混合云控制UI或API运行Element存储运行状况检查之前、您必须接受并保存此EULA：
++
+.. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+.. 选择靠近接口右上角的 * 升级 * 。
+.. 此时将弹出EULA。向下滚动、选择*我接受当前更新和所有未来更新*、然后选择*保存*。
++
+
+NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启用自动下载功能。您将收到有关NetApp软件更新和升级的更新、您可以在方便时自行决定安装这些更新。您可以通过禁用与NetApp联机软件存储库的网络连接来禁用自动下载功能。
+
+
+
+
+
+您可以使用 NetApp Hybrid Cloud Control （ HCC ） UI ， HCC API 或 HealthTools 套件运行运行状况检查：
+
+* <<Use NetApp Hybrid Cloud Control to run Element storage health checks prior to upgrading storage>> （首选方法）
+* <<Use API to run Element storage health checks prior to upgrading storage>>
+* <<Use HealthTools to run Element storage health checks prior to upgrading storage>>
+
+
+您还可以了解有关此服务运行的存储运行状况检查的更多信息：
+
+* <<Storage health checks made by the service>>
+
+
+
+
+== 在升级存储之前，请使用 NetApp Hybrid Cloud Control 运行 Element 存储运行状况检查
+
+使用 NetApp Hybrid Cloud Control （ HCC ），您可以验证存储集群是否已做好升级准备。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 选择靠近接口右上角的 * 升级 * 。
+. 在 * 升级 * 页面上，选择 * 存储 * 选项卡。
+. 选择运行状况检查 image:hcc_healthcheck_icon.png["图标。"] 对于要检查升级准备情况的集群。
+. 在 * 存储运行状况检查 * 页面上，选择 * 运行状况检查 * 。
+. 如果出现问题，请执行以下操作：
++
+.. 转至为每个问题描述列出的特定知识库文章，或者执行指定的补救措施。
+.. 如果指定了 KB ，请完成相关知识库文章中所述的过程。
+.. 解决集群问题后，选择 * 重新运行运行状况检查 * 。
+
+
+
+
+运行状况检查完成且无错误后，存储集群便可进行升级。请参见存储节点升级 link:task_hcc_upgrade_element_software.html["说明"] 以继续。
+
+
+
+== 在升级存储之前，请使用 API 运行 Element 存储运行状况检查
+
+您可以使用 REST API 验证存储集群是否已做好升级准备。运行状况检查可验证升级不存在任何障碍，例如待定节点，磁盘空间问题和集群故障。
+
+.步骤
+. 找到存储集群 ID ：
++
+.. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 从 REST API UI 中，选择 `GET /assets` 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从响应中，从要检查升级准备情况的集群的 ` storage"` 部分复制 ` id"` 。
++
+
+NOTE: 请勿在本节中使用 ` "parent"` 值，因为这是管理节点的 ID ，而不是存储集群的 ID 。
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. 对存储集群运行状况检查：
++
+.. 在管理节点上打开存储 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
+
+
+.. 选择 * POST /health-checks* 。
+.. 选择 * 试用 * 。
+.. 在参数字段中，输入在步骤 1 中获取的存储集群 ID 。
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. 选择 * 执行 * 可对指定存储集群运行状况检查。
++
+响应应指示状态为 `initializing` ：
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. 复制响应中的 `healthCheckID` 。
+
+
+. 验证运行状况检查的结果：
++
+.. 选择 * 获取​ /health-t checks​ / ｛ healthCheckId ｝ * 。
+.. 选择 * 试用 * 。
+.. 在参数字段中输入运行状况检查 ID 。
+.. 选择 * 执行 * 。
+.. 滚动到响应正文的底部。
++
+如果所有运行状况检查均成功，则返回的结果类似于以下示例：
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. 如果 `m消息` 返回指示存在与集群运行状况相关的问题，请执行以下操作：
++
+.. 选择 * 获取​ /health-t checks​ / ｛ healthCheckId ｝ /log*
+.. 选择 * 试用 * 。
+.. 在参数字段中输入运行状况检查 ID 。
+.. 选择 * 执行 * 。
+.. 查看任何特定错误并获取相关知识库文章链接。
+.. 转至为每个问题描述列出的特定知识库文章，或者执行指定的补救措施。
+.. 如果指定了 KB ，请完成相关知识库文章中所述的过程。
+.. 解决集群问题后，请再次运行 * 获取​ /health-m checks​ / ｛ healthCheckId ｝ /log* 。
+
+
+
+
+
+
+== 在升级存储之前，请使用 HealthTools 运行 Element 存储运行状况检查
+
+您可以使用 `sfupgradecheck` 命令验证存储集群是否已做好升级准备。此命令可验证待定节点，磁盘空间和集群故障等信息。
+
+如果您的管理节点位于没有外部连接的非公开站点上，则升级就绪检查需要使用您在期间下载的 `metadata .json` 文件 link:task_upgrade_element_latest_healthtools.html["HealthTools 升级"] 以成功运行。
+
+此操作步骤介绍了如何处理升级检查，这些检查会产生以下结果之一：
+
+* 已成功运行 `sfupgradecheck` 命令。您的集群已做好升级准备。
+* 在 `sfupgradecheck` 工具中执行的检查失败，并显示错误消息。您的集群尚未做好升级准备，需要执行其他步骤。
+* 升级检查失败，并显示一条错误消息，指出 HealthTools 已过期。
+* 升级检查失败，因为管理节点位于非公开站点上。
+
+
+.步骤
+. 运行 `sfupgradecheck` 命令：
++
+[listing]
+----
+sfupgradecheck -u <cluster-user-name> MVIP
+----
++
+
+NOTE: 对于包含特殊字符的密码，请在每个特殊字符之前添加反斜杠（` \` ）。例如， `mypass ！@1` 应输入为 `mypass\ ！ \@` 。
+
++
+示例输入命令，其中包含示例输出，不会显示任何错误，并且您已做好升级准备：
+
++
+[listing]
+----
+sfupgradecheck -u admin 10.117.78.244
+----
++
+[listing]
+----
+check_pending_nodes:
+Test Description: Verify no pending nodes in cluster
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltOQAQ/pendingnodes
+check_cluster_faults:
+Test Description: Report any cluster faults
+check_root_disk_space:
+Test Description: Verify node root directory has at least 12 GBs of available disk space
+Passed node IDs: 1, 2, 3
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltTQAQ/
+SolidFire-Disk-space-error
+check_mnode_connectivity:
+Test Description: Verify storage nodes can communicate with management node
+Passed node IDs: 1, 2, 3
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltYQAQ/mNodeconnectivity
+check_files:
+Test Description: Verify options file exists
+Passed node IDs: 1, 2, 3
+check_cores:
+Test Description: Verify no core or dump files exists
+Passed node IDs: 1, 2, 3
+check_upload_speed:
+Test Description: Measure the upload speed between the storage node and the
+management node
+Node ID: 1 Upload speed: 90063.90 KBs/sec
+Node ID: 3 Upload speed: 106511.44 KBs/sec
+Node ID: 2 Upload speed: 85038.75 KBs/sec
+----
+. 如果出现错误，则需要执行其他操作。有关详细信息，请参见以下子部分。
+
+
+
+
+=== 您的集群未做好升级准备
+
+如果您看到与其中一项运行状况检查相关的错误消息，请按照以下步骤进行操作：
+
+. 查看 `sfupgradecheck` 错误消息。
++
+响应示例：
+
+
+
+[listing]
+----
+The following tests failed:
+check_root_disk_space:
+Test Description: Verify node root directory has at least 12 GBs of available disk space
+Severity: ERROR
+Failed node IDs: 2
+Remedy: Remove unneeded files from root drive
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltTQAQ/SolidFire-
+Disk-space-error
+check_pending_nodes:
+Test Description: Verify no pending nodes in cluster
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltOQAQ/pendingnodes
+check_cluster_faults:
+Test Description: Report any cluster faults
+check_root_disk_space:
+Test Description: Verify node root directory has at least 12 GBs of available disk space
+Passed node IDs: 1, 3
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltTQAQ/SolidFire-
+Disk-space-error
+check_mnode_connectivity:
+Test Description: Verify storage nodes can communicate with management node
+Passed node IDs: 1, 2, 3
+More information: https://kb.netapp.com/support/s/article/ka11A0000008ltYQAQ/mNodeconnectivity
+check_files:
+Test Description: Verify options file exists
+Passed node IDs: 1, 2, 3
+check_cores:
+Test Description: Verify no core or dump files exists
+Passed node IDs: 1, 2, 3
+check_upload_speed:
+Test Description: Measure the upload speed between the storage node and the management node
+Node ID: 1 Upload speed: 86518.82 KBs/sec
+Node ID: 3 Upload speed: 84112.79 KBs/sec
+Node ID: 2 Upload speed: 93498.94 KBs/sec
+----
+在此示例中，节点 1 的磁盘空间不足。有关详细信息，请参见 https://kb.netapp.com["知识库"^] （ KB ）错误消息中列出的文章。
+
+
+
+=== HealthTools 已过期
+
+如果您看到指示 HealthTools 不是最新版本的错误消息，请按照以下说明进行操作：
+
+. 查看错误消息，并注意升级检查失败。
++
+响应示例：
+
++
+[listing]
+----
+sfupgradecheck failed: HealthTools is out of date:
+installed version: 2018.02.01.200
+latest version: 2020.03.01.09.
+The latest version of the HealthTools can be downloaded from: https://mysupport.netapp.com/NOW/cgi-bin/software/
+Or rerun with the -n option
+----
+. 按照响应中所述的说明进行操作。
+
+
+
+
+=== 您的管理节点位于非公开站点上
+
+. 查看此消息，并注意升级检查失败：
++
+响应示例：
+
++
+[listing]
+----
+sfupgradecheck failed: Unable to verify latest available version of healthtools.
+----
+. 下载 link:https://library.netapp.com/ecm/ecm_get_file/ECMLP2840740["JSON 文件"^] 从 NetApp 支持站点的非管理节点计算机上，将其重命名为 `metadata 。 json` 。
+. 运行以下命令：
++
+[listing]
+----
+sfupgradecheck -l --metadata=<path-to-metadata-json>
+----
+. 有关详细信息，请参见其他 link:task_upgrade_element_latest_healthtools.html["HealthTools 升级"] 非公开站点的信息。
+. 运行以下命令，验证 HealthTools 套件是否为最新版本：
++
+[listing]
+----
+sfupgradecheck -u <cluster-user-name> -p <cluster-password> MVIP
+----
+
+
+
+
+== 服务执行的存储运行状况检查
+
+存储运行状况检查会对每个集群进行以下检查。
+
+|===
+| 检查名称 | 节点 / 集群 | Description 
+
+
+| check_async_results | 集群 | 验证数据库中的异步结果数是否低于阈值数。 
+
+
+| check_cluster_faults | 集群 | 验证是否没有任何升级阻止集群故障（如 Element 源中所定义）。 
+
+
+| check_upload_speed | Node | 测量存储节点与管理节点之间的上传速度。 
+
+
+| connection_speed_check | Node | 验证节点是否已连接到提供升级软件包的管理节点，并估计连接速度。 
+
+
+| check_cores | Node | 检查节点上的内核崩溃转储和核心文件。对于最近一段时间（阈值为 7 天）内发生的任何崩溃，此检查将失败。 
+
+
+| check_root_disk_space | Node | 验证根文件系统是否有足够的可用空间来执行升级。 
+
+
+| check_var_log_disk_space | Node | 验证 ` /var/log` 可用空间是否满足某个可用百分比阈值。否则，检查将轮换并清除较早的日志，以便低于阈值。如果未能成功创建足够的可用空间，则检查将失败。 
+
+
+| check_pending_nodes | 集群 | 验证集群上是否没有待定节点。 
+|===
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

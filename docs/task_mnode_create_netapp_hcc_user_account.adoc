@@ -1,0 +1,275 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_create_netapp_hcc_role_vcenter.html 
+summary: 在向管理节点添加 vCenter 资产或计算节点之前，您必须在 vCenter 中创建 NetApp HCC 角色。 
+keywords: netapp, mnode, management node, vcenter, hci, role 
+---
+= 在 vCenter 中创建 NetApp HCC 角色
+:allow-uri-read: 
+
+
+[role="lead"]
+建议您在 vCenter 中创建 NetApp HCC 角色，以便在安装后手动将 vCenter 资产（控制器）或计算节点（节点）添加到管理节点，或者修改现有控制器或节点。
+
+此 NetApp HCC 角色会将您的管理节点服务视图限制为纯 NetApp 资产。
+
+.关于此任务
+* 本操作步骤介绍了 vSphere 6.7 版中提供的步骤。您的 vSphere 用户界面可能与所述略有不同，具体取决于安装的 vSphere 版本。有关其他帮助，请参见 VMware vCenter 文档。
+* 收件人： link:task_mnode_create_netapp_hcc_role_vcenter.html#create-a-new-netapp-hcc-role["创建新的 NetApp HCC 角色"]，首先在 vCenter 中设置新用户帐户，创建 NetApp HCC 角色，然后分配用户权限。
+* 对于 NetApp ESXi 主机配置，您应将 NDE 创建的用户帐户更新为新的 NetApp HCC 角色：
++
+** 使用 ... link:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-does-not-exist-in-a-vcenter-host-cluster["此选项"] 如果您的 NetApp ESXi 主机不在 vCenter 主机集群中
+** 使用 ... link:task_mnode_create_netapp_hcc_role_vcenter.html#netapp-esxi-host-exists-in-a-vcenter-host-cluster["此选项"] 如果您的 NetApp ESXi 主机位于 vCenter 主机集群中
+
+
+* 您可以 link:task_mnode_create_netapp_hcc_role_vcenter.html#controller-asset-already-exists-on-the-management-node["配置控制器资产"] 管理节点上已存在的。
+* 使用新的 NetApp HCC 角色 link:task_mnode_create_netapp_hcc_role_vcenter.html#add-an-asset-or-a-compute-node-to-the-management-node["添加资产或计算节点"] 到管理节点。
+
+
+
+
+== 创建新的 NetApp HCC 角色
+
+在 vCenter 中设置新用户帐户，创建 NetApp HCC 角色，然后分配用户权限。
+
+
+
+=== 在 vCenter 中设置新用户帐户
+
+要在 vCenter 中设置新用户帐户，请执行以下步骤。
+
+.步骤
+. 以 ` administrator@vsphere.loca` l 或等效项的形式登录到 vSphere Web Client 。
+. 从菜单中选择 * 管理 * 。
+. 在 * 单点登录 * 部分中，选择 * 用户 * 和 * 组 * 。
+. 在 * 域 * 列表中，选择 `vsphere.local` 或您的 LDAP 域。
+. 选择 * 添加用户 * 。
+. 填写 * 添加用户 * 表单。
+
+
+
+
+=== 在 vCenter 中创建新的 NetApp HCC 角色
+
+执行以下步骤在 vCenter 中创建新的 NetApp HCC 角色。
+
+.步骤
+. 选择 * 编辑角色 * ，然后分配所需权限。
+. 在左侧导航窗格中，选择 * 全局 * 。
+. 选择 * 诊断 * 和 * 许可证 * 。
+. 在左侧导航窗格中，选择 * 主机 * 。
+. 选择 * 维护 * ， * 电源 * ， * 存储分区配置 * 和 * 固件 * 。
+. 另存为 `NetApp 角色` 。
+
+
+
+
+=== 为 vCenter 分配用户权限
+
+执行以下步骤，为 vCenter 中的新 NetApp HCC 角色分配用户权限。
+
+.步骤
+. 从菜单中选择 * 主机 * 和 * 集群 * 。
+. 在左侧导航窗格中，选择以下选项之一：
++
+** 顶级 vCenter 。
+** 处于链接模式时所需的 vCenter 。
++
+
+NOTE: 使用适用于 vCenter Server 的 NetApp Element 插件从其他 vCenter Server 管理集群资源 link:https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter 链接模式"^] 仅限于本地存储集群。
+
+
+
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域
+.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 选择 `NetApp Role` 。
++
+
+IMPORTANT: Do * not* select * 传播到子项 * 。
+
++
+image::mnode_new_HCC_role_vcenter.PNG[显示了添加权限窗口]
+
+
+
+
+
+
+
+=== 为数据中心分配用户权限
+
+执行以下步骤，为 vCenter 中的数据中心分配用户权限。
+
+.步骤
+. 在左窗格中，选择 * 数据中心 * 。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 选择 `ReadOnly Role` 。
++
+
+IMPORTANT: Do * not* select * 传播到子项 * 。
+
+
+
+
+
+
+
+=== 为 NetApp HCI 数据存储库分配用户权限
+
+执行以下步骤为 vCenter 中的 NetApp HCI 数据存储库分配用户权限。
+
+.步骤
+. 在左窗格中，选择 * 数据中心 * 。
+. 创建新的存储文件夹。右键单击 * 数据中心 * 并选择 * 创建存储文件夹 * 。
+. 将所有 NetApp HCI 数据存储库从存储集群以及计算节点本地传输到新的存储文件夹。
+. 选择新的存储文件夹。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 选择 `管理员角色` 。
+.. 选择 * 传播到子项 * 。
+
+
+
+
+
+
+=== 为 NetApp 主机集群分配用户权限
+
+执行以下步骤将用户权限分配给 vCenter 中的 NetApp 主机集群。
+
+.步骤
+. 在左侧导航窗格中，选择 NetApp 主机集群。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 选择 `NetApp Role` 或 `Administrator` 。
+.. 选择 * 传播到子项 * 。
+
+
+
+
+
+
+== NetApp ESXi 主机配置
+
+对于 NetApp ESXi 主机配置，您应将 NDE 创建的用户帐户更新为新的 NetApp HCC 角色。
+
+
+
+=== NetApp ESXi 主机不在 vCenter 主机集群中
+
+如果 NetApp ESXi 主机不在 vCenter 主机集群中，您可以使用以下操作步骤在 vCenter 中分配 NetApp HCC 角色和用户权限。
+
+.步骤
+. 从菜单中选择 * 主机 * 和 * 集群 * 。
+. 在左侧导航窗格中，选择 NetApp ESXi 主机。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 选择 `NetApp Role` 或 `Administrator` 。
+
+
+. 选择 * 传播到子项 * 。
+
+
+
+
+=== NetApp ESXi 主机位于 vCenter 主机集群中
+
+如果 NetApp ESXi 主机与其他供应商 ESXi 主机位于 vCenter 主机集群中，则可以使用以下操作步骤在 vCenter 中分配 NetApp HCC 角色和用户权限。
+
+. 从菜单中选择 * 主机 * 和 * 集群 * 。
+. 在左侧导航窗格中，展开所需的主机集群。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 选择 `NetApp Role` 。
++
+
+IMPORTANT: Do * not* select * 传播到子项 * 。
+
+
+
+. 在左侧导航窗格中，选择一个 NetApp ESXi 主机。
+. 在右侧导航窗格中，选择 * 权限 * 。
+. 选择 * + * 图标以添加新用户。
++
+在 * 添加权限 * 窗口中添加以下详细信息：
+
++
+.. 选择 `vsphere.local` 或您的 LDAP 域。
+.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 选择 `NetApp Role` 或 `Administrator` 。
+.. 选择 * 传播到子项 * 。
+
+
+. 对主机集群中的其余 NetApp ESXi 主机重复上述步骤。
+
+
+
+
+== 管理节点上已存在控制器资产
+
+如果管理节点上已存在控制器资产，请使用 `put /assets / ｛ asset_id ｝ /controllers / ｛ controller_id ｝` 执行以下步骤来配置控制器。
+
+.步骤
+. 访问管理节点上的 mnode 服务 API UI ：
++
+`https://<ManagementNodeIP>/mnode`
+
+. 选择 * 授权 * 并输入凭据以访问 API 调用。
+. 选择 `GET /assets` 以获取父 ID 。
+. 选择 `PUT /assets / ｛ asset_id ｝ /controllers / ｛ controller_id ｝` 。
++
+.. 在请求正文中输入在帐户设置中创建的凭据。
+
+
+
+
+
+
+== 将资产或计算节点添加到管理节点
+
+如果在安装后需要手动添加新资产或计算节点（和 BMC 资产），请使用您在中创建的新 HCC 用户帐户 <<Set up a new user account in vCenter>>。有关详细信息，请参见 link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]。
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

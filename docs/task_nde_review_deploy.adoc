@@ -1,0 +1,76 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_review_deploy.html 
+summary: 了解如何查看最终配置并使用这些设置部署 NetApp HCI 。 
+keywords: netapp, hci, deployment, review, deploy 
+---
+= 查看并部署配置
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以在开始部署之前查看提供的信息。您还可以在继续操作之前更正任何不正确或不完整的信息。
+
+
+NOTE: 在部署期间，管理节点安装过程会在 Element 存储集群中创建名称以 `NetApp-HCI-` 开头的卷，以及名称以 `tenant_` 开头的 SolidFire 帐户。请勿删除这些卷或帐户；这样做会发生原因导致管理功能丢失。
+
+.步骤
+. 可选：选择 * 下载 * 图标以 CSV 格式下载安装信息。您可以保存此文件，并在稍后参考以获取配置信息。
++
+
+NOTE: 如果将来安装期间需要，您可以在 NetApp 部署引擎（ NDE ）的 * 安装配置文件 * 页面上将 CSV 文件导入为安装配置文件。
+
+. 展开每个部分并查看相关信息。要一次性展开所有部分，请选择 * 全部展开 * 。
+. 可选：要更改显示的任何部分中的信息，请执行以下操作：
++
+.. 在相应部分中选择 * 编辑 * 。
+.. 进行必要的更改。
+.. 选择 * 继续 * ，直到进入 * 查看 * 页面。先前的设置将保存在每个页面上。
+.. 重复步骤 2 和 3 进行任何其他必要的更改。
+
+
+. 如果您不希望将集群统计信息和支持信息发送到 NetApp 托管的 SolidFire Active IQ 服务器，请清除最后一个复选框。
++
+此操作将禁用对 NetApp HCI 的实时运行状况和诊断监控。禁用此功能后， NetApp 将无法主动支持和监控 NetApp HCI ，以便在生产受到影响之前检测和解决问题。
+
+. 如果所有信息都正确，请选择 * 开始部署 * 。
++
+此时将显示一个对话框。如果在最终设置过程中出现网络连接问题或断电，或者您的浏览器会话丢失，您可以复制对话框中显示的 URL 并使用它浏览到最终设置进度页面。
+
+. 查看对话框中的信息，然后选择 * 复制到剪贴板 * 将 URL 复制到剪贴板。
+. 将此 URL 保存到计算机上的文本文件中。
+. 准备好继续部署后，选择 * 确定 * 。
++
+此时将开始部署，并显示一个进度页面。在部署完成之前，请勿关闭浏览器窗口或离开进度页面。如果您的浏览器会话因任何原因丢失，您可以浏览到先前复制的 URL （并接受显示的任何安全警告）以重新访问最终设置进度页面。
+
++
+
+NOTE: 如果部署失败，请保存任何错误消息文本并联系 NetApp 支持部门。
+
++
+部署完成后，计算节点可能会重新启动多次，然后才能准备好进行服务。
+
+
+
+选择 * 启动 vSphere* ，开始使用 NetApp HCI 。
+
+[NOTE]
+====
+* 对于使用 vSphere 6.7 的 NetApp HCI 安装，此链接将启动 HTML5 vSphere Web 界面。对于使用 vSphere 6.5 的安装，此链接将启动 Adobe Flash vSphere Web 界面。
+* 在两个存储或三个存储节点配置中， NDE 会将见证节点配置为使用计算节点上的本地数据存储库。因此， vSphere Client 会显示两条 * 磁盘上的数据存储库使用情况 * 警告。要继续，请在每个警告中选择 * 重置为绿色 * 链接。
+
+
+====
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

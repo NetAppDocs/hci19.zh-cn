@@ -1,0 +1,175 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_add_assets.html 
+summary: 您可以使用 REST API UI 将计算和控制器资产添加到管理节点配置中。 
+keywords: netapp, mnode, management node, rest api, hci 
+---
+= 向管理节点添加计算和控制器资产
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用 REST API UI 将计算和控制器资产添加到管理节点配置中。
+
+如果您最近扩展了安装，而新资产未自动添加到配置中，则可能需要添加资产。使用这些 API 添加最近添加到安装中的资产。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您已部署运行 11.3 或更高版本的管理节点。
+* 您已拥有 link:task_mnode_create_netapp_hcc_role_vcenter.html["已在 vCenter 中创建新的 NetApp HCC 角色"] 将管理节点服务视图限制为纯 NetApp 资产。
+* 您拥有 vCenter 管理 IP 地址和凭据。
+* 您拥有计算节点（ ESXi ）管理 IP 地址和根凭据。
+* 您拥有硬件（ BMC ）管理 IP 地址和管理员凭据。
+
+
+（仅限 NetApp HCI ）如果在扩展 NetApp HCI 系统后，在混合云控制（ HCC ）中看不到计算节点，则可以使用此操作步骤中所述的 `post /assets/ ｛ asset_id ｝ /compute-nodes` 添加计算节点。
+
+
+NOTE: 手动添加计算节点时，请确保同时添加 BMC 资产，否则会返回错误。
+
+.步骤
+. 获取安装的基本资产 ID ：
++
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭窗口。
+
+
+.. 从 REST API UI 中，选择 * 获取​ /Installations * 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从代码 200 响应正文中，复制安装的 `id` 。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: 您的安装具有在安装或升级期间创建的基本资产配置。
+
+.. 从 REST API UI 中，选择 * 获取 /installations/ ｛ id ｝ * 。
+.. 选择 * 试用 * 。
+.. 将安装资产 ID 粘贴到 * id * 字段中。
+.. 选择 * 执行 * 。
+.. 在响应中，复制并保存集群控制器 ID （` "controllerId"` ），以供后续步骤使用。
+
+
+. （仅适用于计算节点） xref:task_mnode_locate_hardware_tag.adoc[找到计算节点的硬件标记] 在 vSphere 中。
+. 要向现有基础资产添加控制器资产（ vCenter ），计算节点（ ESXi ）或硬件（ BMC ），请选择以下选项之一。
++
+[cols="40,60"]
+|===
+| 选项 | Description 
+
+
+| POST /assets/ ｛ asset_id ｝ / 控制器  a| 
+.. 在管理节点上打开 mNode 服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
++
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭窗口。
+
+
+
+
+.. 选择 * POST /assets/ ｛ asset_id ｝ /controllers* 。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入父基础资产 ID 。
+.. 将所需值添加到有效负载。
+.. 选择 * 执行 * 。
+
+
+
+
+| POST /assets/ ｛ asset_id ｝ /compute-nodes  a| 
+.. 在管理节点上打开 mNode 服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
++
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭窗口。
+
+
+
+
+.. 选择 * POST /assets/ ｛ asset_id ｝ /compute-nodes* 。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入您在先前步骤中复制的父基本资产 ID 。
+.. 在有效负载中，执行以下操作：
++
+... 在 `IP` 字段中输入节点的管理 IP 。
+... 对于 `hardwareTag` ，输入您在先前步骤中保存的硬件标记值。
+... 根据需要输入其他值。
+
+
+.. 选择 * 执行 * 。
+
+
+
+
+| POST /assets/ ｛ asset_id ｝ / 硬件节点  a| 
+.. 在管理节点上打开 mNode 服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
++
+... 选择 * 授权 * 并完成以下操作：
++
+.... 输入集群用户名和密码。
+.... 输入客户端 ID `mnode-client` 。
+.... 选择 * 授权 * 以开始会话。
+.... 关闭窗口。
+
+
+
+
+.. 选择 * POST /assets/ ｛ asset_id ｝ /hardware-nodes* 。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入父基础资产 ID 。
+.. 将所需值添加到有效负载。
+.. 选择 * 执行 * 。
+
+
+|===
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

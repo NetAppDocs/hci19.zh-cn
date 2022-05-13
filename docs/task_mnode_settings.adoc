@@ -1,0 +1,110 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_settings.html 
+summary: 您可以修改和测试管理节点网络，集群和系统设置。 
+keywords: netapp, management node ui, mnode ui, network settings, test network, cluster settings 
+---
+= 修改并测试管理节点网络，集群和系统设置
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以修改和测试管理节点网络，集群和系统设置。
+
+* <<Update management node network settings>>
+* <<Update management node cluster settings>>
+* <<Test the management node settings>>
+
+
+
+
+== 更新管理节点网络设置
+
+在每节点管理节点 UI 的 Network Settings 选项卡上，您可以修改管理节点网络接口字段。
+
+. 打开每节点管理节点 UI 。
+. 单击 * 网络设置 * 选项卡。
+. 查看或输入以下信息：
++
+.. * 方法 * ：选择以下方法之一来配置接口：
++
+*** `loopback` ：用于定义 IPv4 环回接口。
+*** `manual` ：用于定义默认情况下不会对其进行配置的接口。
+*** `d跃点` ：用于通过 DHCP 获取 IP 地址。
+*** `static` ：用于使用静态分配的 IPv4 地址定义以太网接口。
+
+
+.. * 链路速度 * ：虚拟 NIC 协商的速度。
+.. * IPv4 地址 * ： eth0 网络的 IPv4 地址。
+.. * IPv4 子网掩码 * ： IPv4 网络的地址细分。
+.. * IPv4 网关地址 * ：用于从本地网络发送数据包的路由器网络地址。
+.. * IPv6 地址 * ： eth0 网络的 IPv6 地址。
+.. * IPv6 网关地址 * ：用于从本地网络发送数据包的路由器网络地址。
++
+
+IMPORTANT: 11.3 或更高版本的管理节点不支持 IPv6 选项。
+
+.. * MTU * ：网络协议可以传输的最大数据包大小。必须大于或等于 1500 。如果添加第二个存储 NIC ，则此值应为 9000 。
+.. * DNS Servers* ：用于集群通信的网络接口。
+.. * 搜索域 * ：搜索系统可用的其他 MAC 地址。
+.. * 状态 * ：可能值：
++
+*** `UpAndRunning`
+*** `d拥有`
+*** `向上`
+
+
+.. * 路由 * ：通过路由所配置的关联接口到特定主机或网络的静态路由。
+
+
+
+
+
+
+== 更新管理节点集群设置
+
+在管理节点的每节点 UI 的 "Cluster Settings" 选项卡上，您可以在节点处于 "Available" ， "Pending" ， "PendingActive" 和 "Active" 状态时修改集群接口字段。
+
+. 打开每节点管理节点 UI 。
+. 单击 * 集群设置 * 选项卡。
+. 查看或输入以下信息：
++
+** * 角色 * ：管理节点在集群中的角色。可能值： `management` 。
+** * 版本 * ：集群上运行的 Element 软件版本。
+** * 默认接口 * ：用于管理节点与运行 Element 软件的集群进行通信的默认网络接口。
+
+
+
+
+
+
+== 测试管理节点设置
+
+更改管理节点的管理和网络设置并提交更改后，您可以运行测试以验证所做的更改。
+
+. 打开每节点管理节点 UI 。
+. 在管理节点 UI 中，单击 * 系统测试 * 。
+. 完成以下任一操作：
++
+.. 要验证您配置的网络设置是否对系统有效，请单击 * 测试网络配置 * 。
+.. 要使用 ICMP 数据包测试 1G 和 10G 接口上与集群中所有节点的网络连接，请单击 * 测试 Ping* 。
+
+
+. 查看或输入以下内容：
++
+** * 主机 * ：指定要 ping 的设备的地址或主机名列表，以逗号分隔。
+** * 尝试次数 * ：指定系统应重复执行测试 ping 的次数。默认值： 5 。
+** * 数据包大小 * ：指定要在发送到每个 IP 的 ICMP 数据包中发送的字节数。字节数必须小于网络配置中指定的最大 MTU 。
+** * 超时 msec* ：指定等待每个 ping 响应的毫秒数。默认值： 500 毫秒。
+** * 总超时秒 * ：指定在发出下一次 ping 尝试或结束此过程之前 ping 应等待系统响应的时间（以秒为单位）。默认值： 5 。
+** * 禁止碎片化 * ：为 ICMP 数据包启用 DF （ Do not fragment ）标志。
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

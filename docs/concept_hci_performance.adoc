@@ -1,0 +1,111 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_performance.html 
+summary:  
+keywords: netapp, hci, on premise, concept_hci_performance 
+---
+= 性能和服务质量
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, onprem, documentation,
+
+
+[role="lead"]
+SolidFire 存储集群能够按卷提供服务质量（ QoS ）参数。您可以使用以下三个可配置参数来定义 QoS ，以保证集群性能（以每秒输入和输出数（ IOPS ）为单位）：最小 IOPS ，最大 IOPS 和突发 IOPS 。
+
+
+NOTE: SolidFire Active IQ 提供了一个 QoS 建议页面，可提供有关最佳配置和设置 QoS 设置的建议。
+
+
+
+== 服务质量参数
+
+IOPS 参数的定义方式如下：
+
+* * 最小 IOPS* —存储集群为卷提供的最小可持续每秒输入输出数（ IOPS ）。为卷配置的最小 IOPS 是卷性能的保证级别。性能不会低于此级别。
+* * 最大 IOPS* —存储集群为卷提供的最大可持续 IOPS 。如果集群 IOPS 级别非常高，则不会超过此 IOPS 性能级别。
+* * 突发 IOPS* —在短时突发情况下允许的最大 IOPS 数。如果卷运行的 IOPS 低于最大 IOPS ，则会累积突发额度。如果性能级别变得非常高并被推送到最大级别，则允许在卷上短时突发 IOPS 。
++
+当集群在集群 IOPS 利用率较低的状态下运行时， Element 软件将使用突发 IOPS 。
+
++
+一个卷可以累积突发 IOPS ，并使用这些额度在设定的 " 突发期间 " 突发 IOPS ，使其高于其最大 IOPS ，直至达到突发 IOPS 级别。 如果集群具有容纳此突发的容量，则卷的突发时间可长达 60 秒。卷在其最大 IOPS 限制下运行的每秒累积一秒突发额度（最多 60 秒）。
+
++
+突发 IOPS 有两种限制：
+
++
+** 卷可以在数秒内突发超过其最大 IOPS ，该秒数等于卷累积的突发额度数。
+** 当卷突发到其最大 IOPS 设置以上时，它将受到其突发 IOPS 设置的限制。因此，突发 IOPS 不会超过卷的突发 IOPS 设置。
+
+
+* * 有效最大带宽 * —最大带宽是通过将 IOPS 数（基于 QoS 曲线）乘以 IO 大小计算得出的。
++
+示例： 100 min IOPS ， 1000 Max IOPS 和 1500 Burst IOPS 的 QoS 参数设置会对性能质量产生以下影响：
+
++
+** 工作负载可以达到并保持最大 IOPS 1000 ，直到集群上明显出现工作负载争用 IOPS 的情况为止。然后， IOPS 会逐渐减少，直到所有卷上的 IOPS 都在指定的 QoS 范围内，并缓解对性能的争用。
+** 所有卷上的性能都将推向最小 IOPS 100 。此级别不会低于最小 IOPS 设置，但在缓解工作负载争用后，此级别仍可能高于 100 IOPS 。
+** 在一段持续时间内，性能不会超过 1000 IOPS 或低于 100 IOPS 。允许性能达到 1500 IOPS （突发 IOPS ），但仅适用于通过低于最大 IOPS 而累积突发额度的卷，并且仅允许短时间内运行。突发级别永远不会持续。
+
+
+
+
+
+
+== QoS 值限制
+
+下面列出了 QoS 的可能最小值和最大值。
+
+[cols="7*"]
+|===
+| Parameters | 最小值 | Default | 4 个 4 KB | 5 8 KB | 6 16 KB | 262 KB 
+
+
+| 最小 IOPS | 50 | 50 | 15,000 | 9 ， 375 * | 5556* | 385* 
+
+
+| 最大 IOPS | 100 | 15,000 | 20 万 * | 125,000 | 74,074 | 5128 
+
+
+| 突发 IOPS | 100 | 15,000 | 20 万 * | 125,000 | 74.074 | 5128 
+|===
+* 这些估计值为近似值。"Max IOPS" 和 "Burst IOPS" 可以设置为高达 200 ， 000 ；但是，只有在有效地取消卷性能上限时，才允许使用此设置。卷的实际最高性能受集群使用情况和每个节点性能的限制。
+
+
+
+== QoS 性能
+
+QoS 性能曲线显示了块大小与 IOPS 百分比之间的关系。
+
+块大小和带宽会直接影响应用程序可获取的 IOPS 数量。Element 软件会将所接收的块大小规范化为 4k ，从而将其考虑在内。根据工作负载，系统可能会增加块大小。随着块大小的增加，系统会将带宽增加到处理较大块大小所需的级别。随着带宽的增加，系统能够达到的 IOPS 数量也会减少。
+
+QoS 性能曲线显示了块大小增加与 IOPS 百分比降低之间的关系：
+
+image::hci_performance_curve.png[QoS 性能曲线]
+
+例如，如果块大小为 4 k ，带宽为 4000 KBps ，则 IOPS 为 1000 。如果块大小增加到 8k ，则带宽将增加到 5000 KBps ，而 IOPS 将减少到 625 。通过考虑块大小，系统可确保使用较高块大小的较低优先级工作负载（例如备份和虚拟机管理程序活动）不会占用较小块大小的较高优先级流量所需的太多性能。
+
+
+
+== QoS 策略
+
+通过 QoS 策略，您可以创建并保存可应用于多个卷的标准化服务质量设置。
+
+QoS 策略最适合服务环境，例如数据库，应用程序或基础架构服务器，这些服务器很少重新启动，需要对存储的持续等量访问。单个卷 QoS 最适合日常或每天多次重新启动，启动或关闭的轻型 VM ，例如虚拟桌面或专用自助服务终端类型的 VM 。
+
+QoS 和 QoS 策略不应一起使用。如果使用的是 QoS 策略，请勿对卷使用自定义 QoS 。自定义 QoS 将覆盖和调整卷 QoS 设置的 QoS 策略值。
+
+
+NOTE: 要使用 QoS 策略，选定集群必须为 Element 10.0 或更高版本；否则， QoS 策略功能将不可用。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

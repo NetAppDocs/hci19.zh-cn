@@ -1,0 +1,69 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_nodes.html 
+summary: 您可以使用 Hybrid Cloud Control Nodes 页面查看系统中的存储和计算资产。 
+keywords: netapp, hci, on premise, cluster, inventory, nodes, storage, compute 
+---
+= 在节点页面上查看清单
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以查看系统中的存储和计算资产，并确定其 IP 地址，名称和软件版本。
+
+您可以查看多节点系统以及与双节点或三节点集群关联的任何 NetApp HCI 见证节点的存储信息。条件 link:concept_hcc_custom_protection_domains.html["自定义保护域"^] 对于已分配的，您可以查看哪些保护域已分配给特定节点。
+
+见证节点管理集群中的仲裁；它们不用于存储。见证节点仅适用于 NetApp HCI ，而不适用于全闪存存储环境。
+
+有关见证节点的详细信息，请参见 link:concept_hci_nodes.html["节点定义"]。
+
+对于 SolidFire 企业 SDS 节点，您可以在 " 存储 " 选项卡上监控清单。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在左侧导航栏中，单击 * 节点 * 。
++
+image::hcc_nodes_storage_2nodes.png[混合云控制节点页面图]
+
++
+
+NOTE: 首次启动新的 NetApp Hybrid Cloud Control 会话时，如果管理节点管理多个集群，则加载 NetApp Hybrid Cloud Control Nodes 页面可能会出现延迟。加载时间因管理节点主动管理的集群数量而异。对于后续发布，您将体验到更快的加载速度。
+
+. 在节点页面的 * 存储 * 选项卡上，查看以下信息：
++
+.. 双节点集群：存储选项卡上会显示一个 " 双节点 " 标签，并列出关联的见证节点。
+.. 三节点集群：列出存储节点和关联的见证节点。三节点集群在备用节点上部署了见证节点，以便在节点发生故障时保持高可用性。
+.. 包含四个或更多节点的集群：显示包含四个或更多节点的集群的信息。见证节点不适用。如果您从两个或三个存储节点开始并添加了更多节点，则见证节点仍会显示。否则，不会显示见证节点表。
+.. 固件包版本：从管理服务版本 2.14 开始，如果您的集群运行的是 Element 12.0 或更高版本，则可以查看这些集群的固件包版本。如果集群中的节点具有不同的固件版本，则可以在 * 固件包版本 * 列中看到 * 多个 * 。
+.. 自定义保护域：如果集群上正在使用自定义保护域，您可以查看集群中每个节点的自定义保护域分配。如果未启用自定义保护域，则不会显示此列。
+
+
+. 要查看计算清单信息，请单击 * 计算 * 。
+. 您可以通过多种方式处理这些页面上的信息：
++
+.. 要筛选结果中的项列表，请单击 * 筛选器 * 图标并选择筛选器。您也可以为筛选器输入文本。
+.. 要显示或隐藏列，请单击 * 显示 / 隐藏列 * 图标。
+.. 要下载此表，请单击 * 下载 * 图标。
+.. 要为存在 BMC 连接错误的计算节点添加或编辑已存储的 BMC 凭据，请在 * BMC Connection Status* 列的错误消息文本中单击 * 编辑连接设置 * 。只有在计算节点的连接尝试失败时，此列才会显示该节点的错误消息。
+
+
+
+
+
+TIP: 要查看存储和计算资源的数量，请查看 NetApp 混合云控制（ HCC ）信息板。请参见 link:task_hcc_dashboard.html["使用 HCC 信息板监控存储和计算资源"]。
+
+
+NOTE: 要在 NetApp Hybrid Cloud Control 中管理计算节点，您必须 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/How_to_set_up_compute_node_management_in_NetApp_Hybrid_Cloud_Control["将计算节点添加到 vCenter 主机集群"^]。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

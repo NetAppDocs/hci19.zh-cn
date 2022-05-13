@@ -1,0 +1,51 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_rancher_concepts.html 
+summary: 了解在 NetApp HCI 上安装 Rancher 后可能需要执行的任务。 
+keywords: netapp, hci, rancher, control plane, catalog, cluster, kubernetes 
+---
+= Rancher on NetApp HCI 概念
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解与 NetApp HCI 上的 Rancher 相关的基本概念。
+
+* * Rancher 服务器 * 或 * 控制平面 * ： Rancher 控制平面（有时称为 _Rancher 服务器 _ ）可配置，管理和监控开发和运营团队使用的 Kubernetes 集群。
+* * 目录 * ：目录是指 GitHub 存储库或 Helm 图表存储库，其中填充了可随时部署的应用程序。Rancher 可以使用 Helm 图表目录，以便重复部署应用程序。Rancher 包含两种类型的目录：内置全局目录和自定义目录。Trident 作为目录进行部署。请参见 https://rancher.com/docs/rancher/v2.x/en/helm-charts/legacy-catalogs/["有关目录的 Rancher 文档"]。
+* * 管理集群 * ： NetApp HCI 上的 Rancher 在 Rancher 管理集群上部署三个虚拟机，您可以使用 Rancher ，混合云控制和 vCenter 插件查看这些虚拟机。管理集群虚拟机托管 Rancher 服务器， Rancher Kubernetes 引擎（ RKEE ）和 Linux 操作系统。
+* * 用户集群 * ：这些下游 Kubernetes 集群运行您的应用程序和服务。在 Rancher 的 Kubernetes 安装中，管理集群应与用户集群分开。Rancher 用户从 Rancher 部署或导入到 Rancher 的任何集群均视为用户集群。
+* * Rancher 节点模板 * ：混合云控制使用 Rancher 节点模板简化部署。
++
+请参见  https://rancher.com/docs/rancher/v2.x/en/user-settings/node-templates/["有关节点模板的 Rancher 文档"]。
+
+
+
+
+
+== Trident 软件和永久性存储概念
+
+Trident 本身是 Kubernetes 本机应用程序，直接在 Kubernetes 集群中运行。借助 Trident ， Kubernetes 用户（例如开发人员，数据科学家和 Kubernetes 管理员）可以采用他们已熟悉的标准 Kubernetes 格式创建，管理永久性存储卷并与其交互。借助 Trident ， NetApp 解决方案可以满足 Kubernetes 集群提出的永久性卷要求。
+
+使用 Rancher ，您可以使用永久性卷，该卷独立于任何特定 Pod 并具有自己的生命周期。使用 Trident 管理永久性卷声明（ Persistent Volume Claim ， PVC ）可以使创建 Pod 的开发人员免受其所访问存储的较低级别的实施详细信息的影响。
+
+当容器化应用程序发出永久性卷请求（ PVC ）请求时， Trident 会根据 NetApp Element 中 NetApp HCI 软件存储层请求的参数动态配置存储。
+
+在 NetApp HCI 上， Rancher 可以使用 Trident 目录，并在用户集群中运行。默认情况下，在基于 NetApp HCI 的 Rancher 实施中， Rancher 目录中提供了 Trident 安装程序。包含此目录可简化向用户集群部署 Trident 的过程。
+
+请参见 link:task_rancher_trident.html["在 NetApp HCI 上安装带有 Rancher 的 Trident"]。
+
+有关详细信息，请访问 https://netapp-trident.readthedocs.io/en/stable-v20.10/introduction.html["Trident 文档"]。
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_edit_bmc_info.html 
+summary: 您可以使用 NetApp Hybrid Cloud Control 编辑基板管理控制器（ Baseboard Management Controller ， BMC ）连接信息，以便 NetApp HCI 可以连接到该控制器。 
+keywords: netapp, hci, BMC, connection, credentials, monitor 
+---
+= 编辑基板管理控制器连接信息
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以在 NetApp Hybrid Cloud Control 中更改每个计算节点的基板管理控制器（ Baseboard Management Controller ， BMC ）管理员凭据。您可能需要在升级 BMC 固件之前更改凭据，或者解决 NetApp Hybrid Cloud Control 中指示的 `Hardware ID not available` 或 `Unable to detect` 错误。
+
+用于更改 BMC 凭据的集群管理员权限。
+
+
+NOTE: 如果您在运行状况检查期间设置了 BMC 凭据，则在 * 节点 * 页面上反映此更改之前，可能会有长达 2 分钟的延迟。
+
+选择以下选项之一以更改 BMC 凭据：
+
+* <<Use NetApp Hybrid Cloud Control to edit BMC information>>
+* <<Use the REST API to edit BMC information>>
+
+
+
+
+== 使用 NetApp Hybrid Cloud Control 编辑 BMC 信息
+
+您可以使用 NetApp Hybrid Cloud Control Dashboard 编辑存储的 BMC 凭据。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 在左侧导航蓝色框中，选择 NetApp HCI 安装。
++
+此时将显示 NetApp Hybrid Cloud Control Dashboard 。
+
+. 在左侧导航栏中，单击 * 节点 * 。
+. 要查看计算清单信息，请单击 * 计算 * 。
++
+此时将显示一个计算节点列表。"* BMC Connection Status* " 列显示了每个计算节点的 BMC 连接尝试结果。如果某个计算节点的连接尝试失败，则此列将显示该节点的错误消息。
+
+. 要为存在 BMC 连接错误的计算节点添加或编辑已存储的 BMC 凭据，请单击错误消息文本中的 * 编辑连接设置 * 。
+. 在显示的对话框中，为此计算节点的 BMC 添加正确的管理员用户名和密码。
+. 单击 * 保存 * 。
+. 对存储的 BMC 凭据缺失或不正确的任何计算节点重复步骤 6 到 8 。
+
+
+
+NOTE: 更新 BMC 信息可刷新清单，并确保管理节点服务能够识别完成升级所需的所有硬件参数。
+
+
+
+== 使用 REST API 编辑 BMC 信息
+
+您可以使用 NetApp Hybrid Cloud Control REST API 编辑存储的 BMC 凭据。
+
+.步骤
+. 找到计算节点硬件标记和 BMC 信息：
++
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 单击 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 单击 * 授权 * 开始会话。
+... 关闭授权窗口。
+
+
+.. 在 REST API UI 中，单击 * 获取 /installations * 。
+.. 单击 * 试用 * 。
+.. 单击 * 执行 * 。
+.. 从响应中复制安装资产 ID （`id` ）。
+.. 在 REST API UI 中，单击 * 获取 /installations/ ｛ id ｝ * 。
+.. 单击 * 试用 * 。
+.. 将安装资产 ID 粘贴到 * id * 字段中。
+.. 单击 * 执行 * 。
+.. 在响应中，复制并保存节点资产 ID （`id` ）， BMC IP 地址（`bmcAddress` ）和节点序列号（`chassisSerialNumber` ），以供后续步骤使用。
++
+[listing, subs="+quotes"]
+----
+"nodes": [
+  {
+    "bmcDetails": {
+      *"bmcAddress": "10.117.1.111",*
+      "credentialsAvailable": false,
+      "credentialsValidated": false
+    },
+    *"chassisSerialNumber": "221111019323",*
+    "chassisSlot": "C",
+    "hardwareId": null,
+    "hardwareTag": "00000000-0000-0000-0000-ac1f6ab4ecf6",
+    *"id": "8cd91e3c-1b1e-1111-b00a-4c9c4900b000",*
+----
+
+
+. 在管理节点上打开硬件服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/hardware/2/
+----
+. 单击 * 授权 * 并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * 放置 /nodes/ ｛ hardware_id ｝ * 。
+. 单击 * 试用 * 。
+. 在 `hardware_id` 参数中输入先前保存的节点资产 ID 。
+. 在有效负载中输入以下信息：
++
+|===
+| 参数 | Description 
+
+
+| `assetid` | 您在步骤 1 （ f ）中保存的安装资产 ID （`id` ）。 
+
+
+| `BMCIP` | 在步骤 1 （ k ）中保存的 BMC IP 地址（`bmcAddress` ）。 
+
+
+| `bmcPassword` | 用于登录到 BMC 的更新密码。 
+
+
+| `bmcUsername` | 用于登录到 BMC 的更新后的用户名。 
+
+
+| `serialNumber` | 硬件的机箱序列号。 
+|===
++
+有效负载示例：
+
++
+[listing]
+----
+{
+  "assetId": "7bb41e3c-2e9c-2151-b00a-8a9b49c0b0fe",
+  "bmcIp": "10.117.1.111",
+  "bmcPassword": "mypassword1",
+  "bmcUsername": "admin1",
+  "serialNumber": "221111019323"
+}
+----
+. 单击 * 执行 * 以更新 BMC 凭据。如果结果成功，则返回类似于以下内容的响应：
++
+[listing]
+----
+{
+  "credentialid": "33333333-cccc-3333-cccc-333333333333",
+  "host_name": "hci-host",
+  "id": "8cd91e3c-1b1e-1111-b00a-4c9c4900b000",
+  "ip": "1.1.1.1",
+  "parent": "abcd01y3-ab30-1ccc-11ee-11f123zx7d1b",
+  "type": "BMC"
+}
+----
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Known_issues_and_workarounds_for_Compute_Node_upgrades["计算节点升级的已知问题和解决方法"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

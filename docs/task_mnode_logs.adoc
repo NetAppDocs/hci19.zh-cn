@@ -1,0 +1,65 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_logs.html 
+summary: 您可以使用 REST API 从管理 ndoe 上运行的服务检索日志。 
+keywords: netapp, element, management node, management services, mnode, logs 
+---
+= 从管理服务获取日志
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用 REST API 从管理节点上运行的服务检索日志。您可以从所有公有服务中提取日志，也可以指定特定服务并使用查询参数更好地定义返回结果。
+
+.您需要什么？ #8217 ；将需要什么
+* 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您已部署运行 11.3 或更高版本的管理节点。
+
+
+.步骤
+. 在管理节点上打开 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. 选择 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 如果尚未填充值，请以 mnode-client 的形式输入客户端 ID 。
+.. 选择 * 授权 * 以开始会话。
+.. 关闭窗口。
+
+
+. 选择 * 获取 /logs* 。
+. 选择 * 试用 * 。
+. 指定以下参数：
++
+** `Lines` ：输入希望日志返回的行数。此参数是一个整数，默认值为 1000 。
++
+
+TIP: 通过将行设置为 0 ，避免请求整个日志内容历史记录。
+
+** `s` ：为服务日志起点添加 ISO-8601 时间戳。
++
+
+TIP: 在收集更广泛的时间范围的日志时，请使用合理的 `s因子` 参数。
+
+** `sservice-name` ：输入服务名称。
++
+
+TIP: 使用 `get /services` 命令列出管理节点上的服务。
+
+** `s顶部` ：设置为 `true` 可从已停止的服务检索日志。
+
+
+. 选择 * 执行 * 。
+. 在响应正文中，选择 * 下载 * 以保存日志输出。
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

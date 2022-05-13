@@ -1,0 +1,179 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_dataprotection.html 
+summary: 数据保护术语包括不同类型的远程复制，卷快照，卷，克隆，保护域， 借助双 Helix 技术实现高可用性。 
+keywords: netapp, hci, data protection, ha, snapshots, replication, cloning, helix 
+---
+= 数据保护
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp HCI 数据保护术语包括不同类型的远程复制，卷快照，卷克隆，保护域以及双 Helix 技术的高可用性。
+
+NetApp HCI 数据保护包括以下概念：
+
+* <<Remote replication types>>
+* <<Volume snapshots for data protection>>
+* <<Volume clones>>
+* <<Backup and restore process overview for SolidFire storage>>
+* <<Protection domains>>
+* <<Double Helix high availability>>
+
+
+
+
+== 远程复制类型
+
+数据的远程复制可以采用以下形式：
+
+* <<Synchronous and asynchronous replication between clusters>>
+* <<Snapshot-only replication>>
+* <<Replication between Element and ONTAP clusters using SnapMirror>>
+
+
+请参见 https://www.netapp.com/us/media/tr-4741.pdf["TR-4741 ： NetApp Element 软件远程复制"^]。
+
+
+
+=== 集群之间的同步和异步复制
+
+对于运行 NetApp Element 软件的集群，可以通过实时复制快速创建卷数据的远程副本。
+
+您可以将一个存储集群与最多四个其他存储集群配对。您可以从集群对中的任一集群同步或异步复制卷数据，以实现故障转移和故障恢复。
+
+
+
+==== 同步复制
+
+同步复制会持续将数据从源集群复制到目标集群，并受延迟，数据包丢失，抖动和带宽的影响。
+
+同步复制适用于以下情况：
+
+* 在短距离内复制多个系统
+* 源本地的灾难恢复站点
+* 对时间敏感的应用程序和数据库保护
+* 业务连续性应用程序，要求在主站点关闭时将二级站点用作主站点
+
+
+
+
+==== 异步复制
+
+异步复制可将数据从源集群持续复制到目标集群，而无需等待目标集群的确认。在异步复制期间，写入在源集群上提交后会向客户端（应用程序）确认。
+
+异步复制适用于以下情况：
+
+* 灾难恢复站点远离源，应用程序不允许网络造成延迟。
+* 连接源集群和目标集群的网络存在带宽限制。
+
+
+
+
+=== 仅 Snapshot 复制
+
+仅快照数据保护功能可将特定时间点发生更改的数据复制到远程集群。仅复制在源集群上创建的快照。而源卷的活动写入则不是。
+
+您可以设置快照复制的频率。
+
+Snapshot 复制不会影响异步或同步复制。
+
+
+
+=== 使用 SnapMirror 在 Element 和 ONTAP 集群之间进行复制
+
+借助 NetApp SnapMirror 技术，您可以将使用 NetApp Element 软件创建的快照复制到 ONTAP 以实现灾难恢复。在 SnapMirror 关系中， Element 是一个端点，而 ONTAP 是另一个端点。
+
+SnapMirror 是一种有助于灾难恢复的 NetApp Snapshot ® 复制技术，用于从主存储故障转移到地理位置偏远的站点上的二级存储。SnapMirror 技术会在二级存储中创建工作数据的副本或镜像，如果主站点发生中断，您可以继续使用该副本或镜像来提供数据。数据在卷级别进行镜像。
+
+主存储中的源卷与二级存储中的目标卷之间的关系称为数据保护关系。这些集群称为卷所在的端点，包含复制数据的卷必须建立对等关系。通过对等关系，集群和卷可以安全地交换数据。
+
+SnapMirror 在 NetApp ONTAP 控制器上本机运行，并集成到 Element 中，而 Element 则在 NetApp HCI 和 SolidFire 集群上运行。控制 SnapMirror 的逻辑驻留在 ONTAP 软件中；因此，所有 SnapMirror 关系都必须至少涉及一个 ONTAP 系统才能执行协调工作。用户主要通过 Element UI 管理 Element 和 ONTAP 集群之间的关系；但是，某些管理任务位于 NetApp ONTAP System Manager 中。用户还可以通过命令行界面和 API 管理 SnapMirror ，这些 CLI 和 API 在 ONTAP 和 Element 中均可用。
+
+请参见 https://fieldportal.netapp.com/content/616239["TR-4651 ： NetApp SolidFire SnapMirror 架构和配置"^] （需要登录）。
+
+您必须使用 Element 软件在集群级别手动启用 SnapMirror 功能。默认情况下， SnapMirror 功能处于禁用状态，并且在新安装或升级过程中不会自动启用此功能。
+
+启用 SnapMirror 后，您可以从 Element 软件中的数据保护选项卡创建 SnapMirror 关系。
+
+
+
+== 用于数据保护的卷快照
+
+卷快照是卷的时间点副本，您可以稍后使用它将卷还原到该特定时间。
+
+虽然快照与卷克隆类似，但快照只是卷元数据的副本，因此您无法挂载或写入这些副本。创建卷快照也只需少量系统资源和空间，因此创建快照的速度比克隆快。
+
+您可以将快照复制到远程集群，并将其用作卷的备份副本。这样，您就可以使用复制的快照将卷回滚到特定时间点；您也可以从复制的快照创建卷的克隆。
+
+您可以将快照从 SolidFire 集群备份到外部对象存储或另一个 SolidFire 集群。将快照备份到外部对象存储时，必须与允许读 / 写操作的对象存储建立连接。
+
+您可以为单个或多个卷创建快照以进行数据保护。
+
+
+
+== 卷克隆
+
+一个或多个卷的克隆是数据的时间点副本。克隆卷时，系统会创建卷的快照，然后为该快照引用的数据创建一份副本。
+
+这是一个异步过程，此过程所需的时间量取决于要克隆的卷大小和当前集群负载。
+
+集群一次最多支持每个卷运行两个克隆请求，一次最多支持八个活动卷克隆操作。超过这些限制的请求将排队等待稍后处理。
+
+
+
+== SolidFire 存储的备份和还原过程概述
+
+您可以将卷备份和还原到其他 SolidFire 存储以及与 Amazon S3 或 OpenStack Swift 兼容的二级对象存储。
+
+您可以将卷备份到以下位置：
+
+* SolidFire 存储集群
+* Amazon S3 对象存储
+* OpenStack Swift 对象存储
+
+
+从 OpenStack Swift 或 Amazon S3 还原卷时，您需要原始备份过程中的清单信息。如果要还原的卷是在 SolidFire 存储系统上备份的，则不需要清单信息。
+
+
+
+== 保护域
+
+保护域是指一个节点或一组已分组在一起的节点，在保持数据可用性的同时，任何部分甚至所有节点都可能发生故障。通过保护域，存储集群可以在丢失机箱（机箱关联性）或整个域（机箱组）时自动进行修复。
+
+保护域布局会将每个节点分配给特定的保护域。
+
+支持两种不同的保护域布局，称为保护域级别。
+
+* 在节点级别，每个节点都位于其自己的保护域中。
+* 在机箱级别，只有共享机箱的节点才位于同一保护域中。
++
+** 将节点添加到集群时，系统会自动从硬件确定机箱级别布局。
+** 在每个节点位于单独机箱中的集群中，这两个级别在功能上是相同的。
+
+
+
+
+您可以手动执行此操作 https://docs.netapp.com/us-en/vcp/vcp_task_clusters_manage.html#set-protection-domain-monitoring["启用保护域监控"] 使用适用于 vCenter Server 的 NetApp Element 插件。您可以根据节点或机箱域选择保护域阈值。
+
+创建新集群时，如果您使用的存储节点位于共享机箱中，则可能需要考虑使用保护域功能设计机箱级别的故障保护。
+
+您可以定义自定义保护域布局，其中每个节点都与一个且仅与一个自定义保护域相关联。默认情况下，每个节点都分配到相同的默认自定义保护域。
+
+
+
+== 双 Helix 高可用性
+
+双 Helix 数据保护是一种复制方法，可在系统中的所有驱动器之间至少分布两个冗余数据副本。通过 " 无 RAID " 方法，系统可以在存储系统的所有级别承受多个并发故障并快速修复。
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

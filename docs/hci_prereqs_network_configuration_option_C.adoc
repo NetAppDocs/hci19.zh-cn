@@ -1,0 +1,100 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_network_configuration_option_C.html 
+summary: 了解 NetApp HCI 网络配置选项 C 
+keywords: netapp, hci, cabling, network configuration 
+---
+= 网络配置：
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, cabling, network configuration
+
+
+[role="lead"]
+NetApp HCI 可以使用多种不同的网络布线和 VLAN 配置。第三种配置（选项 C ）为每个具有原生 VLAN 的计算节点使用六根网络缆线。
+
+
+
+== 配置选项 C ：为使用原生 VLAN 的计算节点使用六根缆线
+
+您可以在部署 NetApp HCI 时不对存储和虚拟化流量使用带标记的 VLAN ，而是依靠交换机配置来分隔网段。您可以将此配置用于 vSphere 标准交换机或 vSphere 分布式交换机（需要 VMware vSphere Enterprise Plus 许可）。
+
+NetApp HCI 文档使用字母表示 H 系列节点背面板上的网络端口。
+
+以下是 H410C 存储节点上的网络端口和位置：
+
+[#H35700E_H410C]
+image::HCI_ISI_compute_6cable.png[NetApp H410C 存储节点网络端口]
+
+以下是 H410S 存储节点上的网络端口和位置：
+
+[#H410S]
+image::HCI_ISI_storage_cabling.png[NetApp H410S 存储节点网络端口]
+
+以下是 H610S 存储节点上的网络端口和位置：
+
+[#H610S]
+image::H610S_back_panel_ports.png[NetApp H610S 存储节点网络端口]
+
+
+
+=== H410C ， H410S 和 H610S 节点的 VLAN 配置
+
+此拓扑选项在 H410C ， H410S 和 H610S 节点上使用以下 VLAN 配置：
+
+|===
+| 使用的节点端口 | 网络名称 | VLAN ID | 已连接交换机端口配置 
+
+
+| 计算和存储节点上的端口 A 和 B | 管理 | 100 | 原生 
+
+
+| 计算节点上的端口 D 和 E | 存储 | 105. | 原生 
+
+
+| 存储节点上的端口 C 和 D | 存储 | 105. | 原生 
+
+
+| 计算节点上的端口 C 和 F | VMotion | 107. | 原生 
+
+
+| 计算节点上的端口 C 和 F | 虚拟机 | 200 ， 201 | 已标记 
+|===
+
+CAUTION: 部署此配置时，请仔细配置交换机端口。此网络拓扑中的配置错误可能会导致难以诊断的部署问题。
+
+下图显示了此拓扑选项的网络配置概述。在此示例中，各个交换机端口都配置了适当的网段作为原生网络。
+
+image::hci_networking_config_scenario_2.png[HCI 网络配置选项 C 图]
+
+
+
+=== 交换机命令示例
+
+您可以使用以下示例交换机命令来配置用于 NetApp HCI 节点的交换机端口。这些命令基于 Cisco 配置，但可能只需要进行极少的更改即可应用于 Mellanox 交换机。有关实施此配置所需的特定命令，请参见交换机文档。
+
+您可以使用以下示例命令来配置用于管理网络的交换机端口。将接口名称，问题描述和 VLAN 替换为适用于您的配置的值。
+
+`接口 ｛ interface name ， such as EthernetX/Y or GigabitEthernetX/Y/Z ｝``` `问题描述 ｛ desired 问题描述， such as NetApp-HCI-NodeX-Porta_B｝``` `sswitchs port access vlan 100` `sPing-tree port type edge`
+
+您可以使用以下示例命令来配置用于存储网络的交换机端口。将接口名称，问题描述和 VLAN 替换为适用于您的配置的值。
+
+`接口 ｛ interface name ， such as EthernetX/Y or GigabitEthernetX/Y/Z ｝``` `问题描述 ｛ desired 问题描述， such as NetApp-HCI-NodeX-PortC|D ｝``` `mtu 9216` `sswitchs port access vlan 105` `sPing-tree port type edge`
+
+您可以使用以下示例命令配置用于 vMotion 和虚拟机网络的交换机端口。将接口名称，问题描述和 VLAN 替换为适用于您的配置的值。
+
+`接口 ｛ interface name ， such as EthernetX/Y or GigabitEthernetX/Y/Z ｝` `问题描述 ｛ desired 问题描述， such as NetApp-HCI-NodeX-PortC|F ｝` `mtu 9216` `sswitching port trunk mode trunk` `sswitching port trunk 原生 VLAN 107` `sswitching port trunk allowed VLAN 200 ， 201` `sPing-tree port type edge`
+
+
+NOTE: 某些交换机可能要求在允许的原生列表中包含 VLAN 。请参见适用于您的特定交换机型号和软件版本的文档。
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

@@ -1,0 +1,44 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_deploy_user_clusters.html 
+summary: 在 NetApp HCI 上部署 Rancher 后，您可以设置用户集群并向这些集群添加应用程序。 
+keywords: netapp, hci, rancher, deploy, cluster, kubernetes, control plane,  user cluster, workload 
+---
+= 部署用户集群和应用程序
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 NetApp HCI 上部署 Rancher 后，您可以设置用户集群并向这些集群添加应用程序。
+
+
+
+== 部署用户集群
+
+部署完成后，开发和运营团队便可部署其 Kubernetes 用户集群，就像部署任何 Rancher 一样，他们可以在其中部署应用程序。
+
+. 使用 Rancher 部署结束时提供的 URL 访问 Rancher UI 。
+. 创建用户集群。请参见 Rancher 文档 https://rancher.com/docs/rancher/v2.x/en/quick-start-guide/workload/["部署工作负载"]。
+. 在 NetApp HCI 上的 Rancher 中配置用户集群。请参见 Rancher 文档 https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/["在 Rancher 中设置 Kubernetes 集群"]。
+
+
+
+
+== 在用户集群上部署应用程序
+
+与任何 Rancher 部署类似，您可以在 Kubernetes 集群上添加应用程序。
+
+请参见 Rancher 文档 https://rancher.com/docs/rancher/v2.x/en/deploy-across-clusters/["跨集群部署应用程序"]。
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

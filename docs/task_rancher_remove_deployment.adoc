@@ -1,0 +1,91 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_remove_deployment.html 
+summary: 了解如何在 NetApp HCI 部署中删除 Rancher 安装以进行重新部署。 
+keywords: netapp, hci, api, REST, remove, Rancher, redeploy 
+---
+= 删除 NetApp HCI 上的 Rancher 安装
+:allow-uri-read: 
+
+
+[role="lead"]
+如果在 NetApp HCI 上意外部署 Rancher 时信息不正确（例如 Rancher 服务器 FQDN 不正确），则需要删除安装，然后重新部署。按照以下步骤删除 NetApp HCI 实例上的 Rancher 安装。
+
+此操作不会删除用户集群。
+
+
+TIP: 您可能希望保留用户集群。如果确实保留了这些 Rancher ，则可以稍后将其迁移到另一个 Rancher 实施中。如果要删除用户集群，应在删除 Rancher 服务器之前先执行此操作；否则，在删除 Rancher 服务器之后删除用户集群将更加困难。
+
+.选项
+* <<Remove Rancher on NetApp HCI using NetApp Hybrid Cloud Control>> （建议）
+* <<Remove Rancher on NetApp HCI using the REST API>>
+
+
+
+
+== 使用 NetApp 混合云控制删除 NetApp HCI 上的 Rancher
+
+您可以使用 NetApp Hybrid Cloud Control Web UI 删除在部署期间设置的三个虚拟机，以托管 Rancher 服务器。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 在信息板中，单击右上角的菜单。
+. 选择 * 配置 * 。
++
+image::hcc_configure.png[Rancher 配置页面]
+
+. 在 * Rancher Server Clusters* 窗格中，单击 * 配置 Rancher Server Clusters* 。
+. 为需要删除的 Rancher 安装选择 * 操作 * 菜单。
++
+
+CAUTION: 单击 * 删除 * 会立即删除 NetApp HCI 管理集群上的 Rancher 。
+
+. 选择 * 删除 * 。
+
+
+
+
+== 使用 REST API 删除 NetApp HCI 上的 Rancher
+
+您可以使用 NetApp Hybrid Cloud Control REST API 删除在部署期间设置的三个虚拟机，以托管 Rancher 服务器。
+
+.步骤
+. 输入管理节点 IP 地址，后跟 ` /k8sdeployer/api/` ：
++
+[listing]
+----
+https://[IP address]/k8sdeployer/api/
+----
+. 单击 * 授权 * 或任何锁定图标，然后输入集群管理员凭据以获得使用 API 的权限。
++
+.. 输入集群用户名和密码。
+.. 如果尚未选择此值，请从类型下拉列表中选择 * 请求正文 * 。
+.. 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+.. 请勿输入客户端密钥值。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 关闭 * 可用授权 * 对话框。
+. 单击 * 发布 / 销毁 * 。
+. 单击 * 试用 * 。
+. 在请求正文文本框中，输入 Rancher 服务器 FQDN 作为 `serverURL` 值。
+. 单击 * 执行 * 。
++
+几分钟后， Rancher 服务器虚拟机应不再显示在 vSphere Client 的主机和集群列表中。删除后，您可以使用 NetApp Hybrid Cloud Control 在 NetApp HCI 上重新部署 Rancher 。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/NetApp_HCI_and_Rancher_troubleshooting["Rancher 部署故障排除"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

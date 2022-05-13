@@ -1,0 +1,246 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_manage_storage_cluster_assets.html 
+summary: 您可以使用 REST API UI 添加，删除和更改管理节点存储集群资产。 
+keywords: netapp, mnode, management node, rest api, hci, assets 
+---
+= 创建和管理存储集群资产
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用 REST API 将新的存储集群资产添加到管理节点，编辑已存储的已知存储集群资产凭据以及从管理节点中删除存储集群资产。
+
+.您需要什么？ #8217 ；将需要什么
+* 确保您的存储集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 确保已部署运行 11.3 或更高版本的管理节点。
+
+
+选择以下选项之一：
+
+* <<Retrieve the installation ID and cluster ID of a storage cluster asset>>
+* <<Add a new storage cluster asset>>
+* <<Edit the stored credentials for a storage cluster asset>>
+* <<Delete a storage cluster asset>>
+
+
+
+
+== 检索存储集群资产的安装 ID 和集群 ID
+
+您可以使用 REST API 获取存储集群的安装 ID 和 ID 。要添加新的存储集群资产，您需要安装 ID ，而要修改或删除特定存储集群资产，则需要集群 ID 。
+
+.步骤
+. 输入管理节点 IP 地址并后跟 ` /inventory/1/` 来访问清单服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * 获取 /installations * 。
+. 单击 * 试用 * 。
+. 单击 * 执行 * 。
++
+API 将返回所有已知安装的列表。
+
+. 从代码 200 响应正文中，保存 `id` 字段中的值，该值可在安装列表中找到。这是安装 ID 。例如：
++
+[listing, subs="+quotes"]
+----
+"installations": [
+    {
+      *"id": "1234a678-12ab-35dc-7b4a-1234a5b6a7ba",*
+      "name": "my-hci-installation",
+      "_links": {
+        "collection": "https://localhost/inventory/1/installations",
+        "self": "https://localhost/inventory/1/installations/1234a678-12ab-35dc-7b4a-1234a5b6a7ba"
+      }
+    }
+  ]
+----
+. 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * 获取 /clusters * 。
+. 单击 * 试用 * 。
+. 将先前保存的安装 ID 输入 `installationId` 参数。
+. 单击 * 执行 * 。
++
+API 将返回此安装中所有已知存储集群的列表。
+
+. 从代码 200 响应正文中，找到正确的存储集群并将其值保存在集群的 `storageId` 字段中。这是存储集群 ID 。
+
+
+
+
+== 添加新的存储集群资产
+
+您可以使用 REST API 将一个或多个新的存储集群资产添加到管理节点清单中。添加新的存储集群资产时，该资产会自动注册到管理节点中。
+
+.您需要什么？ #8217 ；将需要什么
+* 您已复制 <<Retrieve the installation ID and cluster ID of a storage cluster asset,存储集群 ID 和安装 ID>> 要添加的任何存储集群。
+* 如果要添加多个存储节点，则已阅读并了解的限制 link:concept_hci_clusters.html#authoritative-storage-clusters["权威集群"] 和多个存储集群支持。
++
+
+NOTE: 在权威集群上定义的所有用户均定义为与混合云控制实例关联的所有其他集群上的用户。
+
+
+
+.步骤
+. 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * 发布 /clusters * 。
+. 单击 * 试用 * 。
+. 在 * 请求正文 * 字段的以下参数中输入新存储集群的信息：
++
+[listing]
+----
+{
+  "installationId": "a1b2c34d-e56f-1a2b-c123-1ab2cd345d6e",
+  "mvip": "10.0.0.1",
+  "password": "admin",
+  "userId": "admin"
+}
+----
++
+|===
+| 参数 | Type | Description 
+
+
+| `installationId` | string | 要添加新存储集群的安装。将先前保存的安装 ID 输入此参数。 
+
+
+| `mVIP` | string | 存储集群的 IPv4 管理虚拟 IP 地址（ MVIP ）。 
+
+
+| `密码` | string | 用于与存储集群通信的密码。 
+
+
+| `用户 ID` | string | 用于与存储集群通信的用户 ID （用户必须具有管理员权限）。 
+|===
+. 单击 * 执行 * 。
++
+API 将返回一个对象，其中包含有关新添加的存储集群资产的信息，例如名称，版本和 IP 地址信息。
+
+
+
+
+
+== 编辑存储集群资产的已存储凭据
+
+您可以编辑管理节点用于登录到存储集群的已存储凭据。您选择的用户必须具有集群管理员访问权限。
+
+
+NOTE: 确保已按照中的步骤进行操作 <<Retrieve the installation ID and cluster ID of a storage cluster asset>> 然后继续。
+
+.步骤
+. 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * PUT /clusters / ｛ storageId ｝ * 。
+. 单击 * 试用 * 。
+. 将先前复制的存储集群 ID 粘贴到 `storageId` 参数中。
+. 在 * 请求正文 * 字段中更改以下一个或两个参数：
++
+[listing]
+----
+{
+  "password": "adminadmin",
+  "userId": "admin"
+}
+----
++
+|===
+| 参数 | Type | Description 
+
+
+| `密码` | string | 用于与存储集群通信的密码。 
+
+
+| `用户 ID` | string | 用于与存储集群通信的用户 ID （用户必须具有管理员权限）。 
+|===
+. 单击 * 执行 * 。
+
+
+
+
+== 删除存储集群资产
+
+如果存储集群不再使用，您可以删除该存储集群资产。删除存储集群资产后，该资产将自动从管理节点中取消注册。
+
+
+NOTE: 确保已按照中的步骤进行操作 <<Retrieve the installation ID and cluster ID of a storage cluster asset>> 然后继续。
+
+.步骤
+. 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+. 单击 * 删除 /clusters / ｛ storageId ｝ * 。
+. 单击 * 试用 * 。
+. 在 `storageId` 参数中输入先前复制的存储集群 ID 。
+. 单击 * 执行 * 。
++
+成功后， API 将返回空响应。
+
+
+
+[discrete]
+== 了解更多信息
+
+* link:concept_hci_clusters.html#authoritative-storage-clusters["权威集群"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

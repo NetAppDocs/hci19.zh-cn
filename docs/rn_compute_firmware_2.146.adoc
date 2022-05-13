@@ -1,0 +1,178 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_compute_firmware_2.146.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, compute firmware 
+---
+= 计算固件包 2.146 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+可下载的计算节点固件包可为所有受支持的 NetApp HCI 计算节点提供最新的 BIOS 和 BMC 功能增强功能，错误修复以及硬件支持。
+
+
+
+== 新增功能
+
+2.146 版包含常规错误修复。
+
+
+
+=== 已更新固件组件
+
+此固件包包含以下硬件组件固件版本，更新版本以粗体显示：
+
+|===
+| 组件 | H300E ， H500E ， H700E | H410C | H610C | H615C 
+
+
+| BIOS | * NAT3.4* | * NATP3.10* | * 3B07* | * 3B12.CO* 
+
+
+| BMC | * 。 6.98.00* | 6.71.20 | * 4.04.04.04.07* | * 。 4.72.07* 
+
+
+| NIC/Mellanox | 14.25.10.20 | 14.25.10.20 | 14.25.10.20 | 14.25.10.20 
+|===
+
+
+=== 固件组件更改
+
+下面详细介绍了每个新固件组件中的改进和更改：
+
+|===
+| 节点和固件组件 | 改进和变更 
+
+
+| * H300E/H500E/H700E NA3.4*  a| 
+* 启用数据包后修复（ PPR ）
+* IPU 2020.2 微代码
+
+
+
+
+| * H410C NATP3.10*  a| 
+* IPU 2020.2 微代码
+
+
+
+
+| * H610C 3B07*  a| 
+* 增强 SEL 中 PPR 事件的日志记录功能
+* IPU 2020.2 微代码
+
+
+
+
+| * H615C 3B12.CO*  a| 
+* 增强 SEL 中 PPR 事件的日志记录功能
+* IPU 2020.2 微代码
+
+
+
+
+| * H300E/H500E/H700E 6.98.00*  a| 
+* LDAP 绑定 ID 字段长度为 128 个字符
+* 禁用 TLS 1.0 和 TLS 1.1
+
+
+
+
+| * H610C 4.04.04.04.07*  a| 
+* 在 BMC SEL 中解析 BIOS PPR 事件日志
+* LDAP 绑定 ID 字段长度为 128 个字符
+* LDAP 长度的组域为 128 个字符
+
+
+
+
+| * H615C 4.72.07*  a| 
+* 在 BMC SEL 中解析 BIOS PPR 事件日志
+* LDAP 长度的组域为 128 个字符
+
+
+|===
+
+
+=== Mellanox NIC 固件驱动程序兼容性
+
+更新的 Mellanox 固件版本 14.25.1020 和 14.24.1000 仅与以下版本的 VMware ESXi 驱动程序兼容：
+
+* * ESXi 7.0* ： H300E/H500E/H700E/H410C ：版本 4.19.16.1
+* * ESXi 7.0* ： H610C/H615C ： 4.17.15.16 版
+* * ESXi 6.7* ：版本 4.17.15.16
+* * ESXi 6.5* ：版本 4.16.13.5
+
+
+
+NOTE: 在升级到版本 2.146 之前，请确保检查当前的 ESXi 驱动程序版本。如果此驱动程序已过期，请先升级此驱动程序。然后，将计算节点的计算固件升级到版本 2.146 。请访问 link:task_hcc_upgrade_compute_node_drivers.html["更新计算节点驱动程序"^] 有关更新计算节点驱动程序的说明，其中包括 ESXi 驱动程序。
+
+虽然 NetApp 部署引擎 1.8P1 不部署 ESXi 7.0 版，但支持将 ESXi 7.0 作为自安装或手动升级选项。手动安装或升级主机操作系统时， NetApp 无法控制这些操作系统的驱动程序和固件。
+
+
+
+== 下载计算固件包 2.146
+
+要下载计算固件包，请执行以下操作：
+
+. 转至 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp HCI 下载页面"^]。
+. 从下拉列表中选择 * 计算固件捆绑包 * 。
+. 单击 * 执行 * 。
+
+
+请访问 link:task_hcc_upgrade_compute_node_firmware.html#use-the-baseboard-management-controller-bmc-user-interface-ui["更新计算节点固件"^] 有关更新计算节点固件的说明。
+
+
+
+== 已解决安全漏洞
+
+以下是此版本中已解决的安全漏洞：
+
+* CVE-2019-20636
+* CVE-2019-11599 ， CVE-2020-12826 ， CVE-2020-12464 ， CVE-2020-12114
+* CVE-2019-0151 ， CVE-2019-0123 ， CVE-2019-0117
+* CVE-2016-3706 ， CVE-2011-5320 ， CVE-2015-8984 ， CVE-2015-8983 ， CVE-2015-8982 ， CVE-2006-7254 ， CVE-2015-3590
+* CVE-2020-20811 ， CVE-2020-20812
+* CVE-2020-25641
+* CVE-20202-14386 ， CVE-202-14314 ， CVE-202025641 ， CVE-20202-1438 ， CVE-202-14314 ， CVE-2020-25641
+* CVE-2020-8738 ， CVE-2020-8764 ， CVE-2020-0590 ， CVE-2020-8705
+* CVE-2020-0587 ， CVE-2020-0591 ， CVE-2020-0592 ， CVE-2020-8740
+* CVE-2020-0592 ， CVE-2020-0588 ， CVE-2020-8696
+
+
+
+
+== 已解决的问题和已知问题
+
+请参见 https://mysupport.netapp.com/site/bugs-online/product["Bug Online 工具"^] 有关已解决问题以及任何新问题的详细信息。
+
+
+
+=== 访问 BOL 工具
+
+. 导航到  https://mysupport.netapp.com/site/bugs-online/product["BOL 工具"^] 并从下拉列表中选择 * Element Software* ：
++
+image::bol_dashboard.png[存储固件包发行说明]
+
+. 在关键字搜索字段中，键入 "Compute Firmware Bundle" ，然后单击 * 新建搜索 * ：
++
+image::compute_firmware_bundle_choice.png[存储固件包发行说明]
+
+. 此时将显示已解决或已打开的错误列表。您可以进一步细化结果，如下所示：
++
+image::bol_list_bugs_found.png[存储固件包发行说明]
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

@@ -1,0 +1,423 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_installhw.html 
+summary: 在开始使用 NetApp HCI 之前，您应正确安装存储和计算节点。 
+keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, rails, h-series, nodes 
+---
+= 安装 H 系列硬件
+:allow-uri-read: 
+
+
+[role="lead"]
+在开始使用 NetApp HCI 之前，您应正确安装存储和计算节点。
+
+
+TIP: 请参见 link:../media/hseries-isi.pdf["海报"^] 以可视化方式显示说明。
+
+* <<Workflow diagrams>>
+* <<Prepare for installation>>
+* <<Install the rails>>
+* <<Install the node/chassis>>
+* <<Install the switches>>
+* <<Cable the nodes>>
+* <<Power on the nodes>>
+* <<Configure NetApp HCI>>
+* <<Perform post-configuration tasks>>
+
+
+
+
+== 工作流图
+
+此处的工作流图简要概述了安装步骤。根据 H 系列型号的不同，步骤略有不同。
+
+* <<H410C and H410S>>
+* <<H610C and H615C>>
+* <<H610S>>
+
+
+
+
+=== H410C 和 H410S
+
+image::workflow_h410c.PNG[H410C 和 H410S 安装工作流]
+
+
+
+=== H610C 和 H615C
+
+
+NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立组件，这一点与 2U 四节点机箱不同。
+
+image::workflow_h610c.png[H610C 和 H615C 安装工作流]
+
+
+
+=== H610S
+
+
+NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立组件，这一点与 2U 四节点机箱不同。
+
+image::workflow_h610s.png[H610S 安装工作流]
+
+
+
+== 准备安装
+
+在准备安装时，请清点已发送给您的硬件，如果缺少任何物品，请联系 NetApp 支持部门。
+
+确保您的安装位置具有以下项：
+
+* 系统的机架空间。
+
+
+[cols="2*"]
+|===
+| 节点类型 | 机架空间 
+
+
+| H410C 和 H410S 节点 | 双机架单元（ 2U ） 
+
+
+| H610C 节点 | 2U 
+
+
+| H615C 和 H610S 节点 | 一个机架单元（ 1U ） 
+|===
+* SFP28/SFP+ 直连缆线或收发器
+* 带 RJ45 连接器的 CAT5e 或更高规格的缆线
+* 用于配置系统的键盘，视频，鼠标（ KVM ）交换机
+* USB 记忆棒（可选）
+
+
+
+TIP: 随附的硬件取决于您的订购内容。新的 2U 四节点订单包括机箱，挡板，滑轨套件，存储节点驱动器，存储和计算节点以及电源线（每个机箱两根）。如果您订购的是 H610S 存储节点，则驱动器将安装在机箱中。
+
+
+CAUTION: 安装硬件时，请确保移除设备上的所有包装材料并进行包装。这样可以防止节点过热和关闭。
+
+
+
+== 安装导轨
+
+发货给您的硬件订单包括一组滑轨。您需要使用螺丝刀完成导轨安装。每个节点型号的安装步骤略有不同。
+
+
+TIP: 从机架底部到顶部安装硬件，以防止设备发生翻倒。如果您的机架包含稳定设备，请在安装硬件之前安装它们。
+
+* <<H410C and H410S>>
+* <<H610C>>
+* <<H610S and H615C>>
+
+
+
+
+=== H410C 和 H410S
+
+H410C 和 H410S 节点安装在 2U 四节点 H 系列机箱中，该机箱随附两组适配器。如果要将机箱安装在带有圆孔的机架中，请使用适用于带有圆孔的机架的适配器。H410C 和 H410S 节点的导轨可安装深度介于 29 英寸到 33.5 英寸之间的机架。导轨完全收缩后，其长度为 28 英寸，导轨的前后部分仅通过一个螺钉固定在一起。
+
+
+CAUTION: 如果将机箱安装到完全收缩的导轨上，导轨的前，后部分可能会分开。
+
+.步骤
+. 将导轨前部与机架前柱上的孔对齐。
+. 将导轨正面的挂钩推入机架前柱上的孔中，然后向下推，直到装有弹簧的销子卡入机架孔中为止。
+. 使用螺钉将导轨连接到机架。下图显示了连接到机架前部的左侧导轨：
++
+image::h410c_rail.gif[2U 导轨安装]
+
+. 将导轨的后部延伸至机架的后柱。
+. 将导轨后部的挂钩与后部柱上的相应孔对齐，确保导轨前部和后部处于同一水平。
+. 将导轨的后部安装到机架上，然后使用螺钉固定导轨。
+. 对机架另一侧执行上述所有步骤。
+
+
+
+
+=== H610C
+
+以下是为 H61OC 计算节点安装导轨的图示：
+
+image::h610c_rail.png[H610C 计算节点的导轨安装。]
+
+
+
+=== H610S 和 H615C
+
+以下是为 H610S 存储节点或 H615C 计算节点安装导轨的图示：
+
+image::h610s_rail.gif[为 H610S 存储节点和 H615C 计算节点安装导轨。]
+
+
+TIP: H610S 和 H615C 上有左右导轨。将螺钉孔朝底部放置，以便 H610S/H615C 翼形螺钉可以将机箱固定到导轨上。
+
+
+
+== 安装节点 / 机箱
+
+您可以在 2U 四节点机箱中安装 H410C 计算节点和 H410S 存储节点。对于 H610C ， H615C 和 H610S ，请将机箱 / 节点直接安装到机架中的导轨上。
+
+
+TIP: 从 NetApp HCI 1.8 开始，您可以设置一个包含两个或三个存储节点的存储集群。
+
+
+CAUTION: 从设备上拆下所有包装材料和包装。这样可以防止节点过热和关闭。
+
+* <<H410C and H410S nodes>>
+* <<H610C node/chassis>>
+* <<H610S and H615C node/chassis>>
+
+
+
+
+=== H410C 和 H410S 节点
+
+.步骤
+. 在机箱中安装 H410C 和 H410S 节点。下面是安装了四个节点的机箱的背面视图示例：
++
+image::hseries_2U_rear.gif[2U 背面图]
+
+. 为 H410S 存储节点安装驱动器。
++
+image::h410s_drives.png[安装了驱动器的 H410S 存储节点的正面图。]
+
+
+
+
+
+=== H610C 节点 / 机箱
+
+对于 H610C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件，这一点与 2U 四节点机箱不同。
+
+以下是在机架中安装节点 / 机箱的图示：
+
+image::h610c_chassis.png[显示了要在机架中安装的 H610C 节点 / 机箱。]
+
+
+
+=== H610S 和 H615C 节点 / 机箱
+
+对于 H615C 和 H610S ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件，这一点与 2U 四节点机箱不同。
+
+以下是在机架中安装节点 / 机箱的图示：
+
+image::h610s_chassis.gif[显示了要在机架中安装的 H615C 或 H610S 节点 / 机箱。]
+
+
+
+== 安装交换机
+
+如果要在 NetApp HCI 安装中使用 Mellanox SN2010 ， SN2100 和 SN2700 交换机，请按照此处提供的说明安装交换机并为其布线：
+
+* link:https://docs.mellanox.com/pages/viewpage.action?pageId=6884619["Mellanox 硬件用户手册"^]
+* link:https://fieldportal.netapp.com/content/1075535?assetComponentId=1077676["TR-4836 ：《采用 Mellanox SN2100 和 SN2700 的 NetApp HCI 交换机布线指南》（需要登录）"^]
+
+
+
+
+== 为节点布线
+
+如果要将节点添加到现有 NetApp HCI 安装中，请确保添加的节点的布线和网络配置与现有安装相同。
+
+
+CAUTION: 确保机箱后部的通风孔未被缆线或标签挡住。这可能会导致组件过早因过热而出现故障。
+
+* <<H410C compute node and H410S storage node>>
+* <<H610C compute node>>
+* <<H615C compute node>>
+* <<H610S storage node>>
+
+
+
+
+=== H410C 计算节点和 H410S 存储节点
+
+H410C 节点的布线方式有两种：使用两根缆线或使用六根缆线。
+
+以下是双缆线配置：
+
+image::HCI_ISI_compute_2cable.png[显示了 H410C 节点的双缆线配置。]
+
+image:blue circle.png["蓝点"] 对于端口 D 和 E ，连接两根 SFP28/SFP+ 缆线或收发器以实现共享管理，虚拟机和存储连接。
+
+image:purple circle.png["紫色圆点"] （可选，建议）在 IPMI 端口中连接一根 CAT5e 缆线，以实现带外管理连接。
+
+以下是六缆线配置：
+
+image::HCI_ISI_compute_6cable.png[显示了 H410C 节点的六缆线配置。]
+
+image:green circle.png["绿色圆点"] 对于端口 A 和 B ，在端口 A 和 B 中连接两根 CAT5e 或更高规格的缆线，以实现管理连接。
+
+image:orange circle.png["橙色圆点"] 对于端口 C 和 F ，连接两根 SFP28/SFP+ 缆线或收发器以实现虚拟机连接。
+
+image:blue circle.png["蓝点"] 对于端口 D 和 E ，连接两根 SFP28/SFP+ 缆线或收发器以进行存储连接。
+
+image:purple circle.png["紫色圆点"] （可选，建议）在 IPMI 端口中连接一根 CAT5e 缆线，以实现带外管理连接。
+
+下面是 H410S 节点的布线：
+
+image::HCI_ISI_storage_cabling.png[显示了 H410S 节点的布线。]
+
+image:green circle.png["绿色圆点"] 对于端口 A 和 B ，在端口 A 和 B 中连接两根 CAT5e 或更高规格的缆线，以实现管理连接。
+
+image:blue circle.png["蓝点"] 对于端口 C 和 D ，连接两根 SFP28/SFP+ 缆线或收发器以进行存储连接。
+
+image:purple circle.png["紫色圆点"] （可选，建议）在 IPMI 端口中连接一根 CAT5e 缆线，以实现带外管理连接。
+
+为节点布线后，将电源线连接到每个机箱的两个电源设备，然后将其插入 240V PDU 或电源插座。
+
+
+
+=== H610C 计算节点
+
+下面是 H610C 节点的布线：
+
+
+NOTE: H610C 节点仅部署在双缆线配置中。确保所有 VLAN 都位于端口 C 和 D 上
+
+image::H610C_node-cabling.png[显示了 H610C 节点的布线。]
+
+image:dark green.png["深绿色圆点"] 对于端口 C 和 D ，使用两根 SFP28/SFP+ 缆线将节点连接到 10/25GbE 网络。
+
+image:purple circle.png["紫色圆点"] （可选，建议）使用 IPMI 端口中的 RJ45 连接器将节点连接到 1GbE 网络。
+
+image:light blue circle.png["浅蓝点"] 将两根电源线连接到节点，并将电源线插入 200‐240V 电源插座。
+
+
+
+=== H615C 计算节点
+
+下面是 H615C 节点的布线：
+
+
+NOTE: H615C 节点仅部署在双缆线配置中。确保所有 VLAN 都位于端口 A 和 B 上
+
+image::H615C_node_cabling.png[显示了 H615C 节点的布线。]
+
+image:dark green.png["深绿色圆点"] 对于端口 A 和 B ，使用两根 SFP28/SFP+ 缆线将节点连接到 10/25GbE 网络。
+
+image:purple circle.png["紫色圆点"] （可选，建议）使用 IPMI 端口中的 RJ45 连接器将节点连接到 1GbE 网络。
+
+image:light blue circle.png["浅蓝点"] 将两根电源线连接到节点，并将电源线插入 110 至 140V 电源插座。
+
+
+
+=== H610S 存储节点
+
+下面是 H610S 节点的布线：
+
+image::H600S_ISI_noderear.png[显示了 H610S 节点的布线。]
+
+image:purple circle.png["紫色圆点"] 使用 IPMI 端口中的两个 RJ45 连接器将节点连接到 1GbE 网络。
+
+image:dark green.png["深绿色圆点"] 使用两根 SFP28 或 SFP+ 缆线将节点连接到 10/25GbE 网络。
+
+image:orange circle.png["橙色圆点"] 使用 IPMI 端口中的 RJ45 连接器将节点连接到 1GbE 网络。
+
+image:light blue circle.png["浅蓝点"] 将两根电源线连接到节点。
+
+
+
+== 启动节点
+
+节点启动大约需要 6 分钟。
+
+下图显示了 NetApp HCI 2U 机箱上的电源按钮：
+
+image::H410c_poweron_ISG.png[显示了 H 系列 2U 上的电源按钮]
+
+下图显示了 H610C 节点上的电源按钮：
+
+image::H610C_power-on.png[显示了 H610C 节点 / 机箱上的电源按钮。]
+
+下图显示了 H615C 和 H610S 节点上的电源按钮：
+
+image::H600S_ISI_nodefront.png[显示了 H610S/H615C 节点 / 机箱上的电源按钮。]
+
+
+
+== 配置 NetApp HCI
+
+选择以下选项之一：
+
+* <<New NetApp HCI installation>>
+* <<Expand an existing NetApp HCI installation>>
+
+
+
+
+=== 全新 NetApp HCI 安装
+
+.步骤
+. 在一个 NetApp HCI 存储节点的管理网络（绑定 1G ）上配置 IPv4 地址。
++
+
+NOTE: 如果在管理网络上使用 DHCP ，则可以连接到通过 DHCP 获取的存储系统 IPv4 地址。
+
++
+.. 将键盘，视频，鼠标（ KVM ）插入一个存储节点的背面。
+.. 在用户界面中配置绑定 1G 的 IP 地址，子网掩码和网关地址。您还可以为绑定 1G 网络配置 VLAN ID 。
+
+
+. 使用支持的 Web 浏览器（ Mozilla Firefox ， Google Chrome 或 Microsoft Edge ）连接到步骤 1 中配置的 IPv4 地址，以导航到 NetApp 部署引擎。
+. 使用 NetApp 部署引擎用户界面（ UI ）配置 NetApp HCI 。
++
+
+NOTE: 系统将自动发现所有其他 NetApp HCI 节点。
+
+
+
+
+
+=== 展开现有 NetApp HCI 安装
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
+. 按照向导中的步骤向 NetApp HCI 安装添加存储和 / 或计算节点。
++
+
+TIP: 要添加 H410C 计算节点，现有安装必须运行 NetApp HCI 1.4 或更高版本。要添加 H615C 计算节点，现有安装必须运行 NetApp HCI 1.7 或更高版本。
+
++
+
+NOTE: 系统将自动发现同一网络上新安装的 NetApp HCI 节点。
+
+
+
+
+
+== 执行配置后任务
+
+根据您拥有的节点类型，在安装硬件并配置 NetApp HCI 之后，您可能需要执行其他步骤。
+
+* <<H610C node>>
+* <<H615C and H610S nodes>>
+
+
+
+
+=== H610C 节点
+
+在 ESXi 中为您安装的每个 H610C 节点安装 GPU 驱动程序，并验证其功能。
+
+
+
+=== H615C 和 H610S 节点
+
+.步骤
+. 使用 Web 浏览器导航到默认 BMC IP 地址： `192.168.0.120`
+. 使用用户名 `root` 和密码 `calvin` 登录。
+. 在节点管理屏幕中，导航到 * 设置 > 网络设置 * ，然后配置带外管理端口的网络参数。
+
+
+如果您的 H615C 节点包含 GPU ，请在 ESXi 中为您安装的每个 H615C 节点安装 GPU 驱动程序，并验证其功能。
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/media/tr-4820.pdf["_TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
+* https://mysupport.netapp.com/site/tools["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
+

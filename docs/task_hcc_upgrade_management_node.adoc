@@ -1,0 +1,682 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_upgrade_management_node.html 
+summary: 在 NetApp HCI 系统升级过程中，您可以升级管理节点。 
+keywords: netapp, hci, on premise, cluster, management node, mNode, upgrade, 10, 11.0, 11.1, 11.3, 11.5, 11.7, 12.0, 12.2, 12.3, 12.3.1, 12.3.2, 12.3.x 
+---
+= 升级管理节点
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以将管理节点从 11.0 或更高版本升级到管理节点 12.3.x 版。
+
+升级存储集群上的 Element 软件不再需要升级管理节点操作系统。如果管理节点为 11.3 或更高版本，您只需将管理服务升级到最新版本，即可使用 NetApp Hybrid Cloud Control 执行 Element 升级。如果您希望出于安全修复等其他原因升级管理节点操作系统，请按照适用于您的方案的管理节点升级操作步骤进行操作。
+
+
+NOTE: vCenter 插件 4.4 或更高版本需要使用模块化架构创建的管理节点 11.3 或更高版本，并提供各个服务。
+
+选择以下管理节点升级选项之一：
+
+[NOTE]
+====
+* 管理节点 12.3.2 为启用了虚拟卷（ VVOL ）功能的存储集群提供了一个安全缓解措施。如果存储集群已位于 Element 12.3 上且已启用 VVol 功能，则强烈建议升级到 12.3.2 。
+* 管理节点 12.3.1 中没有其他功能更改或错误修复。如果您已运行管理节点 12.3 ，则无需将其升级到 12.3.1 。
+
+
+====
+* 如果要从管理节点 12.3 升级：管理节点 12.3.1 中没有其他功能更改或错误修复。如果您已运行管理节点 12.3 ，则无需将其升级到 12.3.1 。
+
+
+
+NOTE: 如果您选择继续对使用 NDE 部署的管理节点 12.3 进行升级，则升级到 12.3.x 将完成。但是，升级可能会在重新启动期间遇到错误。如果发生这种情况，请重新启动管理节点，使其正确显示 12.3.x
+
+* 如果要从管理节点 12.2 升级：<<Upgrade a management node to version 12.3.x from 12.2>>
+* 如果要从管理节点 12.0 升级：<<Upgrade a management node to version 12.3.x from 12.0>>
+* 如果要从管理节点 11.3 ， 11.5 ， 11.7 或 11.8 升级：<<Upgrade a management node to version 12.3.x from 11.3 through 11.8>>
+* 如果要从管理节点 11.0 或 11.1 升级：<<Upgrade a management node to version 12.3.x from 11.1 or 11.0>>
+* 如果要从管理节点 10.x 版升级：<<Migrating from management node version 10.x to 11.x>>
+
+
+如果您已按 * 顺序 * 更新（ 1 ）管理服务版本和（ 2 ） Element 存储版本，并希望 * 保留 * 现有管理节点，请选择以下选项：
+
+
+NOTE: 如果您未依次更新管理服务和 Element 存储，则无法使用此操作步骤重新配置身份验证。请改用相应的升级操作步骤。
+
+* 如果要保留现有管理节点：<<Reconfigure authentication using the management node REST API>>
+
+
+
+
+== 将管理节点从 12.2 升级到 12.3.x 版
+
+您可以将管理节点从 12.2 版原位升级到 12.3.x 版，而无需配置新的管理节点虚拟机。
+
+
+NOTE: Element 12.3.x 管理节点是一种可选升级。现有部署不需要此功能。
+
+.您需要什么？ #8217 ；将需要什么
+* 管理节点 VM 的 RAM 为 24 GB 。
+* 您要升级的管理节点为 12.0 版，并使用 IPv4 网络。管理节点版本 12.3.x 不支持 IPv6 。
++
+
+TIP: 要检查管理节点的版本，请登录到管理节点并在登录横幅中查看 Element 版本号。
+
+* 您已使用 NetApp Hybrid Cloud Control （ HCC ）将管理服务捆绑包更新为最新版本。您可以从以下 IP 地址访问 HCC ： `https://<ManagementNodeIP>`
+* 如果要将管理节点更新到 12.3.x 版，则需要使用管理服务 2.14.60 或更高版本继续操作。
+* 您已按照中的说明配置了一个额外的网络适配器（如果需要） link:task_mnode_install_add_storage_NIC.html["配置其他存储 NIC"]。
++
+
+NOTE: 如果 eth0 无法路由到 SVIP ，则永久性卷可能需要额外的网络适配器。在 iSCSI 存储网络上配置一个新的网络适配器，以便配置永久性卷。
+
+* 存储节点正在运行 Element 11.3 或更高版本。
+
+
+.步骤
+. 使用 SSH 或控制台访问登录到管理节点虚拟机。
+. 下载 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["管理节点 ISO"^] 将 NetApp HCI 从 NetApp 支持站点连接到管理节点虚拟机。
++
+
+NOTE: 此 ISO 的名称类似于 `solidfire-fdva-<element release>-px-XX.X.x.XXXX.iso`
+
+. 对下载的文件运行 md5sum 以检查下载的完整性，并将输出与 NetApp NetApp HCI 支持站点或 Element 软件上提供的输出进行比较，如以下示例所示：
++
+`sudo md5sum -b <path to ISO>/solidfire-fdva-<element release>-supx-XX.X.XXXX.iso`
+
+. 使用以下命令挂载管理节点 ISO 映像并将其内容复制到文件系统：
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. 切换到主目录，然后从 ` /mnt` 卸载 ISO 文件：
++
+[listing]
+----
+sudo umount /mnt
+----
+. 删除 ISO 以节省管理节点上的空间：
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 在要升级的管理节点上，运行以下命令以升级管理节点操作系统版本。此脚本会在升级后保留所有必要的配置文件，例如 Active IQ 收集器和代理设置。
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+升级过程完成后，管理节点将使用新操作系统重新启动。
+
++
+
+NOTE: 运行此步骤中所述的 sudo 命令后， SSH 会话将被终止。要继续监控，需要访问控制台。如果在执行升级时无法访问控制台，请在 15 到 30 分钟后重试 SSH 登录并验证连接。登录后，您可以在 SSH 横幅中确认新的操作系统版本，以指示升级已成功。
+
+. 在管理节点上，运行 `redeploy-mnode` 脚本以保留先前的管理服务配置设置：
++
+
+NOTE: 此脚本会保留先前的管理服务配置，包括来自 Active IQ 收集器服务，控制器（ vCenter ）或代理的配置，具体取决于您的设置。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: 如果先前已在管理节点上禁用 SSH 功能，则需要 link:task_mnode_ssh_management.html["再次禁用 SSH"] 在已恢复的管理节点上。提供的 SSH 功能 link:task_mnode_enable_remote_support_connections.html["NetApp 支持远程支持通道（ RST ）会话访问"] 默认情况下，在管理节点上处于启用状态。
+
+
+
+== 将管理节点从 12.0 升级到 12.3.x 版
+
+您可以将管理节点从 12.0 版原位升级到 12.3.x 版，而无需配置新的管理节点虚拟机。
+
+
+NOTE: Element 12.3.x 管理节点是一种可选升级。现有部署不需要此功能。
+
+.您需要什么？ #8217 ；将需要什么
+* 您要升级的管理节点为 12.0 版，并使用 IPv4 网络。管理节点版本 12.3.x 不支持 IPv6 。
++
+
+TIP: 要检查管理节点的版本，请登录到管理节点并在登录横幅中查看 Element 版本号。
+
+* 您已使用 NetApp Hybrid Cloud Control （ HCC ）将管理服务捆绑包更新为最新版本。您可以从以下 IP 地址访问 HCC ： `https://<ManagementNodeIP>`
+* 如果要将管理节点更新到 12.3.x 版，则需要使用管理服务 2.14.60 或更高版本继续操作。
+* 您已按照中的说明配置了一个额外的网络适配器（如果需要） link:task_mnode_install_add_storage_NIC.html["配置其他存储 NIC"]。
++
+
+NOTE: 如果 eth0 无法路由到 SVIP ，则永久性卷可能需要额外的网络适配器。在 iSCSI 存储网络上配置一个新的网络适配器，以便配置永久性卷。
+
+* 存储节点正在运行 Element 11.3 或更高版本。
+
+
+.步骤
+. 配置管理节点 VM RAM ：
++
+.. 关闭管理节点虚拟机。
+.. 将管理节点虚拟机的 RAM 从 12 GB 更改为 24 GB 。
+.. 打开管理节点虚拟机的电源。
+
+
+. 使用 SSH 或控制台访问登录到管理节点虚拟机。
+. 下载 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["管理节点 ISO"^] 将 NetApp HCI 从 NetApp 支持站点连接到管理节点虚拟机。
++
+
+NOTE: 此 ISO 的名称类似于 `solidfire-fdva-<element release>-px-XX.X.x.XXXX.iso`
+
+. 对下载的文件运行 md5sum 以检查下载的完整性，并将输出与 NetApp NetApp HCI 支持站点或 Element 软件上提供的输出进行比较，如以下示例所示：
++
+`sudo md5sum -b <path to ISO>/solidfire-fdva-<element release>-supx-XX.X.XXXX.iso`
+
+. 使用以下命令挂载管理节点 ISO 映像并将其内容复制到文件系统：
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. 切换到主目录，然后从 ` /mnt` 卸载 ISO 文件：
++
+[listing]
+----
+sudo umount /mnt
+----
+. 删除 ISO 以节省管理节点上的空间：
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 在要升级的管理节点上，运行以下命令以升级管理节点操作系统版本。此脚本会在升级后保留所有必要的配置文件，例如 Active IQ 收集器和代理设置。
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+升级过程完成后，管理节点将使用新操作系统重新启动。
+
++
+
+NOTE: 运行此步骤中所述的 sudo 命令后， SSH 会话将被终止。要继续监控，需要访问控制台。如果在执行升级时无法访问控制台，请在 15 到 30 分钟后重试 SSH 登录并验证连接。登录后，您可以在 SSH 横幅中确认新的操作系统版本，以指示升级已成功。
+
+. 在管理节点上，运行 `redeploy-mnode` 脚本以保留先前的管理服务配置设置：
++
+
+NOTE: 此脚本会保留先前的管理服务配置，包括来自 Active IQ 收集器服务，控制器（ vCenter ）或代理的配置，具体取决于您的设置。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: 提供的 SSH 功能 link:task_mnode_enable_remote_support_connections.html["NetApp 支持远程支持通道（ RST ）会话访问"] 默认情况下，在运行管理服务 2.18 及更高版本的管理节点上处于禁用状态。如果先前已在管理节点上启用 SSH 功能，则可能需要 link:task_mnode_ssh_management.html["再次禁用 SSH"] 在升级后的管理节点上。
+
+
+
+== 将管理节点从 11.3 升级到 11.3.x 版
+
+您可以将管理节点从 11.3 ， 11.5 ， 11.7 或 11.8 原位升级到 12.3.x 版，而无需配置新的管理节点虚拟机。
+
+
+NOTE: Element 12.3.x 管理节点是一种可选升级。现有部署不需要此功能。
+
+.您需要什么？ #8217 ；将需要什么
+* 您要升级的管理节点为 11.3 ， 11.5 ， 11.7 或 11.8 版，并使用 IPv4 网络。管理节点版本 12.3.x 不支持 IPv6 。
++
+
+TIP: 要检查管理节点的版本，请登录到管理节点并在登录横幅中查看 Element 版本号。
+
+* 您已使用 NetApp Hybrid Cloud Control （ HCC ）将管理服务捆绑包更新为最新版本。您可以从以下 IP 地址访问 HCC ： `https://<ManagementNodeIP>`
+* 如果要将管理节点更新到 12.3.x 版，则需要使用管理服务 2.14.60 或更高版本继续操作。
+* 您已按照中的说明配置了一个额外的网络适配器（如果需要） link:task_mnode_install_add_storage_NIC.html["配置其他存储 NIC"]。
++
+
+NOTE: 如果 eth0 无法路由到 SVIP ，则永久性卷可能需要额外的网络适配器。在 iSCSI 存储网络上配置一个新的网络适配器，以便配置永久性卷。
+
+* 存储节点正在运行 Element 11.3 或更高版本。
+
+
+.步骤
+. 配置管理节点 VM RAM ：
++
+.. 关闭管理节点虚拟机。
+.. 将管理节点虚拟机的 RAM 从 12 GB 更改为 24 GB 。
+.. 打开管理节点虚拟机的电源。
+
+
+. 使用 SSH 或控制台访问登录到管理节点虚拟机。
+. 下载 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["管理节点 ISO"^] 将 NetApp HCI 从 NetApp 支持站点连接到管理节点虚拟机。
++
+
+NOTE: 此 ISO 的名称类似于 `solidfire-fdva-<element release>-px-XX.X.x.XXXX.iso`
+
+. 对下载的文件运行 md5sum 以检查下载的完整性，并将输出与 NetApp NetApp HCI 支持站点或 Element 软件上提供的输出进行比较，如以下示例所示：
++
+`sudo md5sum -b <path to ISO>/solidfire-fdva-<element release>-supx-XX.X.XXXX.iso`
+
+. 使用以下命令挂载管理节点 ISO 映像并将其内容复制到文件系统：
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount <solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso> /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. 切换到主目录，然后从 ` /mnt` 卸载 ISO 文件：
++
+[listing]
+----
+sudo umount /mnt
+----
+. 删除 ISO 以节省管理节点上的空间：
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 在 11.3 ， 11.5 ， 11.7 或 11.8 管理节点上，运行以下命令以升级管理节点操作系统版本。此脚本会在升级后保留所有必要的配置文件，例如 Active IQ 收集器和代理设置。
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1
+----
++
+升级过程完成后，管理节点将使用新操作系统重新启动。
+
++
+
+NOTE: 运行此步骤中所述的 sudo 命令后， SSH 会话将被终止。要继续监控，需要访问控制台。如果在执行升级时无法访问控制台，请在 15 到 30 分钟后重试 SSH 登录并验证连接。登录后，您可以在 SSH 横幅中确认新的操作系统版本，以指示升级已成功。
+
+. 在管理节点上，运行 `redeploy-mnode` 脚本以保留先前的管理服务配置设置：
++
+
+NOTE: 此脚本会保留先前的管理服务配置，包括来自 Active IQ 收集器服务，控制器（ vCenter ）或代理的配置，具体取决于您的设置。
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode -mu <mnode user>
+----
+
+
+
+IMPORTANT: 提供的 SSH 功能 link:task_mnode_enable_remote_support_connections.html["NetApp 支持远程支持通道（ RST ）会话访问"] 默认情况下，在运行管理服务 2.18 及更高版本的管理节点上处于禁用状态。如果先前已在管理节点上启用 SSH 功能，则可能需要 link:task_mnode_ssh_management.html["再次禁用 SSH"] 在升级后的管理节点上。
+
+
+
+== 将管理节点从 11.1 或 11.0 升级到 12.3.x 版
+
+您可以将管理节点从 11.0 或 11.1 原位升级到 12.3.x 版，而无需配置新的管理节点虚拟机。
+
+.您需要什么？ #8217 ；将需要什么
+* 存储节点正在运行 Element 11.3 或更高版本。
++
+
+NOTE: 使用最新的 HealthTools 升级 Element 软件。
+
+* 您要升级的管理节点为 11.0 或 11.1 版，并使用 IPv4 网络。管理节点版本 12.3.x 不支持 IPv6 。
++
+
+TIP: 要检查管理节点的版本，请登录到管理节点并在登录横幅中查看 Element 版本号。
+
+* 对于管理节点 11.0 ，需要手动将 VM 内存增加到 12 GB 。
+* 您已按照产品管理节点用户指南中有关配置存储 NIC （ eth1 ）的说明配置了其他网络适配器（如果需要）。
++
+
+NOTE: 如果 eth0 无法路由到 SVIP ，则永久性卷可能需要额外的网络适配器。在 iSCSI 存储网络上配置一个新的网络适配器，以便配置永久性卷。
+
+
+
+.步骤
+. 配置管理节点 VM RAM ：
++
+.. 关闭管理节点虚拟机。
+.. 将管理节点虚拟机的 RAM 从 12 GB 更改为 24 GB 。
+.. 打开管理节点虚拟机的电源。
+
+
+. 使用 SSH 或控制台访问登录到管理节点虚拟机。
+. 下载 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["管理节点 ISO"^] 将 NetApp HCI 从 NetApp 支持站点连接到管理节点虚拟机。
++
+
+NOTE: 此 ISO 的名称类似于 `solidfire-fdva-<element release>-px-XX.X.x.XXXX.iso`
+
+. 对下载的文件运行 md5sum 以检查下载的完整性，并将输出与 NetApp NetApp HCI 支持站点或 Element 软件上提供的输出进行比较，如以下示例所示：
++
+[listing]
+----
+sudo md5sum -b <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 使用以下命令挂载管理节点 ISO 映像并将其内容复制到文件系统：
++
+[listing]
+----
+sudo mkdir -p /upgrade
+----
++
+[listing]
+----
+sudo mount solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso /mnt
+----
++
+[listing]
+----
+sudo cp -r /mnt/* /upgrade
+----
+. 切换到主目录，然后从 /mnt 卸载 ISO 文件：
++
+[listing]
+----
+sudo umount /mnt
+----
+. 删除 ISO 以节省管理节点上的空间：
++
+[listing]
+----
+sudo rm <path to iso>/solidfire-fdva-<Element release>-patchX-XX.X.X.XXXX.iso
+----
+. 运行以下脚本之一并选择升级管理节点操作系统版本。请仅运行适用于您的版本的脚本。升级后，每个脚本都会保留所有必要的配置文件，例如 Active IQ 收集器和代理设置。
++
+.. 在 11.1 （ 11.1.0.73 ）管理节点上，运行以下命令：
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1 sf_keep_paths="/sf/packages/solidfire-sioc-4.2.3.2288 /sf/packages/solidfire-nma-1.4.10/conf /sf/packages/sioc /sf/packages/nma"
+----
+.. 在 11.1 （ 11.1.0.72 ）管理节点上，运行以下命令：
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1 sf_keep_paths="/sf/packages/solidfire-sioc-4.2.1.2281 /sf/packages/solidfire-nma-1.4.10/conf /sf/packages/sioc /sf/packages/nma"
+----
+.. 在 11.0 （ 11.0.0.781 ）管理节点上，运行以下命令：
++
+[listing]
+----
+sudo /sf/rtfi/bin/sfrtfi_inplace file:///upgrade/casper/filesystem.squashfs sf_upgrade=1 sf_keep_paths="/sf/packages/solidfire-sioc-4.2.0.2253 /sf/packages/solidfire-nma-1.4.8/conf /sf/packages/sioc /sf/packages/nma"
+----
++
+升级过程完成后，管理节点将使用新操作系统重新启动。
+
++
+
+NOTE: 运行此步骤中所述的 sudo 命令后， SSH 会话将被终止。要继续监控，需要访问控制台。如果在执行升级时无法访问控制台，请在 15 到 30 分钟后重试 SSH 登录并验证连接。登录后，您可以在 SSH 横幅中确认新的操作系统版本，以指示升级已成功。
+
+
+
+. 在 12.3.x 管理节点上，运行 `upgrade-mnode` 脚本以保留先前的配置设置。
++
+
+NOTE: 如果要从 11.0 或 11.1 管理节点迁移，此脚本会将 Active IQ 收集器复制到新的配置格式。
+
++
+.. 对于由具有永久性卷的现有管理节点 11.0 或 11.1 管理的单个存储集群：
++
+[listing]
+----
+sudo /sf/packages/mnode/upgrade-mnode -mu <mnode user> -pv <true - persistent volume> -pva <persistent volume account name - storage volume account>
+----
+.. 对于由现有管理节点 11.0 或 11.1 管理且无永久性卷的单个存储集群：
++
+[listing]
+----
+sudo /sf/packages/mnode/upgrade-mnode -mu <mnode user>
+----
+.. 对于由具有永久性卷的现有管理节点 11.0 或 11.1 管理的多个存储集群：
++
+[listing]
+----
+sudo /sf/packages/mnode/upgrade-mnode -mu <mnode user> -pv <true - persistent volume> -pva <persistent volume account name - storage volume account> -pvm <persistent volumes mvip>
+----
+.. 对于由现有管理节点 11.0 或 11.1 管理且无永久性卷的多个存储集群（ ` -pVM` 标志用于提供集群的 MVIP 地址之一）：
++
+[listing]
+----
+sudo /sf/packages/mnode/upgrade-mnode -mu <mnode user> -pvm <mvip for persistent volumes>
+----
+
+
+. （对于使用适用于 vCenter Server 的 NetApp Element 插件的所有 NetApp HCI 安装）按照中的步骤更新 12.3.x 管理节点上的 vCenter 插件 link:task_vcp_upgrade_plugin.html["升级适用于 vCenter Server 的 Element 插件"] 主题。
+. 使用管理节点 API 查找安装的资产 ID ：
++
+.. 从浏览器登录到管理节点 REST API UI ：
++
+... 转至存储 MVIP 并登录。此操作将接受证书以执行下一步。
+
+
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 选择 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭窗口。
+
+
+.. 从 REST API UI 中，选择 * 获取​ /Installations * 。
+.. 选择 * 试用 * 。
+.. 选择 * 执行 * 。
+.. 从代码 200 响应正文中，复制安装的 `id` 。
++
+您的安装具有在安装或升级期间创建的基本资产配置。
+
+
+
+. 在 vSphere 中找到计算节点的硬件标记：
++
+.. 在 vSphere Web Client 导航器中选择主机。
+.. 选择 * 监控 * 选项卡，然后选择 * 硬件运行状况 * 。
+.. 列出了节点 BIOS 制造商和型号。复制并保存 `tag` 的值，以供后续步骤使用。
+
+
+. 将用于 HCI 监控和 Hybrid Cloud Control 的 vCenter 控制器资产添加到管理节点的已知资产中：
++
+.. 选择 * POST /assets/ ｛ asset_id ｝ /controllers* 以添加控制器子资产。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。
+.. 输入类型为 `vCenter` 和 vCenter 凭据的所需有效负载值。
+.. 选择 * 执行 * 。
+
+
+. 将计算节点资产添加到管理节点的已知资产：
++
+.. 选择 * POST /assets/ ｛ asset_id ｝ /compute-nodes* 以使用计算节点资产的凭据添加计算节点子资产。
+.. 选择 * 试用 * 。
+.. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。
+.. 在有效负载中，输入 " 型号 " 选项卡中定义的所需有效负载值。输入 `ESXi Host` as `type` ，然后粘贴您在上一步中为 `hardware_tag` 保存的硬件标记。
+.. 选择 * 执行 * 。
+
+
+
+
+
+
+== 从管理节点 10.x 版迁移到 11.x
+
+如果您的管理节点版本为 10.x ，则无法从 10.x 升级到 11.x您可以改用此迁移操作步骤将配置从 10.x 复制到新部署的 11.1 管理节点。如果管理节点当前为 11.0 或更高版本，则应跳过此操作步骤。您需要管理节点 11.0 或 11.1 以及 link:task_upgrade_element_latest_healthtools.html["最新 HealthTools"] 将 Element 软件从 10.3 + 升级到 11.x
+
+.步骤
+. 在 VMware vSphere 界面中，部署管理节点 11.1 OVA 并打开其电源。
+. 打开管理节点 VM 控制台，此时将显示终端用户界面（ Terminal User Interface ， TUI ）。
+. 使用 TUI 创建新的管理员 ID 并分配密码。
+. 在管理节点 TUI 中，使用新 ID 和密码登录到管理节点并验证其是否正常工作。
+. 从 vCenter 或管理节点 TUI 中，获取管理节点 11.1 IP 地址并浏览到端口 9443 上的 IP 地址以打开管理节点 UI 。
++
+[listing]
+----
+https://<mNode 11.1 IP address>:9443
+----
+. 在 vSphere 中，选择 * NetApp Element Configuration* > * mNode Settings* 。（在较旧版本中，顶级菜单为 * NetApp SolidFire Configuration* 。）
+. 选择 * 操作 * > * 清除 * 。
+. 要确认，请选择 * 是 * 。mNode Status 字段应报告 Not Configured 。
++
+
+NOTE: 首次转到 * mNode Settings* 选项卡时， mNode Status 字段可能会显示为 * 未配置 * ，而不是预期的 * 启动 * ；您可能无法选择 * 操作 * > * 清除 * 。刷新浏览器。mNode Status 字段最终将显示 * 启动 * 。
+
+. 从 vSphere 中注销。
+. 在 Web 浏览器中，打开管理节点注册实用程序并选择 * QoSSIOC Service Management* ：
++
+[listing]
+----
+https://<mNode 11.1 IP address>:9443
+----
+. 设置新的 QoSSIOC 密码。
++
+
+NOTE: 默认密码为 SolidFire` 。要设置新密码，必须提供此密码。
+
+. 选择 * vCenter 插件注册 * 选项卡。
+. 选择 * 更新插件 * 。
+. 输入所需的值。完成后，选择 * 更新 * 。
+. 登录到 vSphere 并选择 * NetApp Element Configuration* > * mNode Settings* 。
+. 选择 * 操作 * > * 配置 * 。
+. 提供管理节点 IP 地址，管理节点用户 ID （用户名为 `admin` ），您在注册实用程序的 * QoSSIOC Service Management* 选项卡上设置的密码以及 vCenter 用户 ID 和密码。
++
+在 vSphere 中， "mNode Settings* " 选项卡应将 mNode 状态显示为 "*UP" ，表示管理节点 11.1 已注册到 vCenter 。
+
+. 从管理节点注册实用程序（`https://<mNode 11.1 IP address> ： 9443` ）中，从 * QoSSIOC Service Management* 重新启动 SIOC 服务。
+. 等待一分钟，然后检查 * NetApp Element Configuration* > * mNode Settings* 选项卡。此操作应将 mNode 状态显示为 * 启动 * 。
++
+如果状态为 * 已关闭 * ，请检查 ` /sf/packages/sioc/app.properties` 的权限。此文件应具有文件所有者的读取，写入和执行权限。正确的权限应如下所示：
+
++
+[listing]
+----
+-rwx------
+----
+. 在 SIOC 进程启动且 vCenter 将 mNode 状态显示为 * 启动 * 后，检查管理节点上的 `sf-HCI-NMA` 服务的日志。不应显示任何错误消息。
+. （仅限管理节点 11.1 ）使用 root 权限通过 SSH 连接到管理节点 11.1 版，然后使用以下命令启动 NMA 服务：
++
+[listing]
+----
+# systemctl enable /sf/packages/nma/systemd/sf-hci-nma.service
+----
++
+[listing]
+----
+# systemctl start sf-hci-nma21
+----
+. 从 vCenter 执行操作以删除驱动器，添加驱动器或重新启动节点。此操作将触发存储警报，此警报应在 vCenter 中报告。如果正常运行，则 NMA 系统警报将按预期运行。
+. 如果在 vCenter 中配置了 ONTAP Select ，请在 NMA 中配置 ONTAP Select 警报，方法是将 `.ots.properties` 文件从先前的管理节点复制到管理节点 11.1 ` /sf/packages/nma/conf/.ots.properties` 文件，然后使用以下命令重新启动 NMA 服务：
++
+[listing]
+----
+systemctl restart sf-hci-nma
+----
+. 使用以下命令查看日志，以验证 ONTAP Select 是否正常工作：
++
+[listing]
+----
+journalctl -f | grep -i ots
+----
+. 通过执行以下操作配置 Active IQ ：
++
+.. 通过 SSH 连接到管理节点 11.1 版，然后转到 ` /sf/packages/collector` 目录。
+.. 运行以下命令：
++
+[listing]
+----
+sudo ./manage-collector.py --set-username netapp --set-password --set-mvip <MVIP>
+----
+.. 出现提示时，输入管理节点 UI 密码。
+.. 运行以下命令：
++
+[listing]
+----
+./manage-collector.py --get-all
+----
++
+[listing]
+----
+sudo systemctl restart sfcollector
+----
+.. 验证 `sfcollector` 日志以确认其是否正常工作。
+
+
+. 在 vSphere 中， * NetApp Element Configuration* > * mNode Settings* 选项卡应将 mNode 状态显示为 * 启动 * 。
+. 验证 NMA 是否正在报告系统警报和 ONTAP Select 警报。
+. 如果一切正常，请关闭并删除管理节点 10.x VM 。
+
+
+
+
+== 使用管理节点 REST API 重新配置身份验证
+
+如果已按顺序升级（ 1 ）个管理服务和（ 2 ）个 Element 存储，则可以保留现有管理节点。如果您遵循了其他升级顺序，请参见原位管理节点升级过程。
+
+.开始之前
+* 您已将管理服务更新到 2.10.29 或更高版本。
+* 存储集群运行的是 Element 12.0 或更高版本。
+* 您的管理节点为 11.3 或更高版本。
+* 您已按顺序更新管理服务，然后升级 Element 存储。除非按照所述顺序完成升级，否则无法使用此操作步骤重新配置身份验证。
+
+
+.步骤
+. 在管理节点上打开管理节点 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. 选择 * 授权 * 并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 如果尚未填充值，请将客户端 ID 输入为 `mnode-client` 。
+.. 选择 * 授权 * 以开始会话。
+
+
+. 从 REST API UI 中，选择 * POST /services/reuse-auth* 。
+. 选择 * 试用 * 。
+. 对于 * load_images* 参数，选择 `true` 。
+. 选择 * 执行 * 。
++
+响应正文指示重新配置成功。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

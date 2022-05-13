@@ -1,0 +1,39 @@
+---
+permalink: docs/concept_hcc_custom_protection_domains.html 
+sidebar: sidebar 
+keywords: protection domain layout,user-defined,custom layout 
+summary: 您可以定义自定义保护域布局，其中每个节点都与一个且仅与一个自定义保护域相关联。默认情况下，每个节点都分配到相同的默认自定义保护域。 
+---
+= 自定义保护域
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以定义自定义保护域布局，其中每个节点都与一个且仅与一个自定义保护域相关联。默认情况下，每个节点都分配到相同的默认自定义保护域。
+
+如果未分配自定义保护域：
+
+* 集群操作不受影响。
+* 自定义级别既非容错级别，也非弹性级别。
+
+
+如果分配了多个自定义保护域，则每个子系统将为单独的自定义保护域分配重复项。如果无法做到这一点，则会还原为将重复项分配给不同的节点。每个子系统（例如箱，扇区，协议端点提供程序和集合）都独立执行此操作。
+
+
+NOTE: 使用自定义保护域会假定没有节点共享机箱。
+
+以下 Element API 方法将公开这些新的保护域：
+
+* GetProtectionDomainLayout —显示每个节点所在的机箱和自定义保护域。
+* SetProtectionDomainLayout —允许为每个节点分配自定义保护域。
+
+
+有关使用自定义保护域的详细信息，请联系 NetApp 支持部门。
+
+
+
+== 了解更多信息
+
+link:api/index.html["使用 Element API 管理存储"]

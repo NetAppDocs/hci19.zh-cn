@@ -1,0 +1,28 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_enable_monitoring.html 
+summary: 了解如何在部署 Rancher on NetApp HCI 后配置监控。 
+keywords: netapp, hci, rancher, deploy, cluster, kubernetes, telemetry, monitoring 
+---
+= 启用监控
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在 NetApp HCI 上部署 Rancher 后，如果在安装或升级期间尚未启用 Active IQ 存储监控（对于 SolidFire 全闪存存储和 NetApp HCI ）和 NetApp HCI 计算监控（仅适用于 NetApp HCI ），则可以启用此功能。
+
+有关如何启用监控的说明，请参见 link:task_mnode_enable_activeIQ.html["启用 Active IQ 和 NetApp HCI 监控"^]。
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

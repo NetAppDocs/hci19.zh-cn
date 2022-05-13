@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_network_cables.html 
+summary: 了解 NetApp HCI 网络缆线要求。 
+keywords: netapp, hci, network, cable, requirements 
+---
+= 网络缆线要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, network, cable, requirements
+
+
+[role="lead"]
+您可以使用以下准则来确保您有足够的适合您的部署规模的合适网络缆线。对于 RJ45 端口，您必须使用 Cat 5e 或 Cat 6 额定缆线。
+
+* 双缆线计算节点配置：每个计算节点都必须通过两个 SFP+/SFP28 接口连接到 10/25GbE 网络（可以选择使用一根额外的 Cat 5e/6 缆线进行带外管理）。
+* 六缆线计算节点配置：每个计算节点都必须通过四个 SFP+/SFP28 接口连接到 10/25GbE 网络，并通过两根 Cat 5e/6 缆线连接到 1/10GbE 网络（可选择使用一根额外的 Cat 5e/6 缆线进行带外管理）。
+* 每个存储节点都必须通过两个 SFP+/SFP28 接口连接到 10/25GbE 网络，并通过两根 Cat 5e/6 缆线连接到 1/10GbE 网络（可以选择使用一根额外的 Cat 5e/6 缆线进行带外管理）。
+* 确保用于将 NetApp HCI 系统连接到网络的网络缆线足够长，可以轻松连接到交换机。
+
+
+例如，包含四个存储节点和三个计算节点的部署（使用六缆线配置）需要以下数量的网络缆线：
+
+* （ 14 根）带 RJ45 连接器的 Cat 5e/6 缆线（如果需要，另加 7 根用于 IPMI 流量的缆线）
+* （ 20 根）双轴缆线，带 SFP28SFP+ 连接器
+
+
+原因如下：
+
+* 四个存储节点需要八（ 8 ）根 Cat 5e/6 缆线和八（ 8 ）根双轴缆线。
+* 使用六缆线配置的三个计算节点需要六（ 6 ）根 Cat 5e/6 缆线和十二（ 12 ）根双轴缆线。
+
+
+
+NOTE: 在六缆线配置中，为 VMware ESXi 预留了两个端口，并由 NetApp 部署引擎设置和管理。您不能使用 Element TUI 或 Element Web 图形用户界面访问或管理这些专用于 ESXi 的端口。
+
+[discrete]
+== 了解更多信息
+
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

@@ -1,0 +1,35 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_storage.html 
+summary: NetApp HCI 提供一系列计算和存储配置选项。从 NetApp HCI 1.8 开始，您至少可以配置两个存储节点和两个计算节点。在早期版本中，所需的最低配置为四个存储节点和两个计算节点。 
+keywords: netapp, hci, storage nodes, volumes 
+---
+= 存储
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp HCI 提供一系列计算和存储配置选项。从 NetApp HCI 1.8 开始，您可以至少配置两个存储节点和两个计算节点。在 NetApp HCI 1.8 之前，所需的最低配置为四个存储节点和两个计算节点。
+
+* NetApp HCI 支持各种 H 系列存储节点型号，例如 H300S ， H500S ， H700S ， H410S 和 H610S 。
++
+请参见 https://www.netapp.com/us/products/converged-systems/hyper-converged-infrastructure.aspx#modelsAndSpecs["NetApp HCI 型号和规格"]
+
+* NetApp HCI 中的存储层由 NetApp Element 软件提供，管理层由适用于 vCenter Server 的 NetApp Element 插件提供。
+* 存储节点是指包含一组驱动器的服务器，这些驱动器通过绑定 10G 网络接口相互通信。
+* 每个存储节点都连接到两个网络：存储和管理，每个网络都有两个独立的链路，用于实现冗余和性能。每个节点在每个网络上都需要一个 IP 地址。
+* 您可以使用新的存储节点创建集群，也可以向现有集群添加存储节点以提高存储容量和性能。
+* 在 NetApp HCI 和 SolidFire 生态系统中，存储是使用卷配置的。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

@@ -1,0 +1,82 @@
+---
+sidebar: sidebar 
+permalink: docs/task_upgrade_element_latest_healthtools.html 
+summary: 在系统升级过程中，您应升级到适用于 NetApp Element 的最新 HealthTools 软件。 
+keywords: netapp, HealthTools upgrade, sfupdate-healthtools, element 
+---
+= 升级到最新的 HealthTools
+:allow-uri-read: 
+
+
+[role="lead"]
+在从 11.1 或更早版本开始 Element 存储升级之前，您应先升级 HealthTools 套件。只有在运行的管理节点和 Element 软件为 11.1 或更早版本时，才需要升级 HealthTools 。不需要 HealthTools link:task_hcc_upgrade_element_software.html["使用 NetApp Hybrid Cloud Control 执行 Element 升级"]。
+
+
+IMPORTANT: Element 软件 12.3.2 是可使用 NetApp HealthTools 升级到的最终版本。如果您运行的是 Element 软件 11.3 或更高版本，则应使用 NetApp Hybrid Cloud Control 升级 Element 软件。您可以使用 NetApp HealthTools 升级 Element 11.1 或更早版本。
+
+.您需要什么？ #8217 ；将需要什么
+* 您正在运行管理节点 11.0 ， 11.1 或更高版本。
+* 您已将管理服务至少升级到 2.1.326 版。
++
+NetApp Hybrid Cloud Control 升级在早期的服务包版本中不可用。
+
+* 您已下载最新版本的 https://mysupport.netapp.com/site/products/all/details/element-healthtools/downloads-tab["HealthTools"^] 并将安装文件复制到管理节点。
++
+
+TIP: 您可以运行 `sfupdate-healthtools -v` 命令来检查本地安装的 HealthTools 版本。
+
+* 要对非公开站点使用 HealthTools ，您需要执行以下附加步骤：
++
+** 下载 link:https://library.netapp.com/ecm/ecm_get_file/ECMLP2840740["JSON 文件"^] 从 NetApp 支持站点的非管理节点计算机上，将其重命名为 `metadata 。 json` 。
+** 在非公开站点上启动并运行管理节点。
+
+
+
+
+运行 HealthTools 套件中的命令需要升级权限。请在命令前面加上 `sUdo` 或将您的用户升级到 root 权限。
+
+
+NOTE: 您使用的 HealthTools 版本可能比下面的示例输入和响应更新版。
+
+.步骤
+. 运行 `sfupdate-healthtools <path to install file>` 命令安装新的 HealthTools 软件。
++
+输入示例：
+
++
+[listing]
+----
+sfupdate-healthtools /tmp/solidfire-healthtools-2020.03.01.09.tgz
+----
++
+响应示例：
+
++
+[listing]
+----
+Checking key signature for file /tmp/solidfirehealthtools-2020.03.01.09/components.tgz
+installing command sfupdate-healthtools
+Restarting on version 2020.03.01.09
+sfupdate-healthtools /sf/bin/sfupdate-healthtools -r 2020.03.01.09
+installing command sfupgradecheck
+installing command sfinstall
+installing command sfresetupgrade
+----
+. 运行 `sfupdate-healthtools -v` 命令以验证已安装的版本是否已升级。
++
+响应示例：
+
++
+[listing]
+----
+Currently installed version of HealthTools:
+2020.03.01.09
+----
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: docs/task_trident_configure_networking.html 
+summary: 为用户集群启用 Trident 支持。 
+keywords: netapp, hci, netapp, networking, clusters, user, trident, rancher 
+---
+= 为用户集群启用 Trident 支持
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您的 NetApp HCI 环境在管理网络和存储网络之间没有路由，并且您部署的用户集群需要 Trident 支持，则需要在安装 Trident 后进一步配置用户集群网络。对于每个用户集群，您需要启用管理网络和存储网络之间的通信。为此，您可以修改用户集群中每个节点的网络配置。
+
+按照以下常规步骤修改用户集群中每个节点的网络配置。以下步骤假定您使用随 NetApp HCI 上的 Rancher 一起安装的默认节点模板创建了用户集群。
+
+
+NOTE: 您可以在自定义节点模板中进行这些更改，以供将来的用户集群使用。
+
+.步骤
+. 使用现有默认模板部署用户集群。
+. 将存储网络连接到用户集群。
++
+.. 打开已连接 vCenter 实例的 VMware vSphere Web 客户端。
+.. 在主机和集群清单树中，选择新部署的用户集群中的一个节点。
+.. 编辑节点的设置。
+.. 在设置对话框中，添加新的网络适配器。
+.. 在 * 新网络 * 下拉列表中，浏览网络并选择 * HCI 内部存储数据网络 * 。
+.. 展开网络适配器部分，并记下新网络适配器的 MAC 地址。
+.. 单击 * 确定 * 。
+
+
+. 在 Rancher 中，下载用户集群中每个节点的 SSH 专用密钥文件。
+. 使用 SSH 通过为用户集群中的某个节点下载的私钥文件连接到该节点：
++
+[listing]
+----
+ssh -i <private key filename> <ip address>
+----
+. 以超级用户身份，编辑并保存 ` /etc/netplan-50-cloud init.yaml` 文件，使其包含 `ens224` 部分，类似于以下示例。将 ` <MAC address>` 替换为您先前记录的 MAC 地址：
++
+[listing]
+----
+network:
+    ethernets:
+        ens192:
+            dhcp4: true
+            match:
+                macaddress: 00:50:56:91:1d:41
+            set-name: ens192
+        ens224:
+            dhcp4: true
+            match:
+                macaddress: <MAC address>
+            set-name: ens224
+    version: 2
+----
+. 使用以下命令重新配置网络：
++
+[listing]
+----
+`netplan try`
+----
+. 对用户集群中的其余每个节点重复步骤 4 到 6 。
+. 为用户集群中的每个节点重新配置网络后，您可以在使用 Trident 的用户集群中部署应用程序。
+

@@ -1,0 +1,264 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_configure_net_settings.html 
+summary: 了解如何配置 NetApp HCI 部署网络设置。 
+keywords: netapp, hci, deployment, compatibility, nodes 
+---
+= 配置网络设置
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp HCI 提供了一个网络设置页面，其中包含几个部分，用于简化网络配置。您可以继续执行每个部分，并为每个网络中的主机和节点输入信息或分配 IP 地址。
+
+.您需要什么？ #8217 ；将需要什么
+* 您已获取以下信息：
++
+** 为主机和存储集群规划的命名前缀
+** 为管理， iSCSI 和 vMotion 网络规划的所有子网掩码，起始 IP 地址，默认网关和 VLAN ID
+** 任何计划内 VMware vCenter 部署的子网掩码， IP 地址，默认网关和 VLAN ID
+** NetApp HCI 的网络时间协议（ NTP ）服务器地址
+** NetApp HCI 的 DNS 服务器 IP 地址信息
+
+
+* 如果您要部署 vSphere 分布式交换机，则可以在部署完成后应用 vSphere Enterprise Plus 许可证。
+* 如果您在终端用户界面（ Terminal User Interface ， TUI ）配置期间为节点端口分配了 VLAN ID ，则在网络配置期间，这些端口已使用相同的 VLAN ID 进行配置。您无需在已连接的交换机端口上将带标记的主机端口配置为访问端口或原生 VLAN 。
+* 您已验证网络交换机配置是否正确。交换机配置不正确（例如 VLAN 或 MTU 大小不正确）将导致发生原因部署错误。
+
+
+如果您为计算节点选择了双缆线网络拓扑，则需要对部署中的所有计算和存储节点的 vMotion 和存储网络使用 VLAN ID （对于管理网络， VLAN ID 是可选的）。请注意， NetApp HCI 会验证您在这些步骤中输入的 IP 地址，但您可以使用 * 实时网络验证 * 按钮禁用此验证。NetApp HCI 还会检查您在这些步骤中输入的其他信息，例如确保子网不重叠，确保没有为多个网络分配 VLAN ID 以及其他基本验证。
+
+
+NOTE: 在部署前需要主机端 VLAN 标记的环境中，如果您在计算和存储节点上配置了 VLAN ID ，以便 NetApp 部署引擎可以发现它们，请确保在 NetApp 部署引擎中配置网络设置时使用正确的 VLAN 。
+
+如果要部署双节点或三节点存储集群，您可以在 * 网络设置 * 页面上填写见证节点的 IP 地址信息。
+
+
+NOTE: 在 IP 地址分配页面中，您在 * 自动分配 IP 地址 * 模式下输入的信息不会影响在 * 手动分配 IP 地址 * 模式下输入的信息，反之亦然。如果在这两种模式下输入 IP 地址，则在单击页面底部的 * 继续 * 时， NetApp HCI 会在任何活动模式下使用 IP 地址信息。
+
+NetApp HCI 会检查您在这些页面上输入的信息。以下是一些常见问题和解决方法：
+
+|===
+| 问题 | 临时解决策 
+
+
+| 在自动 IP 地址分配模式下，输入起始 IP 地址后，您会看到消息 `IP in use ：` with a scrollable 下拉列表 of the in-use IP addresses 。 | NetApp HCI 已分配连续的 IP 地址范围，但其中一个或多个 IP 地址已在使用中。释放正在使用的 IP 地址并重试，或者使用手动 IP 地址分配模式分配特定的 IP 地址。 
+
+
+| 输入默认网关后，您会看到消息 `网关无效` 。  a| 
+默认网关 IP 地址与您提供的子网不匹配，或者您需要解析的网络或服务器具有问题描述。有关详细信息，请参见以下 NetApp 知识库文章：
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Troubleshoot_Invalid_Gateway_in_NDE["对 NetApp 部署引擎中的无效网关进行故障排除"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/%22The_gateway_is_not_valid%22_during_NDE["此网关在 NetApp 部署引擎中无效"^]
+
+
+
+
+| 您完成了多个 * 网络设置 * 配置页面，发现此序列中前几页的信息不正确。 | 使用页面顶部的编号页面顺序，您可以选择先前已完成的页面并在此更改信息。完成后，您可以单击已完成页面上的 * 继续 * 以返回到当前页面。 
+|===
+
+
+== 配置 DNS 和 NTP 设置
+
+.步骤
+. 在 "* DNS/NTP" 页面的以下字段中输入 NetApp HCI 的 DNS 和 NTP 服务器信息：
++
+|===
+| 字段 | Description 
+
+
+| * DNS 服务器 IP 地址 1* | NetApp HCI 的主 DNS 服务器的 IP 地址。如果您在 vCenter 配置页面上指定了 DNS 服务器，则此字段将填充且为只读。 
+
+
+| * DNS 服务器 IP 地址 2 （可选） * | NetApp HCI 的二级 DNS 服务器的可选 IP 地址。 
+
+
+| * NTP 服务器地址 1* | 此基础架构的主 NTP 服务器的 IP 地址或完全限定域名。 
+
+
+| * NTP 服务器地址 2 （可选） * | 此基础架构的二级 NTP 服务器的可选 IP 地址或完全限定域名。 
+|===
+
+
+
+
+== 分配 VLAN ID
+
+在 * VLAN IDs* 页面上，您可以为 NetApp HCI 网络分配 VLAN ID 。您也可以选择不使用 VLAN ID 。如果您为计算节点选择了双缆线网络拓扑，则需要对部署中的所有计算和存储节点的 vMotion 和存储网络使用 VLAN ID （对于管理网络， VLAN ID 是可选的）。
+
+
+NOTE: 分配 VLAN ID 时，您正在配置 NetApp HCI 将应用于网络流量的 VLAN 标记。您无需输入原生 VLAN 作为 VLAN ID ；要对网络使用原生 VLAN ，请将相应字段留空。
+
+选择以下选项之一：
+
+|===
+| 选项 | 步骤 
+
+
+| 分配 VLAN ID  a| 
+. 为 * 是否分配 VLAN ID* 选项选择 * 是 * 。
+. 在 * VLAN ID* 列中，输入要分配给 VLAN 的每种网络流量要使用的 VLAN 标记。
++
+计算 vMotion 流量和 iSCSI 流量都必须使用非共享 VLAN ID 。
+
+. 单击 * 继续 * 。
+
+
+
+
+| 请勿分配 VLAN ID  a| 
+. 为 * 是否分配 VLAN IDs* 选项选择 * 否 * 。
+. 单击 * 继续 * 。
+
+
+|===
+
+
+== 配置管理网络
+
+在 * 管理 * 页面上，您可以选择让 NetApp HCI 根据起始 IP 地址自动填充管理网络的 IP 地址范围，也可以选择手动输入所有 IP 地址信息。
+
+选择以下选项之一：
+
+|===
+| 选项 | 步骤 
+
+
+| 自动分配 IP 地址  a| 
+. 选择 * 自动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为每个 VLAN 输入子网定义。
+. 在 * 默认网关 * 列中，输入每个 VLAN 的默认网关。
+. 在 * 子网 * 列中，输入用于每个 VLAN 和节点类型的起始 IP 地址。
++
+NetApp HCI 会自动填充每个主机或一组主机的结束 IP 地址。
+
+. 单击 * 继续 * 。
+
+
+
+
+| 手动分配 IP 地址  a| 
+. 选择 * 手动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为每个 VLAN 输入子网定义。
+. 在 * 默认网关 * 列中，输入每个 VLAN 的默认网关。
+. 在每个主机或节点的行中，输入该主机或节点的 IP 地址。
+. 输入管理网络的管理虚拟 IP （ MVIP ）地址。
+. 单击 * 继续 * 。
+
+
+|===
+
+
+== 配置 vMotion 网络
+
+在 * vMotion* 页面上，您可以选择让 NetApp HCI 根据起始 IP 地址自动填充 vMotion 网络的 IP 地址范围，也可以选择手动输入所有 IP 地址信息。
+
+选择以下选项之一：
+
+|===
+| 选项 | 步骤 
+
+
+| 自动分配 IP 地址  a| 
+. 选择 * 自动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为每个 VLAN 输入子网定义。
+. （可选）在 * 默认网关 * 列中，为每个 VLAN 输入一个默认网关。
+. 在 * 子网 * 列中，输入用于每个 VLAN 和节点类型的起始 IP 地址。
++
+NetApp HCI 会自动填充每个主机或一组主机的结束 IP 地址。
+
+. 单击 * 继续 * 。
+
+
+
+
+| 手动分配 IP 地址  a| 
+. 选择 * 手动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为每个 VLAN 输入子网定义。
+. （可选）在 * 默认网关 * 列中，为每个 VLAN 输入一个默认网关。
+. 在每个主机或节点的行中，输入该主机或节点的 IP 地址。
+. 单击 * 继续 * 。
+
+
+|===
+
+
+== 配置 iSCSI 网络
+
+在 * iSCSI* 页面上，您可以选择让 NetApp HCI 根据起始 IP 地址自动填充 iSCSI 网络的 IP 地址范围，也可以选择手动输入所有 IP 地址信息。
+
+选择以下选项之一：
+
+|===
+| 选项 | 步骤 
+
+
+| 自动分配 IP 地址  a| 
+. 选择 * 自动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为 iSCSI 网络输入子网定义。
+. （可选）在 * 默认网关 * 列中，输入 iSCSI 网络的默认网关。
+. 在 * 子网 * 列中，输入用于每种节点类型的起始 IP 地址。
++
+NetApp HCI 会自动填充每个主机或一组主机的结束 IP 地址。
+
+. 单击 * 继续 * 。
+
+
+
+
+| 手动分配 IP 地址  a| 
+. 选择 * 手动分配 IP 地址 * 选项。
+. 在 * 子网 * 列中，以 CIDR 格式为 iSCSI 网络输入子网定义。
+. （可选）在 * 默认网关 * 列中，输入 iSCSI 网络的默认网关。
+. 在 * 管理节点 * 部分中，输入管理节点的 IP 地址。
+. 对于 * 计算节点 * 部分中的每个节点，输入 iSCSI A 和 iSCSI B IP 地址。
+. 在 * 存储虚拟 IP （ SVIP ） * 行中，输入 iSCSI 网络的 SVIP IP 地址。
+. 在其余行中，为每个主机或节点输入该主机或节点的 IP 地址。
+. 单击 * 继续 * 。
+
+
+|===
+
+
+== 分配集群和主机名称
+
+在 * 命名 * 页面上，您可以选择让 NetApp HCI 根据命名前缀自动填充集群名称和集群中节点的名称，也可以选择手动输入集群和节点的所有名称。
+
+选择以下选项之一：
+
+|===
+| 选项 | 步骤 
+
+
+| 自动分配集群和主机名称  a| 
+. 选择 * 自动分配集群 / 主机名 * 选项。
+. 在 * 安装前缀 * 部分中，输入用于集群中所有节点主机名（包括管理节点和见证节点）的命名前缀。
++
+NetApp HCI 会根据节点类型自动填充主机名，并为通用节点名称（例如计算和存储节点）填充后缀。
+
+. （可选）在 * 命名方案 * 列中，修改主机的任何结果名称。
+. 单击 * 继续 * 。
+
+
+
+
+| 手动分配集群和主机名称  a| 
+. 选择 * 手动分配集群 / 主机名 * 选项。
+. 在 * 主机 / 集群名称 * 列中，输入每个主机的主机名以及存储集群的集群名称。
+. 单击 * 继续 * 。
+
+
+|===
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

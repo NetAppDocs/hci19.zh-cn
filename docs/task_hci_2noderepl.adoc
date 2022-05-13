@@ -1,0 +1,56 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_2noderepl.html 
+summary: 在更换属于双节点集群一部分的节点之前，您应先添加第三个存储节点（需要一组新的 IP 地址），并允许完成同步，然后删除故障节点。四节点集群。您需要额外的 MIP 和 SIP 。 
+keywords: netapp, hci, H610C, H615C, chassis replacement, node replacement 
+---
+= 更换双节点集群中的存储节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在更换属于双节点集群一部分的存储节点之前，您应先添加第三个存储节点（需要一组新的 IP 地址），并允许完成同步，然后删除故障节点。在替代节点加入集群之前，集群将保持降级状态。
+
+.您需要什么？ #8217 ；将需要什么
+* 您有新的管理 IP 和存储 IP 地址。
+* 您已验证集群在节点脱机后是否显示 `ClusterCannotSync` 警报。这样可以确保在将新节点重新添加回集群时，集群执行完全重新同步。此警报将在存储节点脱机大约六分钟后显示。
+* 您已联系 NetApp 支持部门。如果您要订购更换件，应向 NetApp 支持部门提交一个案例。
+* 您已获得替代节点。
+* 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。
+
+
+当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
+
+.步骤
+. 从机架中物理卸下故障节点。这些步骤取决于您的存储节点类型。请参见 link:task_hci_h410srepl.html["更换 H410S 节点"^] 和 link:task_hci_h610srepl.html["更换 H610S 节点"^]。
++
+
+NOTE: 此时，请勿从集群中删除此节点。
+
+. 在同一插槽中安装替代节点。
+. 为节点布线。
+. 打开节点电源。
+. 将键盘和显示器连接到节点。
+. 执行配置步骤：
++
+.. 配置 IPMI/BMC IP 地址。
+.. 使用新的管理 IP 和存储 IP 地址以及集群名称配置新节点。
+
+
+. 将节点添加到集群后，添加驱动器。
+. 同步完成后，从集群中删除故障驱动器和故障节点。
+. 使用 NetApp Hybrid Cloud Control 配置您添加的新存储节点。请参见 link:https://docs.netapp.com/us-en/hci/docs/task_hcc_expand_storage.html["展开 NetApp HCI 存储资源"]。
+
+
+
+
+== 了解更多信息
+
+* http://docs.netapp.com/hci/index.jsp["NetApp HCI 文档中心"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

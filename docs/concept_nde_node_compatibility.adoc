@@ -1,0 +1,57 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_nde_node_compatibility.html 
+summary: 了解部署时的 NetApp HCI 节点兼容性要求。 
+keywords: netapp, hci, deployment, compatibility, nodes 
+---
+= 清单选择和节点兼容性
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+在为部署选择节点时，可以在同一部署中组合使用的节点配置会受到一些限制。
+
+
+
+== 存储节点兼容性
+
+NetApp HCI 支持具有 SED （自加密驱动器）和 FIPS 140-2 驱动器加密功能的存储节点和驱动器。在部署或扩展 NetApp HCI 时，您可以混用报告的加密级别不同的节点，但在这种情况下， NetApp HCI 仅支持更基本的加密形式。例如，如果将支持 FIPS 加密的存储节点与仅支持 SED 加密的节点混用，则此配置支持 SED 加密，但不支持 FIPS 驱动器加密。
+
+
+NOTE: 将支持 FIPS 驱动器加密的存储节点添加到存储集群不会自动启用 FIPS 驱动器加密功能。在使用支持 FIPS 的节点部署或扩展安装后，您需要手动启用 FIPS 驱动器加密。请参见 https://docs.netapp.com/us-en/element-software/index.html["Element 软件文档"^] 有关说明，请参见。
+
+所有存储节点都必须运行同一次要版本的 Element 软件，才能在同一部署中兼容。例如，不能将运行 Element 11.3.1 的存储节点与运行 Element 11.5 的其他存储节点混合使用。
+
+
+NOTE: 根据节点硬件配置， H410S 存储节点可能会显示在清单列表中，并标记为 H300S ， H500S 或 H700S 存储节点。
+
+NetApp HCI 仅支持双节点存储集群中的特定存储节点型号。有关详细信息，请参见 link:concept_hci_clusters.html#two-node-storage-clusters["双节点存储集群"] 或适用于您的 NetApp HCI 版本的发行说明。
+
+
+NOTE: 对于双节点存储集群部署，存储节点类型仅限于具有 480 GB 和 960 GB 驱动器的节点。
+
+
+
+== 计算节点兼容性
+
+计算节点必须满足以下要求才能选择作为清单：
+
+* 所有计算节点中的 CPU 版本必须匹配， VMware vMotion 功能才能正常运行。从清单中选择计算节点后，您将无法选择具有不同 CPU 版本的计算节点。
+* 您不能在同一计算集群中混用计算节点和启用了 GPU 的计算节点。如果选择启用了 GPU 的计算节点，则无法选择纯 CPU 计算节点，反之亦然。
+* 计算节点上运行的软件版本必须与托管部署的 NetApp 部署引擎的主要和次要版本匹配。否则，您需要使用 RTFI 过程重新创建计算节点的映像。有关说明，请参见有关 RTFI 的 NetApp 知识库文章。
+* 计算节点必须具有您在 " 网络拓扑 " 页面上选择的布线配置，才能在 * 计算节点 * 列表中进行选择。
+* 同一型号的计算节点的网络布线配置必须在一个计算集群中匹配。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

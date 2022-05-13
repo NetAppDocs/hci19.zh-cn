@@ -1,0 +1,31 @@
+---
+sidebar: sidebar 
+permalink: docs/task_rancher_resiliency.html 
+summary: 了解如何在 NetApp HCI 上安装 Rancher 后配置 VM 放置以实现最佳故障恢复能力。 
+keywords: netapp, hci, Rancher, install, resiliency, vm, affinity 
+---
+= 配置故障恢复能力
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+了解在 NetApp HCI 上安装 Rancher 后如何配置虚拟机放置以实现最佳故障恢复能力。
+
+您可以考虑以下方面的故障恢复能力：
+
+* 如果配置负载平衡或轮循代理，则管理集群具有故障恢复能力。
+* 对于用户集群，您可以根据要如何配置这些用户集群来设置故障恢复能力。
+
+
+[discrete]
+== 了解更多信息
+
+* https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

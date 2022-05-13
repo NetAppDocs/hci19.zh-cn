@@ -1,0 +1,135 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_enable_activeIQ.html 
+summary: 您可以使用管理节点（ mNode ）启用 NetApp Active IQ 和 NetApp HCI 遥测。 
+keywords: netapp, hci, api, enable, active iq, activeiq, hci monitoring 
+---
+= 启用 Active IQ 和 NetApp HCI 监控
+:allow-uri-read: 
+
+
+[role="lead"]
+如果在安装或升级期间未启用 Active IQ 存储监控（适用于 SolidFire 全闪存存储和 NetApp HCI ）和 NetApp HCI 计算监控（仅适用于 NetApp HCI ），则可以启用此功能。如果您使用 NetApp HCI 部署引擎禁用了遥测功能，或者在安装 SolidFire 全闪存存储系统期间未设置 SolidFire Active IQ ，则可能需要使用此操作步骤。
+
+Active IQ 收集器服务会将配置数据和基于 Element 软件的集群性能指标转发到 NetApp Active IQ ，以便进行历史报告和近乎实时的性能监控。通过 NetApp HCI 监控服务，可以将存储集群故障转发到 vCenter 以发送警报通知。
+
+.开始之前
+* 您的存储集群运行的是 NetApp Element 软件 11.3 或更高版本。
+* 您已部署运行 11.3 或更高版本的管理节点。
+* 您可以访问 Internet 。不能从没有外部连接的非公开站点使用 Active IQ 收集器服务。
+
+
+.步骤
+. 获取安装的基本资产 ID ：
++
+.. 在管理节点上打开清单服务 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. 单击 * 授权 * 并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 单击 * 授权 * 开始会话。
+... 关闭窗口。
+
+
+.. 在 REST API UI 中，单击 * 获取​ /Installations * 。
+.. 单击 * 试用 * 。
+.. 单击 * 执行 * 。
+.. 从代码 200 响应正文中，复制安装的 `id` 。
++
+[listing, subs="+quotes"]
+----
+{
+  "installations": [
+    {
+      "_links": {
+        "collection": "https://10.111.211.111/inventory/1/installations",
+        "self": "https://10.111.217.111/inventory/1/installations/abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x"
+      },
+      *"id": "abcd01e2-ab00-1xxx-91ee-12f111xxc7x0x",*
+----
++
+
+NOTE: 您的安装具有在安装或升级期间创建的基本资产配置。
+
+
+
+. 激活遥测：
++
+.. 输入管理节点 IP 地址并后跟 ` /mnode` 来访问管理节点上的 mnode 服务 API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 单击 * 授权 * 开始会话。
+... 关闭窗口。
+
+
+.. 配置基本资产：
++
+... 单击 * 放置 /assets/ ｛ asset_id ｝ * 。
+... 单击 * 试用 * 。
+... 在 JSON 有效负载中输入以下内容：
++
+[listing]
+----
+{
+"telemetry_active": true
+"config": {}
+}
+----
+... 在 * asset_ID* 中输入上一步中的基本 ID 。
+... 单击 * 执行 * 。
++
+只要资产发生更改， Active IQ 服务就会自动重新启动。修改资产会导致应用设置之前出现短暂的延迟。
+
+
+
+
+
+. 如果您尚未添加用于 NetApp HCI 监控（仅限 NetApp HCI 安装）和混合云控制（适用于所有安装）的 vCenter 控制器资产，请将此资产添加到管理节点的已知资产中：
++
+
+NOTE: NetApp HCI 监控服务需要控制器资产。
+
++
+.. 单击 * 发布 /assets/ ｛ asset_id ｝ /controllers* 以添加控制器子资产。
+.. 单击 * 试用 * 。
+.. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。
+.. 使用 `type` as `vCenter` 和 vCenter 凭据输入所需的有效负载值。
++
+[listing]
+----
+{
+"username": "string",
+"password": "string",
+"ip": "string",
+"type": "vCenter",
+"host_name": "string",
+"config": {}
+}
+----
++
+
+NOTE: `IP` 是 vCenter IP 地址。
+
+.. 单击 * 执行 * 。
+
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

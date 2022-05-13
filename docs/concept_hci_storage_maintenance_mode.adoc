@@ -1,0 +1,58 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_storage_maintenance_mode.html 
+summary: 如果您需要使某个存储节点脱机以进行维护，例如软件升级或主机修复，则可以通过为该节点启用维护模式来最大限度地减少对该存储集群其余部分的 I/O 影响。您可以对设备节点以及 SolidFire 企业 SDS 节点使用维护模式。 
+keywords: netapp, hci, storage nodes, maintenance, mode 
+---
+= 维护模式
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果您需要使某个存储节点脱机以进行维护，例如软件升级或主机修复，则可以通过为该节点启用维护模式来最大限度地减少对该存储集群其余部分的 I/O 影响。您可以对设备节点以及 SolidFire 企业 SDS 节点使用维护模式。
+
+
+NOTE: 存储节点关闭后，它会在 HCC 的存储页面上的节点状态列中显示为 * 不可用 * ，因为此列会从集群的角度显示节点的状态。节点的已关闭状态由节点主机名旁边的 * 脱机 * 图标指示。
+
+只有当存储节点运行状况良好（没有阻止的集群故障）且存储集群能够容忍单个节点故障时，才能将此存储节点过渡到维护模式。为运行状况良好且容错的节点启用维护模式后，该节点不会立即过渡；它会一直受到监控，直到满足以下条件为止：
+
+* 节点上托管的所有卷均已进行故障转移
+* 此节点不再托管为任何卷的主节点
+* 系统会为要进行故障转移的每个卷分配一个临时备用节点
+
+
+满足这些条件后，节点将过渡到维护模式。如果在 5 分钟内未满足这些条件，则节点将不会进入维护模式。
+
+禁用存储节点的维护模式时，系统会一直监控此节点，直到满足以下条件为止：
+
+* 所有数据都会完全复制到节点
+* 已解决所有阻止的集群故障
+* 此节点上托管的卷的所有临时备用节点分配均已取消激活
+
+
+满足这些条件后，节点将过渡到维护模式之外。如果在一小时内未满足这些条件，则节点将无法过渡到维护模式之外。
+
+您可以使用 Element API 查看使用维护模式时的维护模式操作状态：
+
+* * 已禁用 * ：未请求任何维护。
+* * 故障转移至恢复 * ：节点无法从维护中恢复。
+* * 重新覆盖 FromMaintenance* ：节点正在从维护中恢复。
+* * 准备维护 * ：正在执行操作以允许节点执行维护。
+* * 就绪 ForMaintenance* ：节点已准备好执行维护。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_enablemaintenancemode.html["使用 Element API 启用维护模式"^]
+* https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablemaintenancemode.html["使用 Element API 禁用维护模式"^]
+* https://docs.netapp.com/us-en/element-software/api/concept_element_api_about_the_api.html["NetApp Element API 文档"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

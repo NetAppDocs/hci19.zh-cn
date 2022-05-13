@@ -1,0 +1,105 @@
+---
+sidebar: sidebar 
+permalink: docs/task_mnode_edit_vcenter_assets.html 
+summary: 您可以使用 REST API UI 编辑 vCenter 管理节点控制器。 
+keywords: netapp, mnode, management node, rest api, hci 
+---
+= 查看或编辑现有控制器资产
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以使用 REST API 查看和编辑管理节点配置中现有 VMware vCenter 控制器的信息。控制器是指在 NetApp HCI 安装中注册到管理节点的 VMware vCenter 实例。
+
+.开始之前
+* 确保您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* 确保已部署运行 11.3 或更高版本的管理节点。
+
+
+
+
+== 访问管理服务 REST API
+
+.步骤
+. 输入管理节点 IP 地址并后跟 ` vCenter/1/` 来访问用于管理服务的 REST API UI ：
++
+[listing]
+----
+https://<ManagementNodeIP>/vcenter/1/
+----
+. 单击 * 授权 * 或任何锁定图标并完成以下操作：
++
+.. 输入集群用户名和密码。
+.. 输入客户端 ID `mnode-client` 。
+.. 单击 * 授权 * 开始会话。
+.. 关闭窗口。
+
+
+
+
+
+
+== 查看有关现有控制器的已存储信息
+
+您可以列出已向管理节点注册的现有 vCenter 控制器，并使用 REST API 查看有关这些控制器的已存储信息。
+
+.步骤
+. 单击 * 获取 /compute/controller* 。
+. 单击 * 试用 * 。
+. 单击 * 执行 * 。
++
+API 将返回所有已知 vCenter 控制器的列表，以及用于与每个控制器通信的 IP 地址，控制器 ID ，主机名和用户 ID 。
+
+. 如果您需要特定控制器的连接状态，请将该控制器的 `id` 字段中的控制器 ID 复制到剪贴板中，并参见 <<View the status of an existing controller>>。
+
+
+
+
+== 查看现有控制器的状态
+
+您可以查看向管理节点注册的任何现有 vCenter 控制器的状态。API 将返回一个状态，指示 NetApp Hybrid Cloud Control 是否可以连接到 vCenter 控制器以及此状态的原因。
+
+.步骤
+. 单击 * 获取 /compute/controllers/ ｛ controller_id ｝ /status* 。
+. 单击 * 试用 * 。
+. 在 `controller_id` 参数中输入先前复制的控制器 ID 。
+. 单击 * 执行 * 。
++
+API 将返回此特定 vCenter 控制器的状态以及此状态的原因。
+
+
+
+
+
+== 编辑控制器的已存储属性
+
+您可以编辑已向管理节点注册的任何现有 vCenter 控制器的已存储用户名或密码。您不能编辑现有 vCenter 控制器的已存储 IP 地址。
+
+.步骤
+. 单击 * 放置 /compute/controllers/ ｛ controller_id ｝ * 。
+. 在 `controller_id` 参数中输入 vCenter 控制器的控制器 ID 。
+. 单击 * 试用 * 。
+. 在 * 请求正文 * 字段中更改以下任一参数：
++
+|===
+| 参数 | Type | Description 
+
+
+| `用户 ID` | string | 更改用于与 vCenter 控制器通信的用户 ID （用户必须具有管理员权限）。 
+
+
+| `密码` | string | 更改用于与 vCenter 控制器通信的密码。 
+|===
+. 单击 * 执行 * 。
++
+API 将返回更新后的控制器信息。
+
+
+
+[discrete]
+== 了解更多信息
+
+* link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

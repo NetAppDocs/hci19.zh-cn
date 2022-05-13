@@ -1,0 +1,18 @@
+---
+sidebar: sidebar 
+permalink: docs/hci_prereqs_management_node.html 
+summary: 了解有关 NetApp HCI 管理节点的最佳实践。 
+keywords: netapp, hci, management node, mnode, best practice 
+---
+= 管理节点要求
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, management node, mnode, best practice
+
+
+[role="lead"]
+最佳实践是，仅将一个管理节点与一个 VMware vCenter 实例相关联，并避免在多个管理节点中定义相同的存储和计算资源或 vCenter 实例。在多个管理节点中定义相同的资源可能会出现发生原因问题，例如 NetApp ActiveIQ 中的资源报告不正确。

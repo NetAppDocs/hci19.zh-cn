@@ -1,0 +1,36 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_hci_volume_access_groups.html 
+summary: 了解卷访问组以及如何使用它们访问和管理卷。 
+keywords: netapp, hci, storage volume, solidfire volume, element volume, persistent volume, access group 
+---
+= 卷访问组
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+卷访问组是用户可以使用 iSCSI 或光纤通道启动程序访问的一组卷。
+
+通过创建和使用卷访问组，您可以控制对一组卷的访问。将一组卷和一组启动程序与一个卷访问组相关联时，访问组会授予这些启动程序对该组卷的访问权限。
+
+卷访问组具有以下限制：
+
+* 每个卷访问组最多 128 个启动程序。
+* 每个卷最多 64 个访问组。
+* 一个访问组最多可由 2000 个卷组成。
+* IQN 或 WWPN 只能属于一个卷访问组。
+
+
+
+
+== 了解更多信息
+
+* link:task_hcc_manage_vol_access_groups.html["管理卷访问组"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

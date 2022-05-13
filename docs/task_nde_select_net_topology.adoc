@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_select_net_topology.html 
+summary: 了解如何在 NetApp HCI 部署期间配置 VMware vSphere 。 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere 
+---
+= 选择网络拓扑
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+为 NetApp HCI 节点布线时，您可以根据需要选择使用不同的网络缆线配置。对于每个计算节点，您可以使用所有六个网络端口，并为每对端口分配不同类型的流量，也可以使用两个端口，并为这些端口分配所有类型的流量。存储节点使用标准的四缆线配置。您的选择会影响清单中可选择的计算节点。
+
+如果您为计算节点选择双缆线网络拓扑，请考虑以下要求：
+
+* 您已准备好 VMware vSphere Enterprise Plus 许可证，以便在部署完成后应用。
+* 您已验证网络和网络交换机的配置是否正确。
+* 所有计算和存储节点的存储和 vMotion 网络都需要 VLAN 标记。
+
+
+.步骤
+. 在 * 网络拓扑 * 页面上，选择与您为 NetApp HCI 安装计算节点的方式相符的计算节点拓扑：
++
+** * 6 缆线选项 * ：六缆线选项可为每种类型的流量（管理，虚拟机和存储）提供专用端口。您可以选择启用 vSphere 分布式交换机（ vSphere Distributed Switch ， VDS ）。启用 VDS 可配置分布式交换机，从而在 NetApp HCI 部署完成后对虚拟机网络配置进行简化的集中管理。如果启用此功能，则必须准备好 vSphere Enterprise Plus 许可证，以便在部署后应用。
+** * 2 缆线选项 * ：双缆线选项将两个绑定端口上的管理，虚拟机和存储流量组合在一起。此布线选项需要 VDS ，并会自动启用它。您必须准备好 vSphere Enterprise Plus 许可证，以便在部署后应用。
+
+
+. 某些布线选项会显示不同类型节点硬件的多个背面板视图。浏览背面板视图，了解如何根据特定节点型号和布线选项连接网络缆线。
+. 完成后，单击 * 继续 * 。
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

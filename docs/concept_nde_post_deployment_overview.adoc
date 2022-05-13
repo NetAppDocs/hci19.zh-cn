@@ -1,0 +1,34 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_nde_post_deployment_overview.html 
+summary: 了解部署 NetApp HCI 后应执行的部署后任务。 
+keywords: netapp, hci, deployment, review, deploy 
+---
+= 部署后任务
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+根据您在部署过程中所做的选择，您需要完成最后一些任务，才能将 NetApp HCI 系统投入生产环境中使用，例如更新固件和驱动程序以及进行任何必要的最终配置更改。
+
+* link:task_nde_supported_net_changes.html["支持的网络更改"]
+* link:task_nde_disable_smartd.html["在 NetApp HCI 计算节点上禁用 smartd 服务"]
+* link:task_nde_disable_lacp_individual.html["在已配置的交换机上禁用 "lac-individual" 命令"]
+* link:task_nde_update_vsphere.html["使 VMware vSphere 保持最新"]
+* link:task_nde_install_GPU_drivers.html["为启用了 GPU 的计算节点安装 GPU 驱动程序"]
+* link:task_nde_access_hcc.html["访问 NetApp Hybrid Cloud Control"]
+* link:task_reduce_boot_media_wear.html["减少 NetApp HCI 计算节点上的启动介质损耗"]
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

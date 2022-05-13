@@ -1,0 +1,96 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_h610srepl.html 
+summary: 如果风扇，中央处理单元（ CPU ）或双列直插式内存模块（ DIMM ）发生故障，或者要修复过热问题或启动过程中的问题，您可能需要更换机箱。机箱正面的琥珀色 LED 闪烁表示可能需要更换机箱。在继续操作之前，您应联系 NetApp 支持部门。 
+keywords: netapp, hci, h610s, chassis replacement, node replacement 
+---
+= 更换 H610S 节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果风扇，中央处理单元（ CPU ）或双列直插式内存模块（ DIMM ）发生故障，或者要修复过热问题或启动过程中的问题，您可能需要更换机箱。机箱正面的琥珀色 LED 闪烁表示可能需要更换机箱。在继续操作之前，您应联系 NetApp 支持部门。
+
+
+NOTE: 请参见 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/NetApp_H610S_installation_requirements_for_replacement_or_expansion_nodes["知识库文章"^] 有关 H610S 节点的安装要求的信息。根据存储集群的现有 Element 软件版本，新的和备用的 H610S 存储节点可能具有其他安装要求。有关详细信息，请联系 NetApp 支持部门。
+
+
+TIP: 对于 H610S ，即一个机架单元（ 1U ）机箱，术语 " 节点 " 和 " 机箱 " 可互换使用。
+
+
+
+=== 添加和删除驱动器的最佳实践
+
+在向集群添加驱动器时，应遵循以下最佳实践：
+
+* 添加所有块驱动器并确保块同步完成，然后再添加分区驱动器。
+* 对于 Element 软件 10.x 及更高版本，请一次性添加所有块驱动器。请确保一次对三个以上的节点不执行此操作。
+* 对于 Element 软件 9.x 及更早版本，请一次性添加三个驱动器，使其完全同步，然后再添加下一组三个驱动器。
+* 删除块驱动器之前，请删除分区驱动器并确保分区同步已完成。
+* 一次从一个节点中删除所有块驱动器。在转到下一个节点之前，请确保所有块同步均已完成。
+
+
+.您需要什么？ #8217 ；将需要什么
+* 您已联系 NetApp 支持部门。如果您要订购更换件，应向 NetApp 支持部门提交一个案例。
+* 您已获得替代节点。
+* 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。
+* 如果您需要执行恢复出厂映像（ RTFI ）过程，则已获取 USB 密钥。NetApp 支持部门可以帮助您确定是否需要执行 RTFI 过程。
+* 您有一个键盘和显示器。
+* 您已从集群中正确删除故障节点。
+* 如果 DIMM 发生故障，则在从集群中删除节点之前，您已删除驱动器。
+
+
+当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
+
+.步骤
+. 找到故障机箱正面的服务标签。
++
+image::h610s-servicetag.gif[显示了 H610S 机箱正面的服务标签。]
+
+. 确认服务标签上的序列号与订购更换机箱时的 NetApp 支持案例编号一致。
+. 将键盘和显示器插入故障机箱的背面。
+. 向 NetApp 支持部门验证故障节点的序列号。
+. 关闭机箱电源。
+. 在驱动器正面和背面的缆线上标记其位置，以便在更换驱动器后将其放回相同位置。
++
+有关驱动器在机箱中的位置，请参见下图：
+
++
+image::h610s-drives.gif[显示了 H610S 机箱的正面，其中的驱动器标记为。]
+
+. 拔下缆线。
+. 拧下安装耳上的翼形螺钉，以卸下机箱。您应打包故障机箱并将其退回给 NetApp 。
+. 安装替代机箱。
+. 小心地从故障机箱中卸下驱动器，然后将其插入更换机箱。
++
+
+NOTE: 在删除驱动器之前，应将其插入原来所在的插槽中。
+
+. 从故障机箱中卸下电源设备，然后将其插入更换机箱。
+. 将电源线和网络缆线插入其原始端口。
+. 小型可插拔（ Small Form-Factor Pluggable ， SFP ）收发器可能插入替代节点的 10GbE 端口中。在为 10GbE 端口布线之前，应将其卸下。
++
+
+NOTE: 如果交换机无法识别缆线，请参见交换机供应商的文档。
+
+. 按正面的电源按钮打开机箱电源。节点启动大约需要 5 分 30 秒。
+. 执行配置步骤。
++
+** 如果 H610S 节点是 NetApp HCI 安装的一部分，请使用 NetApp 混合云控制来配置存储资源。请参见 link:task_hcc_expand_storage.html["展开 NetApp HCI 存储资源"]。
+** 如果 H610S 节点是 SolidFire 全闪存存储安装的一部分，请使用 NetApp Element 软件用户界面（ UI ）配置此节点。请联系 NetApp 支持部门以获得帮助。
+
+
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

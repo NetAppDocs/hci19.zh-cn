@@ -1,0 +1,200 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hcc_manage_storage_clusters.html 
+summary: 您可以使用 NetApp Hybrid Control UI 为存储集群添加，删除，更改以及启用和禁用维护模式。 
+keywords: netapp, hci, element, storage cluster, hybrid cloud control, hcc, maintenance mode, enable, disable 
+---
+= 使用 NetApp Hybrid Cloud Control 添加和管理存储集群
+:allow-uri-read: 
+
+
+[role="lead"]
+您可以将存储集群添加到管理节点资产清单中，以便使用 NetApp Hybrid Cloud Control （ HCC ）对其进行管理。系统设置期间添加的第一个存储集群为默认集群 link:concept_hci_clusters.html#authoritative-storage-clusters["权威存储集群"]，但可以使用 HCC UI 添加其他集群。
+
+添加存储集群后，您可以监控集群性能，更改受管资产的存储集群凭据或从管理节点资产清单中删除不再需要使用 HCC 进行管理的存储集群。
+
+从 Element 12.2 开始，您可以使用 link:concept_hci_storage_maintenance_mode.html["维护模式"] 用于为存储集群节点启用和禁用维护模式的功能选项。
+
+.您需要什么？ #8217 ；将需要什么
+* * 集群管理员权限 * ：您对具有管理员权限 link:concept_hci_clusters.html#authoritative-storage-clusters["权威存储集群"]。权威集群是在系统设置期间添加到管理节点清单中的第一个集群。
+* * Element Software* ：您的存储集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
+* * 管理节点 * ：您已部署运行 11.3 或更高版本的管理节点。
+* * 管理服务 * ：您已将管理服务包更新到 2.17 或更高版本。
+
+
+.选项
+* <<Add a storage cluster>>
+* <<Confirm storage cluster status>>
+* <<Edit storage cluster credentials>>
+* <<Remove a storage cluster>>
+* <<Enable and disable maintenance mode>>
+
+
+
+
+=== 添加存储集群
+
+您可以使用 NetApp Hybrid Cloud Control 将存储集群添加到管理节点资产清单中。这样，您可以使用 HCC UI 管理和监控集群。
+
+.步骤
+. 通过提供权威存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 从信息板中，选择右上角的选项菜单，然后选择 * 配置 * 。
+. 在 * 存储集群 * 窗格中，选择 * 存储集群详细信息 * 。
+. 选择 * 添加存储集群 * 。
+. 输入以下信息：
++
+** 存储集群管理虚拟 IP 地址
++
+
+NOTE: 只能添加当前不受管理节点管理的远程存储集群。
+
+** 存储集群用户名和密码
+
+
+. 选择 * 添加 * 。
++
+
+NOTE: 添加存储集群后，集群清单可能需要长达 2 分钟才能刷新并显示新添加的内容。您可能需要刷新浏览器中的页面才能查看所做的更改。
+
+. 如果要添加 Element ESDS 集群，请输入或上传 SSH 专用密钥和 SSH 用户帐户。
+
+
+
+
+=== 确认存储集群状态
+
+您可以使用 NetApp Hybrid Cloud Control UI 监控存储集群资产的连接状态。
+
+.步骤
+. 通过提供权威存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 从信息板中，选择右上角的选项菜单，然后选择 * 配置 * 。
+. 查看清单中存储集群的状态。
+. 从 * 存储集群 * 窗格中，选择 * 存储集群详细信息 * 以了解更多详细信息。
+
+
+
+
+=== 编辑存储集群凭据
+
+您可以使用 NetApp Hybrid Cloud Control UI 编辑存储集群的管理员用户名和密码。
+
+.步骤
+. 通过提供权威存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 从信息板中，选择右上角的选项菜单，然后选择 * 配置 * 。
+. 在 * 存储集群 * 窗格中，选择 * 存储集群详细信息 * 。
+. 选择集群的 * 操作 * 菜单，然后选择 * 编辑集群凭据 * 。
+. 更新存储集群用户名和密码。
+. 选择 * 保存 * 。
+
+
+
+
+=== 删除存储集群
+
+从 NetApp Hybrid Cloud Control 中删除存储集群将从管理节点清单中删除此集群。删除存储集群后， HCC 将无法再管理此集群，您只能通过直接导航到其管理 IP 地址来访问此集群。
+
+
+IMPORTANT: 您不能从清单中删除权威集群。要确定权威集群，请转到 * 用户管理 > 用户 * 。权威集群列在标题 * 用户 * 旁边。
+
+.步骤
+. 通过提供权威存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
+. 从信息板中，选择右上角的选项菜单，然后选择 * 配置 * 。
+. 在 * 存储集群 * 窗格中，选择 * 存储集群详细信息 * 。
+. 选择集群的 * 操作 * 菜单，然后选择 * 删除存储集群 * 。
++
+
+CAUTION: 单击 * 是 * 下一步将从安装中删除集群。
+
+. 选择 * 是 * 。
+
+
+[discrete]
+=== 启用和禁用维护模式
+
+这 link:concept_hci_storage_maintenance_mode.html["维护模式"] 通过功能选项，您可以执行以下操作 <<enable_main_mode,启用>> 和 <<disable_main_mode,-disable>> 存储集群节点的维护模式。
+
+.您需要什么？ #8217 ；将需要什么
+* * Element 软件 * ：您的存储集群版本运行的是 NetApp Element 软件 12.2 或更高版本。
+* * 管理节点 * ：您已部署运行 12.2 或更高版本的管理节点。
+* * 管理服务 * ：您已将管理服务包更新到 2.19 或更高版本。
+* 您可以在管理员级别登录。
+
+
+
+
+==== 启用维护模式
+
+您可以使用以下操作步骤为存储集群节点启用维护模式。
+
+
+NOTE: 一次只能有一个节点处于维护模式。
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
++
+
+NOTE: 维护模式功能选项将在只读级别禁用。
+
+. 在左侧导航蓝色框中，选择 NetApp HCI 安装。
+. 在左侧导航窗格中，选择 * 节点 * 。
+. 要查看存储清单信息，请选择 * 存储 * 。
+. 在存储节点上启用维护模式：
++
+[NOTE]
+====
+对于非用户启动的操作，存储节点表每两分钟自动更新一次。在执行操作之前，为了确保您拥有最新状态，您可以使用节点表右上角的刷新图标刷新节点表。
+
+image:hcc_enable_maintenance_mode.PNG["启用维护模式"]
+
+====
++
+.. 在 * 操作 * 下，选择 * 启用维护模式 * 。
++
+在启用 * 维护模式 * 时，选定节点以及同一集群上的所有其他节点将无法执行维护模式操作。
+
++
+在 * 启用维护模式 * 完成后， * 节点状态 * 列将显示处于维护模式的节点的扳手图标和文本 "* 维护模式 * " 。
+
+
+
+
+
+
+
+==== 禁用维护模式
+
+成功将某个节点置于维护模式后，可以对此节点执行 * 禁用维护模式 * 操作。在对正在进行维护的节点成功禁用维护模式之前，其他节点上的操作将不可用。
+
+.步骤
+. 对于处于维护模式的节点，在 * 操作 * 下，选择 * 禁用维护模式 * 。
++
+禁用 * 维护模式 * 时，选定节点以及同一集群上的所有其他节点将无法执行维护模式操作。
+
++
+在 * 禁用维护模式 * 完成后， * 节点状态 * 列将显示 * 活动 * 。
+
++
+
+NOTE: 当节点处于维护模式时，它不接受新数据。因此，禁用维护模式可能需要较长时间，因为节点必须先同步其数据备份，然后才能退出维护模式。在维护模式下花费的时间越长，禁用维护模式所需的时间就越长。
+
+
+
+
+
+==== 故障排除
+
+如果在启用或禁用维护模式时遇到错误，节点表顶部将显示横幅错误。有关此错误的详细信息，您可以选择横幅上提供的 * 显示详细信息 * 链接，以显示 API 返回的内容。
+
+
+
+== 了解更多信息
+
+* link:task_mnode_manage_storage_cluster_assets.html["创建和管理存储集群资产"]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

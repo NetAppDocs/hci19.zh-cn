@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_cg_hci_licensing.html 
+summary: 使用 NetApp HCI 时，您可能需要其他许可证。 
+keywords: netapp, hci, license 
+---
+= NetApp HCI 许可
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+使用 NetApp HCI 时，您可能需要其他许可证，具体取决于所使用的内容。
+
+
+
+== NetApp HCI 和 VMware vSphere 许可
+
+VMware vSphere 许可取决于您的配置：
+
+[cols="25,75"]
+|===
+| 网络选项 | 许可 
+
+
+| 选项 A ：使用两根缆线连接使用 VLAN 标记的计算节点（所有计算节点） | 需要使用 vSphere 分布式交换机，这需要 VMware vSphere Enterprise Plus 许可。 
+
+
+| 选项 B ：使用带标记 VLAN 的计算节点（ H410C 2RU 4 节点计算节点）使用六根缆线 | 此配置使用 vSphere 标准交换机作为默认配置。要选择使用 vSphere 分布式交换机，需要获得 VMware Enterprise Plus 许可。 
+
+
+| 选项 C ：为使用原生和标记 VLAN 的计算节点（ H410C ， 2RU 4 节点计算节点）使用六根缆线 | 此配置使用 vSphere 标准交换机作为默认配置。要选择使用 vSphere 分布式交换机，需要获得 VMware Enterprise Plus 许可。 
+|===
+
+
+== NetApp HCI 和 ONTAP Select 许可
+
+如果您获得的 ONTAP Select 版本可与购买的 NetApp HCI 系统结合使用，则需遵守以下附加限制：
+
+* ONTAP Select 许可证与 NetApp HCI 系统销售捆绑在一起，只能与 NetApp HCI 计算节点结合使用。
+* 这些 ONTAP Select 实例的存储只能位于 NetApp HCI 存储节点上。
+* 禁止使用第三方计算节点或第三方存储节点。
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

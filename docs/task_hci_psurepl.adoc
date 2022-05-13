@@ -1,0 +1,104 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_psurepl.html 
+summary: 如果某个电源设备出现故障，您应尽快更换它，以确保机箱具有冗余电源。 
+keywords: netapp, hci, psu, replace power supply, H410S, H610S, H410C, H610C, H615C 
+---
+= 更换电源设备
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+每个机箱都包含两个电源设备，用于实现电源冗余。如果某个电源设备出现故障，您应尽快更换它，以确保机箱具有冗余电源。
+
+.您需要什么？ #8217 ；将需要什么
+* 您已确定电源设备出现故障。
+* 您有一个替代电源设备。
+* 您已确认第二个电源设备正在运行。
+* 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电预防措施。
+
+
+替代操作步骤适用场景节点型号如下：
+
+* 双机架单元（ 2U ）四节点 NetApp HCI 机箱
+* 2U H610C 计算机箱
+* 一个机架单元（ 1U ） H615C 计算机箱
+* 1U H610S 存储机箱
++
+
+NOTE: 对于 H610C ， H615C 和 H610S ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件，这一点与 2U 四节点机箱不同。
+
+
+
+VMware vSphere Web Client 中的警报提供了有关故障电源设备的信息，将其称为 PS1 或 PS2 。在 NetApp HCI 2U 四节点机箱中， PS1 是指机箱顶行上的单元，而 ps2 是指机箱底行上的单元。只要冗余电源设备正常运行，您就可以在机箱通电并正常工作时更换故障电源设备。
+
+.步骤
+. 在机箱中找到故障电源设备。故障设备上的 LED 显示琥珀色。
++
+
+NOTE: 电源设备的位置因机箱类型而有所不同。
+
++
+有关电源设备的位置，请参见下图：
+
++
+[cols="2*"]
+|===
+| 型号 | 电源设备的位置 
+
+
+| 2U 四节点 NetApp HCI 存储机箱  a| 
+image::storage_chassis_psu.png[显示了 2U 中的电源设备]
+
+
+NOTE: 机箱中的节点可能看起来不同，具体取决于您拥有的节点类型（存储或计算）。
+
+
+
+| H610C 机箱  a| 
+image::h610c_psu.png[显示了 H610C 机箱中的电源设备。]
+
+
+
+| H615C 机箱  a| 
+image::h615c_psu.png[显示了 H615C 机箱中的电源设备。]
+
+
+
+| H610S 机箱  a| 
+image::h610s_psu.png[显示了 H610S 机箱中的电源设备。]
+
+|===
+. 从电源设备拔下电源线。
+. 提起凸轮把手，然后按下蓝色闩锁以滑出电源设备。
++
+image::psu-remove.gif[显示了要提起的凸轮把手以及要从机箱中滑出的电源设备。]
+
++
+
+NOTE: 图示为一个示例。电源设备在机箱中的位置以及释放按钮的颜色因机箱类型而异。
+
++
+
+IMPORTANT: 确保用双手支撑电源设备的重量。
+
+. 用双手将电源设备的边缘与机箱中的开口对齐，使用凸轮把手将此设备轻轻推入机箱，直到锁定到位，然后将凸轮把手恢复到竖直位置。
++
+image::psu-install.gif[显示了要安装在机箱中的电源设备。]
+
+. 插入电源线。
+. 按照您收到的包装箱中的说明将故障设备退回 NetApp 。
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

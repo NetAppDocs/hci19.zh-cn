@@ -1,0 +1,55 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_access_no_dhcp.html 
+summary: 了解如何在不使用 DHCP 的环境中访问 NetApp 部署引擎。 
+keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access 
+---
+= 在不使用 DHCP 的环境中访问 NetApp 部署引擎
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+如果网络上未使用 DHCP ，则需要在要用于访问 NetApp 部署引擎的某个存储节点（也称为控制存储节点）的绑定 1G 接口上设置静态 IPv4 地址。控制存储节点上的 NetApp 部署引擎将使用所有节点的绑定 10G 接口上自动配置的 IPv4 地址发现其他计算和存储节点并与其进行通信。除非您的网络有特殊要求，否则应使用此方法。
+
+.您需要什么？ #8217 ；将需要什么
+* 您或您的网络管理员已完成安装和设置说明文档中的任务。
+* 您可以对 NetApp HCI 节点进行物理访问。
+* 所有 NetApp HCI 节点均已启动。
+* 未为 NetApp HCI 网络启用 DHCP ，并且 NetApp HCI 节点未从 DHCP 服务器获取 IP 地址。
+* NetApp HCI 管理网络在所有节点的绑定 1G 和绑定 10G 接口上配置为原生 VLAN 。
+
+
+.步骤
+. 将 KVM 插入一个 NetApp HCI 存储节点的背面（此节点将成为控制存储节点）。
+. 在用户界面中配置绑定 1G 的 IP 地址，子网掩码和网关地址。如果需要，您还可以为绑定 1G 网络配置 VLAN ID 。
++
+
+NOTE: 您不能稍后在使用 NetApp 部署引擎进行部署期间重复使用此 IPv4 地址。
+
+. 在可以访问 NetApp HCI 管理网络的计算机上打开 Web 浏览器。
+. 浏览到分配给控制存储节点的 IP 地址。例如：
++
+[listing]
+----
+http://<Bond1G IP address>
+----
++
+
+NOTE: 请确保在此处使用 HTTP 。
+
++
+此时将转到 NetApp 部署引擎用户界面。
+
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件中的固件和驱动程序版本"^]
+

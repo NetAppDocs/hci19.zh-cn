@@ -1,0 +1,47 @@
+---
+sidebar: sidebar 
+permalink: docs/task_hci_removewn.html 
+summary: 将双节点存储集群扩展到四个或更多节点后，您可以删除见证节点对，以释放 NetApp HCI 安装中的计算资源。 
+keywords: netapp, hci, witness nodes, two-node cluster, four-node cluster, compute nodes, virtual machine, vm 
+---
+= 扩展集群后删除见证节点
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+将双节点存储集群扩展到四个或更多节点后，您可以删除见证节点对，以释放 NetApp HCI 安装中的计算资源。在 vSphere Web Client 中，存储集群先前使用的见证节点仍显示为备用虚拟机（ VM ）。
+
+具有四个以上存储节点的集群不需要见证节点。如果要在将双节点集群扩展到四个或更多节点后释放 CPU 和内存，则此操作步骤为可选。
+
+
+TIP: 验证是否未报告集群故障或错误。您可以通过单击 vSphere 中 NetApp Element 管理扩展点中的 * 报告 > 警报 * 来查找有关系统警报的信息。
+
+.步骤
+. 从 vSphere 中，通过 * 快捷方式 * 选项卡或侧面板访问 NetApp Element 管理扩展点。
+. 选择 * NetApp Element 管理 > 集群 > 节点 * 。
++
+image::vcp-witnessnode.gif[显示了 NetApp Element 管理 > 集群页面，其中列出了节点。]
+
+. 选中要删除的见证节点对应的复选框，然后单击 * 操作 > 删除 * 。
+. 在提示符处确认此操作。
+. 单击 * 主机和集群 * 。
+. 导航到先前删除的见证节点虚拟机。
+. 右键单击虚拟机并将其关闭。
+. 右键单击已关闭的虚拟机，然后单击 * 从磁盘中删除 * 。
+. 在提示符处确认此操作。
+
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
+

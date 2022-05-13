@@ -1,0 +1,89 @@
+---
+sidebar: sidebar 
+permalink: docs/concept_cg_hci_accounts.html 
+summary: 启用了云服务的每个 NetApp HCI 系统都与一个 NetApp Cloud Central 帐户关联。 
+keywords: netapp, hci, on premise, administrator, user account, cloud services, cluster 
+---
+= 用户帐户
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+要访问系统上的存储资源，您需要设置用户帐户。
+
+
+
+== 用户帐户管理
+
+用户帐户用于控制对基于 NetApp Element 软件的网络上存储资源的访问。要创建卷，至少需要一个用户帐户。
+
+创建卷时，系统会将其分配给帐户。如果已创建虚拟卷，则帐户为存储容器。
+
+以下是一些其他注意事项：
+
+* 帐户包含访问分配给它的卷所需的 CHAP 身份验证。
+* 一个帐户最多可以分配 2000 个卷，但一个卷只能属于一个帐户。
+* 可以从 NetApp Element 管理扩展点管理用户帐户。
+
+
+使用 NetApp Hybrid Cloud Control ，您可以创建和管理以下类型的帐户：
+
+* 存储集群的管理员用户帐户
+* 权威用户帐户
+* 卷帐户，仅适用于创建这些帐户的存储集群。
+
+
+
+
+== 存储集群管理员帐户
+
+运行 NetApp Element 软件的存储集群中可以存在两种类型的管理员帐户：
+
+* * 主集群管理员帐户 * ：此管理员帐户是在创建集群时创建的。此帐户是对集群具有最高访问级别的主管理帐户。此帐户类似于 Linux 系统中的 root 用户。您可以更改此管理员帐户的密码。
+* * 集群管理员帐户 * ：您可以为集群管理员帐户授予有限的管理访问权限，以便在集群中执行特定任务。分配给每个集群管理员帐户的凭据用于对存储系统中的 API 和 Element UI 请求进行身份验证。
+
+
+
+NOTE: 要通过每节点 UI 访问集群中的活动节点，需要使用本地（非 LDAP ）集群管理员帐户。访问尚未加入集群的节点不需要帐户凭据。
+
+您可以通过创建，删除和编辑集群管理员帐户，更改集群管理员密码以及配置 LDAP 设置来管理用户的系统访问来管理集群管理员帐户。
+
+
+
+== 权威用户帐户
+
+权威用户帐户可以针对与节点和集群的 NetApp Hybrid Cloud Control 实例关联的任何存储资产进行身份验证。使用此帐户，您可以管理所有集群中的卷，帐户，访问组等。
+
+权威用户帐户可从 NetApp Hybrid Cloud Control 中右上角的 User Management 选项菜单进行管理。
+
+。 link:concept_hci_clusters.html#authoritative-storage-clusters["权威存储集群"] 是 NetApp Hybrid Cloud Control 用于对用户进行身份验证的存储集群。
+
+在权威存储集群上创建的所有用户均可登录到 NetApp Hybrid Cloud Control 。在其他存储集群上创建的用户无法登录到 Hybrid Cloud Control 。
+
+* 如果您的管理节点只有一个存储集群，则它是权威集群。
+* 如果您的管理节点有两个或更多存储集群，其中一个集群将被分配为权威集群，只有该集群中的用户才能登录到 NetApp Hybrid Cloud Control 。
+
+
+虽然许多 NetApp Hybrid Cloud Control 功能可用于多个存储集群，但身份验证和授权具有必要的限制。身份验证和授权的限制是，权威集群中的用户可以对与 NetApp Hybrid Cloud Control 关联的其他集群执行操作，即使他们不是其他存储集群上的用户也是如此。在继续管理多个存储集群之前，您应确保在权威集群上定义的用户已在具有相同权限的所有其他存储集群上定义。您可以从 NetApp Hybrid Cloud Control 管理用户。
+
+
+
+== 卷帐户
+
+特定于卷的帐户仅特定于创建它们的存储集群。通过这些帐户，您可以在网络中为特定卷设置权限，但在这些卷之外不起作用。
+
+卷帐户在 NetApp Hybrid Cloud Control Volumes 表中进行管理。
+
+[discrete]
+== 了解更多信息
+
+* link:task_hcc_manage_accounts.html["管理用户帐户"]
+* link:concept_hci_clusters.html["了解集群"]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+

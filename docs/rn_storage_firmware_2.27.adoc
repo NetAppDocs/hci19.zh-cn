@@ -1,0 +1,193 @@
+---
+sidebar: sidebar 
+permalink: docs/rn_storage_firmware_2.27.html 
+summary: 获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。 
+keywords: netapp, hci, storage firmware 
+---
+= 存储固件包 2.27 发行说明
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, release notes, vcp, element, management services, firmware
+
+
+[role="lead"]
+从 Element 12.0 和管理服务版本 2.14 开始，您可以使用 NetApp Hybrid Cloud Control UI 和 REST API 在存储节点上执行纯固件升级。此操作步骤不会升级 Element 软件，您可以通过它在主要 Element 版本之外升级存储固件。
+
+
+IMPORTANT: 对于运行 Element 软件 12.0 版的 H610S 存储节点，在升级到存储固件包 2.27 之前，应应用 D-patch SUST-909 。在升级之前，请联系 NetApp 支持部门获取 D-patch 。
+
+
+
+== 新增功能
+
+存储固件包 2.27 版包含各种错误修复和新功能，包括安全漏洞修复。您可以按照中的说明升级存储固件 link:task_hcc_upgrade_storage_firmware.html["升级存储固件"]。
+
+
+
+=== 已更新固件组件
+
+此固件包包含以下硬件组件固件版本，更新版本以粗体显示：
+
+|===
+| 组件 | Dell R630 | H410s | H610S 
+
+
+| BIOS | 不适用 | NA2.1 | 2003 年 3 月 
+
+
+| BMC | 不适用 | * 。 6.84.00* | * 。 3.84.07* 
+
+
+| NIC/Mellanox | - | 14.21.1000 | 14.22.1002. 
+
+
+| RMS200 | ae3b8cc | 7d8422bc | - 
+
+
+| RMS300 | 7d8422bc | 7d8422bc | - 
+
+
+| NVDIMM ，智能 | - | - | 3.1. 
+
+
+| BPM ，智能 | - | - | 2.16 
+
+
+| NVDIMM ， Micron Gen1 | - | - | 26.2c 
+
+
+| NVDIMM ， Micron Gen2 | - | - | 25.3c 
+
+
+| PGEM ， Micron | - | - | 1.40 
+
+
+| PM863 ， SED | GXT7404Q | GXT7404Q | - 
+
+
+| PM863 ， NSED | GXT5103Q | GXT5103Q | - 
+
+
+| PM883 ， SED | HXT7104Q | HXT7104Q | - 
+
+
+| Hawk-4 ， SED | 8ENP7101 | 8ENP7101 | - 
+
+
+| Hawk-4 ， NSED | 8ENP6101 | 8ENP6101 | - 
+
+
+| PM963 ， SED | - | - | CXV8202Q 
+
+
+| PM963 ， NSED | - | - | CXV8501Q 
+
+
+| PM983 ， SED | - | - | * EDA5302Q* 
+
+
+| PM983 ， NSED | - | - | * EDA5600Q* 
+
+
+| CD5 ， SED | - | - | 0108 
+
+
+| CD5 ， NSED | - | - | 0108 
+
+
+| CD5 ， FIPS | - | - | 0108 
+|===
+
+
+== 新的 BMC 功能
+
+以下是此版本中的新 BMC 功能和变更：
+
+* （ H610S ）支持 initrd ，用于在启动时加载初始 ramdisk
+* （ H610S ）更新了有关 X.509 证书的 SSL 帮助消息
+* （ H610S ）已禁用 TLS 1.0 和 1.1 支持以解决安全漏洞
+* （ H610S ， H410S ）增加了使用 Redfish API 挂载远程介质的功能
+* （ H610S ）增加了对 HTML5 Web 浏览器 BMC 管理的支持
+* （ H610S ）增加了远程系统日志支持，有助于远程数据中心监控和管理
+
+
+
+
+== 已解决的问题
+
+以下是此版本中已解决的问题：
+
+|===
+| 问题描述 | Description 
+
+
+| 不适用 | 重置 BMC 后，调试用户 sysadmin 可以使用 SSH 登录。 
+
+
+| 不适用 | 使用控制台对 BMC IP 地址执行 ping 操作时， BMC 不会做出响应。 
+
+
+| 不适用 | 在交流电源重启压力测试期间， SOLSSH 配置文件的访问权限将丢失。 
+
+
+| CSESF-116 | 在交流电源重启压力测试期间， BMC 日志中会显示 "PROCHOT" CPU 散热警告。 
+
+
+| CSESF-121 | 创建和更新服务帐户 API 所用时间超出预期。 
+
+
+| CSD-3321 /CSESF-129 | H610S BMC 可能挂起并无法访问，并显示错误 "BMC Self Test Failed" 。 
+
+
+| CSESF-197 | BMC Web UI 清单 API 返回错误的内存序列号格式。 
+|===
+
+
+== 已解决安全漏洞
+
+以下是此版本中已解决的安全漏洞：
+
+
+
+=== H410S BMC 6.84.00
+
+* CVE-2019-16649
+* CVE-2019-16650
+* CVE-2019-6260
+
+
+
+
+=== H610S BMC 3.84.07
+
+* CVE-2019-1552
+* CVE-2019-1547 ， CVE-2019-1563
+* CVE-2019-5482
+* CVE-2019-15903
+* CVE-2018-20843
+* CVE-2019-14821 ， CVE-2019-15916 ， CVE-2019-16413
+* CVE-2019-10638 ， CVE-2019-10639
+* CVE-2019-11478 ， CVE-2019-11479 ， CVE-2019-11477
+* CVE-2019-12819
+* CVE-2019-14835 ， CVE-2019-14814 ， CVE-2019-14816 ， CVE-2019-16746
+* CVE-2019-19062
+* CVE-2019-19922 ， CVE-2019-20054
+* CVE-2019-19447 ， CVE-2019-19767 ， CVE-2019-10220
+
+
+
+
+== 已知问题
+
+此版本没有已知问题。
+
+[discrete]
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
+

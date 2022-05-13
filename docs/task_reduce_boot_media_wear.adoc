@@ -1,0 +1,27 @@
+---
+sidebar: sidebar 
+permalink: docs/task_reduce_boot_media_wear.html 
+summary: 了解如何减少 NetApp HCI 计算节点上的启动介质损耗。 
+keywords: netapp, hci, deployment, review, deploy, boot, drive, wear 
+---
+= 减少 NetApp HCI 计算节点上的启动介质损耗
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+如果将闪存或 NVDIMM 启动介质与 NetApp HCI 计算节点结合使用，则在该介质上保留系统日志会导致频繁写入该介质。这最终会导致闪存降级。按照以下知识库文章中的说明将主机日志记录和核心转储文件移动到共享存储位置，这有助于防止启动介质随时间推移而降级，并有助于防止完整启动磁盘错误。
+
+https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_reduce_wear_on_the_boot_drive_of_a_Netapp_HCI_compute_node["如何减少 NetApp HCI 计算节点启动驱动器的损耗"]
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+

@@ -1,0 +1,46 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_access_hcc.html 
+summary: 了解如何在部署 NetApp HCI 后访问 NetApp 混合云控制。 
+keywords: netapp, hci, deployment, review, GPU, install, driver, drivers 
+---
+= 访问 NetApp Hybrid Cloud Control
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+通过 NetApp 混合云控制，您可以管理 NetApp HCI 。您可以升级 NetApp HCI 的管理服务和其他组件，并扩展和监控安装。您可以通过浏览到管理节点的 IP 地址登录到 NetApp Hybrid Cloud Control 。
+
+.您需要什么？ #8217 ；将需要什么
+* * 集群管理员权限 * ：您对存储集群拥有管理员权限。
+* * 管理服务 * ：您已将管理服务至少升级到 2.1.326 版。NetApp Hybrid Cloud Control 在早期的服务包版本中不可用。有关当前服务包版本的信息，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务发行说明"^]。
+
+
+.步骤
+. 在Web浏览器中打开管理节点的IP地址。例如：
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
++
+此时将显示 NetApp Hybrid Cloud Control 界面。
+
+
+
+
+NOTE: 如果您使用的权限不足登录，则会在整个 HCC 资源页面中看到 " 无法加载 " 消息，并且资源将不可用。
+
+
+
+== 了解更多信息
+
+* https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
+

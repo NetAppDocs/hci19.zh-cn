@@ -1,0 +1,42 @@
+---
+sidebar: sidebar 
+permalink: docs/task_nde_disable_smartd.html 
+summary: '了解如何在部署 NetApp HCI 后在计算节点上禁用 `smartd` 服务。' 
+keywords: netapp, hci, netapp deployment engine, deployment, vsphere, ESXi, compute, smartd, polling 
+---
+= 在 NetApp HCI 计算节点上禁用 smartd 服务
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: netapp, hci, netapp deployment engine, deployment, vsphere
+
+
+[role="lead"]
+默认情况下， `smartd` 服务会定期轮询计算节点中的驱动器。部署 NetApp HCI 后，应在所有计算节点上禁用此服务。
+
+.步骤
+. 使用 SSH 或本地控制台会话，使用根凭据登录到计算节点上的 VMware ESXi 。
+. 停止正在运行的 `smartd` 服务：
++
+[listing]
+----
+/etc/init.d/smartd stop
+----
+. 阻止 `smartd` 服务在启动时启动：
++
+[listing]
+----
+chkconfig smartd off
+----
+. 对安装中的其余计算节点重复上述步骤。
+
+
+[discrete]
+== 了解更多信息
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/SolidFire%3A_Turning_off_smartd_on_the_ESXi_hosts_makes_the_cmd_0x85_and_subsequent_%22state_in_doubt%22_messages_stop["在 VMware ESXi 中关闭 smartd 服务"^]
+* https://kb.vmware.com/s/article/2133286["VMware 知识库文章 2133286"^]
+
