@@ -20,7 +20,7 @@ keywords: netapp, hci, SSDs, drives, replace drives, H410S, H610S
 
 
 
-=== 处理驱动器的最佳实践
+== 处理驱动器的最佳实践
 
 处理驱动器时，应遵循以下最佳实践：
 
@@ -35,7 +35,7 @@ keywords: netapp, hci, SSDs, drives, replace drives, H410S, H610S
 
 
 
-=== 添加和删除驱动器的最佳实践
+== 添加和删除驱动器的最佳实践
 
 在向集群添加驱动器和从集群中删除驱动器时，应遵循以下最佳实践：
 

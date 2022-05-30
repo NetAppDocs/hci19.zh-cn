@@ -15,14 +15,14 @@ keywords: netapp, mnode api, management node api, rest api
 
 
 
-=== Authorization
+== Authorization
 
 * link:task_mnode_api_get_authorizationtouse.html["获取使用 REST API 的授权"]
 
 
 
 
-=== 资产配置
+== 资产配置
 
 * link:task_mnode_enable_activeIQ.html["启用 Active IQ 和 NetApp HCI 监控"]
 * link:task_mnode_configure_proxy_server.html["为管理节点配置代理服务器"]
@@ -33,7 +33,7 @@ keywords: netapp, mnode api, management node api, rest api
 
 
 
-=== 资产管理
+== 资产管理
 
 * link:task_mnode_edit_vcenter_assets.html["查看或编辑现有控制器资产"]
 * link:task_mnode_manage_storage_cluster_assets.html["创建和管理存储集群资产"]
