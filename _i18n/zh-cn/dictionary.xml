@@ -503,7 +503,6 @@
   <block id="bfc5232cd54db21b7879b3adc6550835" category="paragraph">您可以在混合云控制信息板上快速查看和响应警报。</block>
   <block id="92f931e19caf8af4e3a31a82b06ccabd" category="summary">获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。</block>
   <block id="7a02f75af06b21c7f1cfccabab836899" category="doc">计算固件包 2.76 发行说明</block>
-  <block id="c04379119f71302691848047a912bf77" category="paragraph">可下载的计算节点固件包可为所有受支持的 NetApp HCI 计算节点提供最新的 BIOS 和 BMC 功能增强功能，错误修复以及硬件支持。</block>
   <block id="5fef629b836b60819e0c0ce49cd2b9d7" category="section-title">新增功能</block>
   <block id="5d97960a6eafabed18140433c99665c6" category="paragraph">2.76 版包含常规错误修复。</block>
   <block id="692731d8e937243e33f91c14df51cf3f" category="section-title">已更新固件组件</block>
@@ -3505,29 +3504,21 @@
   <block id="24aff39b6c002fcae2afa707e6dba7be" category="paragraph">选择与您的升级情形相关的选项：</block>
   <block id="aaf077919c3a33948d4c6f6869ac6de2" category="list-text"><block ref="2f3f84c67669f9390053a8a70cc30811" category="inline-xref-macro-rx"></block> （建议）</block>
   <block id="c2b8ce6217c717bb4cf813b9002845d8" category="list-text"><block ref="b1a3460e81a377a120ecdc0296fecd85" category="inline-xref-macro-rx"></block></block>
-  <block id="bf881b2333a1be30f9e61518fed37215" category="list-text"><block ref="e445c7a7a2b2d959ddf443369364b480" category="inline-xref-macro-rx"></block></block>
   <block id="fea8733cb5d299251fb403db55d36c8e" category="list-text"><block ref="892214ad68d853838374848e25f4a43c" category="inline-xref-macro-rx"></block></block>
   <block id="8badc716b7bb810ab4db2a05996c128e" category="section-title">使用 NetApp Hybrid Cloud Control UI 升级计算节点</block>
   <block id="39298a57d99d452e16e020b7ccbd4095" category="paragraph">从管理服务 2.14 开始，您可以使用 NetApp Hybrid Cloud Control UI 升级计算节点。从节点列表中，您必须选择要升级的节点。当前版本 * 选项卡显示当前固件版本， * 建议版本 * 选项卡显示可用的升级版本（如果有）。</block>
   <block id="9c09357fb6d5191d3a1913dd3c4401ef" category="admonition">要成功升级，请确保已成功对 vSphere 集群执行运行状况检查。</block>
-  <block id="22ff0969c4e3b2efc4c69d4132ff6e00" category="admonition">对于非公开站点升级，如果升级软件包和管理节点都位于本地，则可以缩短上传时间。</block>
   <block id="6f7ebeb72eb48d89aa2787433989b6b5" category="admonition">根据管理节点与 BMC 主机之间的网络连接速度，每个节点升级 NIC ， BIOS 和 BMC 可能需要大约 60 分钟的时间。</block>
   <block id="abca9e82408ff65627f936784141931b" category="inline-xref">USB 驱动器</block>
   <block id="e06e1c211afdb87bf0364232088b0c36" category="inline-xref">BMC 用户界面</block>
-  <block id="ee32ec3c00387e48d64d3e91709654f2" category="admonition">不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <block ref="4d9d1e5487766b88d4d71ed7b5cbc3b9" category="inline-xref-macro-rx"></block> 或 <block ref="1f3fb96b93183df027058d51b91b7971" category="inline-xref-macro-rx"></block> 挂载计算固件 ISO 。</block>
-  <block id="0402b00545fce110121d27e3e0116320" category="list-text">如果您的管理节点未连接到 Internet ，则表示您已从下载计算节点固件包<block ref="3a326a2da6806c2b958ef45116362803" category="inline-link-rx"></block>。</block>
-  <block id="2c3b3b59652bc3410e7853f9e03eb5e3" category="admonition">您应将 `TAR.GZ` 文件提取到 `TAR` 文件中，然后将 `TAR` 文件提取到 ISO 中。</block>
   <block id="90b3d6cdea919388440a96816e53ea24" category="list-text">在 * 升级 * 页面上，选择 * 计算固件 * 。</block>
   <block id="fa7063e93d956bc8344f5540bf669b09" category="list-text">选择要升级的集群。</block>
   <block id="1051fa9779041ad6e9ee3beab1a5804e" category="paragraph">如果可以升级，您将看到集群中的节点以及当前固件版本和更高版本。</block>
-  <block id="1ec7d94e055dd1b38fea54a8c52a7107" category="list-text">选择升级软件包。</block>
   <block id="ad658e59cd09feeecf6b238e019458b8" category="paragraph">选择 * 开始升级 * 后，此窗口将显示失败的运行状况检查（如果有）。</block>
   <block id="a3341b6eded1e35dfa9b561f8a07b57d" category="admonition">开始升级后，升级无法暂停。固件将按以下顺序更新： NIC ， BIOS 和 BMC 。升级期间请勿登录到 BMC UI 。登录到 BMC 将终止用于监控升级过程的混合云控制 LAN 上串行（ Serial Over LAN ， SOL ）会话。</block>
   <block id="466e65481ab5efa6812230aeb4b69f80" category="list-text">如果在集群或节点级别通过运行状况检查并显示警告，但未发生严重故障，则您将看到 * 已做好升级准备 * 。选择 * 升级节点 * 。</block>
   <block id="576792eafbabeb08a721725d8cd7f8c5" category="admonition">在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。在升级期间， UI 会显示有关升级状态的各种消息。</block>
-  <block id="79df72a933d3593ef7d9131e8d7c509c" category="admonition">升级 H610C 和 H615S 计算节点上的固件时，请勿通过 BMC Web UI 打开 LAN 上串行（ Serial Over LAN ， SOL ）控制台。这可能发生原因会导致升级失败。</block>
   <block id="f018c25e2ba6e7d9e59d6f27fbefc1d1" category="paragraph">升级完成后， UI 将显示一条消息。升级完成后，您可以下载日志。</block>
-  <block id="c39906efe5a223585b255a41266ea9c8" category="list-text">选择 * 浏览 * 可上传从下载的升级软件包<block ref="132031089c33792b234781a9d8501a93" category="inline-link-rx"></block>。</block>
   <block id="67986ad534a347b7de1afe60bc4bad42" category="admonition">如果您离开浏览器窗口，则文件上传将在后台进行。</block>
   <block id="21ab535a80a78a0fb75c944c402b4134" category="paragraph">成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。升级完成后，您可以下载日志。有关各种升级状态更改的信息，请参见 <block ref="963ffe23b927e51707381f60a050d9f4" category="inline-xref-macro-rx"></block>。</block>
   <block id="ab57fd0432e25d5b3013133a1c910d56" category="inline-link-macro">知识库</block>
@@ -3547,12 +3538,8 @@
   <block id="28e250dd03d1d6c42bd639d46927b2f8" category="paragraph">您可以使用 API 将集群中的每个计算节点升级到最新固件版本。您可以使用自己选择的自动化工具来运行 API 。此处介绍的 API 工作流使用管理节点上提供的 REST API UI 作为示例。</block>
   <block id="571ebba046dfc62ef7155919bf315d2d" category="paragraph">计算节点资产（包括 vCenter 和硬件资产）必须为管理节点资产所知。您可以使用清单服务 API 来验证资产（`https://&lt;ManagementNodeIP&gt;/inventory/1/` ）。</block>
   <block id="689c642c94aa6268a48bbbc19bb529c5" category="list-text">在管理节点上打开软件包服务 REST API UI ：</block>
-  <block id="325b3df765685b8bf7d0a291e60ff0d7" category="list-text">在响应中，复制并保存升级软件包名称（` packageName` ）和软件包版本（` packageVersion` ），以供后续步骤使用。</block>
   <block id="4876c936414c8b50876cdff810c036bd" category="inline-link">下载页面</block>
-  <block id="aa9d5bf83f31cb6b0178cd6fca1bf339" category="list-text">转到 NetApp HCI 软件<block ref="5edcf9a6caebd1bfc3b9c296487defc8" category="inline-link-rx"></block> 并将最新的计算节点固件映像下载到可供管理节点访问的设备。</block>
-  <block id="6020d7988dfd2e648ba586d737e1f210" category="list-text">将计算固件升级软件包上传到管理节点：</block>
   <block id="ec1ddc98a355dba89ef5b1ccc291885d" category="list-text">在 * id * 中输入上一步复制的软件包 ID 。</block>
-  <block id="62924c929d970628e011c457f2df9215" category="list-text">在响应中，复制并保存升级软件包名称（` "name"` ）和软件包版本（` "version"` ），以供后续步骤使用。</block>
   <block id="a73185557316cb4d3140159601de085c" category="list-text">找到要升级的节点的计算控制器 ID 和节点硬件 ID ：</block>
   <block id="85c0d6693a939b1228351b83c2bc5327" category="list-text">从响应中复制安装资产 ID （` "id"` ）。</block>
   <block id="c1b6479fd9c7db0471ff4d500bfa314c" category="list-text">在响应中，复制并保存集群控制器 ID （` "controllerId"` ）和节点硬件 ID （` "hardwareId"` ），以供后续步骤使用：</block>
@@ -3563,7 +3550,6 @@
   <block id="7271267de19060ea8c43031aa1e16351" category="list-text">对有效负载值执行以下操作：</block>
   <block id="951849308163feee05b1b4f669f83c91" category="list-text">保留值 ` force" ： false` 和 ` "maintenanceMode" ： true"` ，以便在节点上执行运行状况检查，并将 ESXi 主机设置为维护模式。</block>
   <block id="8e9b8402fc729e5b8cf2e9a5e6d1f4a7" category="list-text">输入集群控制器 ID （` "controllerId"` 已从上一步保存）。</block>
-  <block id="898aa9fbdeaf861f6b63c3aee3dcac0a" category="list-text">输入您在上一步中保存的软件包名称和软件包版本。</block>
   <block id="c658aaae7b770a779963c2f0814f7b97" category="list-text">复制响应中资源链接（` resourcesLink` ） URL 中的升级任务 ID 。</block>
   <block id="2af0540e1b6b59e46ab66bb3122952c5" category="list-text">选择 * 获取 /task/ ｛ task_id ｝ /logs* 。</block>
   <block id="41ae3303c96aa0617f8cdc8eaf5eacba" category="list-text">在 * 任务 ID * 中输入上一步中的任务 ID 。</block>
@@ -3578,12 +3564,6 @@
   <block id="8cbe2759efcdf76c5f107e0ecb7b4592" category="list-text">从 REST API UI 中，选择 * 获取​ / nodes​ / ｛ hardware_id ｝​ / 升级 * 。</block>
   <block id="4b441364b36bb6f4c7b059dcc366682f" category="list-text">（可选）输入日期和状态参数以筛选结果。</block>
   <block id="cc0bc3ddeb0e718be7e738b95d572af9" category="list-text">在响应中验证所有组件的固件是否已成功从先前版本升级到最新固件。</block>
-  <block id="c4c5c223d03335842a4306d18b9fe4c8" category="section-title">使用已使用最新计算节点固件包 ISO 映像的 USB 驱动器</block>
-  <block id="f67b6a10eef3ca58e647dda805d94d0f" category="paragraph">您可以将下载了最新计算节点固件 ISO 的 USB 驱动器插入计算节点上的 USB 端口。除了使用此操作步骤中所述的 U 盘方法之外，您还可以使用基板管理控制器（ BMC ）界面中虚拟控制台中的 * 虚拟 CD/DVD * 选项在计算节点上挂载 ISO 。BMC 方法所需时间比 U 盘方法要长得多。确保您的工作站或服务器具有所需的网络带宽，并且您与 BMC 的浏览器会话不会超时。</block>
-  <block id="66049ae453415635891440129594baf4" category="inline-link">NetApp 软件下载</block>
-  <block id="9db3b1bbf31a34f016b6751560d022ca" category="list-text">浏览到<block ref="faddc0b2b4da1eceb58811a395f38dc6" category="inline-link-rx"></block> 页面上，选择 * NetApp HCI * ，然后选择正确版本的 NetApp HCI 的下载链接。</block>
-  <block id="b36befe8937b455a62256bcdbd1761e1" category="list-text">在 * 计算和存储节点 * 部分下，下载计算节点映像。</block>
-  <block id="6b42b239fce8e2fd9ba87948604faced" category="list-text">使用 Etcher 实用程序将计算节点固件 ISO 闪存到 USB 驱动器。</block>
   <block id="1cf46325f9536ec9b43713bcd791afe9" category="list-text">使用 VMware vCenter 将计算节点置于维护模式，并从主机中清空所有虚拟机。</block>
   <block id="b9ec44333357d23f4dfa6a74a2165dac" category="list-text">将 U 盘插入计算节点上的 USB 端口，然后使用 VMware vCenter 重新启动计算节点。</block>
   <block id="17d898084fc0dd09fe19cbbc37846064" category="list-text">在计算节点开机自检周期内，按 * F11 * 以打开启动管理器。您可能需要快速连续按多次 * 。您可以通过连接视频 / 键盘或使用 `BMC` 中的控制台来执行此操作。</block>
@@ -3594,7 +3574,6 @@
   <block id="97862762766e97a1006aa97db0c218c6" category="list-text">从升级后的计算节点中删除 USB 闪存驱动器。</block>
   <block id="d6ad7b8195e77c9db09bfad90c137fca" category="list-text">对 ESXi 集群中的其他计算节点重复此任务，直到所有计算节点都升级为止。</block>
   <block id="d3464dce5635d8b4ccec4750312b5df1" category="section-title">使用基板管理控制器（ Baseboard Management Controller ， BMC ）用户界面（ UI ）</block>
-  <block id="37923f0374276dac33e16c1ee6b34231" category="paragraph">您必须执行顺序步骤以加载计算节点固件 ISO 并将节点重新启动到 ISO ，以确保升级成功。ISO 应位于托管 Web 浏览器的系统或虚拟机（ VM ）上。在开始此过程之前，请确保已下载 ISO 。</block>
   <block id="ae064a1839cfc8ce34c858138e9c3966" category="admonition">建议将系统或虚拟机与节点置于同一网络上。</block>
   <block id="802eff2bb9ea58f2a6d0da71cd0bb0e8" category="admonition">通过 BMC UI 进行升级大约需要 25 到 30 分钟。</block>
   <block id="ab38b151bd1653e9010fdaa497595497" category="list-text"><block ref="c5b8aa68ac6e93ecb14b72fa4051ba28" category="inline-xref-macro-rx"></block></block>
@@ -3614,13 +3593,9 @@
   <block id="593b9eacda7134868a2d80ea3c474ec6" category="admonition">您可能需要安装或更新 Java 。</block>
   <block id="086e11190936943bd47b89359cc316ab" category="list-text">打开控制台后，选择 * 虚拟介质 &gt; 虚拟存储 * 。</block>
   <block id="0d86b24c482b6af94686b61cab281a55" category="list-text">在 * 虚拟存储 * 屏幕上，选择 * 逻辑驱动器类型 * ，然后选择 * ISO 文件 * 。</block>
-  <block id="46da4b73e077041d82cbd4b49b3a2a45" category="inline-image-macro">显示了用于选择 ISO 文件的导航路径。</block>
-  <block id="88bfc9e47329ab3d571f1872dc37c1fb" category="paragraph"><block ref="88bfc9e47329ab3d571f1872dc37c1fb" category="inline-image-macro-rx" type="image"></block></block>
-  <block id="1034338dbc0cc8fb2f0061d492d27045" category="list-text">选择 * 打开映像 * 以浏览到下载 ISO 文件的文件夹，然后选择 ISO 文件。</block>
   <block id="9e02313ddd26aee118ee23b52ccb621f" category="list-text">选择 * 插件 * 。</block>
   <block id="1ae7c00d24ffdca7598b194b2dc27dbf" category="list-text">当连接状态显示 `Device# ： VM Plug-in OK ！！` 时，选择 * 确定 * 。</block>
   <block id="da7914315fd2c0a46bc91f4a9b89ba7a" category="list-text">按 * F12* 并选择 * 重新启动 * 或选择 * 电源控制 &gt; 设置电源重置 * ，以重新启动节点。</block>
-  <block id="b96987f61d66ba1db77d5b4f1783876a" category="list-text">重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。在显示启动菜单之前，您可能需要按几次 F11 。</block>
   <block id="a69d47f968d2fc21fb9cdec24acfbe9a" category="paragraph">此时将显示以下屏幕：</block>
   <block id="d0ed128bd3c8c20ecdc5eb6ff37f7d5a" category="inline-image-macro">显示了虚拟 ISO 启动到的屏幕。</block>
   <block id="64db04a065fe8c5683677bfa2a4efcff" category="paragraph"><block ref="64db04a065fe8c5683677bfa2a4efcff" category="inline-image-macro-rx" type="image"></block></block>
@@ -3632,7 +3607,6 @@
   <block id="6559f407fcadf1c3e1b80127774db925" category="list-text">使主机退出维护模式。这可能会显示一个已断开连接的红色标志。请等待所有状态均已清除。</block>
   <block id="b8891f5f3c9ab182d0db3fef96037d36" category="list-text">打开已关闭的其余任何 VM 的电源。</block>
   <block id="d9007dd2676748983c400ce8ca221bb7" category="section-title">升级 H610C/H615C 节点上的固件</block>
-  <block id="e2cec94acacbfde7b552c83c32e84744" category="paragraph">根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤可能需要大约 25 分钟，其中包括关闭节点电源，上传 ISO ，刷新设备以及在升级后重新启动节点。</block>
   <block id="ae2e167448f73cc45a857eeed2a38a45" category="list-text">导航到 BMC UI `https://BMCIP/#login` ，其中 BMC IP 是 BMC 的 IP 地址。</block>
   <block id="d2fcf7c7acbf0658169aa81fda53c0ff" category="list-text">选择 * 远程控制 &gt; 启动 KVM （ Java ） * 。</block>
   <block id="7d853bfef08c6d2c19333026c6a5f295" category="list-text">在控制台窗口中，选择 * 介质 &gt; 虚拟介质向导 * 。</block>
@@ -3640,7 +3614,6 @@
   <block id="ff568983eaa948e1c45ea44fd20c3515" category="list-text">选择 * 浏览 * 并选择计算固件 ` .iso` 文件。</block>
   <block id="6988680d8d9db783d89d962e3a07b128" category="list-text">选择 * 连接 * 。此时将显示一个弹出窗口，指示成功，底部将显示路径和设备。您可以关闭 * 虚拟介质 * 窗口。</block>
   <block id="e3e72bb291b26812bea6d962e4866dab" category="image-alt">显示 ISO 上传成功的弹出窗口。</block>
-  <block id="7edcc1835a80e09463c4bf3b46c42cc0" category="list-text">重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。</block>
   <block id="e57c91d23315863d32587c65e08c874a" category="list-text">从显示的列表中选择 * AMI Virtual CDRO* ，然后选择 * 输入 * 。如果列表中未显示 AMI 虚拟光盘，请转到 BIOS 并在启动列表中启用它。保存后，节点将重新启动。在重新启动期间，按 * F11 * 。</block>
   <block id="b6c3b9c6bed53710f2cbf2c4dad9c6ef" category="image-alt">显示了可用于选择启动设备的窗口。</block>
   <block id="f168f35f98997ef1f6a33afa3e3be93e" category="list-text">在显示的屏幕上，选择 * 输入 * 。</block>
@@ -6229,4 +6202,31 @@
   <block id="a310588c148d934b9b30c31802d4a30b" category="sidebar">NetApp 社区</block>
   <block id="213686afc3803be7caa09348765467fe" category="sidebar">如何获取帮助</block>
   <block id="389672366ff11f72a82c5c495b9b5159" category="sidebar">NetApp HCI 1.8 文档</block>
+  <block id="ef1e8da076ed36db7d489060adff47fb" category="paragraph">可下载的计算固件包可为所有受支持的NetApp HCI 计算节点提供最新的BIOS和BMC功能增强功能、错误修复以及硬件支持。</block>
+  <block id="778f439c373ac0d9448a4607920b1422" category="list-text"><block ref="e2bd782e3d45140e59a9770dafcf72d8" category="inline-xref-macro-rx"></block></block>
+  <block id="c94da534f33010d7e118033321a44543" category="admonition">对于非公开站点升级、如果计算固件包和管理节点都位于本地、则可以缩短上传时间。</block>
+  <block id="2285a7aedaa8a3012ac18addc77cb998" category="admonition">不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <block ref="4d9d1e5487766b88d4d71ed7b5cbc3b9" category="inline-xref-macro-rx"></block> 或 <block ref="1f3fb96b93183df027058d51b91b7971" category="inline-xref-macro-rx"></block> 挂载计算固件包。</block>
+  <block id="36b254200cdbd8a07ea5d268a8d6baf6" category="list-text">如果您的管理节点未连接到Internet、则表示您已从下载计算固件包<block ref="3a326a2da6806c2b958ef45116362803" category="inline-link-rx"></block>。</block>
+  <block id="191ad55ad4891df96df5fa822849fef0" category="admonition">您应将`TAR.GZ`文件提取到`TAR`文件中、然后将`TAR`文件提取到计算固件包中。</block>
+  <block id="59f7535fd87661a1910847bce50d4e47" category="list-text">选择计算固件包。</block>
+  <block id="73dcdf96dc4ca7f983752cea48f4c9f9" category="admonition">升级H610C和H615C计算节点上的固件时、请勿通过BMC Web UI打开LAN上串行(Serial Over LAN、SOL)控制台。这可能发生原因会导致升级失败。</block>
+  <block id="3ff050db4ec6e0f15c16e789f26e88af" category="list-text">选择*浏览*可上传从下载的计算固件包<block ref="132031089c33792b234781a9d8501a93" category="inline-link-rx"></block>。</block>
+  <block id="5ca8b1b2bf4af2fc7c663e45d817ec38" category="list-text">查找计算固件包ID：</block>
+  <block id="2e48d856cc4329ea1172aa1b12357d02" category="list-text">在响应中、复制并保存计算固件包名称(` packageName`)和版本(` packageVersion`)、以供后续步骤使用。</block>
+  <block id="f15fbee8c019557b653654608e114409" category="list-text">转到 NetApp HCI 软件<block ref="5edcf9a6caebd1bfc3b9c296487defc8" category="inline-link-rx"></block> 并将最新的计算固件包下载到可供管理节点访问的设备。</block>
+  <block id="f8aab403230bedc419a9f667f64433b1" category="list-text">将计算固件包上传到管理节点：</block>
+  <block id="e2b118423790740e16d77e176feae0c8" category="list-text">选择*浏览*并选择计算固件包。</block>
+  <block id="4e3ab2a8327927bb040d9030052ab871" category="list-text">在响应中、复制并保存计算固件包ID (`"id"`)、以供后续步骤使用。</block>
+  <block id="06e01a8ccacd1b43b5fddff004e9d4b2" category="list-text">在响应中、复制并保存计算固件包名称(`"name"`)和版本(`"version"`)、以供后续步骤使用。</block>
+  <block id="d82d011768fe4be99bb8567a9fc35e59" category="list-text">输入您在上一步中保存的计算固件包名称和版本。</block>
+  <block id="dda5a90267bc798be83dbaf5789a1d11" category="section-title">使用已使用最新计算固件包映像的USB驱动器</block>
+  <block id="e001a7c4060c584ed7ac0c964481b703" category="paragraph">您可以将下载了最新计算固件包的USB驱动器插入计算节点上的USB端口。除了使用此操作步骤 中所述的U盘方法之外、您还可以使用基板管理控制器(Baseboard Management Controller、BMC)界面中虚拟控制台中的*虚拟CD/DVD *选项在计算节点上挂载计算固件包。BMC 方法所需时间比 U 盘方法要长得多。确保您的工作站或服务器具有所需的网络带宽，并且您与 BMC 的浏览器会话不会超时。</block>
+  <block id="972fabde5f0ba99c25139d61cd7e3c9f" category="list-text">使用Etcher实用程序将计算固件包闪存到USB驱动器。</block>
+  <block id="f7ef036394a5c36769d6d2ea91d453f5" category="paragraph">您必须执行顺序步骤加载计算固件包并将节点重新启动到计算固件包、以确保升级成功。计算固件包应位于托管Web浏览器的系统或虚拟机(VM)上。在开始此过程之前、请确认您已下载计算固件包。</block>
+  <block id="a478ff55f210944ba68d37f5d911b465" category="inline-image-macro">显示了用于选择计算固件包文件的导航路径。</block>
+  <block id="22384f95e35e58825d7ec3ba3865263d" category="paragraph"><block ref="22384f95e35e58825d7ec3ba3865263d" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="2e3b483e37cec1a7842f185ac98ac6cd" category="list-text">选择*打开映像*以浏览到下载计算固件包文件的文件夹、然后选择计算固件包文件。</block>
+  <block id="df8bcceb7ddee511e9494f0afd8c95a7" category="list-text">重新启动期间、按* F11 *选择启动选项并加载计算固件包。在显示启动菜单之前，您可能需要按几次 F11 。</block>
+  <block id="b56a80b47ffbf4eda21aa52a14a1c0d9" category="paragraph">根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤 可能需要大约25分钟、其中包括关闭节点电源、上传计算固件包、刷新设备以及在升级后重新启动节点。</block>
+  <block id="94accfc9ce60fbdbc6b912533ff89998" category="list-text">重新启动期间、按* F11 *选择启动选项并加载计算固件包。</block>
 </blocks>

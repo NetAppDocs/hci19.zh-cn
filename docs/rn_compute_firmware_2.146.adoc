@@ -15,7 +15,7 @@ keywords: netapp, hci, compute firmware
 
 
 [role="lead"]
-可下载的计算节点固件包可为所有受支持的 NetApp HCI 计算节点提供最新的 BIOS 和 BMC 功能增强功能，错误修复以及硬件支持。
+可下载的计算固件包可为所有受支持的NetApp HCI 计算节点提供最新的BIOS和BMC功能增强功能、错误修复以及硬件支持。
 
 
 
