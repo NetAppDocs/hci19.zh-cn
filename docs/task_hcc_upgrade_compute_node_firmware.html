@@ -1807,7 +1807,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-13 19:22:26 +0000">05/13/2022</time>
+    <time datetime="2022-06-02 17:48:34 +0000">06/02/2022</time>
     
   
 
@@ -1990,7 +1990,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p><a href="#Use NetApp Hybrid Cloud Control API to upgrade a compute node">[Use NetApp Hybrid Cloud Control API to upgrade a compute node]</a></p>
 </li>
 <li>
-<p><a href="#Use a USB drive imaged with the latest compute node firmware bundle ISO">[Use a USB drive imaged with the latest compute node firmware bundle ISO]</a></p>
+<p><a href="#Use a USB drive imaged with the latest compute firmware bundle">[Use a USB drive imaged with the latest compute firmware bundle]</a></p>
 </li>
 <li>
 <p><a href="#Use the Baseboard Management Controller (BMC) user interface (UI)">[Use the Baseboard Management Controller (BMC) user interface (UI)]</a></p>
@@ -2024,7 +2024,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/tip.svg" alt="提示">
 </td>
 <td class="content">
-对于非公开站点升级，如果升级软件包和管理节点都位于本地，则可以缩短上传时间。
+对于非公开站点升级、如果计算固件包和管理节点都位于本地、则可以缩短上传时间。
 </td>
 </tr>
 </table>
@@ -2048,7 +2048,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/note.svg" alt="注">
 </td>
 <td class="content">
-不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <a href="#manual_method_USB">USB 驱动器</a> 或 <a href="#manual_method_BMC">BMC 用户界面</a> 挂载计算固件 ISO 。
+不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <a href="#manual_method_USB">USB 驱动器</a> 或 <a href="#manual_method_BMC">BMC 用户界面</a> 挂载计算固件包。
 </td>
 </tr>
 </table>
@@ -2057,7 +2057,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <div class="title">您需要什么？ #8217 ；将需要什么</div>
 <ul>
 <li>
-<p>如果您的管理节点未连接到 Internet ，则表示您已从下载计算节点固件包 <a href="https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle" target="_blank" rel="noopener">"NetApp 支持站点"</a>。</p>
+<p>如果您的管理节点未连接到Internet、则表示您已从下载计算固件包 <a href="https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle" target="_blank" rel="noopener">"NetApp 支持站点"</a>。</p>
 <div class="admonitionblock note">
 <table>
 <tr>
@@ -2065,7 +2065,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/note.svg" alt="注">
 </td>
 <td class="content">
-您应将 <code>TAR.GZ</code> 文件提取到 <code>TAR</code> 文件中，然后将 <code>TAR</code> 文件提取到 ISO 中。
+您应将`TAR.GZ`文件提取到`TAR`文件中、然后将`TAR`文件提取到计算固件包中。
 </td>
 </tr>
 </table>
@@ -2118,7 +2118,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 </div>
 </li>
 <li>
-<p>选择升级软件包。</p>
+<p>选择计算固件包。</p>
 </li>
 <li>
 <p>选择 * 开始升级 * 。</p>
@@ -2162,7 +2162,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/caution.svg" alt="注意">
 </td>
 <td class="content">
-升级 H610C 和 H615S 计算节点上的固件时，请勿通过 BMC Web UI 打开 LAN 上串行（ Serial Over LAN ， SOL ）控制台。这可能发生原因会导致升级失败。
+升级H610C和H615C计算节点上的固件时、请勿通过BMC Web UI打开LAN上串行(Serial Over LAN、SOL)控制台。这可能发生原因会导致升级失败。
 </td>
 </tr>
 </table>
@@ -2179,7 +2179,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>选择要升级的集群。</p>
 </li>
 <li>
-<p>选择 * 浏览 * 可上传从下载的升级软件包https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp 支持站点"^]。</p>
+<p>选择*浏览*可上传从下载的计算固件包https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["NetApp 支持站点"^]。</p>
 </li>
 <li>
 <p>等待上传完成。进度条会显示上传状态。</p>
@@ -2278,7 +2278,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/note.svg" alt="注">
 </td>
 <td class="content">
-不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <a href="#manual_method_USB">USB 驱动器</a> 或 <a href="#manual_method_BMC">BMC 用户界面</a> 挂载计算固件 ISO 。
+不再支持使用 NetApp Hybrid Cloud Control UI 升级 H300E/H500E/H700E 计算节点上的计算固件。要进行升级，建议您使用 <a href="#manual_method_USB">USB 驱动器</a> 或 <a href="#manual_method_BMC">BMC 用户界面</a> 挂载计算固件包。
 </td>
 </tr>
 </table>
@@ -2354,7 +2354,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 </div>
 </li>
 <li>
-<p>查找升级软件包 ID ：</p>
+<p>查找计算固件包ID：</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -2367,7 +2367,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>选择 * 执行 * 。</p>
 </li>
 <li>
-<p>在响应中，复制并保存升级软件包名称（` packageName` ）和软件包版本（` packageVersion` ），以供后续步骤使用。</p>
+<p>在响应中、复制并保存计算固件包名称(` packageName`)和版本(` packageVersion`)、以供后续步骤使用。</p>
 </li>
 </ol>
 </div>
@@ -2380,7 +2380,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <td class="tableblock halign-left valign-top"><div class="content"><div class="olist loweralpha">
 <ol class="loweralpha" type="a">
 <li>
-<p>转到 NetApp HCI 软件 <a href="https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle" target="_blank" rel="noopener">"下载页面"</a> 并将最新的计算节点固件映像下载到可供管理节点访问的设备。</p>
+<p>转到 NetApp HCI 软件 <a href="https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle" target="_blank" rel="noopener">"下载页面"</a> 并将最新的计算固件包下载到可供管理节点访问的设备。</p>
 <div class="admonitionblock tip">
 <table>
 <tr>
@@ -2388,14 +2388,14 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <img src="/us-en/hci19/images/tip.svg" alt="提示">
 </td>
 <td class="content">
-对于非公开站点升级，如果升级软件包和管理节点都位于本地，则可以缩短上传时间。
+对于非公开站点升级、如果计算固件包和管理节点都位于本地、则可以缩短上传时间。
 </td>
 </tr>
 </table>
 </div>
 </li>
 <li>
-<p>将计算固件升级软件包上传到管理节点：</p>
+<p>将计算固件包上传到管理节点：</p>
 <div class="olist lowerroman">
 <ol class="lowerroman" type="i">
 <li>
@@ -2432,13 +2432,13 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>选择 * 试用 * 。</p>
 </li>
 <li>
-<p>选择 * 浏览 * 并选择升级软件包。</p>
+<p>选择*浏览*并选择计算固件包。</p>
 </li>
 <li>
 <p>选择 * 执行 * 以启动上传。</p>
 </li>
 <li>
-<p>在响应中，复制并保存软件包 ID （` "id"` ）以供后续步骤使用。</p>
+<p>在响应中、复制并保存计算固件包ID (<code>"id"</code>)、以供后续步骤使用。</p>
 </li>
 </ol>
 </div>
@@ -2463,7 +2463,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 </div>
 </li>
 <li>
-<p>在响应中，复制并保存升级软件包名称（` "name"` ）和软件包版本（` "version"` ），以供后续步骤使用。</p>
+<p>在响应中、复制并保存计算固件包名称(<code>"name"</code>)和版本(<code>"version"</code>)、以供后续步骤使用。</p>
 </li>
 </ol>
 </div>
@@ -2614,7 +2614,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>输入集群控制器 ID （` "controllerId"` 已从上一步保存）。</p>
 </li>
 <li>
-<p>输入您在上一步中保存的软件包名称和软件包版本。</p>
+<p>输入您在上一步中保存的计算固件包名称和版本。</p>
 <div class="listingblock">
 <div class="content">
 <pre>{
@@ -2784,25 +2784,36 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 </div>
 </div>
 <div class="sect1">
-<h2 id="使用已使用最新计算节点固件包-iso-映像的-usb-驱动器">使用已使用最新计算节点固件包 ISO 映像的 USB 驱动器</h2>
+<h2 id="使用已使用最新计算固件包映像的usb驱动器">使用已使用最新计算固件包映像的USB驱动器</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您可以将下载了最新计算节点固件 ISO 的 USB 驱动器插入计算节点上的 USB 端口。除了使用此操作步骤中所述的 U 盘方法之外，您还可以使用基板管理控制器（ BMC ）界面中虚拟控制台中的 * 虚拟 CD/DVD * 选项在计算节点上挂载 ISO 。BMC 方法所需时间比 U 盘方法要长得多。确保您的工作站或服务器具有所需的网络带宽，并且您与 BMC 的浏览器会话不会超时。</p>
+<p>您可以将下载了最新计算固件包的USB驱动器插入计算节点上的USB端口。除了使用此操作步骤 中所述的U盘方法之外、您还可以使用基板管理控制器(Baseboard Management Controller、BMC)界面中虚拟控制台中的*虚拟CD/DVD *选项在计算节点上挂载计算固件包。BMC 方法所需时间比 U 盘方法要长得多。确保您的工作站或服务器具有所需的网络带宽，并且您与 BMC 的浏览器会话不会超时。</p>
+</div>
+<div class="ulist">
+<div class="title">您需要什么？ #8217 ；将需要什么</div>
+<ul>
+<li>
+<p>如果您的管理节点未连接到Internet、则表示您已从下载计算固件包 <a href="https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle" target="_blank" rel="noopener">"NetApp 支持站点"</a>。</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/hci19/images/note.svg" alt="注">
+</td>
+<td class="content">
+您应将`TAR.GZ`文件提取到`TAR`文件中、然后将`TAR`文件提取到计算固件包中。
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
 </div>
 <div class="olist arabic">
 <div class="title">步骤</div>
 <ol class="arabic">
 <li>
-<p>浏览到 <a href="https://mysupport.netapp.com/site/downloads" target="_blank" rel="noopener">"NetApp 软件下载"</a> 页面上，选择 * NetApp HCI * ，然后选择正确版本的 NetApp HCI 的下载链接。</p>
-</li>
-<li>
-<p>接受最终用户许可协议。</p>
-</li>
-<li>
-<p>在 * 计算和存储节点 * 部分下，下载计算节点映像。</p>
-</li>
-<li>
-<p>使用 Etcher 实用程序将计算节点固件 ISO 闪存到 USB 驱动器。</p>
+<p>使用Etcher实用程序将计算固件包闪存到USB驱动器。</p>
 </li>
 <li>
 <p>使用 VMware vCenter 将计算节点置于维护模式，并从主机中清空所有虚拟机。</p>
@@ -2851,7 +2862,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <h2 id="使用基板管理控制器-baseboard-management-controller-bmc-用户界面-ui">使用基板管理控制器（ Baseboard Management Controller ， BMC ）用户界面（ UI ）</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>您必须执行顺序步骤以加载计算节点固件 ISO 并将节点重新启动到 ISO ，以确保升级成功。ISO 应位于托管 Web 浏览器的系统或虚拟机（ VM ）上。在开始此过程之前，请确保已下载 ISO 。</p>
+<p>您必须执行顺序步骤加载计算固件包并将节点重新启动到计算固件包、以确保升级成功。计算固件包应位于托管Web浏览器的系统或虚拟机(VM)上。在开始此过程之前、请确认您已下载计算固件包。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -2965,11 +2976,11 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <li>
 <p>在 * 虚拟存储 * 屏幕上，选择 * 逻辑驱动器类型 * ，然后选择 * ISO 文件 * 。</p>
 <div class="paragraph">
-<p><span class="image"><img src="BIOS_H410C_iso.png" alt="显示了用于选择 ISO 文件的导航路径。"></span></p>
+<p><span class="image"><img src="BIOS_H410C_iso.png" alt="显示了用于选择计算固件包文件的导航路径。"></span></p>
 </div>
 </li>
 <li>
-<p>选择 * 打开映像 * 以浏览到下载 ISO 文件的文件夹，然后选择 ISO 文件。</p>
+<p>选择*打开映像*以浏览到下载计算固件包文件的文件夹、然后选择计算固件包文件。</p>
 </li>
 <li>
 <p>选择 * 插件 * 。</p>
@@ -2981,7 +2992,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>按 * F12* 并选择 * 重新启动 * 或选择 * 电源控制 &gt; 设置电源重置 * ，以重新启动节点。</p>
 </li>
 <li>
-<p>重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。在显示启动菜单之前，您可能需要按几次 F11 。</p>
+<p>重新启动期间、按* F11 *选择启动选项并加载计算固件包。在显示启动菜单之前，您可能需要按几次 F11 。</p>
 <div class="paragraph">
 <p>此时将显示以下屏幕：</p>
 </div>
@@ -3041,7 +3052,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <div class="sect2">
 <h3 id="升级-h610ch615c-节点上的固件">升级 H610C/H615C 节点上的固件</h3>
 <div class="paragraph">
-<p>根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤可能需要大约 25 分钟，其中包括关闭节点电源，上传 ISO ，刷新设备以及在升级后重新启动节点。</p>
+<p>根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤 可能需要大约25分钟、其中包括关闭节点电源、上传计算固件包、刷新设备以及在升级后重新启动节点。</p>
 </div>
 <div class="olist arabic">
 <div class="title">步骤</div>
@@ -3106,7 +3117,7 @@ H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 <a href="rn_com
 <p>按 * F12* 并选择 * 重新启动 * 或选择 * 电源控制 &gt; 设置电源重置 * ，以重新启动节点。</p>
 </li>
 <li>
-<p>重新启动期间，按 * F11 * 选择启动选项并加载 ISO 。</p>
+<p>重新启动期间、按* F11 *选择启动选项并加载计算固件包。</p>
 </li>
 <li>
 <p>从显示的列表中选择 * AMI Virtual CDRO* ，然后选择 * 输入 * 。如果列表中未显示 AMI 虚拟光盘，请转到 BIOS 并在启动列表中启用它。保存后，节点将重新启动。在重新启动期间，按 * F11 * 。</p>
