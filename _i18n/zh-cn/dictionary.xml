@@ -6229,4 +6229,5 @@
   <block id="df8bcceb7ddee511e9494f0afd8c95a7" category="list-text">重新启动期间、按* F11 *选择启动选项并加载计算固件包。在显示启动菜单之前，您可能需要按几次 F11 。</block>
   <block id="b56a80b47ffbf4eda21aa52a14a1c0d9" category="paragraph">根据节点是独立节点还是集群的一部分，步骤会有所不同。操作步骤 可能需要大约25分钟、其中包括关闭节点电源、上传计算固件包、刷新设备以及在升级后重新启动节点。</block>
   <block id="94accfc9ce60fbdbc6b912533ff89998" category="list-text">重新启动期间、按* F11 *选择启动选项并加载计算固件包。</block>
+  <block id="baac2557431cefc749efdd1d5a826b20" category="sidebar">NetApp HCI 1.9文档</block>
 </blocks>

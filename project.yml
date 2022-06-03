@@ -9,7 +9,7 @@ settings:
   langs: zh-cn,us-en,ja-jp,zh-tw,ko-kr
 sidebar:
   entries:
-  - title: NetApp HCI 文档
+  - title: NetApp HCI 1.9文档
     url: "/index.html"
   - title: NetApp HCI 解决方案
     url: https://docs.netapp.com/us-en/hci-solutions/index.html
