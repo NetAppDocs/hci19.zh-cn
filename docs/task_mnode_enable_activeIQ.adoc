@@ -9,7 +9,7 @@ keywords: netapp, hci, api, enable, active iq, activeiq, hci monitoring
 
 
 [role="lead"]
-如果在安装或升级期间未启用 Active IQ 存储监控（适用于 SolidFire 全闪存存储和 NetApp HCI ）和 NetApp HCI 计算监控（仅适用于 NetApp HCI ），则可以启用此功能。如果您使用 NetApp HCI 部署引擎禁用了遥测功能，或者在安装 SolidFire 全闪存存储系统期间未设置 SolidFire Active IQ ，则可能需要使用此操作步骤。
+如果您在安装或升级期间尚未启用Active IQ 存储监控以进行NetApp HCI 和NetApp HCI 计算监控、则可以启用此功能。如果您使用NetApp HCI 部署引擎禁用了遥测功能、则可能需要使用此操作步骤。
 
 Active IQ 收集器服务会将配置数据和基于 Element 软件的集群性能指标转发到 NetApp Active IQ ，以便进行历史报告和近乎实时的性能监控。通过 NetApp HCI 监控服务，可以将存储集群故障转发到 vCenter 以发送警报通知。
 

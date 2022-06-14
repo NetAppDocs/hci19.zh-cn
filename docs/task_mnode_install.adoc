@@ -11,7 +11,7 @@ keywords: netapp, element, management node, mnode, storage, install
 [role="lead"]
 您可以使用适用于您的配置的映像为运行 NetApp Element 软件的集群手动安装管理节点。
 
-此手动过程适用于未使用 NetApp 部署引擎安装管理节点的 SolidFire 全闪存存储管理员和 NetApp HCI 管理员。
+此手动过程适用于未使用NetApp部署引擎安装管理节点的NetApp HCI 管理员。
 
 .您需要什么？ #8217 ；将需要什么
 * 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
@@ -87,7 +87,7 @@ IMPORTANT: 管理节点的默认值可能为 LSI Logic SAS 。在 * 新建虚拟
 
 *** 400 GB 虚拟磁盘，精简配置
 *** 一个可访问 Internet 和存储 MVIP 的虚拟网络接口。
-*** （对于 SolidFire 全闪存存储为可选）一个可通过管理网络访问存储集群的虚拟网络接口。如果存储集群与管理节点（ eth0 ）位于不同的子网中，并且您希望使用永久性卷，请向存储子网（ eth1 ）上的虚拟机添加另一个网络接口控制器（ Network Interface Controller ， NIC ），或者确保管理网络可以路由到存储网络。
+*** 一个可通过管理网络访问存储集群的虚拟网络接口。如果存储集群与管理节点（ eth0 ）位于不同的子网中，并且您希望使用永久性卷，请向存储子网（ eth1 ）上的虚拟机添加另一个网络接口控制器（ Network Interface Controller ， NIC ），或者确保管理网络可以路由到存储网络。
 +
 
 IMPORTANT: 请勿在此操作步骤中指示稍后启动虚拟机的步骤之前启动虚拟机。

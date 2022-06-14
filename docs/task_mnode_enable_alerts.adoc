@@ -13,9 +13,6 @@ keywords: netapp, element, management node, mnode, ui, alerts, alert monitoring
 
 NetApp HCI 警报监控功能会将 NetApp HCI 存储集群系统警报转发到 vCenter Server ，使您能够从 vSphere Web Client 界面查看 NetApp HCI 的所有警报。
 
-
-NOTE: 这些工具不会配置或用于纯存储集群，例如 SolidFire 全闪存存储。运行这些集群的工具会导致以下 405 错误，在配置下，此错误是预期的： `webUIParseError ：服务器响应无效。405`
-
 . 打开每节点管理节点 UI （`https://[IP address] ： 442` ）。
 . 单击 * 警报监控 * 选项卡。
 . 配置警报监控选项。
