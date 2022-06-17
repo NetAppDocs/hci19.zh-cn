@@ -794,13 +794,9 @@
   <block id="fd08f5470e2431f8e7d02ae64cbcd019" category="list-text"><block ref="fd08f5470e2431f8e7d02ae64cbcd019" category="inline-link-rx"></block></block>
   <block id="0a5712c2113fc4db522b6907519135e6" category="summary">了解此版本的 NetApp HCI 中的新增功能。</block>
   <block id="9cea15d48c9b5a9632827b358396e207" category="doc">NetApp HCI 中的新增功能</block>
-  <block id="8ad579f12befe29ce104da3b73ad5f9e" category="paragraph">NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1 包括适用于存储集群的 Element 12.3.2 。</block>
   <block id="d6d2b79e6ba2037bd02bb8dc96a0070a" category="list-text">。 <block ref="15276d500e7181fc56781568a7378926" category="inline-xref-macro-rx"></block> 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。</block>
-  <block id="071ecc128a953b7cb24ca890062184c9" category="list-text">。 <block ref="170a7411c50609b648767f9b69e4306b" category="inline-xref-macro-rx"></block> 第节介绍 NetApp Element 12.3.2 中的新增功能和更新。</block>
   <block id="db4297e95de51344c8962b36e46e0558" category="section-title">NetApp HCI 1.9P1</block>
   <block id="b4f3f16bceaa5cf561ca23082b3b8f3f" category="paragraph">NetApp HCI 1.9P1 改进了安全性和稳定性。</block>
-  <block id="46b078af9bac91704627a9aca75db024" category="section-title">Element 12.3.2</block>
-  <block id="a0e08077e5a0fd5b8a4e6778d5172eae" category="paragraph">Element 软件 12.3.2 版包含一些缓解措施，可消除 Element 软件受到 Apache Log4j 漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。</block>
   <block id="44b0209ace608ab3332e7d7917cfc3c2" category="inline-link">《 NetApp 混合云控制和管理服务发行说明》</block>
   <block id="8c62a8856619185a333cdec6cc116a79" category="list-text"><block ref="8c62a8856619185a333cdec6cc116a79" category="inline-link-rx"></block></block>
   <block id="311f4aa48c89c4e8754b8d93a8d5c0d5" category="inline-link">NetApp HCI 和 NetApp Element 软件的固件和驱动程序版本</block>
@@ -6229,4 +6225,25 @@
   <block id="af6fe236a646e80d8ae873b7b19bbd32" category="paragraph">此手动过程适用于未使用NetApp部署引擎安装管理节点的NetApp HCI 管理员。</block>
   <block id="7de1d355aeba73e5332d59c786d355f9" category="list-text">一个可通过管理网络访问存储集群的虚拟网络接口。如果存储集群与管理节点（ eth0 ）位于不同的子网中，并且您希望使用永久性卷，请向存储子网（ eth1 ）上的虚拟机添加另一个网络接口控制器（ Network Interface Controller ， NIC ），或者确保管理网络可以路由到存储网络。</block>
   <block id="50a6b66c3df70071e486b3d636f036b7" category="paragraph">如果您在安装或升级期间尚未启用Active IQ 存储监控以进行NetApp HCI 和NetApp HCI 计算监控、则可以启用此功能。如果您使用NetApp HCI 部署引擎禁用了遥测功能、则可能需要使用此操作步骤。</block>
+  <block id="952a75d126e98ba5478f36fbc2ab0dc7" category="paragraph">NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1包含适用于存储集群的NetApp Element 软件12.3.1。</block>
+  <block id="0c4f4dd60edc4c07fed8b2fe182601ed" category="paragraph">Element 12.3.2提供了一种缓解方法、可消除Element软件受到Apache Log4j漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。</block>
+  <block id="d7444f9e8d44a3b8d6f94ee1b040ca60" category="paragraph">如果存储集群使用的是Element 12.3.1、并且已启用VVol功能、则强烈建议升级到Element软件12.3.2。</block>
+  <block id="020d0c8ed47be3265d5e4d14710220c7" category="paragraph">如果存储集群使用的是Element 12.3.1、并且VVol功能已禁用、则可以选择升级到Element软件12.3.2。</block>
+  <block id="9cab9a3759d7c0a148a1a18b1897acc2" category="paragraph">NetApp建议不要在集群中运行混合Element版本、但升级期间除外。</block>
+  <block id="4da2fe7d3e0f9133b0c002f0fa95998e" category="list-text">。 <block ref="dcde07fb2feac52febb81d62ee21fa14" category="inline-xref-macro-rx"></block> 第节介绍NetApp Element 12.3.1中的新增功能和更新。</block>
+  <block id="5b7e7ff4cde603a8e9bda3b0790603ec" category="section-title">Element 12.3.1</block>
+  <block id="c85a39cc81df7e9b9f020969762cd36c" category="paragraph">NetApp HCI 1.9P1包括适用于存储集群的Element 12.3.1。</block>
+  <block id="04aa68617927bbc2709638a86a15ad34" category="section-title">存储固件包 2.99.2</block>
+  <block id="81686da1b9f8be4c89479031f62bbb25" category="paragraph">Element 12.3.1 版包含存储固件包版本 2.99.2 。如果存储集群已安装 Element 12.3 ，您可以选择只安装新的 2.99.2 固件包。</block>
+  <block id="0eb91c90051a8280b5d03272245097b3" category="section-title">NetApp Bug Online 包含已知问题和已解决的问题</block>
+  <block id="69893000f4da30e1e42922cbcf8dac0e" category="inline-link">NetApp Bug Online</block>
+  <block id="90b3aa3c7627f89b5c64b12976e77c56" category="paragraph">NetApp Bug Online工具中列出了已知问题和已解决的问题。您可以在中浏览Element和其他产品的这些问题<block ref="6d0e40d4342f9a7ae6016dd8d3efbf3e" category="inline-link-rx"></block>。</block>
+  <block id="831f9400c33053df6a33bd790f76ec32" category="list-text">转至<block ref="6d0e40d4342f9a7ae6016dd8d3efbf3e" category="inline-link-rx"></block>。</block>
+  <block id="90b1da96c9f1642d33e56738f52872df" category="list-text">在*按关键字搜索*字段中、键入产品名称、例如"element"。</block>
+  <block id="768d18144454e6cec5a96d61cb09fd9c" category="inline-image-macro">加号图标</block>
+  <block id="2c23efa1ce00f1576c76b24c5e9ab950" category="list-text">选择 <block ref="a19d2ca9325d4575f0bb4ba21ee6bc40" category="inline-image-macro-rx" type="image"></block>下、选择*版本中的固定*筛选器、然后选择*确定*。</block>
+  <block id="7b87660a05f8e35621177030a7288671" category="inline-image-macro">BOL筛选器对齐="center"</block>
+  <block id="10d3c7b3b3a4c71423e2bb44802dad07" category="paragraph"><block ref="10d3c7b3b3a4c71423e2bb44802dad07" category="inline-image-macro-rx" type="image"></block></block>
+  <block id="072a78b04ab0c87f13756a379937b4c8" category="list-text">选择*新建搜索*。</block>
+  <block id="9c418128eb1df0fd522c1f98859b8896" category="list-text">在*版本中固定*字段中键入版本。</block>
 </blocks>

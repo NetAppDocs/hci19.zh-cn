@@ -15,10 +15,21 @@ keywords: netapp, hci, element, new, whatsnew
 
 
 [role="lead"]
-NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1 包括适用于存储集群的 Element 12.3.2 。
+NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1包含适用于存储集群的NetApp Element 软件12.3.1。
 
+[NOTE]
+====
+Element 12.3.2提供了一种缓解方法、可消除Element软件受到Apache Log4j漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。
+
+如果存储集群使用的是Element 12.3.1、并且已启用VVol功能、则强烈建议升级到Element软件12.3.2。
+
+如果存储集群使用的是Element 12.3.1、并且VVol功能已禁用、则可以选择升级到Element软件12.3.2。
+
+NetApp建议不要在集群中运行混合Element版本、但升级期间除外。
+
+====
 * 。 <<NetApp HCI 1.9P1>> 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。
-* 。 <<Element 12.3.2>> 第节介绍 NetApp Element 12.3.2 中的新增功能和更新。
+* 。 <<Element 12.3.1>> 第节介绍NetApp Element 12.3.1中的新增功能和更新。
 
 
 
@@ -29,9 +40,32 @@ NetApp HCI 1.9P1 改进了安全性和稳定性。
 
 
 
-== Element 12.3.2
+== Element 12.3.1
 
-Element 软件 12.3.2 版包含一些缓解措施，可消除 Element 软件受到 Apache Log4j 漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。
+NetApp HCI 1.9P1包括适用于存储集群的Element 12.3.1。
+
+
+
+=== 存储固件包 2.99.2
+
+Element 12.3.1 版包含存储固件包版本 2.99.2 。如果存储集群已安装 Element 12.3 ，您可以选择只安装新的 2.99.2 固件包。
+
+
+
+=== NetApp Bug Online 包含已知问题和已解决的问题
+
+NetApp Bug Online工具中列出了已知问题和已解决的问题。您可以在中浏览Element和其他产品的这些问题 https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["NetApp Bug Online"^]。
+
+.步骤
+. 转至 https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["NetApp Bug Online"^]。
+. 在*按关键字搜索*字段中、键入产品名称、例如"element"。
+. 选择 image:icon_plus.PNG["加号图标"]下、选择*版本中的固定*筛选器、然后选择*确定*。
++
+image:bol_filters.PNG["BOL筛选器对齐=\"center\""]
+
+. 选择*新建搜索*。
+. 在*版本中固定*字段中键入版本。
+
 
 [discrete]
 == 了解更多信息
