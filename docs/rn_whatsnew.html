@@ -1799,7 +1799,7 @@
 <p class="page-details">
   
     
-    <time datetime="2022-05-13 19:22:26 +0000">05/13/2022</time>
+    <time datetime="2022-06-17 12:52:39 +0000">06/17/2022</time>
     
   
 
@@ -1809,7 +1809,30 @@
 <div id="preamble">
 <div class="sectionbody">
 <div class="paragraph lead">
-<p>NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1 包括适用于存储集群的 Element 12.3.2 。</p>
+<p>NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错误修复。NetApp HCI 1.9P1包含适用于存储集群的NetApp Element 软件12.3.1。</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<img src="/us-en/hci19/images/note.svg" alt="注">
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Element 12.3.2提供了一种缓解方法、可消除Element软件受到Apache Log4j漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。</p>
+</div>
+<div class="paragraph">
+<p>如果存储集群使用的是Element 12.3.1、并且已启用VVol功能、则强烈建议升级到Element软件12.3.2。</p>
+</div>
+<div class="paragraph">
+<p>如果存储集群使用的是Element 12.3.1、并且VVol功能已禁用、则可以选择升级到Element软件12.3.2。</p>
+</div>
+<div class="paragraph">
+<p>NetApp建议不要在集群中运行混合Element版本、但升级期间除外。</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="ulist">
 <ul>
@@ -1817,7 +1840,7 @@
 <p>。 <a href="#netapp-hci-1-9p1">NetApp HCI 1.9P1</a> 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。</p>
 </li>
 <li>
-<p>。 <a href="#element-12-3-2">Element 12.3.2</a> 第节介绍 NetApp Element 12.3.2 中的新增功能和更新。</p>
+<p>。 <a href="#element-12-3-1">Element 12.3.1</a> 第节介绍NetApp Element 12.3.1中的新增功能和更新。</p>
 </li>
 </ul>
 </div>
@@ -1832,10 +1855,44 @@
 </div>
 </div>
 <div class="sect1">
-<h2 id="element-12-3-2">Element 12.3.2</h2>
+<h2 id="element-12-3-1">Element 12.3.1</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Element 软件 12.3.2 版包含一些缓解措施，可消除 Element 软件受到 Apache Log4j 漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。</p>
+<p>NetApp HCI 1.9P1包括适用于存储集群的Element 12.3.1。</p>
+</div>
+<div class="sect2">
+<h3 id="存储固件包-2-99-2">存储固件包 2.99.2</h3>
+<div class="paragraph">
+<p>Element 12.3.1 版包含存储固件包版本 2.99.2 。如果存储集群已安装 Element 12.3 ，您可以选择只安装新的 2.99.2 固件包。</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="netapp-bug-online-包含已知问题和已解决的问题">NetApp Bug Online 包含已知问题和已解决的问题</h3>
+<div class="paragraph">
+<p>NetApp Bug Online工具中列出了已知问题和已解决的问题。您可以在中浏览Element和其他产品的这些问题 <a href="https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab" target="_blank" rel="noopener">"NetApp Bug Online"</a>。</p>
+</div>
+<div class="olist arabic">
+<div class="title">步骤</div>
+<ol class="arabic">
+<li>
+<p>转至 <a href="https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab" target="_blank" rel="noopener">"NetApp Bug Online"</a>。</p>
+</li>
+<li>
+<p>在*按关键字搜索*字段中、键入产品名称、例如"element"。</p>
+</li>
+<li>
+<p>选择 <span class="image"><img src="../media/icon_plus.PNG" alt="加号图标"></span>下、选择*版本中的固定*筛选器、然后选择*确定*。</p>
+<div class="paragraph">
+<p><span class="image"><img src="../media/bol_filters.PNG" alt="BOL筛选器对齐=&quot;center&quot;"></span></p>
+</div>
+</li>
+<li>
+<p>选择*新建搜索*。</p>
+</li>
+<li>
+<p>在*版本中固定*字段中键入版本。</p>
+</li>
+</ol>
 </div>
 <h2 id="了解更多信息" class="discrete">了解更多信息</h2>
 <div class="ulist">
@@ -1856,6 +1913,7 @@
 <p><a href="https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software" target="_blank" rel="noopener">"NetApp HCI 和 NetApp Element 软件的固件和驱动程序版本"</a></p>
 </li>
 </ul>
+</div>
 </div>
 </div>
 </div>
