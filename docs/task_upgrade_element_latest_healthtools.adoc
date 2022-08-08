@@ -5,7 +5,12 @@ summary: 在系统升级过程中，您应升级到适用于 NetApp Element 的�
 keywords: netapp, HealthTools upgrade, sfupdate-healthtools, element 
 ---
 = 升级到最新的 HealthTools
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

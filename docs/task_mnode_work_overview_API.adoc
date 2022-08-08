@@ -5,7 +5,12 @@ summary: 您可以使用管理节点（ mNode ） API 升级系统服务，管�
 keywords: netapp, mnode api, management node api, rest api 
 ---
 = 管理节点 REST API UI 概述
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

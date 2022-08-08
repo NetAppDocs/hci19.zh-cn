@@ -17,12 +17,12 @@ keywords: netapp, hci, rancher, control plane, catalog, cluster, kubernetes
 了解与 NetApp HCI 上的 Rancher 相关的基本概念。
 
 * * Rancher 服务器 * 或 * 控制平面 * ： Rancher 控制平面（有时称为 _Rancher 服务器 _ ）可配置，管理和监控开发和运营团队使用的 Kubernetes 集群。
-* * 目录 * ：目录是指 GitHub 存储库或 Helm 图表存储库，其中填充了可随时部署的应用程序。Rancher 可以使用 Helm 图表目录，以便重复部署应用程序。Rancher 包含两种类型的目录：内置全局目录和自定义目录。Trident 作为目录进行部署。请参见 https://rancher.com/docs/rancher/v2.x/en/helm-charts/legacy-catalogs/["有关目录的 Rancher 文档"]。
+* * 目录 * ：目录是指 GitHub 存储库或 Helm 图表存储库，其中填充了可随时部署的应用程序。Rancher 可以使用 Helm 图表目录，以便重复部署应用程序。Rancher 包含两种类型的目录：内置全局目录和自定义目录。Trident 作为目录进行部署。请参见 https://rancher.com/docs/rancher/v2.x/en/helm-charts/legacy-catalogs/["有关目录的 Rancher 文档"^]。
 * * 管理集群 * ： NetApp HCI 上的 Rancher 在 Rancher 管理集群上部署三个虚拟机，您可以使用 Rancher ，混合云控制和 vCenter 插件查看这些虚拟机。管理集群虚拟机托管 Rancher 服务器， Rancher Kubernetes 引擎（ RKEE ）和 Linux 操作系统。
 * * 用户集群 * ：这些下游 Kubernetes 集群运行您的应用程序和服务。在 Rancher 的 Kubernetes 安装中，管理集群应与用户集群分开。Rancher 用户从 Rancher 部署或导入到 Rancher 的任何集群均视为用户集群。
 * * Rancher 节点模板 * ：混合云控制使用 Rancher 节点模板简化部署。
 +
-请参见  https://rancher.com/docs/rancher/v2.x/en/user-settings/node-templates/["有关节点模板的 Rancher 文档"]。
+请参见  https://rancher.com/docs/rancher/v2.x/en/user-settings/node-templates/["有关节点模板的 Rancher 文档"^]。
 
 
 
@@ -40,12 +40,12 @@ Trident 本身是 Kubernetes 本机应用程序，直接在 Kubernetes 集群中
 
 请参见 link:task_rancher_trident.html["在 NetApp HCI 上安装带有 Rancher 的 Trident"]。
 
-有关详细信息，请访问 https://netapp-trident.readthedocs.io/en/stable-v20.10/introduction.html["Trident 文档"]。
+有关详细信息，请访问 https://netapp-trident.readthedocs.io/en/stable-v20.10/introduction.html["Trident 文档"^]。
 
 [discrete]
 == 了解更多信息
 
 * https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
-* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 

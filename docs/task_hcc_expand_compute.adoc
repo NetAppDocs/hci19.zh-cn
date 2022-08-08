@@ -5,7 +5,12 @@ summary: 完成 NetApp HCI 部署后，您可以使用 NetApp 混合云控制扩
 keywords: netapp, hci, on premise, expand, compute, cluster 
 ---
 = 展开 NetApp HCI 计算资源
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -34,7 +34,7 @@ TIP: 有关创建集群的要求的详细信息，请参见 https://rancher.com/
 == 了解更多信息
 
 * https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
-* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 

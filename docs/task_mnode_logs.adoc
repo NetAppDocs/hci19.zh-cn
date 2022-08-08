@@ -5,7 +5,12 @@ summary: 您可以使用 REST API 从管理 ndoe 上运行的服务检索日志�
 keywords: netapp, element, management node, management services, mnode, logs 
 ---
 = 从管理服务获取日志
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

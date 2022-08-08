@@ -263,7 +263,7 @@ NOTE: 可能需要长达 2 分钟的时间，才能将节点添加到集群中�
 
 +
 
-IMPORTANT: 一次添加所有驱动器可能会导致中断。有关添加和删除驱动器的最佳实践，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_best_practice_on_adding_or_removing_drives_from_a_cluster_on_Element%3F["此知识库文章"] （需要登录）。
+IMPORTANT: 一次添加所有驱动器可能会导致中断。有关添加和删除驱动器的最佳实践，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_best_practice_on_adding_or_removing_drives_from_a_cluster_on_Element%3F["此知识库文章"^] （需要登录）。
 
 . 选择 * 驱动器 * 。
 . 从下拉列表中选择 * 可用 * 以查看可用驱动器。

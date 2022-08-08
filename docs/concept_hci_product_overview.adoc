@@ -36,18 +36,18 @@ image::hci_prodoverview.png[此图显示了 NetApp HCI 环境中的各种组件,
 * * 管理服务 * 或微服务包括 Active IQ 收集器，适用于 vCenter 插件的 QoSSIOC 和 mNode 服务；它们会作为服务包进行频繁更新。从 Element 11.3 版开始， * 管理服务 * 托管在管理节点上，以便在主要版本之外更快地更新选定的软件服务。管理节点 * （ mNode ）是一个虚拟机，它与一个或多个基于 Element 软件的存储集群并行运行。它用于升级和提供系统服务，包括监控和遥测，管理集群资产和设置，运行系统测试和实用程序，以及启用 NetApp 支持访问以进行故障排除。
 +
 
-TIP: 了解更多信息 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务版本"]。
+TIP: 了解更多信息 link:https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务版本"^]。
 
 * 使用 * NetApp 混合云控制 * ，您可以管理 NetApp HCI 。您可以使用 NetApp SolidFire Active IQ 升级管理服务，扩展系统，收集日志以及监控安装。您可以通过浏览到管理节点的 IP 地址登录到 NetApp Hybrid Cloud Control 。
-* 适用于 vCenter Server* 的 NetApp Element 插件（ VCP ）是一个与 vSphere 用户界面（ UI ）集成的基于 Web 的工具。此插件是 VMware vSphere 的一个扩展，可扩展且用户友好的界面，可管理和监控运行 * NetApp Element 软件 * 的存储集群。此插件可替代 Element UI 。您可以使用此插件用户界面发现和配置集群，并管理，监控和分配集群容量中的存储，以配置数据存储库和虚拟数据存储库（对于虚拟卷）。集群在网络上显示为一个本地组，该组通过虚拟 IP 地址呈现给主机和管理员。您还可以通过实时报告功能监控集群活动，包括执行各种操作时可能发生的任何事件的错误和警报消息。
+* 适用于vCenter Server*的NetApp Element 插件是一个与vSphere用户界面(UI)集成的基于Web的工具。此插件是 VMware vSphere 的一个扩展，可扩展且用户友好的界面，可管理和监控运行 * NetApp Element 软件 * 的存储集群。此插件可替代 Element UI 。您可以使用此插件用户界面发现和配置集群，并管理，监控和分配集群容量中的存储，以配置数据存储库和虚拟数据存储库（对于虚拟卷）。集群在网络上显示为一个本地组，该组通过虚拟 IP 地址呈现给主机和管理员。您还可以通过实时报告功能监控集群活动，包括执行各种操作时可能发生的任何事件的错误和警报消息。
 +
 
-TIP: 了解更多信息 https://docs.netapp.com/us-en/vcp/concept_vcp_product_overview.html["VCP"]。
+TIP: 了解更多信息 https://docs.netapp.com/us-en/vcp/concept_vcp_product_overview.html["适用于 vCenter Server 的 NetApp Element 插件"^]。
 
 * 默认情况下， NetApp HCI 会将性能和警报统计信息发送到 * NetApp SolidFire Active IQ * 服务。在您的正常支持合同中， NetApp 支持部门会监控这些数据，并在出现任何性能瓶颈或潜在系统问题时向您发出警报。如果您还没有 NetApp 支持帐户，则需要创建一个（即使您已有 SolidFire Active IQ 帐户），以便可以利用此服务。
 +
 
-TIP: 了解更多信息 link:https://help.monitoring.solidfire.com/["NetApp SolidFire Active IQ"]。
+TIP: 了解更多信息 link:https://help.monitoring.solidfire.com/["NetApp SolidFire Active IQ"^]。
 
 
 
@@ -68,7 +68,7 @@ TIP: 了解更多信息 link:https://help.monitoring.solidfire.com/["NetApp Soli
 | `https://<ManagementNodeIP>` | 访问 NetApp 混合云控制以升级，扩展和监控 NetApp HCI 安装以及更新管理服务。 link:task_nde_access_hcc.html["了解更多信息。"] 
 
 
-| `https://[IP address] ： 442` | 从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 https://docs.netapp.com/us-en/hci/docs/task_mnode_access_ui.html#access-the-management-node-per-node-ui["了解更多信息。"] 
+| `https://[IP address] ： 442` | 从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 link:task_mnode_access_ui.html#access-the-management-node-per-node-ui["了解更多信息。"^] 
 
 
 | `https://[management node IP address] ： 9443` | 在 vSphere Web Client 中注册 vCenter 插件软件包。 

@@ -159,7 +159,7 @@ SnapMirror 在 NetApp ONTAP 控制器上本机运行，并集成到 Element 中�
 
 
 
-您可以手动执行此操作 https://docs.netapp.com/us-en/vcp/vcp_task_clusters_manage.html#set-protection-domain-monitoring["启用保护域监控"] 使用适用于 vCenter Server 的 NetApp Element 插件。您可以根据节点或机箱域选择保护域阈值。
+您可以手动执行此操作 https://docs.netapp.com/us-en/vcp/vcp_task_clusters_manage.html#set-protection-domain-monitoring["启用保护域监控"^] 使用适用于 vCenter Server 的 NetApp Element 插件。您可以根据节点或机箱域选择保护域阈值。
 
 创建新集群时，如果您使用的存储节点位于共享机箱中，则可能需要考虑使用保护域功能设计机箱级别的故障保护。
 

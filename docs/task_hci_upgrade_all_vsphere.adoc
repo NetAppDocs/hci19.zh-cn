@@ -5,7 +5,12 @@ summary: 您可以升级 NetApp HCI 的 VMware 组件，并执行其他步骤重
 keywords: netapp, hci, vSphere components, upgrade, vCenter, ESXi 
 ---
 = 使用适用于 vCenter Server 的 Element 插件升级适用于 NetApp HCI 系统的 vSphere 组件
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -21,7 +26,7 @@ IMPORTANT: 升级到 VMware vCenter Server 7.0 U3 后，适用于 vCenter Server
 
 +
 
-NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf["双节点集群"]，一次只升级一个计算节点，以便暂时只有一个见证节点不可用，并且可以保持集群仲裁。
+NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf["双节点集群"^]，一次只升级一个计算节点，以便暂时只有一个见证节点不可用，并且可以保持集群仲裁。
 
 . https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#register-the-plug-in-with-vcenter["注册"^] 适用于 vCenter Server 的 Element 插件。
 . https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#add-storage-clusters-for-use-with-the-plug-in["添加集群"^] 使用插件。

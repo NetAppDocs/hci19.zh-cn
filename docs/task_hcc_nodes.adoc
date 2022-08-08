@@ -5,13 +5,18 @@ summary: 您可以使用 Hybrid Cloud Control Nodes 页面查看系统中的存�
 keywords: netapp, hci, on premise, cluster, inventory, nodes, storage, compute 
 ---
 = 在节点页面上查看清单
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
 您可以查看系统中的存储和计算资产，并确定其 IP 地址，名称和软件版本。
 
-您可以查看多节点系统以及与双节点或三节点集群关联的任何 NetApp HCI 见证节点的存储信息。条件 link:concept_hcc_custom_protection_domains.html["自定义保护域"^] 对于已分配的，您可以查看哪些保护域已分配给特定节点。
+您可以查看多节点系统以及与双节点或三节点集群关联的任何 NetApp HCI 见证节点的存储信息。条件 link:concept_hcc_custom_protection_domains.html["自定义保护域"] 对于已分配的，您可以查看哪些保护域已分配给特定节点。
 
 见证节点管理集群中的仲裁；它们不用于存储。见证节点仅适用于 NetApp HCI ，而不适用于全闪存存储环境。
 

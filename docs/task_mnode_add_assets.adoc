@@ -5,7 +5,12 @@ summary: 您可以使用 REST API UI 将计算和控制器资产添加到管理�
 keywords: netapp, mnode, management node, rest api, hci 
 ---
 = 向管理节点添加计算和控制器资产
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -39,7 +39,7 @@ keywords: netapp, hci, compute firmware
 |===
 要下载计算固件包，请转到 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab/download/62542/Compute_Firmware_Bundle["NetApp HCI 计算固件包"^] 页面。
 
-请访问 link:task_hcc_upgrade_compute_node_firmware.html#use-the-baseboard-management-controller-bmc-user-interface-ui["更新计算节点固件"^] 有关更新计算节点固件的说明。
+请访问 link:task_hcc_upgrade_compute_node_firmware.html#use-the-baseboard-management-controller-bmc-user-interface-ui["更新计算节点固件"] 有关更新计算节点固件的说明。
 
 
 

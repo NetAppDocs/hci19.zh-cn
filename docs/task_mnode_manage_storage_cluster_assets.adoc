@@ -5,7 +5,12 @@ summary: 您可以使用 REST API UI 添加，删除和更改管理节点存储�
 keywords: netapp, mnode, management node, rest api, hci, assets 
 ---
 = 创建和管理存储集群资产
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

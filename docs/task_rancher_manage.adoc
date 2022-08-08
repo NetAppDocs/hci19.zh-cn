@@ -37,6 +37,6 @@ Rancher Server Clusters 页面显示已部署的 Rancher 服务器集群列表�
 
 * link:task_rancher_remove_deployment.html["删除 Rancher"]
 * https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
-* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 

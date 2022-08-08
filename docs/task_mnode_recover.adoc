@@ -5,7 +5,12 @@ summary: 您可以为运行 NetApp Element 软件的集群恢复和重新部署�
 keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
 ---
 = 恢复管理节点
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -238,7 +243,7 @@ NOTE: 系统将提示您在安全提示符处输入密码。如果集群使用�
 NOTE: 您可以添加用户名或允许脚本提示您输入信息。
 
 .. 运行 `redeploy-mnode` 命令。重新部署完成后，此脚本将显示一条成功消息。
-.. 如果您使用系统的完全限定域名（ FQDN ）访问 Element 或 NetApp HCI Web 界面（例如管理节点或 NetApp 混合云控制）， link:task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["重新配置管理节点的身份验证"^]。
+.. 如果您使用系统的完全限定域名（ FQDN ）访问 Element 或 NetApp HCI Web 界面（例如管理节点或 NetApp 混合云控制）， link:task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["重新配置管理节点的身份验证"]。
 
 
 

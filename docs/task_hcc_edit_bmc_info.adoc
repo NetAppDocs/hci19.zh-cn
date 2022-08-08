@@ -5,7 +5,12 @@ summary: 您可以使用 NetApp Hybrid Cloud Control 编辑基板管理控制器
 keywords: netapp, hci, BMC, connection, credentials, monitor 
 ---
 = 编辑基板管理控制器连接信息
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -5,7 +5,12 @@ summary: 您可以执行硬件维护任务，例如更换节点，更换存储�
 keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, rails, h-series, nodes 
 ---
 = H 系列硬件维护概述
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -13,17 +18,17 @@ keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, ra
 
 下面是硬件维护任务的链接：
 
-* link:task_hci_hserieschassisrepl.html["更换 2U H 系列机箱"^]
-* link:task_hci_dcpsurepl.html["更换 H615C 和 H610S 节点中的直流电源设备"^]
-* link:task_hci_dimmcomputerepl.html["更换计算节点中的 DIMM"^]
-* link:task_hci_driverepl.html["更换存储节点的驱动器"^]
-* link:task_hci_h410crepl.html["更换 H410C 节点"^]
-* link:task_hci_h410srepl.html["更换 H410S 节点"^]
-* link:task_hci_h610ch615crepl.html["更换 H610C 和 H615C 节点"^]
-* link:task_hci_h610srepl.html["更换 H610S 节点"^]
-* link:task_hci_psurepl.html["更换电源设备"^]
+* link:task_hci_hserieschassisrepl.html["更换 2U H 系列机箱"]
+* link:task_hci_dcpsurepl.html["更换 H615C 和 H610S 节点中的直流电源设备"]
+* link:task_hci_dimmcomputerepl.html["更换计算节点中的 DIMM"]
+* link:task_hci_driverepl.html["更换存储节点的驱动器"]
+* link:task_hci_h410crepl.html["更换 H410C 节点"]
+* link:task_hci_h410srepl.html["更换 H410S 节点"]
+* link:task_hci_h610ch615crepl.html["更换 H610C 和 H615C 节点"]
+* link:task_hci_h610srepl.html["更换 H610S 节点"]
+* link:task_hci_psurepl.html["更换电源设备"]
 * link:task_hci_snswitches.html["更换 SN2010 ， SN2100 和 SN2700 交换机"]
-* link:task_hci_2noderepl.html["更换双节点集群中的存储节点"^]
+* link:task_hci_2noderepl.html["更换双节点集群中的存储节点"]
 
 
 [discrete]

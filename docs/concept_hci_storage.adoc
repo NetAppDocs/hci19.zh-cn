@@ -18,7 +18,7 @@ NetApp HCI 提供一系列计算和存储配置选项。从 NetApp HCI 1.8 开�
 
 * NetApp HCI 支持各种 H 系列存储节点型号，例如 H300S ， H500S ， H700S ， H410S 和 H610S 。
 +
-请参见 https://www.netapp.com/us/products/converged-systems/hyper-converged-infrastructure.aspx#modelsAndSpecs["NetApp HCI 型号和规格"]
+请参见 https://www.netapp.com/us/products/converged-systems/hyper-converged-infrastructure.aspx#modelsAndSpecs["NetApp HCI 型号和规格"^]
 
 * NetApp HCI 中的存储层由 NetApp Element 软件提供，管理层由适用于 vCenter Server 的 NetApp Element 插件提供。
 * 存储节点是指包含一组驱动器的服务器，这些驱动器通过绑定 10G 网络接口相互通信。

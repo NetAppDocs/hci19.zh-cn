@@ -5,7 +5,12 @@ summary: 了解如何配置系统 FQDN Web UI 访问并对其进行故障排除�
 keywords: netapp, hci, fqdn, ui, access, web, administration 
 ---
 = 配置完全限定域名 Web UI 访问
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

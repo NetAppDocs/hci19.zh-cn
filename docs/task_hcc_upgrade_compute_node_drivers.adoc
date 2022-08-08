@@ -5,7 +5,12 @@ summary: 在 NetApp HCI 系统升级过程中，您可以升级计算节点驱�
 keywords: netapp, hci, on premise, cluster, element, compute node 
 ---
 = 更新计算节点驱动程序
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

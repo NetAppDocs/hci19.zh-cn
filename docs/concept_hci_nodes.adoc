@@ -52,16 +52,16 @@ NetApp HCI 见证节点是指在计算节点上与基于 Element 软件的存储
 
 |===
 
-TIP: 了解更多信息 link:hci_prereqs_witness_nodes.html["见证节点资源要求"^] 和 link:hci_prereqs_ip_address.html["见证节点 IP 地址要求"^]。
+TIP: 了解更多信息 link:hci_prereqs_witness_nodes.html["见证节点资源要求"] 和 link:hci_prereqs_ip_address.html["见证节点 IP 地址要求"]。
 
 
-NOTE: 在双节点存储集群中，至少会部署两个见证节点，以便在见证节点出现故障时实现冗余。在 NetApp HCI 安装过程安装见证节点时， VMware vCenter 中会存储一个 VM 模板，您可以使用该模板重新部署见证节点，以防其意外删除，丢失或损坏。如果您需要更换托管见证节点的计算节点出现故障，也可以使用此模板重新部署见证节点。有关说明，请参见 * 重新部署双节点和三节点存储集群的见证节点 * 一节 link:task_hci_h410crepl.html["此处"^]。
+NOTE: 在双节点存储集群中，至少会部署两个见证节点，以便在见证节点出现故障时实现冗余。在 NetApp HCI 安装过程安装见证节点时， VMware vCenter 中会存储一个 VM 模板，您可以使用该模板重新部署见证节点，以防其意外删除，丢失或损坏。如果您需要更换托管见证节点的计算节点出现故障，也可以使用此模板重新部署见证节点。有关说明，请参见 * 重新部署双节点和三节点存储集群的见证节点 * 一节 link:task_hci_h410crepl.html["此处"]。
 
 
 
 == 了解更多信息
 
-* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"]
+* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
 

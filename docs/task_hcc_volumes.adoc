@@ -5,7 +5,12 @@ summary: 您可以使用 Hybrid Cloud Control Volumes 页面监控系统中的�
 keywords: netapp, hci, on premise, volumes, storage, access groups, initiators, capacity, data protection, QoS 
 ---
 = 监控存储集群上的卷
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

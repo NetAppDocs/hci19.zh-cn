@@ -5,7 +5,12 @@ summary: 您可以为运行 NetApp Element 软件的集群安装管理节点。
 keywords: netapp, element, management node, mnode, storage, install 
 ---
 = 安装管理节点
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

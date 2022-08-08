@@ -5,7 +5,12 @@ summary: 您必须先进行授权，然后才能在 REST API UI 中对管理服�
 keywords: netapp, hci, management node, mnode, api, token 
 ---
 = 获取使用 REST API 的授权
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

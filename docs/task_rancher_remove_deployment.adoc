@@ -5,7 +5,12 @@ summary: 了解如何在 NetApp HCI 部署中删除 Rancher 安装以进行重�
 keywords: netapp, hci, api, REST, remove, Rancher, redeploy 
 ---
 = 删除 NetApp HCI 上的 Rancher 安装
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -85,7 +90,7 @@ https://[IP address]/k8sdeployer/api/
 [discrete]
 == 了解更多信息
 
-* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/NetApp_HCI_and_Rancher_troubleshooting["Rancher 部署故障排除"]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/NetApp_HCI_and_Rancher_troubleshooting["Rancher 部署故障排除"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

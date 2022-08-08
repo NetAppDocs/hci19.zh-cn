@@ -5,7 +5,12 @@ summary: 在 NetApp HCI 系统升级过程中，您可以升级 NetApp Element �
 keywords: netapp, hci, HealthTools, cluster, element, H610S upgrade, hcc 
 ---
 = 升级 Element 软件
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -24,7 +29,7 @@ keywords: netapp, hci, HealthTools, cluster, element, H610S upgrade, hcc
 IMPORTANT: 在将 Element 软件升级到 12.3.x 之前，您必须升级到最新的管理服务包如果要将 Element 软件更新到 12.3.x 版，则需要使用管理服务 2.14.60 或更高版本才能继续。
 
 * * 集群运行状况 * ：您已验证集群是否已做好升级准备。请参见 link:task_hcc_upgrade_element_prechecks.html["在升级存储之前，请运行 Element 存储运行状况检查"]。
-* * 已更新 H610S 节点的 BMC * ：您已升级 H610S 节点的 BMC 版本。请参见 link:rn_H610S_BMC_3.84.07.html["发行说明和升级说明"^]。
+* * 已更新 H610S 节点的 BMC * ：您已升级 H610S 节点的 BMC 版本。请参见 link:rn_H610S_BMC_3.84.07.html["发行说明和升级说明"]。
 * *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级Element软件：
 +
 .. 在Web浏览器中打开管理节点的IP地址：
@@ -156,7 +161,7 @@ CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
 | error | 升级期间发生错误。您可以下载错误日志并将其发送给 NetApp 支持部门。解决此错误后，您可以返回到页面并选择 * 恢复 * 。恢复升级时，进度条会后退几分钟，而系统会运行运行状况检查并检查升级的当前状态。 
 
 
-| 无法检测 | 如果 NetApp Hybrid Cloud Control 无法通过外部连接访问联机软件存储库，则会显示此状态，而不是显示 * 可用版本 * 。如果您已建立外部连接，但仍看到此消息，请检查 link:task_mnode_configure_proxy_server.html["代理配置："^]。 
+| 无法检测 | 如果 NetApp Hybrid Cloud Control 无法通过外部连接访问联机软件存储库，则会显示此状态，而不是显示 * 可用版本 * 。如果您已建立外部连接，但仍看到此消息，请检查 link:task_mnode_configure_proxy_server.html["代理配置："]。 
 
 
 | 完成并进行跟进 | 仅适用于从早于 118 的 Element 版本升级的 H610S 节点。升级过程的第 1 阶段完成后，此状态将提示您执行升级的第 2 阶段（请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["知识库文章"^]）。完成第 2 阶段并确认已完成后，状态将变为 * 最新 * 。 
@@ -643,7 +648,7 @@ IMPORTANT: 如果您要将 H610S 系列节点升级到 Element 12.3.x ，并且�
 
 NOTE: 要升级 Element 存储软件，您需要最新版本的 HealthTools 。
 
-. 下载此 https://library.netapp.com/ecm/ecm_get_file/ECMLP2840740["JSON 文件"^] (https://library.netapp.com/ecm/ecm_get_file/ECMLP2840740)[] 从 NetApp 支持站点的非管理节点计算机上，将其重命名为 `metadata 。 json` 。
+. 下载此 https://library.netapp.com/ecm/ecm_get_file/ECMLP2840740["JSON 文件"^] 从 NetApp 支持站点的非管理节点计算机上，将其重命名为 `metadata 。 json` 。
 . 将此 ISO 文件复制到管理节点中可访问的位置，例如 ` /tmp` 。
 +
 

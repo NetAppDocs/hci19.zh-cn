@@ -41,9 +41,9 @@ NOTE: 系统将提示您使用 NetApp 支持站点凭据登录。
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2877210["《 NetApp Element 软件 12.2.1 发行说明》"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2873789["《 NetApp Element 软件 12.2 发行说明》"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2877208["《 NetApp Element 软件 12.0.1 发行说明》"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2865022["《 NetApp Element 软件 12.0 发行说明》"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2865022["《 NetApp Element 软件 12.0 发行说明》"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2864256["NetApp Element 软件 11.8 发行说明"^]
-* https://library.netapp.com/ecm/ecm_download_file/ECMLP2861225["《 NetApp Element 软件 11.7 发行说明》"]
+* https://library.netapp.com/ecm/ecm_download_file/ECMLP2861225["《 NetApp Element 软件 11.7 发行说明》"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2863854["《 NetApp Element 软件 11.5.1 发行说明》"^]
 * https://library.netapp.com/ecm/ecm_download_file/ECMLP2859857["《 NetApp Element 软件 11.3P1 发行说明》"^]
 

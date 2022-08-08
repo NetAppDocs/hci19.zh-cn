@@ -5,7 +5,12 @@ summary: 您可以使用 REST API 查找管理节点使用的管理节点操作�
 keywords: netapp, hci, management node, management services, version, bundle version, what is 
 ---
 = 验证管理节点操作系统和服务版本
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

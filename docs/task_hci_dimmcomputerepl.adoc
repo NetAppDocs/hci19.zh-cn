@@ -17,7 +17,7 @@ keywords: netapp, hci, dimm, compute nodes
 您可以更换 NetApp HCI 计算节点中出现故障的双列直插式内存模块（ DIMM ），而不是更换整个节点。
 
 .您需要什么？ #8217 ；将需要什么
-* 在启动此操作步骤之前，您应已联系 NetApp 支持部门并收到更换部件。在安装更换件期间，将会提供支持。如果您尚未执行此操作，请联系 https://www.netapp.com/us/contact-us/support.aspx["支持"]。
+* 在启动此操作步骤之前，您应已联系 NetApp 支持部门并收到更换部件。在安装更换件期间，将会提供支持。如果您尚未执行此操作，请联系 https://www.netapp.com/us/contact-us/support.aspx["支持"^]。
 * 您已计划系统停机，因为您需要关闭节点电源或重新启动节点，然后将节点启动到 NetApp 安全模式以访问终端用户界面（ TUI ）。
 
 

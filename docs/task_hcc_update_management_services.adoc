@@ -5,7 +5,12 @@ summary: 在 NetApp HCI 系统升级过程中，您应更新管理服务。
 keywords: netapp, hci, on premise, cluster, management services 
 ---
 = 更新管理服务
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,7 +23,7 @@ keywords: netapp, hci, on premise, cluster, management services
 
 
 
-NOTE: 有关介绍每个服务包的主要服务，新功能，错误修复和解决方法的最新管理服务发行说明，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务发行说明"^]
+NOTE: 有关介绍每个服务包的主要服务，新功能，错误修复和解决方法的最新管理服务发行说明，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务发行说明"^]。
 
 从管理服务2.2开始、您必须先接受并保存最终用户许可协议(EULA)、然后才能使用NetApp Hybrid Cloud Control UI或API升级管理服务：
 
@@ -90,6 +95,9 @@ NOTE: 如果您的安装无法访问 Internet ，则仅会显示当前软件版�
 +
 .. 按照页面上的说明将管理服务升级包下载并保存到您的计算机。
 .. 选择 * 浏览 * 以找到您保存的软件包并上传它。
++
+上传软件包后、升级将自动开始。
+
 
 
 

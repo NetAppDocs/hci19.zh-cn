@@ -5,7 +5,12 @@ summary: 您可以使用 NetApp Hybrid Cloud Control 升级先前使用 HCC 安�
 keywords: netapp, hci, rancher, upgrade, hcc 
 ---
 = 升级 NetApp HCI 上的 Rancher
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

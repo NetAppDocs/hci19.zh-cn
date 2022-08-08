@@ -5,7 +5,12 @@ summary: 如果要使用额外的 NIC 进行存储，则应设置一个未标记
 keywords: netapp, element, management node, mnode, network, nic, storage nic 
 ---
 = 配置存储网络接口控制器（ NIC ）
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

@@ -5,7 +5,12 @@ summary: 了解如何创建用户帐户并将其与卷关联。
 keywords: netapp, hci, on premise, cluster, element, account, user, volume, hybrid cloud control, hcc 
 ---
 = 使用 NetApp Hybrid Cloud Control 创建和管理用户帐户
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

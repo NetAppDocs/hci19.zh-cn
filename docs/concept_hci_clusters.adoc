@@ -44,7 +44,7 @@ NetApp HCI 中的存储层由 NetApp Element 软件提供，管理层由适用�
 
 从 NetApp HCI 1.8 开始，您可以设置一个包含两个存储节点的存储集群。
 
-* 您可以使用某些类型的节点来构成双节点存储集群。请参见 https://library.netapp.com/ecm/ecm_download_file/ECMLP2865021["NetApp HCI 1.8 发行说明"]。
+* 您可以使用某些类型的节点来构成双节点存储集群。请参见 https://library.netapp.com/ecm/ecm_download_file/ECMLP2865021["NetApp HCI 1.8 发行说明"^]。
 +
 
 NOTE: 在双节点集群中，存储节点仅限于具有 480 GB 和 960 GB 驱动器的节点，并且节点的型号类型必须相同。
@@ -87,7 +87,7 @@ TIP: 在具有两个存储节点和一个见证节点的三节点集合中，如
 
 == 了解更多信息
 
-* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"]
+* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
 

@@ -5,7 +5,12 @@ summary: 对于 H 系列计算节点， NetApp 提供了 Ansible 角色，可帮
 keywords: netapp, hci, on premise, cluster, element, compute node, ansible upgrade, upgrade role 
 ---
 = 利用 Ansible 自动升级计算节点固件
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -18,7 +23,7 @@ NOTE: 虽然 NetApp 提供了自动化计算节点固件升级的 Ansible 角色
 NOTE: 用于升级的 Ansible 角色仅适用于 NetApp HCI H 系列计算节点。您不能使用此角色升级第三方计算节点。
 
 .您需要什么？ #8217 ；将需要什么
-* * 固件升级的准备情况和前提条件 * ：您的 NetApp HCI 安装必须准备好进行固件升级，如的说明所述 link:task_hcc_upgrade_compute_node_firmware.html["正在执行固件升级"^]。
+* * 固件升级的准备情况和前提条件 * ：您的 NetApp HCI 安装必须准备好进行固件升级，如的说明所述 link:task_hcc_upgrade_compute_node_firmware.html["正在执行固件升级"]。
 * * 准备在 Ansible 控制节点上运行自动化 * ：在 Ansible 中运行固件更新自动化的物理或虚拟服务器。
 
 

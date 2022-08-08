@@ -5,7 +5,12 @@ summary: 完成 NetApp HCI 部署后，您可以使用 NetApp 混合云控制扩
 keywords: netapp, hci, on premise, expand, storage, compute, cluster 
 ---
 = 同时扩展 NetApp HCI 存储和计算资源
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
@@ -119,7 +124,7 @@ NOTE: NetApp HCI 可能需要一些时间来验证您输入的 IP 地址。IP �
 . * 可选 * ：验证是否在 VMware vSphere Web Client （适用于计算节点）或适用于 vCenter Server 的 Element 插件（适用于存储节点）中显示任何新节点。
 +
 
-NOTE: 如果将双节点存储集群扩展为四个或更多节点，则存储集群先前使用的见证节点对仍可在 vSphere 中显示为备用虚拟机。新扩展的存储集群不使用它们；如果要回收 VM 资源，可以 link:task_hci_removewn.html["手动删除"^] 见证节点虚拟机。
+NOTE: 如果将双节点存储集群扩展为四个或更多节点，则存储集群先前使用的见证节点对仍可在 vSphere 中显示为备用虚拟机。新扩展的存储集群不使用它们；如果要回收 VM 资源，可以 link:task_hci_removewn.html["手动删除"] 见证节点虚拟机。
 
 
 

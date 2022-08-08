@@ -5,7 +5,12 @@ summary: 您可以使用管理节点启用 NetApp 支持访问以进行故障排
 keywords: netapp, mnode, management node, connect to support, support tunnel, rst 
 ---
 = 启动远程 NetApp 支持会话
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

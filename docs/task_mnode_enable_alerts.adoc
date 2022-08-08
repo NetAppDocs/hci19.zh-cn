@@ -5,7 +5,12 @@ summary: 您可以配置设置以监控 NetApp HCI 系统上的警报。
 keywords: netapp, element, management node, mnode, ui, alerts, alert monitoring 
 ---
 = 在 NetApp HCI 上配置警报监控
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

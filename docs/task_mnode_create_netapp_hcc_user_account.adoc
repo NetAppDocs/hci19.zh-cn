@@ -5,7 +5,12 @@ summary: 在向管理节点添加 vCenter 资产或计算节点之前，您必�
 keywords: netapp, mnode, management node, vcenter, hci, role 
 ---
 = 在 vCenter 中创建 NetApp HCC 角色
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

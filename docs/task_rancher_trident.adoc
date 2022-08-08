@@ -22,11 +22,11 @@ TIP: 有关 Trident 的详细信息，请参见 https://netapp-trident.readthedo
 .您需要什么？ #8217 ；将需要什么
 * 您已在 NetApp HCI 上安装 Rancher 。
 * 您已部署用户集群。
-* 您已为 Trident 配置用户集群网络。请参见 link:task_trident_configure_networking.html["为用户集群启用 Trident 支持"^] 有关说明，请参见。
-* 您已完成为 Trident 准备工作节点所需的前提步骤。请参见 https://netapp-trident.readthedocs.io/en/stable-v20.10/kubernetes/operations/tasks/worker.html["Trident 文档"]。
+* 您已为 Trident 配置用户集群网络。请参见 link:task_trident_configure_networking.html["为用户集群启用 Trident 支持"] 有关说明，请参见。
+* 您已完成为 Trident 准备工作节点所需的前提步骤。请参见 https://netapp-trident.readthedocs.io/en/stable-v20.10/kubernetes/operations/tasks/worker.html["Trident 文档"^]。
 
 
-Trident 安装程序目录是在使用 NetApp Hybrid Cloud Control 安装 Rancher 的过程中安装的。在此任务中，您将使用安装程序目录安装和配置 Trident 。在 Rancher 安装过程中， NetApp 提供了一个节点模板。如果您不打算使用 NetApp 提供的节点模板，而您希望在 RHEL 或 CentOS 上进行配置，则可能还需要满足其他要求。如果将工作节点更改为 RHEL 或 CentOS ，则应满足多个前提条件。请参见 https://netapp-trident.readthedocs.io/en/stable-v20.10/kubernetes/operations/tasks/worker.html["Trident 文档"]。
+Trident 安装程序目录是在使用 NetApp Hybrid Cloud Control 安装 Rancher 的过程中安装的。在此任务中，您将使用安装程序目录安装和配置 Trident 。在 Rancher 安装过程中， NetApp 提供了一个节点模板。如果您不打算使用 NetApp 提供的节点模板，而您希望在 RHEL 或 CentOS 上进行配置，则可能还需要满足其他要求。如果将工作节点更改为 RHEL 或 CentOS ，则应满足多个前提条件。请参见 https://netapp-trident.readthedocs.io/en/stable-v20.10/kubernetes/operations/tasks/worker.html["Trident 文档"^]。
 
 .步骤
 . 从 Rancher UI 中，为您的用户集群选择一个项目。
@@ -44,7 +44,7 @@ image::rancher-trident.jpg[Rancher 中 " 目录 " 页面上的 Trident 安装程
 
 +
 
-NOTE: 在打开的页面上，您可以选择 * 详细说明 * 箭头以了解有关 Trident 应用程序的更多信息，也可以找到指向的链接 https://netapp-trident.readthedocs.io/en/stable-v20.10/introduction.html["Trident 文档"]。
+NOTE: 在打开的页面上，您可以选择 * 详细说明 * 箭头以了解有关 Trident 应用程序的更多信息，也可以找到指向的链接 https://netapp-trident.readthedocs.io/en/stable-v20.10/introduction.html["Trident 文档"^]。
 
 . 选择 * 配置选项 * 箭头，然后输入凭据和存储配置信息。
 +
@@ -74,7 +74,7 @@ NOTE: 三个存储类分别为 * solidfire-gold* ， * solidfire-silon* 和 * so
 
 * link:task_trident_configure_networking.html["为用户集群启用 Trident 支持"]
 * https://rancher.com/docs/rancher/v2.x/en/overview/architecture/["有关架构的 Rancher 文档"^]
-* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"]
+* https://rancher.com/docs/rancher/v2.x/en/overview/concepts/["适用于 Rancher 的 Kubernetes 术语"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 

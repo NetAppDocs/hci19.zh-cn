@@ -16,7 +16,7 @@ keywords: netapp, hci, deployment, review, deploy
 [role="lead"]
 部署 NetApp HCI 后，您应使用 VMware vSphere Lifecycle Manager 为与 NetApp HCI 配合使用的 VMware vSphere 版本应用最新的安全修补程序。
 
-使用 https://mysupport.netapp.com/matrix/#welcome["互操作性表工具"] 以确保所有版本的软件均兼容。请参见 https://docs.vmware.com/en/VMware-vSphere/index.html["VMware vSphere Lifecycle Manager 文档"] 有关详细信息 ...
+使用 https://mysupport.netapp.com/matrix/#welcome["互操作性表工具"^] 以确保所有版本的软件均兼容。请参见 https://docs.vmware.com/en/VMware-vSphere/index.html["VMware vSphere Lifecycle Manager 文档"^] 有关详细信息 ...
 
 
 

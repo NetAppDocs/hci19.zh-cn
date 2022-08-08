@@ -5,7 +5,12 @@ summary: 在 NetApp HCI 系统升级过程中，您需要对 NetApp Element 软�
 keywords: netapp, storage prechecks, element upgrade, healthtools, sfupgradecheck 
 ---
 = 在升级存储之前，请运行 Element 存储运行状况检查
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

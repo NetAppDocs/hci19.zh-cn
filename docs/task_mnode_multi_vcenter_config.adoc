@@ -5,7 +5,12 @@ summary: 您可以使用 REST API UI 将 NetApp Hybrid Cloud Control 配置为�
 keywords: netapp, mnode, management node, multi-vcenter, hci 
 ---
 = 为多个 vCenter 配置 NetApp Hybrid Cloud Control
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]

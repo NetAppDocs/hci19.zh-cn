@@ -5,7 +5,12 @@ summary: 在开始使用 NetApp HCI 之前，您应正确安装存储和计算�
 keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, rails, h-series, nodes 
 ---
 = 安装 H 系列硬件
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
