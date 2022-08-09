@@ -6185,7 +6185,6 @@
   <block id="be14526a26059bab9604a4dc5056ca86" category="list-text">适用于vCenter Server*的NetApp Element 插件是一个与vSphere用户界面(UI)集成的基于Web的工具。此插件是 VMware vSphere 的一个扩展，可扩展且用户友好的界面，可管理和监控运行 * NetApp Element 软件 * 的存储集群。此插件可替代 Element UI 。您可以使用此插件用户界面发现和配置集群，并管理，监控和分配集群容量中的存储，以配置数据存储库和虚拟数据存储库（对于虚拟卷）。集群在网络上显示为一个本地组，该组通过虚拟 IP 地址呈现给主机和管理员。您还可以通过实时报告功能监控集群活动，包括执行各种操作时可能发生的任何事件的错误和警报消息。</block>
   <block id="2f071adefcac0181be5f4b8cd9a5ca38" category="admonition">了解更多信息<block ref="2bff74e0d72e73a3a1bf993744683a85" category="inline-link-rx"></block>。</block>
   <block id="69f62275c49d78f7ceac9db3f0497d6e" category="admonition">了解更多信息 <block ref="694d6bc2c166b8de5e6f59269ef5415e" category="inline-link-macro-rx"></block>。</block>
-  <block id="9807e313c10f18c9bdc4d7afb343a6f5" category="cell">从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 <block ref="c351abfe0a8a9e26c97442070cd8d97d" category="inline-link-macro-rx"></block></block>
   <block id="6185d522566bca6babef053c2bc1f53d" category="list-text">* 目录 * ：目录是指 GitHub 存储库或 Helm 图表存储库，其中填充了可随时部署的应用程序。Rancher 可以使用 Helm 图表目录，以便重复部署应用程序。Rancher 包含两种类型的目录：内置全局目录和自定义目录。Trident 作为目录进行部署。请参见<block ref="ba870d4de503a3f035878d62b86bb946" category="inline-link-rx"></block>。</block>
   <block id="499c79030e29f88105a315c240050806" category="paragraph">请参见 <block ref="502a349939ea68203db76329f0b74f74" category="inline-link-rx"></block>。</block>
   <block id="b8ab206de7473fae6f35c2f16c0992e0" category="paragraph">有关详细信息，请访问<block ref="9488620c3498c6d0bb53483131890d10" category="inline-link-rx"></block>。</block>
@@ -6231,7 +6230,6 @@
   <block id="94fb62d9516863316b92e2bf53911bce" category="list-text"><block ref="d6a2d8b61be866ad09b286b7f2ff7d30" category="inline-link-macro-rx"></block>。</block>
   <block id="25bc0eaf24f05f014b5a22e6cb3c3ee0" category="list-text">对于 H410C ， H610C 和 H615C 节点， <block ref="003405940fb11fda7caa22bbd0900a62" category="inline-link-macro-rx"></block>。</block>
   <block id="76ef55f268f9e8c537a13a8bdcff4a23" category="list-text"><block ref="a7fdda79c0d112d1e20d7aa847382277" category="inline-link-macro-rx"></block>。</block>
-  <block id="c37fb68bdd4649a813bd854818e1c4f3" category="paragraph"><block ref="ea4dcaf7581d24250ed50342116f1e20" category="inline-link-macro-rx"></block>。</block>
   <block id="0ea391471e626f95079246bfd0ab48f9" category="paragraph">适用于vCenter Server SIOC的NetApp Element 插件密码也称为_QoSSIOC密码_。 </block>
   <block id="0ba7ef8feca0e0b45134473e9c3182d4" category="paragraph">查看｛url-peak｝[适用于vCenter Server的Element插件知识库文章^。</block>
   <block id="7d25e05d224fca2eb306788617dd64c8" category="admonition">如果在 NetApp HCI 上意外部署 Rancher 时信息不正确（例如 Rancher 服务器 FQDN 不正确），则在删除此部署并重新部署之前，无法更正此部署。您需要删除 NetApp HCI 实例上的 Rancher ，然后从 NetApp 混合云控制 UI 中重新部署 NetApp HCI 上的 Rancher 。请参见 <block ref="3121dc1b9111bb157a7a952ee2ca3268" category="inline-link-macro-rx"></block> 有关详细信息 ...</block>
@@ -6246,4 +6244,6 @@
   <block id="72bc06ff4e2b235a52b1bd8ed1e8201b" category="paragraph">您可以手动执行此操作<block ref="51de2eecc77c7894734d39577009251b" category="inline-link-rx"></block> 使用适用于 vCenter Server 的 NetApp Element 插件。您可以根据节点或机箱域选择保护域阈值。</block>
   <block id="c887aa2abefbdf59345793bdbe530aa6" category="list-text">从机架中物理卸下故障节点。这些步骤取决于您的存储节点类型。请参见 <block ref="22268cae5c79b327558b5acefb524b62" category="inline-link-macro-rx"></block> 和 <block ref="04e6f25ecadf1d5213318ff0863162b7" category="inline-link-macro-rx"></block>。</block>
   <block id="6b488f4677081a24e52d30be5ea2fe98" category="list-text">使用 NetApp Hybrid Cloud Control 配置您添加的新存储节点。请参见 <block ref="f2feaea5d9b29c0df76acac116f3553b" category="inline-link-macro-rx"></block>。</block>
+  <block id="1b9cbe8bd24f138856d4a212cbd39ff3" category="cell">从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 <block ref="907072a6b11211e94a1d32770722061a" category="inline-link-macro-rx"></block></block>
+  <block id="bf98d31f43d10440f3b2fcae7d1772fa" category="paragraph"><block ref="5a5ec2237ded5a598f748fc2406eb309" category="inline-link-macro-rx"></block>。</block>
 </blocks>

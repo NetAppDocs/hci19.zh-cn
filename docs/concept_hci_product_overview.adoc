@@ -68,7 +68,7 @@ TIP: 了解更多信息 link:https://help.monitoring.solidfire.com/["NetApp Soli
 | `https://<ManagementNodeIP>` | 访问 NetApp 混合云控制以升级，扩展和监控 NetApp HCI 安装以及更新管理服务。 link:task_nde_access_hcc.html["了解更多信息。"] 
 
 
-| `https://[IP address] ： 442` | 从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 link:task_mnode_access_ui.html#access-the-management-node-per-node-ui["了解更多信息。"^] 
+| `https://[IP address] ： 442` | 从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 link:task_mnode_access_ui.html#access-the-management-node-per-node-ui["了解更多信息。"] 
 
 
 | `https://[management node IP address] ： 9443` | 在 vSphere Web Client 中注册 vCenter 插件软件包。 
