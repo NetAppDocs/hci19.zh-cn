@@ -100,7 +100,7 @@ keywords: netapp, hci, final preparations, requirements
 [discrete]
 == 了解更多信息
 
-* https://help.monitoring.solidire.com["NetApp SolidFire Active IQ 文档"^]
+* https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

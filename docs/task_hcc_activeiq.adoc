@@ -33,16 +33,19 @@ keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance
 https://<ManagementNodeIP>
 ----
 . 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
-. 在信息板中，单击右上角的菜单。
+. 从信息板中，选择右上角的菜单。
 . 选择 * 查看 Active IQ * 。
 +
 。 link:https://activeiq.solidfire.com["SolidFire Active IQ 信息板"^] 显示。
 
-. 要了解 SolidFire Active IQ ，请在信息板中单击右上角的菜单图标，然后单击 * 文档 * 。
+. 要了解SolidFire Active IQ 、请参见 https://docs.netapp.com/us-en/solidfire-active-iq/index.html["SolidFire Active IQ 文档"^]。
++
+您也可以从信息板访问SolidFire Active IQ 文档、方法是选择右上角的菜单图标并选择*文档*。
+
 . 在 SolidFire Active IQ 界面中，验证 NetApp HCI 计算和存储节点是否已向 Active IQ 正确报告遥测：
 +
-.. 如果安装了多个 NetApp HCI ，请单击 * 选择集群 * 并从列表中选择集群。
-.. 在左侧导航窗格中，单击 * 节点 * 。
+.. 如果您安装了多个NetApp HCI 、请选择*选择一个集群*、然后从列表中选择该集群。
+.. 在左侧导航窗格中，选择 * 节点 * 。
 
 
 . 如果列表中缺少一个或多个节点，请联系 NetApp 支持部门。
@@ -54,7 +57,7 @@ TIP: 要查看存储和计算资源的数量，请查看混合云控制（ HCC �
 [discrete]
 == 了解更多信息
 
-* https://help.monitoring.solidfire.com["NetApp SolidFire Active IQ 文档"^]
+* https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

@@ -47,7 +47,7 @@ TIP: 了解更多信息 https://docs.netapp.com/us-en/vcp/concept_vcp_product_ov
 * 默认情况下， NetApp HCI 会将性能和警报统计信息发送到 * NetApp SolidFire Active IQ * 服务。在您的正常支持合同中， NetApp 支持部门会监控这些数据，并在出现任何性能瓶颈或潜在系统问题时向您发出警报。如果您还没有 NetApp 支持帐户，则需要创建一个（即使您已有 SolidFire Active IQ 帐户），以便可以利用此服务。
 +
 
-TIP: 了解更多信息 link:https://help.monitoring.solidfire.com/["NetApp SolidFire Active IQ"^]。
+TIP: 了解更多信息 link:https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ"^]。
 
 
 

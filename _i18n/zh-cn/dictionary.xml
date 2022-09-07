@@ -695,7 +695,6 @@
   <block id="1f9e8829ba3f07efa25b77f1eb0d6c07" category="inline-link">NetApp Configuration Advisor</block>
   <block id="d1ba909955f7a2392ac07c215865424a" category="list-text"><block ref="8eb8242e05dec3c7873bd909a6d9def7" category="inline-link-rx"></block> 5.8.1 或更高版本的网络验证工具</block>
   <block id="642b57ae61fbf875dba06df638def96a" category="inline-link">NetApp SolidFire Active IQ 文档</block>
-  <block id="5fab97a8101ee7e9dd22a0c1807b267e" category="list-text"><block ref="5fab97a8101ee7e9dd22a0c1807b267e" category="inline-link-rx"></block></block>
   <block id="158f6a1d36f1b909e5a2856681ce6f42" category="summary">您必须先进行授权，然后才能在 REST API UI 中对管理服务使用 API 。</block>
   <block id="223b5bfc7fd9ecabdd773228e6069bdd" category="doc">获取使用 REST API 的授权</block>
   <block id="b1ccc7e57db400d23b97089b6c6526f6" category="paragraph">您必须先进行授权，然后才能在 REST API UI 中对管理服务使用 API 。您可以通过获取访问令牌来执行此操作。</block>
@@ -2554,13 +2553,9 @@
   <block id="7cee4fcf0150b764f614b9c92d93488e" category="list-text">选择 * 查看 Active IQ * 。</block>
   <block id="fa07ce8e9de64ab1ca55cc6d3b85cea5" category="inline-link-macro">SolidFire Active IQ 信息板</block>
   <block id="ee9ec48ab8dae93963c5b5c07f420ed4" category="paragraph">。 <block ref="095a58fb83e7246b6e79a66a96e0f27d" category="inline-link-macro-rx"></block> 显示。</block>
-  <block id="63b0ea6672e4ac0cdbfd353e47a99673" category="list-text">要了解 SolidFire Active IQ ，请在信息板中单击右上角的菜单图标，然后单击 * 文档 * 。</block>
   <block id="18c94039f6a9a2bf969e0ddcad135957" category="list-text">在 SolidFire Active IQ 界面中，验证 NetApp HCI 计算和存储节点是否已向 Active IQ 正确报告遥测：</block>
-  <block id="2eca3789874739b2e107592e70e89570" category="list-text">如果安装了多个 NetApp HCI ，请单击 * 选择集群 * 并从列表中选择集群。</block>
-  <block id="f782d1135644961264a9464e713c708c" category="list-text">在左侧导航窗格中，单击 * 节点 * 。</block>
   <block id="dd227545ce9014ef2f4c9d23fa80efc1" category="list-text">如果列表中缺少一个或多个节点，请联系 NetApp 支持部门。</block>
   <block id="5438dea440e60cb95336002d251f0b29" category="admonition">要查看存储和计算资源的数量，请查看混合云控制（ HCC ）信息板。请参见 <block ref="7a163f57b183cb5fbbaf136afcd39704" category="inline-link-macro-rx"></block>。</block>
-  <block id="a433b823eb4cdcee96d4dfcff5931643" category="list-text"><block ref="a433b823eb4cdcee96d4dfcff5931643" category="inline-link-rx"></block></block>
   <block id="4ec87aa9f0a4cb08c65491141aa767bc" category="summary">获取 NetApp HCI 环境中产品或组件发行说明的链接。</block>
   <block id="7350e80ebee797a0d2d2bdec4d4240b2" category="doc">其他版本信息</block>
   <block id="618bdc2067940be634fb648432588c93" category="paragraph">您可以通过链接访问 NetApp HCI 和 Element 存储环境中各个组件的最新和早期发行说明。</block>
@@ -6184,7 +6179,6 @@
   <block id="afb54c94a5e9aef322532eabe176c2d4" category="admonition">了解更多信息 <block ref="8a1a0a32384afdd6d93db2e7c4f512ad" category="inline-link-macro-rx"></block>。</block>
   <block id="be14526a26059bab9604a4dc5056ca86" category="list-text">适用于vCenter Server*的NetApp Element 插件是一个与vSphere用户界面(UI)集成的基于Web的工具。此插件是 VMware vSphere 的一个扩展，可扩展且用户友好的界面，可管理和监控运行 * NetApp Element 软件 * 的存储集群。此插件可替代 Element UI 。您可以使用此插件用户界面发现和配置集群，并管理，监控和分配集群容量中的存储，以配置数据存储库和虚拟数据存储库（对于虚拟卷）。集群在网络上显示为一个本地组，该组通过虚拟 IP 地址呈现给主机和管理员。您还可以通过实时报告功能监控集群活动，包括执行各种操作时可能发生的任何事件的错误和警报消息。</block>
   <block id="2f071adefcac0181be5f4b8cd9a5ca38" category="admonition">了解更多信息<block ref="2bff74e0d72e73a3a1bf993744683a85" category="inline-link-rx"></block>。</block>
-  <block id="69f62275c49d78f7ceac9db3f0497d6e" category="admonition">了解更多信息 <block ref="694d6bc2c166b8de5e6f59269ef5415e" category="inline-link-macro-rx"></block>。</block>
   <block id="6185d522566bca6babef053c2bc1f53d" category="list-text">* 目录 * ：目录是指 GitHub 存储库或 Helm 图表存储库，其中填充了可随时部署的应用程序。Rancher 可以使用 Helm 图表目录，以便重复部署应用程序。Rancher 包含两种类型的目录：内置全局目录和自定义目录。Trident 作为目录进行部署。请参见<block ref="ba870d4de503a3f035878d62b86bb946" category="inline-link-rx"></block>。</block>
   <block id="499c79030e29f88105a315c240050806" category="paragraph">请参见 <block ref="502a349939ea68203db76329f0b74f74" category="inline-link-rx"></block>。</block>
   <block id="b8ab206de7473fae6f35c2f16c0992e0" category="paragraph">有关详细信息，请访问<block ref="9488620c3498c6d0bb53483131890d10" category="inline-link-rx"></block>。</block>
@@ -6246,4 +6240,13 @@
   <block id="6b488f4677081a24e52d30be5ea2fe98" category="list-text">使用 NetApp Hybrid Cloud Control 配置您添加的新存储节点。请参见 <block ref="f2feaea5d9b29c0df76acac116f3553b" category="inline-link-macro-rx"></block>。</block>
   <block id="1b9cbe8bd24f138856d4a212cbd39ff3" category="cell">从每节点 UI 访问网络和集群设置，并利用系统测试和实用程序。 <block ref="907072a6b11211e94a1d32770722061a" category="inline-link-macro-rx"></block></block>
   <block id="bf98d31f43d10440f3b2fcae7d1772fa" category="paragraph"><block ref="5a5ec2237ded5a598f748fc2406eb309" category="inline-link-macro-rx"></block>。</block>
+  <block id="d70c282924b717571aef1cee7fb90bda" category="list-text"><block ref="d70c282924b717571aef1cee7fb90bda" category="inline-link-rx"></block></block>
+  <block id="fff53faaacf5caf81205af3a5996a9cc" category="inline-link">NetApp SolidFire Active IQ 文档</block>
+  <block id="dbc20c2595760ee5c4db75a5e0f52262" category="list-text"><block ref="dbc20c2595760ee5c4db75a5e0f52262" category="inline-link-rx"></block></block>
+  <block id="fbbe254e45b4762e05a1addfd1b1da7b" category="admonition">了解更多信息 <block ref="e8537a9bbe8826a9f8e7b689e79abc77" category="inline-link-macro-rx"></block>。</block>
+  <block id="e41f733ab7b14b59356c114dc4bde28a" category="list-text">从信息板中，选择右上角的菜单。</block>
+  <block id="5d7560eb59ba019f88b76ae3bf8580a7" category="inline-link">SolidFire Active IQ 文档</block>
+  <block id="8656c1812e255a290a0e3fb243bf9237" category="list-text">要了解SolidFire Active IQ 、请参见<block ref="605461d6a442322fca0bcd236d381ac0" category="inline-link-rx"></block>。</block>
+  <block id="5de7b59e7468f72110ca5bd9b20f7d50" category="paragraph">您也可以从信息板访问SolidFire Active IQ 文档、方法是选择右上角的菜单图标并选择*文档*。</block>
+  <block id="b742a27bbb38b6f0482e473afd7caf8e" category="list-text">如果您安装了多个NetApp HCI 、请选择*选择一个集群*、然后从列表中选择该集群。</block>
 </blocks>
