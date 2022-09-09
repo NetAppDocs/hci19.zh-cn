@@ -12,7 +12,7 @@ sidebar:
   - title: NetApp HCI 1.9文档
     url: "/index.html"
   - title: NetApp HCI 解决方案
-    url: https://docs.netapp.com/us-en/hci-solutions/index.html
+    url: "/docs/hci_solutions_index.html"
   - title: 发行说明
     entries:
     - title: NetApp HCI 中的新增功能

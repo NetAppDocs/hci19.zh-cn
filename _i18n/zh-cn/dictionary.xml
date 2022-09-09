@@ -6249,4 +6249,8 @@
   <block id="8656c1812e255a290a0e3fb243bf9237" category="list-text">要了解SolidFire Active IQ 、请参见<block ref="605461d6a442322fca0bcd236d381ac0" category="inline-link-rx"></block>。</block>
   <block id="5de7b59e7468f72110ca5bd9b20f7d50" category="paragraph">您也可以从信息板访问SolidFire Active IQ 文档、方法是选择右上角的菜单图标并选择*文档*。</block>
   <block id="b742a27bbb38b6f0482e473afd7caf8e" category="list-text">如果您安装了多个NetApp HCI 、请选择*选择一个集群*、然后从列表中选择该集群。</block>
+  <block id="3d57c700c41601cb011883231fb4e5b8" category="summary">通过NetApp HCI 、您可以在多个公有 云提供商之间和内部部署云服务。您可以使用NetApp HCI 部署与云提供商类似的服务、所有这些服务均采用自助服务模式、无需IT参与。</block>
+  <block id="4f8fc3e1fce78186b06dfda99cdedd17" category="paragraph">NetApp HCI 解决方案可以帮助您在同一基础架构上使用多个工作负载实现大规模性能、而不会产生任何摩擦。</block>
+  <block id="921c0975b352bf1530a52271d2abf5c6" category="inline-link">NetApp HCI 解决方案文档</block>
+  <block id="705d4d08d5af2e9dd1c4616188dd681f" category="paragraph">要了解NetApp HCI 解决方案、请参见<block ref="80564718f738f8f02fcd8afb2a3d09de" category="inline-link-rx"></block>。</block>
 </blocks>
