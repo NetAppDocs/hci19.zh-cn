@@ -50,7 +50,7 @@ https://<ManagementNodeIP>/vcenter/1/
 +
 API 将返回所有已知 vCenter 控制器的列表，以及用于与每个控制器通信的 IP 地址，控制器 ID ，主机名和用户 ID 。
 
-. 如果您需要特定控制器的连接状态，请将该控制器的 `id` 字段中的控制器 ID 复制到剪贴板中，并参见 <<View the status of an existing controller>>。
+. 如果您需要特定控制器的连接状态，请将该控制器的 `id` 字段中的控制器 ID 复制到剪贴板中，并参见  the status of an existing controller。
 
 
 

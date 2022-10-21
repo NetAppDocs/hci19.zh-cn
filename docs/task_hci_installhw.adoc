@@ -19,15 +19,15 @@ keywords: netapp, hci, on premise, activeiq, active iq, cluster, performance, ra
 
 TIP: 请参见 link:../media/hseries-isi.pdf["海报"^] 以可视化方式显示说明。
 
-* <<Workflow diagrams>>
-* <<Prepare for installation>>
-* <<Install the rails>>
-* <<Install the node/chassis>>
-* <<Install the switches>>
-* <<Cable the nodes>>
-* <<Power on the nodes>>
-* <<Configure NetApp HCI>>
-* <<Perform post-configuration tasks>>
+*  diagrams
+*  for installation
+*  the rails
+*  the node/chassis
+*  the switches
+*  the nodes
+*  on the nodes
+*  NetApp HCI
+*  post-configuration tasks
 
 
 
@@ -36,9 +36,9 @@ TIP: 请参见 link:../media/hseries-isi.pdf["海报"^] 以可视化方式显示
 
 此处的工作流图简要概述了安装步骤。根据 H 系列型号的不同，步骤略有不同。
 
-* <<H410C and H410S>>
-* <<H610C and H615C>>
-* <<H610S>>
+*  and H410S
+*  and H615C
+* 
 
 
 
@@ -110,9 +110,9 @@ CAUTION: 安装硬件时，请确保移除设备上的所有包装材料并进�
 
 TIP: 从机架底部到顶部安装硬件，以防止设备发生翻倒。如果您的机架包含稳定设备，请在安装硬件之前安装它们。
 
-* <<H410C and H410S>>
-* <<H610C>>
-* <<H610S and H615C>>
+*  and H410S
+* 
+*  and H615C
 
 
 
@@ -168,9 +168,9 @@ TIP: 从 NetApp HCI 1.8 开始，您可以设置一个包含两个或三个存�
 
 CAUTION: 从设备上拆下所有包装材料和包装。这样可以防止节点过热和关闭。
 
-* <<H410C and H410S nodes>>
-* <<H610C node/chassis>>
-* <<H610S and H615C node/chassis>>
+*  and H410S nodes
+*  node/chassis
+*  and H615C node/chassis
 
 
 
@@ -227,10 +227,10 @@ image::h610s_chassis.gif[显示了要在机架中安装的 H615C 或 H610S 节�
 
 CAUTION: 确保机箱后部的通风孔未被缆线或标签挡住。这可能会导致组件过早因过热而出现故障。
 
-* <<H410C compute node and H410S storage node>>
-* <<H610C compute node>>
-* <<H615C compute node>>
-* <<H610S storage node>>
+*  compute node and H410S storage node
+*  compute node
+*  compute node
+*  storage node
 
 
 
@@ -345,8 +345,8 @@ image::H600S_ISI_nodefront.png[显示了 H610S/H615C 节点 / 机箱上的电源
 
 选择以下选项之一：
 
-* <<New NetApp HCI installation>>
-* <<Expand an existing NetApp HCI installation>>
+*  NetApp HCI installation
+*  an existing NetApp HCI installation
 
 
 
@@ -396,8 +396,8 @@ NOTE: 系统将自动发现同一网络上新安装的 NetApp HCI 节点。
 
 根据您拥有的节点类型，在安装硬件并配置 NetApp HCI 之后，您可能需要执行其他步骤。
 
-* <<H610C node>>
-* <<H615C and H610S nodes>>
+*  node
+*  and H610S nodes
 
 
 

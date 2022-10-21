@@ -23,11 +23,11 @@ keywords: netapp, hci, element, storage cluster, hybrid cloud control, hcc, main
 
 
 .选项
-* <<Add a storage cluster>>
-* <<Confirm storage cluster status>>
-* <<Edit storage cluster credentials>>
-* <<Remove a storage cluster>>
-* <<Enable and disable maintenance mode>>
+*  a storage cluster
+*  storage cluster status
+*  storage cluster credentials
+*  a storage cluster
+*  and disable maintenance mode
 
 
 
@@ -111,7 +111,7 @@ CAUTION: 单击 * 是 * 下一步将从安装中删除集群。
 [discrete]
 == 启用和禁用维护模式
 
-这 link:concept_hci_storage_maintenance_mode.html["维护模式"] 通过功能选项，您可以执行以下操作 <<enable_main_mode,启用>> 和 <<disable_main_mode,-disable>> 存储集群节点的维护模式。
+这 link:concept_hci_storage_maintenance_mode.html["维护模式"] 通过功能选项，您可以执行以下操作 ,启用 和 ,-disable 存储集群节点的维护模式。
 
 .您需要什么？ #8217 ；将需要什么
 * * Element 软件 * ：您的存储集群版本运行的是 NetApp Element 软件 12.2 或更高版本。

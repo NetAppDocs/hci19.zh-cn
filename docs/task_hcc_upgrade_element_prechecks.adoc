@@ -24,7 +24,7 @@ IMPORTANT: 在升级 Element 软件之前，您必须升级到最新的管理服
 
 * *管理节点*：正在运行管理节点11.3或更高版本。
 * * Element Software*：您的集群版本运行的是NetApp Element 软件11.3或更高版本。
-* *最终用户许可协议(EULA)*：从管理服务来看、在使用NetApp混合云控制UI或API运行Element存储运行状况检查之前、您必须接受并保存此EULA：
+* *最终用户许可协议(EULA)*：从管理服务2.20.69开始、您必须先接受并保存此EULA、然后才能使用NetApp混合云控制UI或API运行Element存储运行状况检查：
 +
 .. 在Web浏览器中打开管理节点的IP地址：
 +
@@ -45,14 +45,14 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 您可以使用 NetApp Hybrid Cloud Control （ HCC ） UI ， HCC API 或 HealthTools 套件运行运行状况检查：
 
-* <<Use NetApp Hybrid Cloud Control to run Element storage health checks prior to upgrading storage>> （首选方法）
-* <<Use API to run Element storage health checks prior to upgrading storage>>
-* <<Use HealthTools to run Element storage health checks prior to upgrading storage>>
+*  NetApp Hybrid Cloud Control to run Element storage health checks prior to upgrading storage （首选方法）
+*  API to run Element storage health checks prior to upgrading storage
+*  HealthTools to run Element storage health checks prior to upgrading storage
 
 
 您还可以了解有关此服务运行的存储运行状况检查的更多信息：
 
-* <<Storage health checks made by the service>>
+*  health checks made by the service
 
 
 

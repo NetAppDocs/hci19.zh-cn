@@ -23,8 +23,8 @@ NOTE: 如果您在运行状况检查期间设置了 BMC 凭据，则在 * 节点
 
 选择以下选项之一以更改 BMC 凭据：
 
-* <<Use NetApp Hybrid Cloud Control to edit BMC information>>
-* <<Use the REST API to edit BMC information>>
+*  NetApp Hybrid Cloud Control to edit BMC information
+*  the REST API to edit BMC information
 
 
 

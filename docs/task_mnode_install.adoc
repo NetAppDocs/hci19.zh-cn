@@ -55,12 +55,12 @@ Element 12.2 管理节点是一种可选升级。现有部署不需要此功能�
 在遵循此操作步骤之前，您应了解 link:concept_hci_volumes.html#persistent-volumes["永久性卷"] 以及是否要使用它们。永久性卷是可选的，但建议在虚拟机丢失时用于管理节点配置数据恢复。
 
 .步骤
-. <<Download ISO or OVA and deploy the VM>>
-. <<Create the management node admin and configure the network>>
-. <<Configure time sync>>
-. <<Set up the management node>>
-. <<Configure controller assets>>
-. <<Configure compute node assets,（仅限 NetApp HCI ）配置计算节点资产>>
+.  ISO or OVA and deploy the VM
+.  the management node admin and configure the network
+.  time sync
+.  up the management node
+.  controller assets
+.  compute node assets,（仅限 NetApp HCI ）配置计算节点资产
 
 
 
@@ -132,7 +132,7 @@ NOTE: 如果需要使用额外的 NIC 来隔离存储流量，请参见有关配
 . 确保使用 NTP 在管理节点和存储集群之间同步时间：
 +
 
-NOTE: 从 Element 12.3.1 开始，系统会自动执行子步骤（ a ）到（ e ）。对于管理节点 12.3.1 ，请继续执行 <<substep_f_install_config_time_sync,子步骤（ f ）>> 以完成时间同步配置。
+NOTE: 从 Element 12.3.1 开始，系统会自动执行子步骤（ a ）到（ e ）。对于管理节点 12.3.1 ，请继续执行 ,子步骤（ f ） 以完成时间同步配置。
 
 +
 .. 使用 SSH 或虚拟机管理程序提供的控制台登录到管理节点。

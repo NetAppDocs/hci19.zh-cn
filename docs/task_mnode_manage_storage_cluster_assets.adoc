@@ -23,10 +23,10 @@ keywords: netapp, mnode, management node, rest api, hci, assets
 
 选择以下选项之一：
 
-* <<Retrieve the installation ID and cluster ID of a storage cluster asset>>
-* <<Add a new storage cluster asset>>
-* <<Edit the stored credentials for a storage cluster asset>>
-* <<Delete a storage cluster asset>>
+*  the installation ID and cluster ID of a storage cluster asset
+*  a new storage cluster asset
+*  the stored credentials for a storage cluster asset
+*  a storage cluster asset
 
 
 
@@ -102,7 +102,7 @@ API 将返回此安装中所有已知存储集群的列表。
 您可以使用 REST API 将一个或多个新的存储集群资产添加到管理节点清单中。添加新的存储集群资产时，该资产会自动注册到管理节点中。
 
 .您需要什么？ #8217 ；将需要什么
-* 您已复制 <<Retrieve the installation ID and cluster ID of a storage cluster asset,存储集群 ID 和安装 ID>> 要添加的任何存储集群。
+* 您已复制  the installation ID and cluster ID of a storage cluster asset,存储集群 ID 和安装 ID 要添加的任何存储集群。
 * 如果要添加多个存储节点，则已阅读并了解的限制 link:concept_hci_clusters.html#authoritative-storage-clusters["权威集群"] 和多个存储集群支持。
 +
 
@@ -167,7 +167,7 @@ API 将返回一个对象，其中包含有关新添加的存储集群资产的�
 您可以编辑管理节点用于登录到存储集群的已存储凭据。您选择的用户必须具有集群管理员访问权限。
 
 
-NOTE: 确保已按照中的步骤进行操作 <<Retrieve the installation ID and cluster ID of a storage cluster asset>> 然后继续。
+NOTE: 确保已按照中的步骤进行操作  the installation ID and cluster ID of a storage cluster asset 然后继续。
 
 .步骤
 . 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：
@@ -216,7 +216,7 @@ https://<ManagementNodeIP>/storage/1/
 如果存储集群不再使用，您可以删除该存储集群资产。删除存储集群资产后，该资产将自动从管理节点中取消注册。
 
 
-NOTE: 确保已按照中的步骤进行操作 <<Retrieve the installation ID and cluster ID of a storage cluster asset>> 然后继续。
+NOTE: 确保已按照中的步骤进行操作  the installation ID and cluster ID of a storage cluster asset 然后继续。
 
 .步骤
 . 输入管理节点 IP 地址并后跟 ` /storage/1/` 来访问存储服务的 REST API UI ：

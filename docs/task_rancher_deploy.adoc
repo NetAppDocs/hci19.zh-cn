@@ -42,9 +42,9 @@ NOTE: 您的 NetApp Support Edge 协议不包含 Rancher 支持。有关选项�
 
 == 在 NetApp HCI 上部署 Rancher 的步骤
 
-* <<Access the NetApp Hybrid Cloud Control>>
-* <<Deploy Rancher on NetApp HCI>>
-* <<Verify your deployment by using vCenter Server>>
+*  the NetApp Hybrid Cloud Control
+*  Rancher on NetApp HCI
+*  your deployment by using vCenter Server
 
 
 

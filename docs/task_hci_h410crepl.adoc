@@ -39,15 +39,15 @@ NOTE: 替代节点应与 NetApp HCI 安装中的其余计算节点具有相同�
 * H410C 计算节点仅使用高压线（ 200-240 VAC ）运行。向现有 NetApp HCI 系统添加 H410C 节点时，应确保满足电源要求。
 
 
-下面简要概述了此操作步骤中的步骤：<<Prepare to replace the compute node>>
-<<Replace the compute node in the chassis>>
-<<Remove the compute node asset in NetApp HCI 1.7 and later>>
-<<Add the compute node to the cluster>>
-<<Redeploy Witness Nodes for two and three-node storage clusters>>
+下面简要概述了此操作步骤中的步骤： to replace the compute node
+ the compute node in the chassis
+ the compute node asset in NetApp HCI 1.7 and later
+ the compute node to the cluster
+ Witness Nodes for two and three-node storage clusters
 
 以下是一些附加任务，如果您的系统具有适用于这些任务的特定条件，您可能需要执行这些任务：link:task_hci_removewn.html["删除见证节点以释放计算资源"]
-<<Change the password if you received a replacement node with a non-standard BMC password>>
-<<Upgrade the BMC firmware on your node>>
+ the password if you received a replacement node with a non-standard BMC password
+ the BMC firmware on your node
 
 
 

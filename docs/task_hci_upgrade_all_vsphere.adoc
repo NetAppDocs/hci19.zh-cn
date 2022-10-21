@@ -22,7 +22,7 @@ keywords: netapp, hci, vSphere components, upgrade, vCenter, ESXi
 . https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["升级 vSphere ，包括 vCenter Server ， ESXi ， VM 和其他 VMware 组件"^]。
 +
 
-IMPORTANT: 升级到 VMware vCenter Server 7.0 U3 后，适用于 vCenter Server 的所有版本的 NetApp Element 插件都无法部署。要解决此问题描述 ，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["此知识库文章"^]。
+IMPORTANT: 升级到VMware vCenter Server 7.0 U3时、Element插件无法部署。要使用Spring Framework 4解决此问题描述 、请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["此知识库文章"^]。
 
 +
 

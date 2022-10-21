@@ -36,11 +36,11 @@ NOTE: vCenter 插件 4.4 或更高版本需要使用模块化架构创建的管�
 
 NOTE: 如果您选择继续对使用 NDE 部署的管理节点 12.3 进行升级，则升级到 12.3.x 将完成。但是，升级可能会在重新启动期间遇到错误。如果发生这种情况，请重新启动管理节点，使其正确显示 12.3.x
 
-* 如果要从管理节点 12.2 升级：<<Upgrade a management node to version 12.3.x from 12.2>>
-* 如果要从管理节点 12.0 升级：<<Upgrade a management node to version 12.3.x from 12.0>>
-* 如果要从管理节点 11.3 ， 11.5 ， 11.7 或 11.8 升级：<<Upgrade a management node to version 12.3.x from 11.3 through 11.8>>
-* 如果要从管理节点 11.0 或 11.1 升级：<<Upgrade a management node to version 12.3.x from 11.1 or 11.0>>
-* 如果要从管理节点 10.x 版升级：<<Migrating from management node version 10.x to 11.x>>
+* 如果要从管理节点 12.2 升级： a management node to version 12.3.x from 12.2
+* 如果要从管理节点 12.0 升级： a management node to version 12.3.x from 12.0
+* 如果要从管理节点 11.3 ， 11.5 ， 11.7 或 11.8 升级： a management node to version 12.3.x from 11.3 through 11.8
+* 如果要从管理节点 11.0 或 11.1 升级： a management node to version 12.3.x from 11.1 or 11.0
+* 如果要从管理节点 10.x 版升级： from management node version 10.x to 11.x
 
 
 如果您已按 * 顺序 * 更新（ 1 ）管理服务版本和（ 2 ） Element 存储版本，并希望 * 保留 * 现有管理节点，请选择以下选项：
@@ -48,7 +48,7 @@ NOTE: 如果您选择继续对使用 NDE 部署的管理节点 12.3 进行升级
 
 NOTE: 如果您未依次更新管理服务和 Element 存储，则无法使用此操作步骤重新配置身份验证。请改用相应的升级操作步骤。
 
-* 如果要保留现有管理节点：<<Reconfigure authentication using the management node REST API>>
+* 如果要保留现有管理节点： authentication using the management node REST API
 
 
 

@@ -28,10 +28,10 @@ NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使
 
 当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
 
-下面简要概述了此操作步骤中的步骤：<<Prepare to replace the node>>
-<<Replace the node>>
-<<Add the node to the cluster>>
-<<Install the GPU drivers>>
+下面简要概述了此操作步骤中的步骤： to replace the node
+ the node
+ the node to the cluster
+ the GPU drivers
 
 
 

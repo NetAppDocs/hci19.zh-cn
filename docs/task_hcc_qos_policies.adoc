@@ -21,11 +21,11 @@ NOTE: 有关使用的详细信息，请参见 NetApp HCI 概念内容 link:conce
 
 使用 NetApp Hybrid Cloud Control ，您可以通过完成以下任务来创建和管理 QoS 策略：
 
-* <<Create a QoS policy>>
-* <<Apply a QoS policy to a volume>>
-* <<Change the QoS policy assignment of a volume>>
-* <<Edit a QoS policy>>
-* <<Delete a QoS policy>>
+*  a QoS policy
+*  a QoS policy to a volume
+*  the QoS policy assignment of a volume
+*  a QoS policy
+*  a QoS policy
 
 
 
@@ -61,7 +61,7 @@ TIP: 使用描述性命名最佳实践。如果您的环境中使用了多个集
 
 您可以使用 NetApp Hybrid Cloud Control 为卷分配现有 QoS 策略。
 
-要分配的 QoS 策略已完成 <<Create a QoS policy,已创建>>。
+要分配的 QoS 策略已完成  a QoS policy,已创建。
 
 此任务介绍如何通过更改卷的设置为单个卷分配 QoS 策略。最新版本的 NetApp Hybrid Cloud Control 没有适用于多个卷的批量分配选项。在未来版本提供批量分配功能之前，您可以使用 Element Web UI 或 vCenter 插件 UI 批量分配 QoS 策略。
 
@@ -88,7 +88,7 @@ NOTE: 分配 QoS 将覆盖先前应用的任何单个卷 QoS 值。
 
 您可以从卷中删除 QoS 策略的分配，也可以选择其他 QoS 策略或自定义 QoS 。
 
-要修改的卷为 <<Apply a QoS policy to a volume,已分配>> QoS 策略。
+要修改的卷为  a QoS policy to a volume,已分配 QoS 策略。
 
 .步骤
 . 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。

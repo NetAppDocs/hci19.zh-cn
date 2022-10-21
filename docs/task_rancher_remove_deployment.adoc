@@ -22,8 +22,8 @@ keywords: netapp, hci, api, REST, remove, Rancher, redeploy
 TIP: 您可能希望保留用户集群。如果确实保留了这些 Rancher ，则可以稍后将其迁移到另一个 Rancher 实施中。如果要删除用户集群，应在删除 Rancher 服务器之前先执行此操作；否则，在删除 Rancher 服务器之后删除用户集群将更加困难。
 
 .选项
-* <<Remove Rancher on NetApp HCI using NetApp Hybrid Cloud Control>> （建议）
-* <<Remove Rancher on NetApp HCI using the REST API>>
+*  Rancher on NetApp HCI using NetApp Hybrid Cloud Control （建议）
+*  Rancher on NetApp HCI using the REST API
 
 
 

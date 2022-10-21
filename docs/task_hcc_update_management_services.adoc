@@ -25,7 +25,7 @@ keywords: netapp, hci, on premise, cluster, management services
 
 NOTE: 有关介绍每个服务包的主要服务，新功能，错误修复和解决方法的最新管理服务发行说明，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务发行说明"^]。
 
-从管理服务2.2开始、您必须先接受并保存最终用户许可协议(EULA)、然后才能使用NetApp Hybrid Cloud Control UI或API升级管理服务：
+从管理服务2.20.69开始、您必须先接受并保存最终用户许可协议(EULA)、然后才能使用NetApp Hybrid Cloud Control UI或API升级管理服务：
 
 . 在Web浏览器中打开管理节点的IP地址：
 +
@@ -44,9 +44,9 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 您可以使用 NetApp Hybrid Cloud Control UI 或管理节点 REST API 更新管理服务：
 
-* <<Update management services using Hybrid Cloud Control>> （建议方法）
-* <<Update management services using the management node API>>
-* <<Update management services using the management node API for dark sites>>
+*  management services using Hybrid Cloud Control （建议方法）
+*  management services using the management node API
+*  management services using the management node API for dark sites
 
 
 

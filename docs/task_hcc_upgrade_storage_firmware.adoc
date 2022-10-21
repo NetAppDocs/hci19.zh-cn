@@ -40,7 +40,7 @@ IMPORTANT: 要更新 iDRAC 或 BIOS 固件，请联系 NetApp 支持部门。对
 
 NOTE: 有关适用于您的硬件的固件和驱动程序固件的完整列表，请参见此内容 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["知识库文章"^] （需要登录）。
 
-* *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级存储固件：
+* *最终用户许可协议(EULA)*：从管理服务2.20.69开始、您必须先接受并保存此EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级存储固件：
 +
 .. 在Web浏览器中打开管理节点的IP地址：
 +
@@ -61,8 +61,8 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 选择以下存储固件升级选项之一：
 
-* <<Use NetApp Hybrid Cloud Control UI to upgrade storage firmware>>
-* <<Use NetApp Hybrid Cloud Control API to upgrade storage firmware>>
+*  NetApp Hybrid Cloud Control UI to upgrade storage firmware
+*  NetApp Hybrid Cloud Control API to upgrade storage firmware
 
 
 
@@ -107,7 +107,7 @@ NOTE: * 存储 * 选项卡列出了安装过程中的存储集群。如果 NetAp
 
 
 
-TIP: 升级期间， * 升级状态 * 会发生更改，以反映此过程的状态。它也会根据您执行的操作而发生更改，例如暂停升级或升级返回错误。请参见 <<Upgrade status changes>>。
+TIP: 升级期间， * 升级状态 * 会发生更改，以反映此过程的状态。它也会根据您执行的操作而发生更改，例如暂停升级或升级返回错误。请参见  status changes。
 
 
 NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。如果集群行已折叠，则此页面不会动态更新状态和当前版本。必须展开集群行才能更新此表，您也可以刷新此页面。
@@ -125,7 +125,7 @@ NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面�
 
 CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
 
-成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。如果在此阶段离开浏览器窗口，则会保留文件上传。升级完成后，您可以下载日志。有关各种升级状态更改的信息，请参见 <<Upgrade status changes>>。
+成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。如果在此阶段离开浏览器窗口，则会保留文件上传。升级完成后，您可以下载日志。有关各种升级状态更改的信息，请参见  status changes。
 
 |===
 

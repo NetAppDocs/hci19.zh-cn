@@ -15,14 +15,14 @@ keywords: netapp, hci, cluster, element, volume
 
 您可以通过以下方式在 NetApp Hybrid Cloud Control 中管理卷：
 
-* <<Create a volume>>
-* <<Apply a QoS policy to a volume>>
-* <<Edit a volume>>
-* <<Clone volumes>>
-* <<Add volumes to a volume access group>>
-* <<Delete a volume>>
-* <<Restore a deleted volume>>
-* <<Purge a deleted volume>>
+*  a volume
+*  a QoS policy to a volume
+*  a volume
+*  volumes
+*  volumes to a volume access group
+*  a volume
+*  a deleted volume
+*  a deleted volume
 
 
 
@@ -71,7 +71,7 @@ NOTE: 如果帐户数超过 50 个，则不会显示此列表。开始键入，�
 
 == 将 QoS 策略应用于卷
 
-您可以使用 NetApp Hybrid Cloud Control 将 QoS 策略应用于现有存储卷。如果需要为卷设置自定义 QoS 值，则可以 <<Edit a volume>>。要创建新的 QoS 策略，请参见 link:task_hcc_qos_policies.html["创建和管理卷 QoS 策略"^]。
+您可以使用 NetApp Hybrid Cloud Control 将 QoS 策略应用于现有存储卷。如果需要为卷设置自定义 QoS 值，则可以  a volume。要创建新的 QoS 策略，请参见 link:task_hcc_qos_policies.html["创建和管理卷 QoS 策略"^]。
 
 .步骤
 . 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。

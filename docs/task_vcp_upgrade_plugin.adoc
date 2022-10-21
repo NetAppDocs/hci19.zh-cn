@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: docs/task_vcp_upgrade_plugin.html 
 summary: 在 NetApp HCI 系统升级过程中，您可以升级适用于 vCenter Server 的 Element 插件。 
-keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9 
+keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10 
 ---
 = 升级适用于 vCenter Server 的 Element 插件
 :hardbreaks:
@@ -20,7 +20,7 @@ keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9
 
 此升级操作步骤包括以下升级情形：
 
-* 您要升级到适用于VMware vCenter Server 4.9、4.8、4.7、4.6、4.5或4.4的Element插件。
+* 您要升级到适用于VMware vCenter Server 4.10、4.9、4.8、4.7、4.6的Element插件、 4.5或4.4。
 * 您要升级到 7.0 ， 6.7 或 6.5 HTML5 vSphere Web Client 。
 +
 
@@ -99,8 +99,8 @@ image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装后
 
 [listing]
 ----
-NetApp Element Plug-in Version: 4.9
-NetApp Element Plug-in Build Number: 14
+NetApp Element Plug-in Version: 4.10
+NetApp Element Plug-in Build Number: 12
 ----
 
 NOTE: vCenter 插件包含联机帮助内容。要确保帮助包含最新内容，请在升级插件后清除浏览器缓存。

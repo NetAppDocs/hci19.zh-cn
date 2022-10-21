@@ -22,12 +22,22 @@ keywords: netapp, element, management node, management services, mnode, logs
 
 
 .步骤
-. 在管理节点上打开 REST API UI ：
+. 在管理节点上打开REST API UI。
++
+** 从管理服务2.21.61开始：
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/4/
+----
+** 对于管理服务2.20.69或更早版本：
 +
 [listing]
 ----
 https://<ManagementNodeIP>/mnode
 ----
+
+
 . 选择 * 授权 * 或任何锁定图标并完成以下操作：
 +
 .. 输入集群用户名和密码。

@@ -92,7 +92,7 @@ NOTE: 使用适用于 vCenter Server 的 NetApp Element 插件从其他 vCenter 
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域
-.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新用户  up a new user account in vCenter。
 .. 选择 `NetApp Role` 。
 +
 
@@ -120,7 +120,7 @@ image::mnode_new_HCC_role_vcenter.PNG[显示了添加权限窗口]
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新 HCC 用户  up a new user account in vCenter。
 .. 选择 `ReadOnly Role` 。
 +
 
@@ -148,7 +148,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新 HCC 用户  up a new user account in vCenter。
 .. 选择 `管理员角色` 。
 .. 选择 * 传播到子项 * 。
 
@@ -170,7 +170,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新 HCC 用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新 HCC 用户  up a new user account in vCenter。
 .. 选择 `NetApp Role` 或 `Administrator` 。
 .. 选择 * 传播到子项 * 。
 
@@ -199,7 +199,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新用户  up a new user account in vCenter。
 .. 选择 `NetApp Role` 或 `Administrator` 。
 
 
@@ -221,7 +221,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新用户  up a new user account in vCenter。
 .. 选择 `NetApp Role` 。
 +
 
@@ -237,7 +237,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 +
 .. 选择 `vsphere.local` 或您的 LDAP 域。
-.. 使用搜索功能查找您在中创建的新用户 <<Set up a new user account in vCenter>>。
+.. 使用搜索功能查找您在中创建的新用户  up a new user account in vCenter。
 .. 选择 `NetApp Role` 或 `Administrator` 。
 .. 选择 * 传播到子项 * 。
 
@@ -269,7 +269,7 @@ IMPORTANT: Do * not* select * 传播到子项 * 。
 
 == 将资产或计算节点添加到管理节点
 
-如果在安装后需要手动添加新资产或计算节点（和 BMC 资产），请使用您在中创建的新 HCC 用户帐户 <<Set up a new user account in vCenter>>。有关详细信息，请参见 link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]。
+如果在安装后需要手动添加新资产或计算节点（和 BMC 资产），请使用您在中创建的新 HCC 用户帐户  up a new user account in vCenter。有关详细信息，请参见 link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]。
 
 
 

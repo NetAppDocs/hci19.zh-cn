@@ -23,7 +23,7 @@ keywords: netapp, hci, compute firmware
 
 H610S BMC 3.84.07 包含各种错误修复和新功能。此版本在后续 Element 软件和存储固件捆绑包版本之前推出了现场关键型更新 BMC 固件，其中也包括适用于 H610S 节点的此更新 BMC 固件。
 
-Element 版本 118 ， 12.0 和 12.2 支持此固件包。您可以直接带外升级 H610S BMC 固件，有关升级说明，请参见 <<Upgrading BMC firmware on H610S nodes>>。
+Element 版本 118 ， 12.0 和 12.2 支持此固件包。您可以直接带外升级 H610S BMC 固件，有关升级说明，请参见  BMC firmware on H610S nodes。
 
 
 

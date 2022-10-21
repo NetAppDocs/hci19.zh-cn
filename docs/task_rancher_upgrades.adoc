@@ -27,7 +27,7 @@ keywords: netapp, hci, rancher, upgrade, hcc
 IMPORTANT: 要使用 Rancher 功能，您必须升级到最新的管理服务包 2.17 或更高版本。
 
 * * 系统端口 * ：如果您使用 NetApp Hybrid Cloud Control 进行升级，则已确保必要的端口处于打开状态。请参见 link:rancher_prereqs_overview.html#required-ports["网络端口"] 有关详细信息 ...
-* *最终用户许可协议(EULA)*：从管理服务2.2开始、您必须先接受并保存EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级Rancher部署：
+* *最终用户许可协议(EULA)*：从管理服务2.20.69开始、您必须先接受并保存此EULA、然后才能使用NetApp Hybrid Cloud Control UI或API升级Rancher部署：
 +
 .. 在Web浏览器中打开管理节点的IP地址：
 +
@@ -48,8 +48,8 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 选择以下升级过程之一：
 
-* <<Use NetApp Hybrid Cloud Control UI to upgrade a Rancher deployment>>
-* <<Use NetApp Hybrid Cloud Control API to upgrade a Rancher deployment>>
+*  NetApp Hybrid Cloud Control UI to upgrade a Rancher deployment
+*  NetApp Hybrid Cloud Control API to upgrade a Rancher deployment
 
 
 
@@ -107,9 +107,9 @@ NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每�
 您可以使用您选择的自动化工具运行管理节点上可用的 API 或 REST API UI 。
 
 .选项
-* <<Upgrade Rancher Server>>
-* <<Upgrade RKE>>
-* <<Apply node OS security updates>>
+*  Rancher Server
+*  RKE
+*  node OS security updates
 +
 
 NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您将重新启动每个节点，以使安全更新生效。

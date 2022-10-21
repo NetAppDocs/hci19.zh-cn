@@ -16,7 +16,7 @@ keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid
 [role="lead"]
 您可以使用 REST API 在管理节点（ mNode ）上禁用，重新启用或确定 SSH 功能的状态。提供的 SSH 功能 link:task_mnode_enable_remote_support_connections.html["NetApp 支持远程支持通道（ RST ）会话访问"] 默认情况下，在运行管理服务 2.18 或更高版本的管理节点上处于禁用状态。
 
-从管理服务2.2开始、您可以使用NetApp Hybrid Cloud Control UI在管理节点上启用和禁用SSH功能。
+从管理服务2.20.69开始、您可以使用NetApp Hybrid Cloud Control UI在管理节点上启用和禁用SSH功能。
 
 .您需要什么？ #8217 ；将需要什么
 * * NetApp Hybrid Cloud Control权限*：您拥有管理员权限。
@@ -25,20 +25,20 @@ keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid
 * * 管理节点 * ：您已部署运行 11.3 或更高版本的管理节点。
 * *管理服务更新*：
 +
-** 要使用NetApp Hybrid Cloud Control UI、您已更新 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服务包"^] 到版本2.20。
+** 要使用NetApp Hybrid Cloud Control UI、您已更新 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服务包"^] 升级到版本2.20.69或更高版本。
 ** 要使用REST API UI、您已更新 https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["管理服务包"^] 到 2.17 版。
 
 
 
 
 .选项
-* <<Disable or enable the SSH capability on the management node using NetApp Hybrid Cloud Control UI>>
+*  or enable the SSH capability on the management node using NetApp Hybrid Cloud Control UI
 
 
 之后，您可以执行以下任一任务 link:task_mnode_api_get_authorizationtouse.html["身份验证"]：
 
-* <<Disable or enable the SSH capability on the management node using APIs>>
-* <<Determine status of the SSH capability on the management node using APIs>>
+*  or enable the SSH capability on the management node using APIs
+*  status of the SSH capability on the management node using APIs
 
 
 
