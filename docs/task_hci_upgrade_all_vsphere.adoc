@@ -21,9 +21,13 @@ keywords: netapp, hci, vSphere components, upgrade, vCenter, ESXi
 . 对于 vCSA 和 Windows 升级， https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["取消注册"^] 使用注册实用程序与 vCenter Server 中的插件关联。
 . https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["升级 vSphere ，包括 vCenter Server ， ESXi ， VM 和其他 VMware 组件"^]。
 +
+[IMPORTANT]
+====
+您应升级到适用于vCenter Server 5.0的NetApp Element 插件、以便能够在VMware vCenter 7.0 Update 3中部署此插件、而无需应用临时解决策。
 
-IMPORTANT: 升级到VMware vCenter Server 7.0 U3时、Element插件无法部署。要使用Spring Framework 4解决此问题描述 、请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["此知识库文章"^]。
+使用适用于vCenter Server 4.x的Element插件升级到VMware vCenter Server 7.0 Update 3时、插件4.x无法部署。要使用Spring Framework 4解决此问题描述 、请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["此知识库文章"^]。
 
+====
 +
 
 NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf["双节点集群"^]，一次只升级一个计算节点，以便暂时只有一个见证节点不可用，并且可以保持集群仲裁。
@@ -34,7 +38,8 @@ NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf
 . https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#enabling-qossioc-automation-on-datastores["启用 QoSSIOC ："^] 由插件控制的所有数据存储库。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

@@ -323,7 +323,7 @@ https:/<ManagementNodeIP>/mnode
 .. 选择 * POST /assets/ ｛ asset_id ｝ /controllers* 以添加控制器子资产。
 +
 
-NOTE: 建议您在 vCenter 中创建新的 NetApp HCC 角色以添加控制器子资产。这一新的 NetApp HCC 角色会将管理节点服务视图限制为纯 NetApp 资产。请参见 link:task_mnode_create_netapp_hcc_role_vcenter.html["在 vCenter 中创建 NetApp HCC 角色"]。
+NOTE: 您应在vCenter中创建新的NetApp HCC角色以添加控制器子资产。这一新的 NetApp HCC 角色会将管理节点服务视图限制为纯 NetApp 资产。请参见 link:task_mnode_create_netapp_hcc_role_vcenter.html["在 vCenter 中创建 NetApp HCC 角色"]。
 
 .. 选择 * 试用 * 。
 .. 在 * asset_id* 字段中输入复制到剪贴板的父基本资产 ID 。

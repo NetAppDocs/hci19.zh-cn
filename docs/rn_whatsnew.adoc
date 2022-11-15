@@ -21,7 +21,7 @@ NetApp 会定期更新 NetApp HCI ，为您提供新功能，增强功能和错�
 ====
 Element 12.3.2提供了一种缓解方法、可消除Element软件受到Apache Log4j漏洞的影响。已启用虚拟卷（ VVol ）功能的 NetApp SolidFire 存储集群会受到此漏洞的影响。
 
-如果存储集群使用的是Element 12.3.1、并且已启用VVol功能、则强烈建议升级到Element软件12.3.2。
+如果存储集群使用的是Element 12.3.1、并且已启用VVol功能、则应升级Element软件12.3.2。
 
 如果存储集群使用的是Element 12.3.1、并且VVol功能已禁用、则可以选择升级到Element软件12.3.2。
 

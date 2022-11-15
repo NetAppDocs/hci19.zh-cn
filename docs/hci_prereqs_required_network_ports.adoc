@@ -227,6 +227,9 @@ image::network_ports.PNG[检查端口连接]
 | vCenter Server | 存储集群 MVIP | 443. | vCenter 插件 API 访问 
 
 
+| vCenter Server | 远程插件 | 8333 | 远程vCenter插件服务 
+
+
 | vCenter Server | 管理节点 | 8443 | （可选） vCenter 插件 QoSSIOC 服务。 
 
 

@@ -26,9 +26,13 @@ keywords: netapp, hci, netapp deployment engine, deployment, vsphere
 
 如果您加入多个使用 vCenter 链接模式连接的 vCenter Server 系统，则 NetApp HCI 仅会识别其中一个 vCenter Server 系统。
 
+[NOTE]
+====
+* 从适用于vCenter Server 5.0的Element插件开始、使用 https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter 链接模式"^]下、您可以从单独的管理节点为管理NetApp SolidFire 存储集群的每个vCenter Server注册Element插件(建议)。
+* 使用适用于vCenter Server 4.10及更早版本的Element插件从其他vCenter Server管理集群资源 https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter 链接模式"^] 仅限于本地存储集群。
 
-NOTE: 使用适用于 vCenter Server 的 NetApp Element 插件从其他 vCenter Server 管理集群资源 link:https://docs.netapp.com/us-en/vcp/vcp_concept_linkedmode.html["vCenter 链接模式"^] 仅限于本地存储集群。
 
+====
 .步骤
 . 单击 * 加入并扩展现有 vSphere 部署 * 。
 . 在 * vCenter Server 域名或 IP 地址 * 字段中输入域名或 IP 地址。如果输入域名，还需要在显示的 * DNS 服务器 IP 地址 * 字段中输入活动 DNS 服务器的 IP 地址。
