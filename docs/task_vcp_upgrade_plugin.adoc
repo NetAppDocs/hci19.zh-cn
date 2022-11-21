@@ -90,16 +90,15 @@ image::vcp_registration_utility_ui_qossioc.png[描绘了此插件的注册实用
 
 . 选择 * vCenter 插件注册 * 。
 +
-从适用于vCenter Server 5：0的Element插件开始：
-
+** 适用于vCenter Server 5.0的Element插件的vCenter插件注册页面：
 +
 image::vcp_remote_plugin_registration_ui.png[描绘了远程插件的注册实用程序UI]
 
-+
-适用于vCenter Server 4.10或更早版本的Element插件：
-
+** 适用于vCenter Server 4.10或更早版本的Element插件的vCenter插件注册页面：
 +
 image::vcp_registration_utility_ui.png[描绘了本地插件的注册实用程序UI]
+
+
 
 . 在 * 管理 vCenter 插件 * 中，选择 * 更新插件 * 。
 . 确认或更新以下信息：
@@ -111,7 +110,7 @@ image::vcp_registration_utility_ui.png[描绘了本地插件的注册实用程�
 NOTE: 您输入的用户名和密码凭据必须适用于具有 vCenter 管理员角色特权的用户。
 
 .. vCenter 管理员密码。
-.. (对于内部服务器/非公开站点)根据适用于vCenter的Element插件版本、插件JSON文件或插件ZIP的自定义URL：
+.. (对于内部服务器/非公开站点)根据适用于vCenter的Element插件版本、此插件JSON文件或插件ZIP的自定义URL：
 +
 ... 从适用于vCenter Server 5.0的Element插件开始、此插件JSON文件的自定义URL。
 +
@@ -139,14 +138,11 @@ NOTE: 此操作将创建一个新数据库并在 vSphere Web Client 中完成安
 . 在 vSphere Web Client 中，请在任务监控器中查找以下已完成的任务，以确保安装已完成： `download plug-in` 和 `DeDeploy plug-in` 。
 . 验证插件扩展点是否显示在vSphere Web Client的*快捷方式*选项卡和侧面板中。
 +
-从适用于vCenter Server 5.0的Element插件开始、NetApp Element 远程插件扩展点：
-
+** 从适用于vCenter Server 5.0的Element插件开始、将显示NetApp Element 远程插件扩展点：
 +
 image::vcp_remote_plugin_icons_home_page.png[描绘了成功升级或安装Element插件5.10或更高版本后的插件扩展点]
 
-+
-对于适用于vCenter Server 4.10或更早版本的Element插件、NetApp Element 配置和管理扩展点如下：
-
+** 对于适用于vCenter Server 4.10或更早版本的Element插件、将显示NetApp Element 配置和管理扩展点：
 +
 image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装Element插件4.10或更早版本之后的插件扩展点]
 
@@ -158,17 +154,20 @@ image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装Ele
 使用VMware vCenter Server 6.7U1升级到适用于vCenter Server 4.8或更高版本的NetApp Element 插件后、如果NetApp Element 配置的*集群*和* QoSSIOC设置*部分未列出存储集群或显示服务器错误、请参见 link:https://docs.netapp.com/us-en/vcp/vcp_reference_troubleshoot_vcp.html#error_vcp48_67u1["适用于 vCenter Server 的 Element 插件"^] 有关对这些错误进行故障排除的文档。
 
 ====
+
+
 . 在插件的 * NetApp Element Configuration* 扩展点中的 * 关于 * 选项卡中验证版本更改。
 +
 您应看到以下版本详细信息或较新版本的详细信息：
 
-
-
++
 [listing]
 ----
 NetApp Element Plug-in Version: 5.0
 NetApp Element Plug-in Build Number: 37
 ----
+
+
 
 NOTE: vCenter 插件包含联机帮助内容。要确保帮助包含最新内容，请在升级插件后清除浏览器缓存。
 

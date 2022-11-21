@@ -212,13 +212,25 @@ image::network_ports.PNG[检查端口连接]
 | 系统管理员 PC | 存储节点 MIP | 442 | 对存储节点的 HTTPS UI 和 API 访问，（仅限 NetApp HCI ） NetApp 部署引擎中的配置和部署监控 
 
 
+| 系统管理员 PC | 计算节点BMC/IPMI H410和H600系列 | 443. | 对节点远程控制的HTTPS UI和API访问 
+
+
 | 系统管理员 PC | 管理节点 | 443. | 对管理节点的 HTTPS UI 和 API 访问 
 
 
 | 系统管理员 PC | 存储集群 MVIP | 443. | 对存储集群的 HTTPS UI 和 API 访问 
 
 
+| 系统管理员 PC | 存储节点BMC/IPMI H410和H600系列 | 443. | 对节点远程控制的HTTPS UI和API访问 
+
+
 | 系统管理员 PC | 存储节点 MIP | 443. | HTTPS 存储集群创建，存储集群的部署后 UI 访问 
+
+
+| 系统管理员 PC | 计算节点BMC/IPMI H410和H600系列 | 623 UDP | RMCP端口。这是管理启用了IPMI的系统所必需的。 
+
+
+| 系统管理员 PC | 存储节点BMC/IPMI H410和H600系列 | 623 UDP | RMCP端口。这是管理启用了IPMI的系统所必需的。 
 
 
 | 系统管理员 PC | 见证节点 | 8080 | 见证节点每节点 Web UI 
@@ -238,7 +250,8 @@ image::network_ports.PNG[检查端口连接]
 
 | vCenter Server | 管理节点 | 9443 | vCenter 插件注册。注册完成后，可以关闭此端口。 
 |===
-[discrete]
+
+
 == 了解更多信息
 
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
