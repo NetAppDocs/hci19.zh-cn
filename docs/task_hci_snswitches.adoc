@@ -16,7 +16,7 @@ keywords: netapp, hci, SSDs, drives, replace drives, H410S, H610S
 [role="lead"]
 您可以按照 NetApp 提供的最佳实践和步骤无中断更换出现故障的 SN2000 系列交换机。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 确保笔记本电脑上已安装 Putty ，并且您已捕获输出。请观看此视频，了解如何配置 Putty 以捕获输出会话。
 
 
@@ -43,17 +43,18 @@ image::sn2010_rear.png[SN2010 和 SN2100 背面,600,400]
 .SN2700 交换机的正面和背面
 image::SN2700.png[SN2700 前部和后部,600,400]
 
+.关于此任务
 您应按以下顺序执行此操作步骤中的步骤。这是为了确保停机时间最短，并且更换交换机之前已预先配置好更换的交换机。
 
 
 NOTE: 如需指导，请联系 NetApp 支持部门。
 
-下面简要介绍了操作步骤中的步骤： to replace the faulty switch
- the configuration file
- the faulty switch and install the replacement
- the operating system version on the switch
- the replacement switch
- the replacement
+下面简要介绍了操作步骤中的步骤：<<准备更换故障交换机>>
+<<创建配置文件>>
+<<拆下故障交换机并安装更换件>>
+<<验证交换机上的操作系统版本>>
+<<配置替代交换机>>
+<<完成更换>>
 
 
 

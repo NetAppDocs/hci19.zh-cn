@@ -18,7 +18,7 @@ keywords: netapp, element, management node, mnode, storage, install
 
 此手动过程适用于未使用NetApp部署引擎安装管理节点的NetApp HCI 管理员。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
 * 您的安装使用 IPv4 。管理节点 11.3 不支持 IPv6 。
 +
@@ -50,17 +50,18 @@ NOTE: 如果需要 IPv6 支持，可以使用管理节点 11.1 。
 * （使用代理服务器的管理节点 12.0 及更高版本）在配置代理服务器之前，您已将 NetApp Hybrid Cloud Control 更新为管理服务版本 2.16 。
 
 
+.关于此任务
 Element 12.2 管理节点是一种可选升级。现有部署不需要此功能。
 
 在遵循此操作步骤之前，您应了解 link:concept_hci_volumes.html#persistent-volumes["永久性卷"] 以及是否要使用它们。永久性卷是可选的，但建议在虚拟机丢失时用于管理节点配置数据恢复。
 
 .步骤
-.  ISO or OVA and deploy the VM
-.  the management node admin and configure the network
-.  time sync
-.  up the management node
-.  controller assets
-.  compute node assets,（仅限 NetApp HCI ）配置计算节点资产
+. <<下载 ISO 或 OVA 并部署虚拟机>>
+. <<创建管理节点管理员并配置网络>>
+. <<配置时间同步>>
+. <<设置管理节点>>
+. <<配置控制器资产>>
+. <<Configure compute node assets,（仅限 NetApp HCI ）配置计算节点资产>>
 
 
 
@@ -132,7 +133,7 @@ NOTE: 如果需要使用额外的 NIC 来隔离存储流量，请参见有关配
 . 确保使用 NTP 在管理节点和存储集群之间同步时间：
 +
 
-NOTE: 从 Element 12.3.1 开始，系统会自动执行子步骤（ a ）到（ e ）。对于管理节点 12.3.1 ，请继续执行 ,子步骤（ f ） 以完成时间同步配置。
+NOTE: 从 Element 12.3.1 开始，系统会自动执行子步骤（ a ）到（ e ）。对于管理节点 12.3.1 ，请继续执行 <<substep_f_install_config_time_sync,子步骤（ f ）>> 以完成时间同步配置。
 
 +
 .. 使用 SSH 或虚拟机管理程序提供的控制台登录到管理节点。

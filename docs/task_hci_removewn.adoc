@@ -16,6 +16,7 @@ keywords: netapp, hci, witness nodes, two-node cluster, four-node cluster, compu
 [role="lead"]
 将双节点存储集群扩展到四个或更多节点后，您可以删除见证节点对，以释放 NetApp HCI 安装中的计算资源。在 vSphere Web Client 中，存储集群先前使用的见证节点仍显示为备用虚拟机（ VM ）。
 
+.关于此任务
 具有四个以上存储节点的集群不需要见证节点。如果要在将双节点集群扩展到四个或更多节点后释放 CPU 和内存，则此操作步骤为可选。
 
 

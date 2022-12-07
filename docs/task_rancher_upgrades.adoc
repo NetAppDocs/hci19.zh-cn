@@ -18,7 +18,7 @@ keywords: netapp, hci, rancher, upgrade, hcc
 
 升级按组件进行，而不是累积软件包。因此，某些组件升级（例如 Ubuntu 操作系统）的速度更快。升级仅会影响 Rancher 服务器实例以及部署 Rancher 服务器的管理集群。升级到管理集群节点的 Ubuntu 操作系统仅适用于关键安全修补程序，不适用于升级操作系统。无法从 NetApp Hybrid Cloud Control 升级用户集群。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * 管理员权限 * ：您拥有执行升级的存储集群管理员权限。
 * * 管理服务 * ：您已将管理服务捆绑包更新到最新版本。
 
@@ -46,10 +46,11 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 
 
+.升级选项
 选择以下升级过程之一：
 
-*  NetApp Hybrid Cloud Control UI to upgrade a Rancher deployment
-*  NetApp Hybrid Cloud Control API to upgrade a Rancher deployment
+* <<使用 NetApp Hybrid Cloud Control UI 升级 Rancher 部署>>
+* <<使用 NetApp Hybrid Cloud Control API 升级 Rancher 部署>>
 
 
 
@@ -63,7 +64,7 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 * 节点操作系统安全更新
 
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 互联网连接良好。无法进行非公开站点升级（在没有外部连接的站点上升级）。
 
 
@@ -107,9 +108,9 @@ NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每�
 您可以使用您选择的自动化工具运行管理节点上可用的 API 或 REST API UI 。
 
 .选项
-*  Rancher Server
-*  RKE
-*  node OS security updates
+* <<升级 Rancher 服务器>>
+* <<升级 RKE>>
+* <<应用节点操作系统安全更新>>
 +
 
 NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每天运行，但节点不会自动重新启动。通过应用升级，您将重新启动每个节点，以使安全更新生效。

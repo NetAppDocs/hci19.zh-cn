@@ -11,7 +11,7 @@ keywords: netapp, hci, on premise, cluster, element
 [role="lead"]
 您可以使用 NetApp Hybrid Cloud Control 创建新的卷访问组，更改访问组的名称，关联启动程序或关联卷，或者删除现有卷访问组。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您拥有此 NetApp HCI 系统的管理员凭据。
 * 您已将管理服务至少升级到版本 2.15.28 。NetApp Hybrid Cloud Control 存储管理在早期的服务包版本中不可用。
 * 确保为卷访问组提供了一个逻辑命名方案。

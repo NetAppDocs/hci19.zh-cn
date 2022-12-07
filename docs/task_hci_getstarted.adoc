@@ -18,14 +18,14 @@ keywords: netapp, hci, install, deploy, get started
 
 以下是此过程的概述：
 
-*  for installation
-*  network readiness with NetApp Active IQ Config Advisor
-*  with your NetApp team
-*  NetApp HCI hardware
-*  optional tasks after installing hardware
-*  NetApp HCI using the NetApp Deployment Engine (NDE)
-*  NetApp HCI using the vCenter Plug-in
-*  or upgrade NetApp HCI with the Hybrid Cloud Control
+* <<准备安装>>
+* <<使用 NetApp Active IQ Config Advisor 验证网络就绪情况>>
+* <<与您的 NetApp 团队合作>>
+* <<安装 NetApp HCI 硬件>>
+* <<安装硬件后完成可选任务>>
+* <<使用 NetApp 部署引擎（ NDE ）部署 NetApp HCI>>
+* <<使用 vCenter 插件管理 NetApp HCI>>
+* <<使用混合云控制监控或升级 NetApp HCI>>
 
 
 

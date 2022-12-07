@@ -15,4 +15,5 @@ NetApp HCI 包含 NetApp 混合云控制功能，可简化计算生命周期和�
 
 如果超过这些测试上限，则可能会遇到 NetApp Hybrid Cloud Control 问题，例如用户界面速度较慢， API 响应或功能不可用。如果您在配置超出配置上限的环境中联系 NetApp 为 NetApp 提供 NetApp Hybrid Cloud Control 的产品支持， NetApp 支持部门会要求您将配置更改为记录的配置上限以内。
 
+.配置最大值
 NetApp Hybrid Cloud Control 支持 VMware vSphere 环境，其中最多包含 500 个 NetApp 计算节点。它最多支持 20 个基于 NetApp Element 软件的存储集群，每个集群具有 40 个存储节点。

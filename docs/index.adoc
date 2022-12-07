@@ -21,7 +21,7 @@ NetApp HCI 可提供存储和计算资源，并将其组合在一起，以构建
 
 
 
-== 了解新功能
+== 了解新增功能
 
 * link:rn_whatsnew.html["NetApp HCI 中的新增功能"]
 * https://docs.netapp.com/us-en/element-software/concepts/concept_rn_whats_new_element.html["NetApp Element 软件中的新增功能"^]

@@ -21,12 +21,12 @@ NOTE: 首次启动新的 NetApp Hybrid Cloud Control 会话时，如果管理节
 
 在混合云控制信息板上，仅会显示 H 系列硬件中至少有一个受管节点的受管计算节点和集群。
 
-*  the NetApp HCC Dashboard
-*  storage resources
-*  compute resources
-*  storage capacity
-*  storage performance
-*  compute utilization
+* <<访问 NetApp HCC 信息板>>
+* <<监控存储资源>>
+* <<监控计算资源>>
+* <<监控存储容量>>
+* <<监控存储性能>>
+* <<监控计算利用率>>
 
 
 

@@ -18,12 +18,12 @@ NetApp HCI 数据保护术语包括不同类型的远程复制，卷快照，卷
 
 NetApp HCI 数据保护包括以下概念：
 
-*  replication types
-*  snapshots for data protection
-*  clones
-*  and restore process overview for SolidFire storage
-*  domains
-*  Helix high availability
+* <<远程复制类型>>
+* <<用于数据保护的卷快照>>
+* <<卷克隆>>
+* <<SolidFire 存储的备份和还原过程概述>>
+* <<保护域>>
+* <<双 Helix 高可用性>>
 
 
 
@@ -32,9 +32,9 @@ NetApp HCI 数据保护包括以下概念：
 
 数据的远程复制可以采用以下形式：
 
-*  and asynchronous replication between clusters
-*  replication
-*  between Element and ONTAP clusters using SnapMirror
+* <<集群之间的同步和异步复制>>
+* <<仅 Snapshot 复制>>
+* <<使用 SnapMirror 在 Element 和 ONTAP 集群之间进行复制>>
 
 
 请参见 https://www.netapp.com/us/media/tr-4741.pdf["TR-4741 ： NetApp Element 软件远程复制"^]。

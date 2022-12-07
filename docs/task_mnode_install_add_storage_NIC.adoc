@@ -22,10 +22,11 @@ keywords: netapp, element, management node, mnode, network, nic, storage nic
 * 您已部署管理节点 11.3 或更高版本。
 
 
+.配置选项
 选择与您的环境相关的选项：
 
-*  a storage Network Interface Controller (NIC) for an untagged network interface
-*  a storage Network Interface Controller (NIC) for a tagged network interface
+* <<为未标记的网络接口配置存储网络接口控制器（ NIC ）>>
+* <<为带标记的网络接口配置存储网络接口控制器（ NIC ）>>
 
 
 

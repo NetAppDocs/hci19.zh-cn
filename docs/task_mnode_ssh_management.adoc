@@ -18,7 +18,7 @@ keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid
 
 从管理服务2.20.69开始、您可以使用NetApp Hybrid Cloud Control UI在管理节点上启用和禁用SSH功能。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * NetApp Hybrid Cloud Control权限*：您拥有管理员权限。
 * * 集群管理员权限 * ：您对存储集群拥有管理员权限。
 * * Element 软件 * ：集群运行的是 NetApp Element 软件 11.3 或更高版本。
@@ -32,13 +32,13 @@ keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid
 
 
 .选项
-*  or enable the SSH capability on the management node using NetApp Hybrid Cloud Control UI
+* <<使用NetApp Hybrid Cloud Control UI在管理节点上禁用或启用SSH功能>>
 
 
 之后，您可以执行以下任一任务 link:task_mnode_api_get_authorizationtouse.html["身份验证"]：
 
-*  or enable the SSH capability on the management node using APIs
-*  status of the SSH capability on the management node using APIs
+* <<使用API在管理节点上禁用或启用SSH功能>>
+* <<使用API确定管理节点上SSH功能的状态>>
 
 
 
@@ -62,6 +62,7 @@ NOTE: 要使用SSH为存储集群启用或禁用支持访问、必须使用 http
 
 您可以在管理节点上禁用或重新启用 SSH 功能。提供的 SSH 功能 link:task_mnode_enable_remote_support_connections.html["NetApp 支持远程支持通道（ RST ）会话访问"] 默认情况下，在运行管理服务 2.18 或更高版本的管理节点上处于禁用状态。禁用 SSH 不会终止或断开与管理节点的现有 SSH 客户端会话。如果禁用 SSH 并选择稍后重新启用它，则可以使用同一 API 来执行此操作。
 
+.API 命令
 对于管理服务 2.18 或更高版本：
 
 [listing]
@@ -107,6 +108,7 @@ https://<ManagementNodeIP>/mnode/
 
 您可以使用管理节点服务 API 确定是否在管理节点上启用了 SSH 功能。在运行管理服务 2.18 或更高版本的管理节点上， SSH 默认处于禁用状态。
 
+.API 命令
 对于管理服务 2.18 或更高版本：
 
 [listing]

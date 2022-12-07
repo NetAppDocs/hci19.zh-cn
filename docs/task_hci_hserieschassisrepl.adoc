@@ -16,6 +16,7 @@ keywords: netapp, hci, chassis replacement,2U chassis replacement, h-series
 [role="lead"]
 如果机箱出现风扇故障或电源问题描述，应尽快更换。机箱更换操作步骤中的步骤取决于您的 NetApp HCI 配置和集群容量，这需要仔细考虑和规划。您应联系 NetApp 支持部门获取指导并订购更换机箱。
 
+.关于此任务
 在更换机箱之前，应考虑以下事项：
 
 * 您的机架是否为新机箱提供了额外空间？
@@ -25,8 +26,9 @@ keywords: netapp, hci, chassis replacement,2U chassis replacement, h-series
 * 删除故障机箱中的计算节点后，虚拟机（ VM ）和 ESXi 集群是否可以处理此工作负载？
 
 
-从以下选项中选择一项： the chassis when additional unused space is available in the rack
- the chassis when additional unused space is not available in the rack
+.更换选项
+从以下选项中选择一项：<<如果机架中有更多未使用的空间，请更换机箱>>
+<<如果机架中没有其他未使用的空间，请更换机箱>>
 
 
 
@@ -43,7 +45,7 @@ NOTE: 移动计算节点的步骤与移动存储节点的步骤不同。移动�
 
 您可以将新机箱安装到可用的机架空间中，然后将节点移入该机箱。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。
 * 您已更换机箱。
 * 您有一台或两个人或更多人来执行这些步骤。
@@ -170,6 +172,7 @@ NOTE: 添加节点并显示在 * 节点 > 活动 * 下可能需要长达 2 分�
 
 如果您的机架没有额外空间，并且部署中的任何机箱都没有未使用的节点插槽，则在执行更换操作步骤之前，您应确定哪些设备可以保持联机（如果有）。
 
+.关于此任务
 在更换机箱之前，应考虑以下几点：
 
 * 如果故障机箱中没有存储节点，存储集群是否可以保持联机？如果问题解答不是，则应关闭 NetApp HCI 部署中的所有节点（计算和存储）。如果问题解答为 yes ，则只能关闭故障机箱中的存储节点。
@@ -198,7 +201,7 @@ NOTE: 有关迁移步骤，请参见 VMware 文档。
 
 === 关闭存储节点
 
-请参见步骤  a storage node,此处。
+请参见步骤 <<move a storage node,此处>>。
 
 
 

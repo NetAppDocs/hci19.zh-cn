@@ -22,13 +22,15 @@ NOTE: 虽然 NetApp 提供了自动化计算节点固件升级的 Ansible 角色
 
 NOTE: 用于升级的 Ansible 角色仅适用于 NetApp HCI H 系列计算节点。您不能使用此角色升级第三方计算节点。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * 固件升级的准备情况和前提条件 * ：您的 NetApp HCI 安装必须准备好进行固件升级，如的说明所述 link:task_hcc_upgrade_compute_node_firmware.html["正在执行固件升级"]。
 * * 准备在 Ansible 控制节点上运行自动化 * ：在 Ansible 中运行固件更新自动化的物理或虚拟服务器。
 
 
+.关于此任务
 在生产环境中，您应以滚动方式更新 NetApp HCI 安装中集群中的计算节点；一个节点一个节点，一个节点一个节点。NetApp Hybrid Cloud Control 中的 API 可为单个计算节点编排整体计算节点固件升级过程，包括运行运行状况检查，将计算节点上的 ESXi 置于维护状态以及重新启动计算节点以应用固件升级。Ansible 角色提供了一个选项，用于为一组计算节点或整个集群编排固件升级。
 
+.开始使用固件升级自动化
 要开始使用，请导航到 https://github.com/NetApp-Automation/nar_compute_firmware_upgrade["GitHub 上的 NetApp Ansible 存储库"^] 并下载 `NAR_compute_nodes_firmware_upgrades` 角色和文档。
 
 [discrete]

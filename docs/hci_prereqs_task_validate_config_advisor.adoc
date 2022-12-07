@@ -48,11 +48,13 @@ https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetA
 
 Active IQ Config Advisor 在浏览器窗口中运行，收集有关您的网络和环境的信息，并生成一份报告，用于解决可能会影响 NetApp HCI 部署的任何网络或配置问题。
 
+.开始之前
 您已在可访问管理网络， VMware vCenter Server 网络连接（如果要加入现有 VMware 安装）以及要用于 NetApp HCI 的交换机的设备上安装了 Active IQ Config Advisor 。
 
 
 NOTE: 如果您使用的是 Mellanox 交换机，而 NetApp 专业服务正在部署过程中对其进行配置，则无需提供交换机信息。
 
+.关于此任务
 Active IQ Config Advisor 仅执行只读检查以收集信息。在收集过程中，不会修改任何配置。
 
 .步骤

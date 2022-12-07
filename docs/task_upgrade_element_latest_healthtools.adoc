@@ -19,7 +19,7 @@ keywords: netapp, HealthTools upgrade, sfupdate-healthtools, element
 
 IMPORTANT: Element 软件 12.3.2 是可使用 NetApp HealthTools 升级到的最终版本。如果您运行的是 Element 软件 11.3 或更高版本，则应使用 NetApp Hybrid Cloud Control 升级 Element 软件。您可以使用 NetApp HealthTools 升级 Element 11.1 或更早版本。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您正在运行管理节点 11.0 ， 11.1 或更高版本。
 * 您已将管理服务至少升级到 2.1.326 版。
 +
@@ -38,6 +38,7 @@ TIP: 您可以运行 `sfupdate-healthtools -v` 命令来检查本地安装的 He
 
 
 
+.关于此任务
 运行 HealthTools 套件中的命令需要升级权限。请在命令前面加上 `sUdo` 或将您的用户升级到 root 权限。
 
 

@@ -19,7 +19,7 @@ keywords: netapp, hci, rancher, kubernetes clusters, create cluster
 
 TIP: 有关创建集群的要求的详细信息，请参见 https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/["Rancher 文档"^]。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您已在 NetApp HCI 上安装 Rancher 。
 * 您具有所需的静态 IP 地址。每个用户集群需要三个静态 IP 地址。
 * 您已熟悉中列出的要求 https://rancher.com/docs/rancher/v2.x/en/cluster-provisioning/["Rancher 文档"^]。

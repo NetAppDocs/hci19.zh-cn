@@ -16,14 +16,14 @@ keywords: netapp, hci, management node, management services, version, bundle ver
 [role="lead"]
 您可以使用管理节点中的 REST API 验证管理节点操作系统，管理服务包以及管理节点上运行的各个服务的版本号。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的集群运行的是 NetApp Element 软件 11.3 或更高版本。
 * 您已部署运行 11.3 或更高版本的管理节点。
 
 
 .选项
-*  commands
-*  API UI steps
+* <<API 命令>>
+* <<REST API UI 步骤>>
 
 
 

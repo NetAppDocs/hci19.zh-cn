@@ -16,7 +16,7 @@ keywords: netapp, compute prechecks, compute node upgrade, netapp hci
 [role="lead"]
 您必须在升级计算固件之前运行运行运行状况检查，以确保集群中的所有计算节点均已做好升级准备。只能对一个或多个受管 NetApp HCI 计算节点的计算集群运行计算节点运行状况检查。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * *管理服务*：您已更新到最新的管理服务包(2.11或更高版本)。
 * *管理节点*：正在运行管理节点11.3或更高版本。
 * * Element Software*：您的存储集群运行的是NetApp Element 软件11.3或更高版本。
@@ -39,15 +39,16 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 
 
+.运行状况检查选项
 您可以使用NetApp Hybrid Cloud Control UI或NetApp Hybrid Cloud Control API运行运行状况检查：
 
-*  NetApp Hybrid Cloud Control to run compute node health checks prior to upgrading firmware （首选方法）
-*  API to run compute node health checks prior to upgrading firmware
+* <<在升级固件之前，请使用 NetApp Hybrid Cloud Control 运行计算节点运行状况检查>> （首选方法）
+* <<在升级固件之前，请使用 API 运行计算节点运行状况检查>>
 
 
 您还可以了解有关此服务运行的计算节点运行状况检查的更多信息：
 
-*  node health checks made by the service
+* <<服务执行的计算节点运行状况检查>>
 
 
 

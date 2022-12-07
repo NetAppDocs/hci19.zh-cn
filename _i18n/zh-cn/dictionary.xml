@@ -134,7 +134,6 @@
   <block id="4890b06e0bef2ccd30ddebf19fa9e652" category="summary">您可以使用 REST API 从管理 ndoe 上运行的服务检索日志。</block>
   <block id="a5790b06c6321c773eca064d8f8b323a" category="doc">从管理服务获取日志</block>
   <block id="7eada9b3aeba75afea1bb6e56efd98a1" category="paragraph">您可以使用 REST API 从管理节点上运行的服务检索日志。您可以从所有公有服务中提取日志，也可以指定特定服务并使用查询参数更好地定义返回结果。</block>
-  <block id="a711863513c11f3a6d86294acc7be0ba" category="list-title">您需要什么？ #8217 ；将需要什么</block>
   <block id="fc78a25a814125bdaeb01b28be02a19d" category="list-text">您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。</block>
   <block id="d95dde96d5f37c05bba91d1bff6d1a55" category="list-text">您已部署运行 11.3 或更高版本的管理节点。</block>
   <block id="f3a29486bed19a90f2da6d007818b427" category="list-title">步骤</block>
@@ -492,7 +491,6 @@
   <block id="bfc5232cd54db21b7879b3adc6550835" category="paragraph">您可以在混合云控制信息板上快速查看和响应警报。</block>
   <block id="92f931e19caf8af4e3a31a82b06ccabd" category="summary">获取可下载并应用于 NetApp HCI 节点的固件包发行说明的链接。</block>
   <block id="7a02f75af06b21c7f1cfccabab836899" category="doc">计算固件包 2.76 发行说明</block>
-  <block id="5fef629b836b60819e0c0ce49cd2b9d7" category="section-title">新增功能</block>
   <block id="5d97960a6eafabed18140433c99665c6" category="paragraph">2.76 版包含常规错误修复。</block>
   <block id="692731d8e937243e33f91c14df51cf3f" category="section-title">已更新固件组件</block>
   <block id="0a07252a3e464951db5264e4d4279d52" category="paragraph">此固件包包含以下硬件组件固件版本，更新版本以粗体显示：</block>
@@ -1769,7 +1767,6 @@
   <block id="0e68b38eaff7123dcc12ce395a147a48" category="summary">NetApp HCI 可提供存储和计算资源，并将其组合在一起，以构建一个以 NetApp Element 软件功能为后盾的 VMware vSphere 环境。</block>
   <block id="2bfee064de23abb29a29ad16b90c3080" category="doc">NetApp HCI 配置和管理文档</block>
   <block id="2d2319a467144bf3a0e5baabca9ea680" category="paragraph">您可以使用 NetApp 混合云控制界面升级，扩展和监控系统，并使用适用于 vCenter Server 的 NetApp Element 插件管理 NetApp HCI 资源。</block>
-  <block id="1fde0727b387439572ade83eecff4f68" category="section-title">了解新功能</block>
   <block id="6b51db420393cbff0d9f09dfeb229ecb" category="inline-link-macro">NetApp HCI 中的新增功能</block>
   <block id="6709fa8e92b382825b811cdae7781d0f" category="list-text"><block ref="6709fa8e92b382825b811cdae7781d0f" category="inline-link-macro-rx"></block></block>
   <block id="858ea7ae6467e65992f082751f2c1cdf" category="inline-link">NetApp Element 软件中的新增功能</block>
@@ -2101,7 +2098,6 @@
   <block id="ae4ac9937fe2124bac1e8af524c0bdc6" category="list-text">在 * 操作 * 下，选择 * 启用维护模式 * 。</block>
   <block id="b66e6d3d140b3a6b8af0112f6c915150" category="paragraph">在启用 * 维护模式 * 时，选定节点以及同一集群上的所有其他节点将无法执行维护模式操作。</block>
   <block id="62ae267478305435d23b7df0f401bb38" category="paragraph">在 * 启用维护模式 * 完成后， * 节点状态 * 列将显示处于维护模式的节点的扳手图标和文本 "* 维护模式 * " 。</block>
-  <block id="093586b1f3ef758c1cea8d476b072359" category="section-title">禁用维护模式</block>
   <block id="a1572d68c738e66df4f2eba84768fe13" category="paragraph">成功将某个节点置于维护模式后，可以对此节点执行 * 禁用维护模式 * 操作。在对正在进行维护的节点成功禁用维护模式之前，其他节点上的操作将不可用。</block>
   <block id="6351ccc6ed60aa5dd025a0b847793a94" category="list-text">对于处于维护模式的节点，在 * 操作 * 下，选择 * 禁用维护模式 * 。</block>
   <block id="fc081ac4444d21e696896e77aedce790" category="paragraph">禁用 * 维护模式 * 时，选定节点以及同一集群上的所有其他节点将无法执行维护模式操作。</block>
@@ -3640,7 +3636,6 @@
   <block id="ee04baa2ee228c73a80bcb76420c3f83" category="admonition">要检查版本，请登录到管理节点并在登录横幅中查看 Element 版本号。如果您没有 11.3 ，请参见 <block ref="298642ffea6db0968793883313b436ff" category="inline-link-macro-rx"></block>。</block>
   <block id="df3748edc080e7a8ed49863460584cdd" category="paragraph">早期版本的服务包不支持使用 NetApp Hybrid Cloud Control 进行升级。</block>
   <block id="ced99676ffdce11db0cf7ce2a4a812b8" category="list-text">您已确保所有节点上的系统时间均已同步，并且已为存储集群和节点正确配置 NTP 。必须在每个节点 Web UI （`https://[IP address] ： 442` ）中为每个节点配置一个 DNS 命名服务器，并且不会出现与时间偏差相关的未解决集群故障。</block>
-  <block id="6ea7f8d4483b20144d2c82f1ed99c07a" category="section-title">系统升级顺序</block>
   <block id="47f1925137d1bc975fa326ab8c3fdaba" category="paragraph">您可以按以下顺序升级 NetApp HCI 系统。</block>
   <block id="524813e84d210a04a3c005022becca08" category="inline-link-macro">从 Hybrid Cloud Control 更新管理服务</block>
   <block id="c43409e402c491faff614694ff49b45b" category="list-text"><block ref="d96c5e393dc7f7cfcba5644a67a6ff8a" category="inline-link-macro-rx"></block>。</block>
@@ -4819,7 +4814,6 @@
   <block id="f4ad5fe6377e47eb0f1d3efd91917e13" category="section-title">使用 vCenter Server 验证您的部署</block>
   <block id="6c8f5781f8959d00ff258798ba1d4a06" category="paragraph">在 vSphere 客户端中，您可以看到 Rancher 管理集群，其中包括三个虚拟机。</block>
   <block id="6d5e0d8752a1244db9529c72a9402187" category="admonition">完成部署后，请勿修改 Rancher 服务器虚拟机集群的配置或删除虚拟机。NetApp HCI 上的 Rancher 依靠已部署的 RKE- 管理集群配置来正常运行。</block>
-  <block id="3f297ef15cde0668e93b35f2752fd4fd" category="section-title">下一步是什么？</block>
   <block id="9ce36cf8bc97284a665ac4d465211731" category="inline-link-macro">完成部署后任务</block>
   <block id="0d15f5317410136724749d58832233cd" category="list-text"><block ref="0d15f5317410136724749d58832233cd" category="inline-link-macro-rx"></block></block>
   <block id="50488dc9ca0f950ef434f471ee1a1ea1" category="list-text"><block ref="50488dc9ca0f950ef434f471ee1a1ea1" category="inline-link-macro-rx"></block></block>
@@ -6297,4 +6291,26 @@
   <block id="b8b146fd1e1ecdf074536a02bfe40871" category="list-text">(对于内部服务器/非公开站点)根据适用于vCenter的Element插件版本、此插件JSON文件或插件ZIP的自定义URL：</block>
   <block id="1993643c12bb4ee547f04d8d85f8c4bf" category="list-text">从适用于vCenter Server 5.0的Element插件开始、将显示NetApp Element 远程插件扩展点：</block>
   <block id="1c63b3cd9a6d3bdf8b9b31aca68672d7" category="list-text">对于适用于vCenter Server 4.10或更早版本的Element插件、将显示NetApp Element 配置和管理扩展点：</block>
+  <block id="d59db7846bd10b6d60d21543df9faa9e" category="list-title">您需要的内容</block>
+  <block id="625cc9b8ccc34496dc2b3fcffb7e384a" category="paragraph-title">步骤概述</block>
+  <block id="6c7cffebdb1404e3fc10effbd8df3e0b" category="paragraph-title">应在何时重新部署见证节点？</block>
+  <block id="91770f038cd944a1d3b9b347edeb2b10" category="section-title">新增功能</block>
+  <block id="64916198004d1ee19b1b50002f51f1a8" category="paragraph-title">升级选项</block>
+  <block id="fde2050933cb4096508de5d1d771786e" category="paragraph-title">更换选项</block>
+  <block id="8fe5279440ee3c239e840ed9b8e10ddd" category="list-text"><block ref="8fe5279440ee3c239e840ed9b8e10ddd" category="inline-link-macro-rx"></block></block>
+  <block id="01e12de62fa77fda2815719aed8ff892" category="paragraph-title">下一步行动</block>
+  <block id="e7be2be07c433bfd89cb0a290a7015a0" category="paragraph-title">配置最大值</block>
+  <block id="2cd70ba1e2d0b294626ea7f96d25a07f" category="paragraph-title">日志收集选项</block>
+  <block id="e5181fceb27eb67cd4791c26a3fa9076" category="paragraph-title">开始使用固件升级自动化</block>
+  <block id="492e5546e60705134bff8d7f80511a8d" category="section-title">了解新增功能</block>
+  <block id="6a31058d1e6208d43e0d620fb4953c23" category="paragraph-title">存储集群资产管理选项</block>
+  <block id="50f33d14f129e4548c1c270fd6725a78" category="paragraph-title">配置选项</block>
+  <block id="bd965e38a0c9cf27aa1bde099308e23f" category="paragraph-title">完成后</block>
+  <block id="891a52ee80600fd58bac60927df7a3a9" category="section-title">【启用主模式】启用维护模式</block>
+  <block id="27404255e546058b4a4837fb07e90bbf" category="section-title">【disable_main_mode]]禁用维护模式</block>
+  <block id="a31b6eafc73ca0db90a0d96e6fb9dc93" category="paragraph-title">运行状况检查选项</block>
+  <block id="df5820ca7f238b48987ff74db1271e4a" category="paragraph-title">更新选项</block>
+  <block id="d0ce6a73cc0e7aedcf58ba0e0c96c737" category="paragraph-title">对常见问题进行故障排除</block>
+  <block id="58eaebf972358f1cf03d386a4ade1a0f" category="section-title">下一步是什么？</block>
+  <block id="18526b4be693f8e5ed12fb2721f65eea" category="section-title">【系统升级顺序】系统升级顺序</block>
 </blocks>

@@ -17,7 +17,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, acc
 [role="lead"]
 如果网络上未使用 DHCP ，则需要在要用于访问 NetApp 部署引擎的某个存储节点（也称为控制存储节点）的绑定 1G 接口上设置静态 IPv4 地址。控制存储节点上的 NetApp 部署引擎将使用所有节点的绑定 10G 接口上自动配置的 IPv4 地址发现其他计算和存储节点并与其进行通信。除非您的网络有特殊要求，否则应使用此方法。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您或您的网络管理员已完成安装和设置说明文档中的任务。
 * 您可以对 NetApp HCI 节点进行物理访问。
 * 所有 NetApp HCI 节点均已启动。

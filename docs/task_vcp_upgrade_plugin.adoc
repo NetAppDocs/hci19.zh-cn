@@ -63,7 +63,7 @@ IMPORTANT: 此插件与 HTML5 vSphere Web Client 的 6.7 U2 内部版本 1300742
 
 --
 ====
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * 管理员权限 * ：您具有 vCenter 管理员角色权限来安装插件。
 * * vSphere 升级 * ：在升级适用于 vCenter Server 的 NetApp Element 插件之前，您已执行任何所需的 vCenter 升级。此操作步骤假定 vCenter 升级已完成。
 * * vCenter Server*：您的vCenter插件5.x或4.x已注册到vCenter Server。从注册实用程序 (`https://[management node IP]:9443`)、选择*注册状态*、填写必要字段、然后选择*检查状态*以验证vCenter插件是否已注册以及当前安装的版本号。

@@ -16,15 +16,17 @@ keywords: netapp, hci, BMC, connection, credentials, monitor
 [role="lead"]
 您可以在 NetApp Hybrid Cloud Control 中更改每个计算节点的基板管理控制器（ Baseboard Management Controller ， BMC ）管理员凭据。您可能需要在升级 BMC 固件之前更改凭据，或者解决 NetApp Hybrid Cloud Control 中指示的 `Hardware ID not available` 或 `Unable to detect` 错误。
 
+.您需要的内容
 用于更改 BMC 凭据的集群管理员权限。
 
 
 NOTE: 如果您在运行状况检查期间设置了 BMC 凭据，则在 * 节点 * 页面上反映此更改之前，可能会有长达 2 分钟的延迟。
 
+.选项
 选择以下选项之一以更改 BMC 凭据：
 
-*  NetApp Hybrid Cloud Control to edit BMC information
-*  the REST API to edit BMC information
+* <<使用 NetApp Hybrid Cloud Control 编辑 BMC 信息>>
+* <<使用 REST API 编辑 BMC 信息>>
 
 
 

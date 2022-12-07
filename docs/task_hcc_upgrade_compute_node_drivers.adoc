@@ -16,8 +16,10 @@ keywords: netapp, hci, on premise, cluster, element, compute node
 [role="lead"]
 对于任何 H 系列计算节点，您都可以使用 VMware Update Manager 更新节点上使用的驱动程序。
 
+.您需要的内容
 请参见中适用于您的硬件的固件和驱动程序列表 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["此 NetApp 知识库文章"^] （需要登录）。
 
+.关于此任务
 一次仅执行其中一个更新操作。
 
 在尝试升级计算固件之前，应检查当前 ESXi 驱动程序版本。如果此驱动程序已过期，请先升级此驱动程序。然后升级计算节点的计算固件。

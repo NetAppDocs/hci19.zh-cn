@@ -29,6 +29,7 @@ keywords: netapp, hci, on premise, cluster, management services
 
 
 ====
+.您需要的内容
 从管理服务2.20.69开始、您必须先接受并保存最终用户许可协议(EULA)、然后才能使用NetApp Hybrid Cloud Control UI或API升级管理服务：
 
 . 在Web浏览器中打开管理节点的IP地址：
@@ -46,11 +47,12 @@ NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启
 
 
 
+.更新选项
 您可以使用 NetApp Hybrid Cloud Control UI 或管理节点 REST API 更新管理服务：
 
-*  management services using Hybrid Cloud Control （建议方法）
-*  management services using the management node API
-*  management services using the management node API for dark sites
+* <<使用 Hybrid Cloud Control 更新管理服务>> （建议方法）
+* <<使用管理节点 API 更新管理服务>>
+* <<使用非公开站点的管理节点 API 更新管理服务>>
 
 
 

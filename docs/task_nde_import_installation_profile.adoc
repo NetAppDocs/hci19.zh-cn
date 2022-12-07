@@ -16,6 +16,7 @@ keywords: netapp, hci, deployment, compatibility, nodes, installation, profile, 
 [role="lead"]
 如果您已获得 NetApp https://configbuilder.netapp.com/["ConfigBuilder"^] 配置文件输出。对于您的安装，您可以在 NetApp HCI 安装过程中导入此配置文件，以自动填写 NetApp 部署引擎中的字段。这是一个可选步骤。
 
+.关于此任务
 如果导入安装配置文件，则仍需要在 NetApp 部署引擎的 * 凭据 * 页面上输入 NetApp HCI 要使用的凭据。
 
 

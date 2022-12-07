@@ -16,6 +16,7 @@ keywords: netapp, hci, netapp, networking, clusters, user, trident, rancher
 [role="lead"]
 如果您的 NetApp HCI 环境在管理网络和存储网络之间没有路由，并且您部署的用户集群需要 Trident 支持，则需要在安装 Trident 后进一步配置用户集群网络。对于每个用户集群，您需要启用管理网络和存储网络之间的通信。为此，您可以修改用户集群中每个节点的网络配置。
 
+.关于此任务
 按照以下常规步骤修改用户集群中每个节点的网络配置。以下步骤假定您使用随 NetApp HCI 上的 Rancher 一起安装的默认节点模板创建了用户集群。
 
 

@@ -16,11 +16,12 @@ keywords: netapp, hci, dimm, compute nodes
 [role="lead"]
 您可以更换 NetApp HCI 计算节点中出现故障的双列直插式内存模块（ DIMM ），而不是更换整个节点。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 在启动此操作步骤之前，您应已联系 NetApp 支持部门并收到更换部件。在安装更换件期间，将会提供支持。如果您尚未执行此操作，请联系 https://www.netapp.com/us/contact-us/support.aspx["支持"^]。
 * 您已计划系统停机，因为您需要关闭节点电源或重新启动节点，然后将节点启动到 NetApp 安全模式以访问终端用户界面（ TUI ）。
 
 
+.关于此任务
 此操作步骤适用场景支持以下计算节点型号：
 
 * H410C 节点。H410C 节点插入 2U NetApp HCI 机箱。
@@ -38,8 +39,8 @@ NOTE: 对于 H610C 和 H615C ，术语 " 机箱 " 和 " 节点 " 可以互换使
 
 以下是更换计算节点中的 DIMM 所涉及的步骤：
 
-*  to replace the DIMM
-*  the DIMM from the chassis
+* <<准备更换 DIMM>>
+* <<更换机箱中的 DIMM>>
 
 
 
@@ -264,6 +265,7 @@ IMPORTANT: 确保您仅接触 DIMM 的后端。如果按压 DIMM 的其他部分
 
 
 
+.下一步行动
 节点恢复正常运行后，在 vCenter 中，检查摘要选项卡以确保内存容量符合预期。
 
 

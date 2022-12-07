@@ -17,7 +17,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, acc
 [role="lead"]
 在服务器自动从 DHCP 获取 IPv4 配置的环境中，您可以使用分配给其中一个存储节点上的绑定 1G 接口的 IPv4 地址来访问 NetApp 部署引擎。您可以使用 U 盘从其中一个存储节点检索 IPv4 地址。NetApp 部署引擎将自动发现使用 DHCP 分配的 IPv4 地址的其他计算和存储节点。除非您的网络有特殊要求，否则不应使用此方法。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您或您的网络管理员已完成安装和设置说明文档中的任务。
 * 您可以对 NetApp HCI 节点进行物理访问。
 * 所有 NetApp HCI 节点均已启动。
@@ -28,6 +28,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, acc
 
 NOTE: 要成功部署 NetApp HCI ，部署中的所有节点必须具有 DHCP 获取的或自动配置的 IPv4 地址（不能混用 IPv4 地址分配方法）。
 
+.关于此任务
 如果 DHCP 仅用于存储网络（绑定 10G 接口），则应使用链接中所述的步骤： link:task_nde_access_no_dhcp.html["在不使用 DHCP 的环境中访问 NetApp 部署引擎"] 以访问 NetApp 部署引擎。
 
 .步骤

@@ -57,6 +57,7 @@ NOTE: 如果部署失败，请保存任何错误消息文本并联系 NetApp 支
 
 
 
+.完成后
 选择 * 启动 vSphere* ，开始使用 NetApp HCI 。
 
 [NOTE]

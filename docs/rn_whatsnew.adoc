@@ -28,8 +28,8 @@ Element 12.3.2提供了一种缓解方法、可消除Element软件受到Apache L
 NetApp建议不要在集群中运行混合Element版本、但升级期间除外。
 
 ====
-* 。  HCI 1.9P1 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。
-* 。  12.3.1 第节介绍NetApp Element 12.3.1中的新增功能和更新。
+* 。 <<NetApp HCI 1.9P1>> 第节介绍 NetApp HCI 1.9P1 版中的新增功能和更新。
+* 。 <<Element 12.3.1>> 第节介绍NetApp Element 12.3.1中的新增功能和更新。
 
 
 

@@ -18,7 +18,7 @@ keywords: netapp, mnode, management node, rest api, hci
 
 如果您最近扩展了安装，而新资产未自动添加到配置中，则可能需要添加资产。使用这些 API 添加最近添加到安装中的资产。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
 * 您已部署运行 11.3 或更高版本的管理节点。
 * 您已拥有 link:task_mnode_create_netapp_hcc_role_vcenter.html["已在 vCenter 中创建新的 NetApp HCC 角色"] 将管理节点服务视图限制为纯 NetApp 资产。
@@ -27,6 +27,7 @@ keywords: netapp, mnode, management node, rest api, hci
 * 您拥有硬件（ BMC ）管理 IP 地址和管理员凭据。
 
 
+.关于此任务
 （仅限 NetApp HCI ）如果在扩展 NetApp HCI 系统后，在混合云控制（ HCC ）中看不到计算节点，则可以使用此操作步骤中所述的 `post /assets/ ｛ asset_id ｝ /compute-nodes` 添加计算节点。
 
 

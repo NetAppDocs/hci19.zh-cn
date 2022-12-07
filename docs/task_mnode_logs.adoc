@@ -16,7 +16,7 @@ keywords: netapp, element, management node, management services, mnode, logs
 [role="lead"]
 您可以使用 REST API 从管理节点上运行的服务检索日志。您可以从所有公有服务中提取日志，也可以指定特定服务并使用查询参数更好地定义返回结果。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
 * 您已部署运行 11.3 或更高版本的管理节点。
 

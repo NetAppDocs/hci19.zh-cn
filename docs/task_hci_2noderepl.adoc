@@ -16,7 +16,7 @@ keywords: netapp, hci, H610C, H615C, chassis replacement, node replacement
 [role="lead"]
 在更换属于双节点集群一部分的存储节点之前，您应先添加第三个存储节点（需要一组新的 IP 地址），并允许完成同步，然后删除故障节点。在替代节点加入集群之前，集群将保持降级状态。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您有新的管理 IP 和存储 IP 地址。
 * 您已验证集群在节点脱机后是否显示 `ClusterCannotSync` 警报。这样可以确保在将新节点重新添加回集群时，集群执行完全重新同步。此警报将在存储节点脱机大约六分钟后显示。
 * 您已联系 NetApp 支持部门。如果您要订购更换件，应向 NetApp 支持部门提交一个案例。
@@ -24,6 +24,7 @@ keywords: netapp, hci, H610C, H615C, chassis replacement, node replacement
 * 您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。
 
 
+.关于此任务
 当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
 
 .步骤

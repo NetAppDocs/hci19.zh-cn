@@ -11,16 +11,16 @@ keywords: netapp, hci, initiator, storage, element, access group
 [role="lead"]
 您可以使用 link:concept_hci_initiators.html["启动程序"] 用于基于 CHAP 而不是基于帐户访问卷。您可以创建和删除启动程序，并为其提供友好的别名，以简化管理和卷访问。将启动程序添加到卷访问组时，该启动程序将允许访问组中的所有卷。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您拥有集群管理员凭据。
 * 您已将管理服务至少升级到版本 2.17 。NetApp Hybrid Cloud Control 启动程序管理在早期的服务包版本中不可用。
 
 
 .选项
-*  an initiator
-*  initiators to a volume access group
-*  an initiator alias
-*  initiators
+* <<创建启动程序>>
+* <<将启动程序添加到卷访问组>>
+* <<更改启动程序别名>>
+* <<删除启动程序>>
 
 
 
@@ -29,6 +29,7 @@ keywords: netapp, hci, initiator, storage, element, access group
 
 您可以创建 iSCSI 或光纤通道启动程序，也可以为其分配别名。
 
+.关于此任务
 可接受的启动程序 IQN 格式为 `iqn.yyyy-mm` ，其中 y 和 m 是数字，后跟文本，文本必须仅包含数字，小写字母字符，句点（` 。` ），冒号（` ：` ）或短划线（` -` ）。格式示例如下：
 
 [listing]

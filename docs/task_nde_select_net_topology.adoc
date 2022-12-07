@@ -17,6 +17,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, vsphere
 [role="lead"]
 为 NetApp HCI 节点布线时，您可以根据需要选择使用不同的网络缆线配置。对于每个计算节点，您可以使用所有六个网络端口，并为每对端口分配不同类型的流量，也可以使用两个端口，并为这些端口分配所有类型的流量。存储节点使用标准的四缆线配置。您的选择会影响清单中可选择的计算节点。
 
+.您需要的内容
 如果您为计算节点选择双缆线网络拓扑，请考虑以下要求：
 
 * 您已准备好 VMware vSphere Enterprise Plus 许可证，以便在部署完成后应用。

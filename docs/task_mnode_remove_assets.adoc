@@ -16,7 +16,7 @@ keywords: netapp, hci, api, REST, remove, compute, asset
 [role="lead"]
 如果您以物理方式更换计算节点或需要将其从 NetApp HCI 集群中删除，则必须使用管理节点 API 删除计算节点资产。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您的存储集群运行的是 NetApp Element 软件 11.3 或更高版本。
 * 您已部署运行 11.3 或更高版本的管理节点。
 

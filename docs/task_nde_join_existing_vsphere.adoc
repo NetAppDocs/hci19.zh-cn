@@ -17,13 +17,14 @@ keywords: netapp, hci, netapp deployment engine, deployment, vsphere
 [role="lead"]
 您可以通过提供 vCenter Server 网络信息和凭据来配置 NetApp HCI 以利用现有 vSphere 部署。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 如果要加入现有 vSphere 6.7 部署，请确保 vCenter Server 运行的是版本 6.7 Update 1 。
 * 如果要加入现有 vSphere 6.5 部署，请确保 vCenter Server 运行的是 6.5 Update 2 或更高版本。
 * 获取现有 vSphere 部署的网络详细信息和管理员凭据。
 * 如果适用于 vCenter Server 的 NetApp Element 插件已注册到现有 vCenter 实例，则需要 https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["取消注册"^] 然后继续。NetApp HCI 部署完成后，此插件将重新注册。
 
 
+.关于此任务
 如果您加入多个使用 vCenter 链接模式连接的 vCenter Server 系统，则 NetApp HCI 仅会识别其中一个 vCenter Server 系统。
 
 [NOTE]

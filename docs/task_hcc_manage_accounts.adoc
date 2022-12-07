@@ -18,8 +18,8 @@ keywords: netapp, hci, on premise, cluster, element, account, user, volume, hybr
 
 管理以下类型的帐户：
 
-*  authoritative cluster accounts
-*  volume accounts
+* <<管理权威集群帐户>>
+* <<管理卷帐户>>
 
 
 
@@ -62,7 +62,7 @@ link:concept_cg_hci_accounts.html#authoritative-user-accounts["权威用户帐�
 ** 如果选择 LDAP ，请输入 DN 。
 +
 
-TIP: 要使用 LDAP ，必须先启用 LDAP 或 LDAPS 。请参见  LDAP。
+TIP: 要使用 LDAP ，必须先启用 LDAP 或 LDAPS 。请参见 <<启用 LDAP ：>>。
 
 ** 如果您选择集群作为身份验证类型，请输入新帐户的名称和密码。
 

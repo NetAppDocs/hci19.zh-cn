@@ -19,7 +19,7 @@ keywords: netapp, hci, H410C nodes, replacement, node replacement
 
 NOTE: 替代节点应与 NetApp HCI 安装中的其余计算节点具有相同版本的 NetApp HCI 启动操作系统。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 您已确定需要更换此计算节点。
 * 您有一个替代计算节点。要订购替代节点，您应联系 NetApp 支持部门。计算节点在出厂时已安装 Bootstrap 操作系统。节点出厂时已安装最新版本的 Bootstrap OS 。在以下情况下，您可能需要在节点上执行恢复出厂映像（ Return to Factory Image ， RTFI ）过程：
 +
@@ -31,6 +31,7 @@ NOTE: 替代节点应与 NetApp HCI 安装中的其余计算节点具有相同�
 * 您已标记连接到计算节点的每个缆线。
 
 
+.关于此任务
 当节点出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您应将 VMware vSphere Web Client 中故障节点的序列号与此节点背面标签上的序列号进行匹配。
 
 更换 H410C 计算节点时，请考虑以下事项：
@@ -39,15 +40,16 @@ NOTE: 替代节点应与 NetApp HCI 安装中的其余计算节点具有相同�
 * H410C 计算节点仅使用高压线（ 200-240 VAC ）运行。向现有 NetApp HCI 系统添加 H410C 节点时，应确保满足电源要求。
 
 
-下面简要概述了此操作步骤中的步骤： to replace the compute node
- the compute node in the chassis
- the compute node asset in NetApp HCI 1.7 and later
- the compute node to the cluster
- Witness Nodes for two and three-node storage clusters
+.步骤概述
+下面简要概述了此操作步骤中的步骤：<<准备更换计算节点>>
+<<更换机箱中的计算节点>>
+<<在 NetApp HCI 1.7 及更高版本中删除计算节点资产>>
+<<将计算节点添加到集群>>
+<<为双节点和三节点存储集群重新部署见证节点>>
 
 以下是一些附加任务，如果您的系统具有适用于这些任务的特定条件，您可能需要执行这些任务：link:task_hci_removewn.html["删除见证节点以释放计算资源"]
- the password if you received a replacement node with a non-standard BMC password
- the BMC firmware on your node
+<<如果您收到的替代节点使用非标准 BMC 密码，请更改此密码>>
+<<升级节点上的 BMC 固件>>
 
 
 
@@ -177,7 +179,7 @@ NOTE: 如果您在尝试授权后收到 `Auth Error TypeError ： Failed to fetc
 
 只有在 NetApp HCI 安装运行于 1.6P1 或更高版本时，才能使用 NetApp 混合云控制。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 如果要使用虚拟分布式交换机扩展部署，请确保 NetApp HCI 所使用的 vSphere 实例具有 vSphere Enterprise Plus 许可。
 * 确保与 NetApp HCI 一起使用的 vCenter 或 vSphere 实例的许可证均未过期。
 * 确保与现有节点位于同一网段上的 IPv4 地址可用且未使用（每个新节点都必须与此类型的现有节点安装在同一网络上）。
@@ -262,7 +264,7 @@ TIP: 对于某些计算节点，您可能需要先在 vCenter 版本支持的最
 
 如果您的 NetApp HCI 安装运行的是 1.4P2 ， 1.4 或 1.3 版，则可以使用 NetApp 部署引擎将节点添加到集群中。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 如果要使用虚拟分布式交换机扩展部署，请确保 NetApp HCI 所使用的 vSphere 实例具有 vSphere Enterprise Plus 许可。
 * 确保与 NetApp HCI 一起使用的 vCenter 或 vSphere 实例的许可证均未过期。
 * 确保与现有节点位于同一网段上的 IPv4 地址可用且未使用（每个新节点都必须与此类型的现有节点安装在同一网络上）。
@@ -576,7 +578,7 @@ image::rescan.gif[显示了存储适配器的重新扫描图标。]
 
 在物理更换发生故障的计算节点后，如果发生故障的计算节点托管见证节点，则应重新部署 NetApp HCI 见证节点 VM 。这些说明仅适用于包含两个或三节点存储集群的 NetApp HCI 安装中的计算节点。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 收集以下信息：
 +
 ** 存储集群中的集群名称
@@ -597,6 +599,7 @@ NOTE: 如果集群只关闭到两个物理存储节点（而没有见证节点�
 
 
 
+.应在何时重新部署见证节点？
 在以下情况下，应重新部署见证节点：
 
 * 您更换了 NetApp HCI 安装中出现故障的计算节点，该节点包含一个双节点或三节点存储集群，而故障计算节点托管的是见证节点虚拟机。

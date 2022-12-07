@@ -16,15 +16,16 @@ keywords: netapp, hci, logs, collection, troubleshooting, monitor
 [role="lead"]
 如果您在安装 NetApp HCI 或 SolidFire 全闪存存储时遇到问题，可以收集日志并发送给 NetApp 支持部门，以帮助进行诊断。您可以使用 NetApp 混合云控制或 REST API 收集 NetApp HCI 或 Element 系统上的日志。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * 确保您的存储集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
 * 确保已部署运行 11.3 或更高版本的管理节点。
 
 
+.日志收集选项
 选择以下选项之一：
 
-*  NetApp Hybrid Cloud Control to collect logs
-*  the REST API to collect logs
+* <<使用 NetApp Hybrid Cloud Control 收集日志>>
+* <<使用 REST API 收集日志>>
 
 
 

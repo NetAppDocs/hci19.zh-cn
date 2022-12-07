@@ -16,7 +16,7 @@ keywords: netapp, hci, deployment, review, GPU, install, driver, drivers
 [role="lead"]
 通过 NetApp 混合云控制，您可以管理 NetApp HCI 。您可以升级 NetApp HCI 的管理服务和其他组件，并扩展和监控安装。您可以通过浏览到管理节点的 IP 地址登录到 NetApp Hybrid Cloud Control 。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * 集群管理员权限 * ：您对存储集群拥有管理员权限。
 * * 管理服务 * ：您已将管理服务至少升级到 2.1.326 版。NetApp Hybrid Cloud Control 在早期的服务包版本中不可用。有关当前服务包版本的信息，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["管理服务发行说明"^]。
 

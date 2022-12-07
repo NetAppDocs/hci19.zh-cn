@@ -17,6 +17,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, vsphere
 [role="lead"]
 您可以在 NetApp HCI 安装过程中通过提供 vSphere 应使用的一些网络信息来部署新的 vSphere 环境。请注意，如果使用 IP 地址配置 vSphere ，则在安装后无法更改此地址。
 
+.您需要的内容
 您已获取规划的 vSphere 环境的网络信息。
 
 .步骤

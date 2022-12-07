@@ -15,7 +15,7 @@ keywords: netapp, hci, element, storage cluster, hybrid cloud control, hcc, main
 
 从 Element 12.2 开始，您可以使用 link:concept_hci_storage_maintenance_mode.html["维护模式"] 用于为存储集群节点启用和禁用维护模式的功能选项。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * 集群管理员权限 * ：您对具有管理员权限 link:concept_hci_clusters.html#authoritative-storage-clusters["权威存储集群"]。权威集群是在系统设置期间添加到管理节点清单中的第一个集群。
 * * Element Software* ：您的存储集群版本运行的是 NetApp Element 软件 11.3 或更高版本。
 * * 管理节点 * ：您已部署运行 11.3 或更高版本的管理节点。
@@ -23,11 +23,11 @@ keywords: netapp, hci, element, storage cluster, hybrid cloud control, hcc, main
 
 
 .选项
-*  a storage cluster
-*  storage cluster status
-*  storage cluster credentials
-*  a storage cluster
-*  and disable maintenance mode
+* <<添加存储集群>>
+* <<确认存储集群状态>>
+* <<编辑存储集群凭据>>
+* <<删除存储集群>>
+* <<启用和禁用维护模式>>
 
 
 
@@ -111,9 +111,9 @@ CAUTION: 单击 * 是 * 下一步将从安装中删除集群。
 [discrete]
 == 启用和禁用维护模式
 
-这 link:concept_hci_storage_maintenance_mode.html["维护模式"] 通过功能选项，您可以执行以下操作 ,启用 和 ,-disable 存储集群节点的维护模式。
+这 link:concept_hci_storage_maintenance_mode.html["维护模式"] 通过功能选项，您可以执行以下操作 <<enable_main_mode,启用>> 和 <<disable_main_mode,-disable>> 存储集群节点的维护模式。
 
-.您需要什么？ #8217 ；将需要什么
+.您需要的内容
 * * Element 软件 * ：您的存储集群版本运行的是 NetApp Element 软件 12.2 或更高版本。
 * * 管理节点 * ：您已部署运行 12.2 或更高版本的管理节点。
 * * 管理服务 * ：您已将管理服务包更新到 2.19 或更高版本。
@@ -122,7 +122,7 @@ CAUTION: 单击 * 是 * 下一步将从安装中删除集群。
 
 
 
-=== 启用维护模式
+=== 【启用主模式】启用维护模式
 
 您可以使用以下操作步骤为存储集群节点启用维护模式。
 
@@ -167,7 +167,7 @@ image:hcc_enable_maintenance_mode.PNG["启用维护模式"]
 
 
 
-=== 禁用维护模式
+=== 【disable_main_mode]]禁用维护模式
 
 成功将某个节点置于维护模式后，可以对此节点执行 * 禁用维护模式 * 操作。在对正在进行维护的节点成功禁用维护模式之前，其他节点上的操作将不可用。
 

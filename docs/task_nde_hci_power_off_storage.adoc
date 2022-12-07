@@ -17,6 +17,7 @@ keywords: netapp, hci, netapp deployment engine, deployment, vsphere
 [role="lead"]
 关闭 NetApp HCI 的存储资源时，您需要使用 `Shutdown` Element API 方法正确暂停存储节点。
 
+.步骤
 关闭计算资源后，您可以使用 Web 浏览器关闭 NetApp HCI 存储集群的所有节点。
 
 . 登录到存储集群并验证是否已连接到正确的 MVIP 。

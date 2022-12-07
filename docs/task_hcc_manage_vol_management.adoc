@@ -15,14 +15,14 @@ keywords: netapp, hci, cluster, element, volume
 
 您可以通过以下方式在 NetApp Hybrid Cloud Control 中管理卷：
 
-*  a volume
-*  a QoS policy to a volume
-*  a volume
-*  volumes
-*  volumes to a volume access group
-*  a volume
-*  a deleted volume
-*  a deleted volume
+* <<创建卷>>
+* <<将 QoS 策略应用于卷>>
+* <<编辑卷>>
+* <<克隆卷>>
+* <<将卷添加到卷访问组>>
+* <<删除卷>>
+* <<还原已删除的卷>>
+* <<清除已删除的卷>>
 
 
 
@@ -71,7 +71,7 @@ NOTE: 如果帐户数超过 50 个，则不会显示此列表。开始键入，�
 
 == 将 QoS 策略应用于卷
 
-您可以使用 NetApp Hybrid Cloud Control 将 QoS 策略应用于现有存储卷。如果需要为卷设置自定义 QoS 值，则可以  a volume。要创建新的 QoS 策略，请参见 link:task_hcc_qos_policies.html["创建和管理卷 QoS 策略"^]。
+您可以使用 NetApp Hybrid Cloud Control 将 QoS 策略应用于现有存储卷。如果需要为卷设置自定义 QoS 值，则可以 <<编辑卷>>。要创建新的 QoS 策略，请参见 link:task_hcc_qos_policies.html["创建和管理卷 QoS 策略"^]。
 
 .步骤
 . 通过提供 NetApp HCI 或 Element 存储集群管理员凭据登录到 NetApp 混合云控制。
@@ -92,6 +92,7 @@ NOTE: 如果要在卷上使用 QoS 策略，则可以设置自定义 QoS 以删�
 
 使用 NetApp Hybrid Cloud Control ，您可以编辑卷属性，例如 QoS 值，卷大小以及用于计算字节值的度量单位。您还可以修改帐户访问权限以使用复制或限制对卷的访问。
 
+.关于此任务
 在以下情况下，如果集群上有足够的空间，则可以调整卷大小：
 
 * 正常运行条件。
@@ -167,6 +168,7 @@ TIP: 更改 IOPS 值时，应以十或百为单位递增。输入值需要有效
 * 可用的未配置空间必须等于或大于卷大小。
 
 
+.关于此任务
 集群一次最多支持每个卷运行两个克隆请求，一次最多支持 8 个活动卷克隆操作。超过这些限制的请求将排队等待稍后处理。
 
 卷克隆是一个异步过程，此过程所需的时间取决于要克隆的卷大小以及当前集群负载。
@@ -225,6 +227,7 @@ NOTE: 完成克隆操作所需的时间受卷大小和当前集群负载的影�
 
 您可以从 Element 存储集群中删除一个或多个卷。
 
+.关于此任务
 系统不会立即清除已删除的卷；这些卷在大约八小时内保持可用。八小时后，这些卷将被清除，不再可用。如果在系统清除卷之前还原该卷，则该卷将恢复联机并还原 iSCSI 连接。
 
 如果删除用于创建快照的卷，则其关联快照将变为非活动状态。清除已删除的源卷后，关联的非活动快照也会从系统中删除。
