@@ -125,6 +125,9 @@ image::network_ports.PNG[检查端口连接]
 | 管理节点 | 计算节点 BMC/IPMI | 623 UDP | 远程管理控制协议（ RMCP ）端口。NetApp Hybrid Cloud Control 计算固件升级需要此功能。 
 
 
+| 管理节点 | 存储节点BMC/IPMI | 623 UDP | RMCP端口。这是管理启用了IPMI的系统所必需的。 
+
+
 | 管理节点 | VMware vCenter | 598-5989 | NetApp Hybrid Cloud Control HTTPS 通信 
 
 
@@ -138,6 +141,9 @@ image::network_ports.PNG[检查端口连接]
 
 
 | SNMP 服务器 | 存储节点 MIP | 161/UDP | SNMP 轮询 
+
+
+| 存储节点BMC/IPMI | 管理节点 | 623 UDP | RMCP端口。这是管理启用了IPMI的系统所必需的。 
 
 
 | 存储节点 MIP | DNS 服务器 | 53 TCP/UDP | DNS 查找 
