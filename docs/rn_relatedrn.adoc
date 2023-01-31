@@ -78,6 +78,7 @@ NOTE: 系统将提示您使用 NetApp 支持站点凭据登录。
 * link:rn_compute_firmware_2.76.html["计算固件包 2.76 发行说明"]
 * link:rn_compute_firmware_2.27.html["计算固件包 2.27 发行说明"]
 * link:rn_firmware_12.2.109.html["计算固件包 12.2.109 发行说明"]
+* link:firmware_driver_versions.html["支持的固件和ESXi驱动程序版本"] _new_
 
 
 
@@ -89,4 +90,5 @@ NOTE: 系统将提示您使用 NetApp 支持站点凭据登录。
 * link:rn_storage_firmware_2.76.html["存储固件包 2.76 发行说明"]
 * link:rn_storage_firmware_2.27.html["存储固件包 2.27 发行说明"]
 * link:rn_H610S_BMC_3.84.07.html["H610S BMC 3.84.07 发行说明"]
+* link:firmware_driver_versions.html["支持的固件和ESXi驱动程序版本"] _new_
 

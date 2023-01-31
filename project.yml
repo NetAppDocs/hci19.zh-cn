@@ -373,6 +373,8 @@ homepage:
     links:
     - title: 产品概述
       url: "/docs/concept_hci_product_overview.html"
+    - title: 支持的固件和ESXi驱动程序版本
+      url: docs/firmware_driver_versions.html
     - title: 发行说明
       url: "/docs/rn_relatedrn.html"
     - title: 新增功能

@@ -43,7 +43,7 @@ NOTE: H615C 计算节点必须使用将 BMC 固件更新到版本 4.68 link:rn_c
 
 +
 
-NOTE: 有关适用于您的硬件的完整固件和驱动程序固件列表，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["此知识库文章"^] （需要登录）。
+NOTE: 有关适用于您的硬件的完整固件和驱动程序固件列表，请参见 link:firmware_driver_versions.html["支持的固件和ESXi驱动程序版本"]。
 
 * * BIOS 启动顺序 * ：在 BIOS 设置中手动更改每个节点的启动顺序，以确保启动列表中显示 `USB CD/DVD` 。请参见此内容 link:https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Known_issues_and_workarounds_for_Compute_Node_upgrades#BootOrder["文章"^] 有关详细信息 ...
 * * BMC 凭据 * ：更新 NetApp Hybrid Cloud Control 用于连接到计算节点 BMC 的凭据。您可以使用 NetApp Hybrid Cloud Control 之一执行此操作 link:task_hcc_edit_bmc_info.html#use-netapp-hybrid-cloud-control-to-edit-bmc-information["用户界面"] 或 link:task_hcc_edit_bmc_info.html#use-the-rest-api-to-edit-bmc-information["API"]。在升级之前更新 BMC 信息可刷新清单，并确保管理节点服务能够识别完成升级所需的所有硬件参数。

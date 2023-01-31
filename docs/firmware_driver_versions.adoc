@@ -1,0 +1,22 @@
+---
+sidebar: sidebar 
+permalink: docs/firmware_driver_versions.html 
+keywords: documentation, earlier, previous, versions 
+summary: NetApp HCI 和NetApp Element 软件支持的固件和驱动程序版本。 
+---
+= NetApp HCI 支持的固件和ESXi驱动程序版本以及NetApp HCI 存储节点的固件版本
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+:keywords: hci, earlier, documentation, versions
+
+
+[role="lead"]
+NetApp HCI 支持的固件和ESXi驱动程序版本以及NetApp HCI 存储节点的固件版本。
+
+link:fw_storage_nodes.html["存储节点"]* H610S * H410S
+
+link:fw_compute_nodes.html["计算节点"]* H615C * H610C * H410C * H300E/H500E/H700E

@@ -74,5 +74,5 @@ image:bol_filters.PNG["BOL筛选器对齐=\"center\""]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
-* https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Firmware_and_driver_versions_in_NetApp_HCI_and_NetApp_Element_software["NetApp HCI 和 NetApp Element 软件的固件和驱动程序版本"^]
+* link:firmware_driver_versions.html["NetApp HCI 支持的固件和ESXi驱动程序版本以及NetApp HCI 存储节点的固件版本"]
 
