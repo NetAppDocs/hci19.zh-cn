@@ -5,29 +5,49 @@ summary: 要使用 REST API UI 将计算节点资产添加到管理节点配置�
 keywords: netapp, management node, rest api, hci, hardware tag 
 ---
 = 如何查找计算节点的硬件标记
+:hardbreaks:
 :allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
 
 
 [role="lead"]
 要使用 REST API UI 将计算节点资产添加到管理节点配置，您需要使用硬件标记。
 
-本节介绍如何查找计算节点的硬件标记。
+[role="tabbed-block"]
+====
+.VMware vSphere 8.0和7.0
+--
+在VMware vSphere Web Client 8.0和7.0中找到计算节点的硬件标记。
+
+.步骤
+. 在 vSphere Web Client 导航器中选择主机。
+. 选择 * 配置 * 选项卡。
+. 从边栏中、选择*硬件*>*概述*。检查中是否列出了硬件标记 `System` 表。
++
+image:../media/hw_tag_70.PNG["System表的屏幕截图"]
+
+. 复制并保存*标记*的值。
+. xref:task_mnode_add_assets.adoc[将计算和控制器资产添加到管理节点]。
+
+
+--
+.VMware vSphere 6.7和6.5
+--
+在VMware vSphere Web Client 6.7和6.5中找到计算节点的硬件标记。
 
 .步骤
 . 在 vSphere Web Client 导航器中选择主机。
 . 选择 * 监控 * 选项卡，然后选择 * 硬件运行状况 * 。
-. 根据您运行的 vSphere 版本，您可以在 * 硬件运行状况 * 屏幕的以下位置之一找到硬件标记。
+. 检查此标记是否与 BIOS 制造商和型号一起列出。
 +
-** 检查此标记是否与 BIOS 制造商和型号一起列出。
-+
-image:../media/hw_tag_67.PNG["硬件运行状况"]
+image:../media/hw_tag_67.PNG["System表的屏幕截图"]
 
-** 选择 * 配置 * 选项卡。从边栏中，选择 * 硬件 * 和 * 概述 * 。检查硬件标记是否列在 `System` 表中。
-+
-image:../media/hw_tag_70.PNG["硬件运行状况"]
+. 复制并保存*标记*的值。
+. xref:task_mnode_add_assets.adoc[将计算和控制器资产添加到管理节点]。
 
 
-
-. 复制并保存 `Tag` 的值。
-. 要将计算节点资产添加到管理节点，请转至 xref:task_mnode_add_assets.adoc[向管理节点添加计算和控制器资产]。
-
+--
+====
