@@ -4938,7 +4938,6 @@
   <block id="58a52fbda63276026c2618b0f43d5bfe" category="list-text">登录到存储集群并验证是否已连接到正确的 MVIP 。</block>
   <block id="5893e9a018c1b1a1d512a0185ce81928" category="list-text">验证 iSCSI 会话计数是否为零。</block>
   <block id="3f1291e4a033df94b729b1b4f2f98180" category="list-text">导航到 * 集群 &gt; 节点 &gt; 活动 * ，并记录集群中所有活动节点的节点 ID 。</block>
-  <block id="4946afec1638f740d391cce22ca9d383" category="list-text">要关闭 NetApp HCI 存储集群，请打开 Web 浏览器并使用以下 URL 调用关闭并暂停操作步骤。 其中， ` ｛ MVIP ｝` 是 NetApp HCI 存储系统的管理 IP 地址，而 `nodes=[]` 阵列包含您在步骤 2 中记录的节点 ID 。例如：</block>
   <block id="c221d53c4bd8e82dbb6d5c729ae18dec" category="list-text">输入集群管理员用户名和密码。</block>
   <block id="df2a4b92aa65e89d6a69ac777d6e1966" category="list-text">通过验证 `s所有存储集群节点是否包含在 API 结果的 " 成功` " 部分中，验证是否已成功返回 API 调用。</block>
   <block id="0329cdf242b826758b5f146f803697de" category="paragraph">您已成功关闭所有 NetApp HCI 存储节点。</block>
@@ -6551,4 +6550,16 @@
   <block id="0e8cf642a589908959f336f3b9178ba7" category="paragraph"><block ref="0e8cf642a589908959f336f3b9178ba7" category="inline-image-macro-rx" type="image"></block></block>
   <block id="22e88e4089c8681eb3fe26ebca3e4cc5" category="cell">*计算固件包2.150.4至NetApp HCI 1.10*</block>
   <block id="a6bbe5a2ef47a653214029cd4a762104" category="cell">*计算固件包2.146.2*</block>
+  <block id="811c3e17cdcbc0d2918ccd135b702fad" category="list-text">(可选)验证主机的所有I/O操作是否已停止：</block>
+  <block id="49fd465e6accbc44477708b2756a0289" category="list-text">对正在使用的一个或多个虚拟机管理程序使用适当的命令暂停主机端的I/O。</block>
+  <block id="47aa9240e90a7b94289f8a7cf08853f9" category="list-text">在集群UI中、选择*报告*&gt;*概述*。"集群输入/输出"图上不应有任何活动。</block>
+  <block id="b024a0dfe5c2df4ef82fcfbd2177b6b1" category="list-text">在所有I/O操作停止后、请等待20分钟、然后再关闭集群。</block>
+  <block id="c8561c42a30e6fcda84bba58a5dbb84c" category="list-text">要关闭NetApp HCI 存储集群、请打开Web浏览器并使用以下URL调用关闭并暂停操作步骤 、其中<block ref="00aa3917f94a85909099442cdf1f914c" prefix=" " category="inline-code"></block> 是NetApp HCI 存储系统和的管理IP地址<block ref="f5058d08365e441f6806289968bdd801" prefix=" " category="inline-code"></block> 阵列包含您在步骤4中记录的节点ID。例如：</block>
+  <block id="84238b2d8b7319262b2e3d61a903e693" category="admonition">您可以在匿名窗口中运行此命令、以避免稍后从已保存的URL再次运行此命令。</block>
+  <block id="6eb2aff6a3f188fb6f4a2e9fa0f75cdb" category="list-text">关闭浏览器或选项卡、以避免选择"返回"按钮并重复API调用。</block>
+  <block id="391aec42faef3b52d4eaaefa153733b2" category="paragraph">重新启动集群时、必须按照特定步骤验证所有节点是否均已联机：</block>
+  <block id="56312700a2d03ce6cacae049f3294807" category="list-text">验证所有严重严重性和<block ref="945c53fff9195b4e69a31c30b6a268c6" prefix=" " category="inline-code"></block> 集群故障已解决。</block>
+  <block id="6331b65d2bb9f0f39b6e8331e5b2c669" category="list-text">等待10到15分钟、以使集群建立连接。</block>
+  <block id="301bf6ea727a40a8d5cc8608cc0c41d7" category="list-text">启动主机以访问数据。</block>
+  <block id="c192e3c2dbd374233d4685406db01520" category="paragraph">如果要在打开节点电源并在维护后验证其运行状况是否良好时留出更多时间、请联系技术支持以帮助延迟数据同步以防止不必要的箱同步。</block>
 </blocks>
