@@ -41,10 +41,6 @@ https://<ManagementNodeIP>
 .. 通过提供存储集群管理员凭据登录到 NetApp Hybrid Cloud Control 。
 .. 选择靠近接口右上角的 * 升级 * 。
 .. 此时将弹出EULA。向下滚动、选择*我接受当前更新和所有未来更新*、然后选择*保存*。
-+
-
-NOTE: 如果您接受EULA、则会在所有未来更新中记录此EULA、并启用自动下载功能。您将收到有关NetApp软件更新和升级的更新、您可以在方便时自行决定安装这些更新。您可以通过禁用与NetApp联机软件存储库的网络连接来禁用自动下载功能。
-
 
 
 
@@ -66,9 +62,6 @@ IMPORTANT: 如果您要将 H610S 系列节点升级到 Element 12.3.x ，并且�
 == 使用 NetApp Hybrid Cloud Control UI 升级 Element 存储
 
 您可以使用 NetApp Hybrid Cloud Control UI 升级存储集群。
-
-.您需要的内容
-如果您的管理节点未连接到 Internet ，则表示您已下载 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["适用于 NetApp HCI 存储集群的 NetApp HCI 软件包"^]。
 
 
 CAUTION: 有关使用 NetApp Hybrid Cloud Control 升级存储集群时的潜在问题及其解决方法，请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["知识库文章"^]。
@@ -96,30 +89,29 @@ https://<ManagementNodeIP>
 | 选项 | 步骤 
 
 
-| 您的管理节点具有外部连接。  a| 
-.. 选择要升级的集群旁边的下拉箭头，然后从 * 元素 * 选项卡下提供的升级版本中进行选择。
-.. 选择 * 开始升级 * 。
-
-
-
-TIP: 升级期间， * 升级状态 * 会发生更改，以反映此过程的状态。它也会根据您执行的操作而发生更改，例如暂停升级或升级返回错误。请参见 <<升级状态更改>>。
-
-
-NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。如果集群行已折叠，则此页面不会动态更新状态和当前版本。必须展开集群行才能更新此表，您也可以刷新此页面。
-
-升级完成后，您可以下载日志。
-
-
-
-| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
+| 运行Element 11.8及更高版本的所有集群  a| 
 .. 选择 * 浏览 * 上传您下载的升级软件包。
 .. 等待上传完成。进度条会显示上传状态。
-
-
++
 
 CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
 
++
 成功上传并验证文件后，将显示一条屏幕消息。验证可能需要几分钟时间。如果在此阶段离开浏览器窗口，则会保留文件上传。
+
+.. 选择 * 开始升级 * 。
++
+
+TIP: 升级期间， * 升级状态 * 会发生更改，以反映此过程的状态。它也会根据您执行的操作而发生更改，例如暂停升级或升级返回错误。请参见 <<升级状态更改>>。
+
++
+
+NOTE: 在升级过程中，您可以退出此页面，稍后再返回此页面以继续监控进度。如果集群行已折叠，则此页面不会动态更新状态和当前版本。必须展开集群行才能更新此表，您也可以刷新此页面。
+
++
+升级完成后，您可以下载日志。
+
+
 
 
 
@@ -163,9 +155,6 @@ CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
 | error | 升级期间发生错误。您可以下载错误日志并将其发送给 NetApp 支持部门。解决此错误后，您可以返回到页面并选择 * 恢复 * 。恢复升级时，进度条会后退几分钟，而系统会运行运行状况检查并检查升级的当前状态。 
 
 
-| 无法检测 | 如果 NetApp Hybrid Cloud Control 无法通过外部连接访问联机软件存储库，则会显示此状态，而不是显示 * 可用版本 * 。如果您已建立外部连接，但仍看到此消息，请检查 link:task_mnode_configure_proxy_server.html["代理配置："]。 
-
-
 | 完成并进行跟进 | 仅适用于从早于 118 的 Element 版本升级的 H610S 节点。升级过程的第 1 阶段完成后，此状态将提示您执行升级的第 2 阶段（请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["知识库文章"^]）。完成第 2 阶段并确认已完成后，状态将变为 * 最新 * 。 
 |===
 
@@ -175,87 +164,41 @@ CAUTION: 如果您离开浏览器窗口，则文件上传将丢失。
 您可以使用 API 将集群中的存储节点升级到最新的 Element 软件版本。您可以使用自己选择的自动化工具来运行 API 。此处介绍的 API 工作流使用管理节点上提供的 REST API UI 作为示例。
 
 .步骤
-. 根据您的连接执行以下操作之一：
+. 将存储升级软件包下载到可供管理节点访问的设备；转到 NetApp HCI 软件 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["下载页面"^] 并下载最新的存储节点映像。
+. 将存储升级软件包上传到管理节点：
 +
-[cols="2*"]
-|===
-| 选项 | 步骤 
-
-
-| 您的管理节点具有外部连接。  a| 
-.. 验证存储库连接：
-+
-... 在管理节点上打开管理节点 REST API UI ：
+.. 在管理节点上打开管理节点 REST API UI ：
 +
 [listing]
 ----
 https://<ManagementNodeIP>/package-repository/1/
 ----
-... 选择 * 授权 * 并完成以下操作：
+.. 选择 * 授权 * 并完成以下操作：
 +
-.... 输入集群用户名和密码。
-.... 输入客户端 ID `mnode-client` 。
-.... 选择 * 授权 * 以开始会话。
-.... 关闭授权窗口。
+... 输入集群用户名和密码。
+... 输入客户端 ID `mnode-client` 。
+... 选择 * 授权 * 以开始会话。
+... 关闭授权窗口。
 
 
-... 从 REST API UI 中，选择 * 获取​ / packages​ / 远程 - repository​ / 连接 * 。
-... 选择 * 试用 * 。
-... 选择 * 执行 * 。
-... 如果返回代码 200 ，请转至下一步。如果未连接到远程存储库，请建立连接或使用非公开站点选项。
+.. 从 REST API UI 中，选择 * POST /packages* 。
+.. 选择 * 试用 * 。
+.. 选择 * 浏览 * 并选择升级软件包。
+.. 选择 * 执行 * 以启动上传。
+.. 在响应中，复制并保存软件包 ID （` "id"` ）以供后续步骤使用。
 
 
-.. 查找升级软件包 ID ：
+. 验证上传状态。
 +
-... 从 REST API UI 中，选择 * 获取 /packages* 。
-... 选择 * 试用 * 。
-... 选择 * 执行 * 。
-... 在响应中，复制并保存软件包 ID ，以供后续步骤使用。
-
-
-
-
-
-
-| 您的管理节点位于不具有外部连接的非公开站点中。  a| 
-.. 将存储升级软件包下载到可供管理节点访问的设备；转到 NetApp HCI 软件 https://mysupport.netapp.com/site/products/all/details/netapp-hci/downloads-tab["下载页面"^] 并下载最新的存储节点映像。
-.. 将存储升级软件包上传到管理节点：
-+
-... 在管理节点上打开管理节点 REST API UI ：
-+
-[listing]
-----
-https://<ManagementNodeIP>/package-repository/1/
-----
-... 选择 * 授权 * 并完成以下操作：
-+
-.... 输入集群用户名和密码。
-.... 输入客户端 ID `mnode-client` 。
-.... 选择 * 授权 * 以开始会话。
-.... 关闭授权窗口。
-
-
-... 从 REST API UI 中，选择 * POST /packages* 。
-... 选择 * 试用 * 。
-... 选择 * 浏览 * 并选择升级软件包。
-... 选择 * 执行 * 以启动上传。
-... 在响应中，复制并保存软件包 ID （` "id"` ）以供后续步骤使用。
-
-
-.. 验证上传状态。
-+
-... 从 REST API UI 中，选择 * GET​ /v í packages​ / ｛ id ｝​ /status* 。
-... 选择 * 试用 * 。
-... 在 * id * 中输入上一步复制的软件包 ID 。
-... 选择 * 执行 * 以启动状态请求。
+.. 从 REST API UI 中，选择 * GET​ /v í packages​ / ｛ id ｝​ /status* 。
+.. 选择 * 试用 * 。
+.. 在 * id * 中输入上一步复制的软件包 ID 。
+.. 选择 * 执行 * 以启动状态请求。
 +
 完成后，此响应会将 `state` 指示为 `Success` 。
 
 
 
-
-
-|===
 . 找到存储集群 ID ：
 +
 .. 在管理节点上打开管理节点 REST API UI ：

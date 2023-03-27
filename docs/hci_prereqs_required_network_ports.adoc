@@ -17,22 +17,6 @@ keywords: netapp, hci, ports, tcp, udp
 [role="lead"]
 您可能需要允许以下端口通过数据中心的边缘防火墙，以便可以远程管理系统，允许数据中心外部的客户端连接到资源，并确保内部服务能够正常运行。其中某些端口， URL 或 IP 地址可能不是必需的，具体取决于您使用系统的方式。除非另有说明，否则所有端口均为 TCP 。
 
-[NOTE]
-====
-NetApp Hybrid Cloud Control Web UI和API可从NetApp联机软件存储库下载软件包。因此，根据内容交付网络，某些 URL 或 IP 地址可能会解析为其他 URL 或 IP 地址。如果可能，您应与网络工程师合作，使用以下常规步骤将这些 URL 或 IP 地址添加到防火墙规则中：
-
-.步骤
-. 使用wget或cURL实用程序访问URL (例如support-sg-nawest.netapp.com)。
-. 检查连接、如以下示例所示：
-+
-image::network_ports.PNG[检查端口连接]
-
-. 无法访问此URL (与support-sg-nawest.netapp.com不同)。
-. 编辑防火墙规则以允许使用新 URL 。
-. 重复上述步骤，直到访问尝试成功为止。
-
-
-====
 下表使用了以下缩写词：
 
 * mip ：管理 IP 地址，每节点地址
@@ -99,21 +83,6 @@ image::network_ports.PNG[检查端口连接]
 
 
 | 管理节点 | `monitoring.solidfire.com` | 443. | 存储集群向 Active IQ 报告 
-
-
-| 管理节点  a| 
-新版本通知：
-
-* `https://support.netapp.com/aods/`
-
-
-软件下载：
-
-* `https://support-sg-emea.netapp.com`
-* `https://support-sg-naeast.netapp.com`
-* `https://support-sg-nawest.netapp.com`
-
-| 443. | 管理节点服务升级 
 
 
 | 管理节点 | 存储集群 MVIP | 443. | 通过 UI 和 API 访问存储节点和 Element 软件升级 

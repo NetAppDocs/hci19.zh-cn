@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: docs/task_vcp_upgrade_plugin.html 
 summary: 在 NetApp HCI 系统升级过程中，您可以升级适用于 vCenter Server 的 Element 插件。 
-keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 5.0 
+keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4.10, 5.0, 5.1 
 ---
 = 升级适用于 vCenter Server 的 Element 插件
 :hardbreaks:
@@ -21,15 +21,15 @@ keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4
 此升级操作步骤 适用于以下升级情形。
 
 
-NOTE: 管理服务2.22.7包括适用于vCenter Server 5.0的NetApp Element 插件、该插件包含远程插件。如果您使用Element插件、则应升级到5.0版、以符合VMware指令、该指令会删除对本地插件的支持。 https://kb.vmware.com/s/article/87880["了解更多信息。"^]。如果不使用此插件、则可以选择进行此升级。
+NOTE: 管理服务2.22.7包括适用于vCenter Server 5.0的Element插件、该插件包含远程插件。如果您使用Element插件、则应升级到管理服务2.22.7或更高版本、以符合取消对本地插件支持的VMware指令。 https://kb.vmware.com/s/article/87880["了解更多信息。"^]。
 
 [role="tabbed-block"]
 ====
 .适用于vCenter 5.0及更高版本的Element插件
 --
-从适用于vCenter Server 5.0的Element插件开始、此升级操作步骤 涵盖以下升级情形：
+此升级操作步骤包括以下升级情形：
 
-* 您要升级到适用于vCenter Server 5.0的Element插件。
+* 您要升级到适用于vCenter Server 5.1或5.0的Element插件。
 * 您要升级到8.0或7.0 HTML5 vSphere Web Client。
 
 
@@ -37,12 +37,12 @@ NOTE: 管理服务2.22.7包括适用于vCenter Server 5.0的NetApp Element 插�
 IMPORTANT: 适用于vCenter 5.0及更高版本的Element插件与vCenter Server 6.7和6.5不兼容。
 
 
-NOTE: 从适用于vCenter Server 4.x的Element插件升级到5.0时、由于无法将数据从vCenter实例复制到远程插件、因此已配置此插件的集群将丢失。您必须将集群重新添加到远程插件。这是从本地插件升级到远程插件时的一次性活动。
+NOTE: 从适用于vCenter Server 4.x的Element插件升级到5.x时、由于无法将数据从vCenter实例复制到远程插件、因此已配置此插件的集群将丢失。您必须将集群重新添加到远程插件。这是从本地插件升级到远程插件时的一次性活动。
 
 --
 .适用于vCenter 4.10及更早版本的Element插件
 --
-对于适用于vCenter Server 4.10或更早版本的Element插件、此升级操作步骤 适用于以下升级情形：
+此升级操作步骤包括以下升级情形：
 
 * 您要升级到适用于VMware vCenter Server 4.10、4.9、4.8、4.7、4.6的Element插件、 4.5或4.4。
 * 您要升级到 7.0 ， 6.7 或 6.5 HTML5 vSphere Web Client 。
@@ -90,7 +90,7 @@ image::vcp_registration_utility_ui_qossioc.png[描绘了此插件的注册实用
 
 . 选择 * vCenter 插件注册 * 。
 +
-** 适用于vCenter Server 5.0的Element插件的vCenter插件注册页面：
+** 适用于vCenter Server 5.x的Element插件的vCenter插件注册页面：
 +
 image::vcp_remote_plugin_registration_ui.png[描绘了远程插件的注册实用程序UI]
 
@@ -140,7 +140,7 @@ NOTE: 此操作将创建一个新数据库并在 vSphere Web Client 中完成安
 +
 ** 从适用于vCenter Server 5.0的Element插件开始、将显示NetApp Element 远程插件扩展点：
 +
-image::vcp_remote_plugin_icons_home_page.png[描绘了成功升级或安装Element插件5.10或更高版本后的插件扩展点]
+image::vcp_remote_plugin_icons_home_page.png[描述了成功升级或安装Element插件5.0或更高版本后的插件扩展点]
 
 ** 对于适用于vCenter Server 4.10或更早版本的Element插件、将显示NetApp Element 配置和管理扩展点：
 +
@@ -163,8 +163,8 @@ image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装Ele
 +
 [listing]
 ----
-NetApp Element Plug-in Version: 5.0
-NetApp Element Plug-in Build Number: 37
+NetApp Element Plug-in Version: 5.1
+NetApp Element Plug-in Build Number: 12
 ----
 
 

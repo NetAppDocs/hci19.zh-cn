@@ -23,7 +23,7 @@ keywords: netapp, hci, vSphere components, upgrade, vCenter, ESXi
 +
 [IMPORTANT]
 ====
-您应升级到适用于vCenter Server 5.0的NetApp Element 插件、以便能够在VMware vCenter 7.0 Update 3中部署此插件、而无需应用临时解决策。
+您应升级到适用于vCenter Server 5.0或更高版本的NetApp Element 插件、以便能够在VMware vCenter 7.0 Update 3中部署此插件、而无需应用临时解决策。
 
 使用适用于vCenter Server 4.x的Element插件升级到VMware vCenter Server 7.0 Update 3时、插件4.x无法部署。要使用Spring Framework 4解决此问题描述 、请参见 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/vCenter_plug-in_deployment_fails_after_upgrading_vCenter_to_version_7.0_U3["此知识库文章"^]。
 
