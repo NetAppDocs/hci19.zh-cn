@@ -32,6 +32,11 @@ NOTE: 最佳实践是，仅将一个管理节点与一个 VMware vCenter 实例�
 * link:task_mnode_access_ui.html["访问管理节点（ UI 或 REST API ）"]
 
 
+更改默认SSL证书：
+
+* link:reference_change_mnode_default_ssl_certificate.html["更改管理节点的默认SSL证书"]
+
+
 使用管理节点 UI 执行任务：
 
 * link:task_mnode_work_overview_UI.html["管理节点 UI 概述"]

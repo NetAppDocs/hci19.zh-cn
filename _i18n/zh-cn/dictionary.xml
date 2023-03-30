@@ -6516,4 +6516,24 @@
   <block id="04bac97a16b610a555c29c398dc04860" category="paragraph">* 存储 * 选项卡列出了安装过程中的存储集群。如果 NetApp Hybrid Cloud Control 无法访问某个集群，则该集群将不会显示在 * 升级 * 页面上。如果您的集群运行的是 Element 12.0 或更高版本，则会看到为这些集群列出的当前固件包版本。如果一个集群中的节点具有不同的固件版本，或者升级过程中，您将在 * 当前固件包版本 * 列中看到 * 多个 * 。您可以选择 * 多个 * 以导航到 * 节点 * 页面以比较固件版本。如果所有集群运行的 Element 版本均早于 12.0 ，则您将看不到有关固件包版本号的任何信息。此信息也可从 * 节点 * 页面获得。请参见 <block ref="4d8bfbcb84a29a1601595359b67752e6" category="inline-link-macro-rx"></block>。</block>
   <block id="df3b4418989705f2099ec054a495c6ff" category="paragraph">如果集群是最新的且 / 或没有可用的升级软件包，则不会显示 * 元素 * 和 * 仅固件 * 选项卡。在升级过程中，也不会显示这些选项卡。如果显示的是 * 元素 * 选项卡，而不是 * 仅固件 * 选项卡，则表示没有可用的固件包。</block>
   <block id="c7f3047b6654f1cb88fcfe6e47c92593" category="cell">如果存储服务API返回的升级状态不在可能升级状态的枚举列表中、则会显示此状态。</block>
+  <block id="f3239c80004833605a44320f76f29a78" category="paragraph">更改默认SSL证书：</block>
+  <block id="00b6f5df795659d436d482ffd81033aa" category="inline-link-macro">更改管理节点的默认SSL证书</block>
+  <block id="fe6a80fba2305243dd21703b873b6d51" category="list-text"><block ref="fe6a80fba2305243dd21703b873b6d51" category="inline-link-macro-rx"></block></block>
+  <block id="f6e1cbdb2c7e86d550e022623d7c9169" category="summary">您可以使用 NetApp Element API 更改集群中存储节点的默认 SSL 证书和专用密钥。</block>
+  <block id="96c37e9c5684e9f2a7ffd6a79512cde2" category="paragraph">您可以使用NetApp Element API更改管理节点的默认SSL证书和专用密钥。</block>
+  <block id="d311117e36e090462c70d49316078938" category="paragraph">配置管理节点时、它会创建一个唯一的自签名安全套接字层(SSL)证书和专用密钥、用于通过Element UI、每节点UI或API进行所有HTTPS通信。Element 软件支持自签名证书以及由可信证书颁发机构（ CA ）颁发和验证的证书。</block>
+  <block id="774ce4e623f683d68865c30ea0ac37fa" category="paragraph">您可以使用以下 API 方法获取有关默认 SSL 证书的详细信息并进行更改。</block>
+  <block id="8fff04b1c0c323ac1aac0d43f5e6b4f8" category="list-text">* GetNodeSSLCertificer*</block>
+  <block id="a07612f154836b90b33c91e3d4becfe8" category="inline-link">GetNodeSSLCertificate方法</block>
+  <block id="82dbb37b6e9a2077987c0f59bb5d915c" category="paragraph">您可以使用<block ref="6b57dff7c4826c966a42c49802a3deb0" category="inline-link-rx"></block> 检索有关当前安装的SSL证书的信息、包括所有证书详细信息。</block>
+  <block id="58f6e4a954eca307131e675eba49accc" category="list-text">*设置NodeSSLCertificer*</block>
+  <block id="123b81eef3f2300f60e089e9078ee7c3" category="inline-link">SetNodeSSLCertificate方法</block>
+  <block id="ce93a023e7cdde76b41063e5fcaa191b" category="paragraph">您可以使用<block ref="da3ab47be31170d5453f00843cc9d581" category="inline-link-rx"></block> 将集群和每节点SSL证书设置为您提供的证书和专用密钥。系统会验证证书和专用密钥，以防止应用无效证书。</block>
+  <block id="6f54d04f05c4e4a65ca53b1028d1207b" category="list-text">*删除NodeSSLCertificer*</block>
+  <block id="9b65a6a78c1794a21bc06b75e90962bb" category="inline-link">RemoveNodeSSLCertificate方法</block>
+  <block id="9e08f10312f3eaa134087c34ad076d92" category="paragraph">这<block ref="f76e21c4f97e9ef2eb0114383d271ddf" category="inline-link-rx"></block> 删除当前安装的SSL证书和专用密钥。然后，集群将生成新的自签名证书和专用密钥。</block>
+  <block id="f056eadecebc58790da8eb91b5211492" category="inline-link">在Element Software中设置自定义SSL证书有哪些要求？</block>
+  <block id="e3b4df69e2fe4e8545e5e0240eada6a2" category="list-text"><block ref="e3b4df69e2fe4e8545e5e0240eada6a2" category="inline-link-rx"></block></block>
+  <block id="631923a687ff82d68973d99b95597b47" category="inline-link">SolidFire 和 Element 资源页面</block>
+  <block id="238c5b123e3473c57e2925edccb205c2" category="list-text"><block ref="238c5b123e3473c57e2925edccb205c2" category="inline-link-rx"></block></block>
 </blocks>

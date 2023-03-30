@@ -1,0 +1,42 @@
+---
+permalink: mnode/reference_change_mnode_default_ssl_certificate.html 
+sidebar: sidebar 
+keywords: ssl certificate, SSL, private key, self-signed, cluster, nodes, user-defined certificate, API, change default certificate, certificate, Element API, mnode 
+summary: 您可以使用 NetApp Element API 更改集群中存储节点的默认 SSL 证书和专用密钥。 
+---
+= 更改管理节点的默认SSL证书
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+您可以使用NetApp Element API更改管理节点的默认SSL证书和专用密钥。
+
+配置管理节点时、它会创建一个唯一的自签名安全套接字层(SSL)证书和专用密钥、用于通过Element UI、每节点UI或API进行所有HTTPS通信。Element 软件支持自签名证书以及由可信证书颁发机构（ CA ）颁发和验证的证书。
+
+您可以使用以下 API 方法获取有关默认 SSL 证书的详细信息并进行更改。
+
+* * GetNodeSSLCertificer*
++
+您可以使用 https://docs.netapp.com/us-en/element-software/api/reference_element_api_getnodesslcertificate.html["GetNodeSSLCertificate方法"^] 检索有关当前安装的SSL证书的信息、包括所有证书详细信息。
+
+* *设置NodeSSLCertificer*
++
+您可以使用 https://docs.netapp.com/us-en/element-software/api/reference_element_api_setnodesslcertificate.html["SetNodeSSLCertificate方法"^] 将集群和每节点SSL证书设置为您提供的证书和专用密钥。系统会验证证书和专用密钥，以防止应用无效证书。
+
+* *删除NodeSSLCertificer*
++
+这 https://docs.netapp.com/us-en/element-software/api/reference_element_api_removenodesslcertificate.html["RemoveNodeSSLCertificate方法"^] 删除当前安装的SSL证书和专用密钥。然后，集群将生成新的自签名证书和专用密钥。
+
+
+
+
+
+== 了解更多信息
+
+* https://docs.netapp.com/us-en/element-software/storage/reference_post_deploy_change_default_ssl_certificate.html["更改 Element 软件的默认 SSL 证书"^]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["在Element Software中设置自定义SSL证书有哪些要求？"^]
+* https://www.netapp.com/data-storage/solidfire/documentation["SolidFire 和 Element 资源页面"^]
+* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
+
