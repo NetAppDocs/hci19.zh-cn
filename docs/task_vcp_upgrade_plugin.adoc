@@ -18,8 +18,6 @@ keywords: netapp, vcp, vCenter plug-in, upgrade, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 4
 
 您可以使用注册实用程序在 vCenter Server 虚拟设备（ vCSA ）或 Windows 上更新插件注册。您必须在需要使用 vCenter 插件的每个 vCenter Server 上更改此插件的注册。
 
-此升级操作步骤 适用于以下升级情形。
-
 
 NOTE: 管理服务2.22.7包括适用于vCenter Server 5.0的Element插件、该插件包含远程插件。如果您使用Element插件、则应升级到管理服务2.22.7或更高版本、以符合取消对本地插件支持的VMware指令。 https://kb.vmware.com/s/article/87880["了解更多信息。"^]。
 
