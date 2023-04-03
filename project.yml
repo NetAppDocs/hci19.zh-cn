@@ -194,7 +194,7 @@ sidebar:
       - title: 访问管理节点
         url: "/docs/task_mnode_access_ui.html"
       - title: 更改管理节点的默认SSL证书
-        url: "/mnode/reference_change_mnode_default_ssl_certificate.html"
+        url: "/docs/reference_change_mnode_default_ssl_certificate.html"
       - title: 使用管理节点 UI
         entries:
         - title: 管理节点 UI 概述
