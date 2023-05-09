@@ -37,7 +37,7 @@ NOTE: 与管理服务关联的永久性卷会在安装或升级期间创建并�
 
 == 了解更多信息
 
-* link:hci_task_manage_vol_management.html["管理卷"]
+* link:task_hcc_manage_vol_management.html["管理卷"]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
 

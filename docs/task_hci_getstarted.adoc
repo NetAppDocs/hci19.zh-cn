@@ -278,6 +278,6 @@ https://<ManagementNodeIP>
 * link:../media/hseries-isi.pdf["《 NetApp HCI 安装和设置说明》"^]
 * https://www.netapp.com/us/media/tr-4820.pdf["TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件文档"^]
-* https://mysupport-beta.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
 * https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 

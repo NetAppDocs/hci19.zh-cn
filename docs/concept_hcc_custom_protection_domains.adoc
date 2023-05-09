@@ -36,4 +36,4 @@ NOTE: 使用自定义保护域会假定没有节点共享机箱。
 
 == 了解更多信息
 
-link:api/index.html["使用 Element API 管理存储"]
+https://docs.netapp.com/us-en/element-software/api/index.html["使用 Element API 管理存储"^]
