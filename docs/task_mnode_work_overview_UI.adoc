@@ -1,7 +1,7 @@
 ---
 sidebar: sidebar 
 permalink: docs/task_mnode_work_overview_UI.html 
-summary: '使用管理节点 UI (https://<mNodeIP>:442)[]，您可以更改网络和集群设置，运行系统测试或使用系统实用程序。' 
+summary: 使用管理节点 UI ，您可以更改网络和集群设置，运行系统测试或使用系统实用程序。 
 keywords: 'netapp, management node ui, mnode ui, :442, element' 
 ---
 = 管理节点 UI 概述
