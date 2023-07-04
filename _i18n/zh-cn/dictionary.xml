@@ -1525,9 +1525,7 @@
   <block id="efa8dc8360af08490b01e617cc18cdab" category="list-text">输入 IP 地址，子网掩码和默认网关信息，然后按 * 输入 * 。您可以重复使用删除节点之前复制的信息。在此输入的 IP 地址是您先前复制的管理网络 IP 地址。</block>
   <block id="7dd7a57b25f3cd76c8b03f1cda9ca15c" category="list-text">按 * Esc * 退出配置管理网络部分。</block>
   <block id="f0c303e389f48cbe1544b22e8d37e06a" category="list-text">选择 * 是 * 以应用更改。</block>
-  <block id="b6b5cbae15adb7baadb40456ef0634c2" category="list-text">将节点（主机）添加到集群并配置网络，以便节点与集群中的其他节点同步，如下所示：</block>
   <block id="02fb3e6c7ff39880b24310a2c60bdc15" category="list-text">在 VMware vSphere Web Client 中，选择 * 主机和集群 * 。</block>
-  <block id="ccdb65b69df39a19821108c1d1a494e0" category="list-text">右键单击要将节点添加到的集群，然后选择 * 添加主机 * 。此向导将指导您完成主机添加过程。</block>
   <block id="5f36dbaecca1791d115f36a406507e1d" category="admonition">当系统要求您输入用户名和密码时，请使用以下凭据：用户名： root 密码：设置 NetApp HCI 时在 NetApp 部署引擎中配置的密码</block>
   <block id="d35ed650bf952b589d141be4c6f788c0" category="paragraph">将节点添加到集群可能需要几分钟的时间。此过程完成后，新添加的节点将列在集群下。</block>
   <block id="5f70e9eadb4305a05e2697c2f995e8e5" category="list-text">选择节点，然后选择 * 管理 &gt; 网络 &gt; 虚拟交换机 * ，并执行以下步骤：</block>
@@ -6536,4 +6534,56 @@
   <block id="c411aac8cf32395c454762934e85315b" category="list-text"><block ref="c411aac8cf32395c454762934e85315b" category="inline-link-macro-rx"></block></block>
   <block id="3f8636b2ed4be15cc908d52557ffc327" category="list-text"><block ref="3f8636b2ed4be15cc908d52557ffc327" category="inline-link-macro-rx"></block></block>
   <block id="78997922bf48b612914b49bc22e40752" category="paragraph"><block ref="78997922bf48b612914b49bc22e40752" category="inline-link-rx"></block></block>
+  <block id="036abbfa45963ef13c18174a4e44a2e1" category="list-text">配置网络连接、以便节点与集群中的其他节点同步、如下所示：</block>
+  <block id="3d76bb66295b6934cf67dde5bae83ad3" category="paragraph">从适用于vCenter 5.0的Element插件开始、将节点(主机)添加到数据中心。</block>
+  <block id="63591c0cc8e2e73c9258b396df08b620" category="list-text">在VMware vSphere Web Client中、选择*清单&gt;主机和集群*。</block>
+  <block id="ac660496ea7328cc4535c044159012b6" category="list-text">右键单击该数据中心，然后选择*Add Host*。</block>
+  <block id="9f5ecfa6b649b1b419c20d8dd264d74e" category="paragraph">此向导将指导您完成主机添加过程。</block>
+  <block id="cb1658a0f24a9492fb03111d8de57a39" category="list-text">选择节点，然后选择*Configure &gt; Networking &gt; Virtual switches*，并执行以下步骤：</block>
+  <block id="53a674199033a5f26d0e116b778bdcd2" category="list-text">展开*vSwitch0*。</block>
+  <block id="9b5ce2fc82e55a2629051893f8d8d4ff" category="inline-image-macro">菜单图标</block>
+  <block id="a698cb8f78d7274715cb8dc15d776ac8" category="list-text">在显示的图形中、选择虚拟机网络 <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，然后是*Remove*。</block>
+  <block id="882aac0ca94947ea665b596320e49f2a" category="image-alt">显示了用于删除虚拟机的屏幕。</block>
+  <block id="fd27c346ccbc1eec4eeb78d8de71580c" category="list-text">在vSwitch0标头上选择*edit*。</block>
+  <block id="8781b9e18af90e14da4fe27799c3165f" category="list-text">验证"Standby Adapters"(备用适配器)下是否列出了vmnic3，然后选择*Ok*。</block>
+  <block id="bc17da63fca20f45a5d20a429c99f190" category="list-text">在显示的图形中、选择管理网络 <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，然后是*编辑设置*。</block>
+  <block id="c305f6f744366080640d1eb249562143" category="image-alt">显示用于编辑管理网络的屏幕。</block>
+  <block id="ba10ab5bcd1e235eefc907ce4f06edba" category="list-text">在vSwitch0标题上选择*Add Networking*，然后在显示的窗口中输入以下详细信息：</block>
+  <block id="a30d98dbf0217882984a02160769e0f1" category="list-text">对于目标设备，选择*新标准开关*，然后选择*下一步*。</block>
+  <block id="8671f0a8199a0283f4398218123fb82e" category="list-text">在"Create a Standard Switch"(创建标准交换机)下，将vmnic0和vmnic4移至"Active"(活动)适配器，然后选择*Next*(下一步*)。</block>
+  <block id="fec3d5b6be656397a3c7874010b1a1d6" category="list-text">在"connection settings (连接设置)"下、验证"VM Network (VM网络)"是否为网络标签、如果需要、请输入VLAN ID。</block>
+  <block id="b8028ca58a0ffdc315fe1a0daaf42691" category="list-text">查看“准备完成”屏幕，然后选择*Finish (完成)*。</block>
+  <block id="9a99c86bbadc8d9087512e9ac1441321" category="list-text">展开vSwitch1并选择*edit*，按如下所示编辑设置：</block>
+  <block id="a839db2a162d055d0427c6f5ee743c4f" category="list-text">在显示的图形中、选择虚拟机网络 <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，后跟*Edit*。</block>
+  <block id="f975200c0fde9091513de823f8382a0b" category="list-text">将vmnic0移至备用适配器。</block>
+  <block id="c6d2ce42fe36bfb199a2360edb7c5029" category="list-text">在vSwitch1标头上选择*Add networking*，然后在Add Networking窗口中输入以下详细信息：</block>
+  <block id="c4cf1413e57d3256209b4154d9b5178e" category="list-text">在"Create a Standard Switch"(创建标准交换机)下，将vmnic1和vmnic5移至"Active"(活动)适配器，然后选择*Next*(下一步*)。</block>
+  <block id="1d59948c86cc47108b28d89a1cdef5ca" category="list-text">在 IPv4 设置下，提供 IPv4 信息，然后选择 * 下一步 * 。</block>
+  <block id="54691a122e4111b03dbfc011c91e6ce4" category="list-text">在显示的图形中、选择vMotion <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，后跟*Edit*。</block>
+  <block id="0f5d411a2e1fcb4f4e434722bd3f79ed" category="list-text">将vmnic4移至备用适配器。</block>
+  <block id="5d1fd538b976142fe02b836c9b5d8f60" category="list-text">展开*vSwitch2*，然后选择*edit*：</block>
+  <block id="597eb71768962b3956b5793f98447cfc" category="list-text">在显示的图形中、选择iSCSI-B <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，后跟*Edit*。</block>
+  <block id="97017ed07259726b32cf4283092219d6" category="list-text">将vmnic1移至未使用的适配器。</block>
+  <block id="7244c9af677a700c90e3ec90d8676bdc" category="list-text">在显示的图形中、选择iSCSIA <block ref="fefd4e06d12eaaa2e0937984b0093c4c" category="inline-image-macro-rx" type="image"></block> 图标，后跟*Edit*。</block>
+  <block id="4c7e2ed9a1f23a00223c9c8c0edc66cd" category="list-text">在选中新添加的节点并打开配置选项卡的情况下，选择*存储&gt;存储适配器*，然后执行以下步骤：</block>
+  <block id="e4f82379863daecd77fb3c8d90ebfa60" category="list-text">选择*添加软件适配器*列表。</block>
+  <block id="ec8fe5ffb26c1667f78058271051f7a9" category="list-text">选择*添加iSCSI适配器*，然后选择*确定*。</block>
+  <block id="f22178ace11ea87c7d59f75c261a8458" category="list-text">在"Storage Adapters"(存储适配器)下、选择iSCSI适配器</block>
+  <block id="9439600543d005cdd1dc468e27ed0ef7" category="list-text">在"Properties"(属性)&gt;"General (常规)下、复制iSCSI Name (iSCSI名称)。</block>
+  <block id="e6ef8efef826617531911029f3094999" category="list-text">选择目标实例。</block>
+  <block id="db69ad9381aeaae67846d9dfee971cde" category="list-text">选择*管理*。</block>
+  <block id="4cf1bee9d4da2cfd83c720264ecf95a9" category="list-text">选择目标集群。</block>
+  <block id="b4978ef52bb77b70f01c739d12f2035c" category="list-text">选择*管理&gt;启动程序*。</block>
+  <block id="ce5b397637ff33b276925ed4801de384" category="list-text">选择 * 创建启动程序 * 。</block>
+  <block id="0724c8cf0d32ac22dba8f08f2546c725" category="list-text">选择新启动程序。</block>
+  <block id="deb3e04bcff0ba49c84aebd575a577fd" category="list-text">选择*操作列表&gt;批量操作*，然后选择*添加到访问组*。</block>
+  <block id="98949fae581882fa05ca711731127258" category="list-text">选择目标访问组，然后选择*Add*。</block>
+  <block id="fe2a5ee2a2b397b15ed5c1b7f60b6c41" category="list-text">选择*动态发现&gt;添加*。</block>
+  <block id="e5b06ada59c18deba03f29c6ac86983f" category="list-text">选择*网络端口绑定*，然后选择*添加*。</block>
+  <block id="15dc75908330af084a79ea2ada24a934" category="list-text">选择iSCSIA和iSCSI-B，然后选择*OK*</block>
+  <block id="166771a382a5d846482a26dbe5c7b9e3" category="list-text">选择*重新扫描适配器*。</block>
+  <block id="73849a27a526b230f59a20c776064eb9" category="list-text">选择*重新扫描存储*。扫描新的VMFS卷并选择*OK*。</block>
+  <block id="bc1db729f0157876d24fd3c55560294c" category="list-text">重新扫描完成后、验证集群和数据存储库中的卷是否在新计算节点(主机)上可见。</block>
+  <block id="f096b63658cb95d8f43a07e2d68c70b3" category="paragraph">对于适用于vCenter 4.10及更早版本的Element插件、请将节点(主机)添加到集群中。</block>
+  <block id="fc4dbbaeabdf5700f373a65d12b45108" category="list-text">右键单击要将节点添加到的集群，然后选择 * 添加主机 * 。</block>
 </blocks>
