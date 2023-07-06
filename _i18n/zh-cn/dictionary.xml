@@ -2333,7 +2333,6 @@
 <block ref="85d7ff8f1e3fd6efa440dcd74d3d3e02" category="inline-xref-macro-rx"></block>
 <block ref="74302f10271a48c9df46742d43d08db8" category="inline-xref-macro-rx"></block></block>
   <block id="d7f6ba0367c50b236e879580284dfabe" category="section-title">准备更换节点</block>
-  <block id="15e52a108fb327eeb4e05584634031a8" category="paragraph">在更换节点之前，您应将节点上托管的虚拟机（ VM ）迁移到可用主机，并从集群中删除此节点。您应获取有关节点的详细信息，例如序列号和网络信息。</block>
   <block id="597e3a12fc6d68edf2363fc3a1d9ff06" category="admonition">如果组件出现故障，而节点仍处于联机状态且正常运行，例如双列直插内存模块（ Dual Inline Memory Module ， DIMM ）出现故障，则应先从集群中删除驱动器，然后再删除故障节点。</block>
   <block id="b3cead0e8121cac5eaa77199cb96bf4b" category="list-text">记下故障节点的序列号。以下屏幕截图仅为示例：</block>
   <block id="c52f4f387b86885b3321d0184a872a28" category="image-alt">显示了 VMware vSphere Web Client 中故障节点的序列号。</block>
@@ -6586,4 +6585,5 @@
   <block id="bc1db729f0157876d24fd3c55560294c" category="list-text">重新扫描完成后、验证集群和数据存储库中的卷是否在新计算节点(主机)上可见。</block>
   <block id="f096b63658cb95d8f43a07e2d68c70b3" category="paragraph">对于适用于vCenter 4.10及更早版本的Element插件、请将节点(主机)添加到集群中。</block>
   <block id="fc4dbbaeabdf5700f373a65d12b45108" category="list-text">右键单击要将节点添加到的集群，然后选择 * 添加主机 * 。</block>
+  <block id="a4b367d6a2f57fe52d770b2264b7d2d8" category="paragraph">在更换节点之前，您应将节点上托管的虚拟机（ VM ）迁移到可用主机，并从集群中删除此节点。您应记录有关节点的详细信息、例如序列号和网络连接信息。如果组件发生故障、而节点仍处于联机状态且正常运行、则迁移VM并记录节点详细信息也同样适用、例如双列直插式内存模块(Dual Inline Memory Module、DIMM)发生故障。</block>
 </blocks>
