@@ -42,18 +42,6 @@ NOTE: 下表中的短划线(*-*)表示特定硬件组件在给定版本的车辆
 | 释放车辆 | 发布日期 | BIOS | BMC | CPLD | 10/25 GbE NIC CX4 | 10/25 GbE NIC CX5 | 缓存NVDIMM NVDIMM模块Smart (第1代) | Cache NVDIMM Energy Source (BPM) Smart (第1代) | 缓存NVDIMM NVDIMM模块Smart (第2代) | Cache NVDIMM Energy Source (BPM) Smart (第2代) | 缓存NVDIMM NVDIMM模块Micron (第1代) | 缓存NVDIMM能源(PGEM)聚合技术(第1代) | 缓存NVDIMM NVDIMM模块Micron (第2代) | 缓存NVDIMM能源(PGEM)聚合技术(第2代) | 缓存NVDIMM能源(PGEM)聚合技术(第3代) | 驱动器Samsung PM963 (SED) | 驱动器Samsung PM963 (N-SED) | 驱动器Samsung PM983 (SED) | 驱动器Samsung PM983 (N-SED) | 驱动器Kioxia CD5 (SED) | 驱动器Kioxia CD5 (N-SED) | 驱动器CD5 (FIPS) | 驱动器Samsung PM9A3 (SED) | 驱动器SKHynix PE8010 (SED) | 驱动器SKHynix PE8010 (N-SED) 
 
 
-| *存储固件包2.164.0* | 2022年10月20日 | 3B11 | 3.94.07 | 122. | 14.25.1020 | 16.32.1010 | 3.1. | 2.16 | 26.2C | 1.30 | 25.3c | 1.40 | 1.10 | 3.3 | 2.16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5602Q | 11092A10 | 110B2A10 
-
-
-| *存储固件包2.164.0至NetApp Element 12.7* | 2022年10月20日 | 3B11 | 3.94.07 | 122. | 14.25.1020 | 16.32.1010 | 3.1. | 2.16 | 26.2C | 1.30 | 25.3c | 1.40 | 1.10 | 3.3 | 2.16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5602Q | 11092A10 | 110B2A10 
-
-
-| *存储固件包2.150.4 * | 2022年8月6日 | 3B11 | 3.94.07 | 122. | 14.25.1020 | - | 3.1. | 2.16 | 26.2C | 1.30 | 25.3c | 1.40 | 1.10 | 3.3 | 2.16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
-
-
-| *存储固件包2.150.4至NetApp Element 12.5* | 2022年8月6日 | 3B11 | 3.94.07 | 122. | 14.25.1020 | - | 3.1. | 2.16 | 26.2C | 1.30 | 25.3c | 1.40 | 1.10 | 3.3 | 2.16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
-
-
 | *存储固件包2.146.2* | 2022年2月22日 | 3B11 | 3.94.07 | 122. | 14.25.1020 | - | 3.1. | 2.16 | 26.2C | 1.30 | 25.3c | 1.40 | 1.10 | 3.3 | 2.16 | CXV8202Q | CXV8501Q | EDA5602Q | EDA5900Q | 0109 | 0109 | 0108 | GDC5502Q | 11092A10 | 110B2A10 
 
 
@@ -152,15 +140,6 @@ NOTE: 下表中的短划线(*-*)表示特定硬件组件在给定版本的车辆
 | 释放车辆 | 发布日期 | BIOS | BMC | 10/25 GbE NIC SMCI Mellanox | 缓存NVDIMM RMS200 | 缓存NVDIMM RMS300 | 驱动器Samsung PM863 (SED) | 驱动器Samsung PM863 (N-SED) | 驱动器Toshiba hak-4 (SED) | 驱动器Toshiba hak-4 (N-SED) | 驱动器Samsung PM883 (SED) 
 
 
-| *存储固件包2.164.0* | 2022年10月20日 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
-| *存储固件包2.164.0至NetApp Element 12.7* | 2022年10月20日 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
-| *存储固件包2.150.4至NetApp Element 12.5* | 2022年8月6日 | NAT3.4 | 6.98.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
 | *存储固件包2.99至NetApp Element 12.3* | 2021年4月15日 | NA2.1 | 6.84.00 | 14.25.1020 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7904Q 
 
 
@@ -257,15 +236,6 @@ NOTE: 下表中的短划线(*-*)表示特定硬件组件在给定版本的车辆
 
 
 | *存储固件包2.164.0* | 2022年10月20日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
-| *存储固件包2.164.0至NetApp Element 12.7* | 2022年10月20日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
-| *存储固件包2.150.4 * | 2022年8月6日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
-| *存储固件包2.150.4至NetApp Element 12.5* | 2022年8月6日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
 
 
 | *存储固件包2.146.2* | 2022年2月22日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
