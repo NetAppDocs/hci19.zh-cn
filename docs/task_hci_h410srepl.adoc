@@ -157,7 +157,11 @@ https://<ManagementNodeIP>/manager/login
 ----
 . 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
 . 在 Expand Installation 窗格中，选择 * 展开 * 。
-. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 部署引擎。
+. 通过提供本地NetApp HCI存储集群管理员凭据登录到NetApp部署引擎。
++
+
+NOTE: 您不能使用轻型目录访问协议凭据登录。
+
 . 在欢迎页面上，选择 * 否 * 。
 . 选择 * 继续 * 。
 . 在 Available Inventory 页面上，选择要添加到现有 NetApp HCI 安装中的存储节点。
@@ -193,7 +197,11 @@ NOTE: NetApp HCI 可能需要一些时间来验证您输入的 IP 地址。IP �
 
 .步骤
 . 浏览到一个现有存储节点的管理 IP 地址： `http://<storage_node_management_IP_address>/`
-. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 部署引擎。
+. 通过提供本地NetApp HCI存储集群管理员凭据登录到NetApp部署引擎。
++
+
+NOTE: 您不能使用轻型目录访问协议凭据登录。
+
 . 选择 * 扩展安装 * 。
 . 在欢迎页面上，选择 * 否 * 。
 . 单击 * 继续 * 。

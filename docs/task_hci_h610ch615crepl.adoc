@@ -116,7 +116,11 @@ https://<ManagementNodeIP>
 ----
 . 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
 . 在 Expand Installation 窗格中，选择 * 展开 * 。浏览器将打开 NetApp 部署引擎。
-. 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 部署引擎。
+. 通过提供本地NetApp HCI存储集群管理员凭据登录到NetApp部署引擎。
++
+
+NOTE: 您不能使用轻型目录访问协议凭据登录。
+
 . 在 Welcome 页面上，选择 * 是 * 。
 . 在最终用户许可证页面上，执行以下操作：
 +
