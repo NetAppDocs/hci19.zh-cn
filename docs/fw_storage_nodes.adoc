@@ -235,9 +235,6 @@ NOTE: 下表中的短划线(*-*)表示特定硬件组件在给定版本的车辆
 | 释放车辆 | 发布日期 | NIC | 缓存NVDIMM RMS200 (RMS200) | 缓存NVDIMM RMS200 (RMS300) | 驱动器Samsung PM863 (SED) | 驱动器Samsung PM863 (N-SED) | 驱动器Toshiba hak-4 (SED) | 驱动器Toshiba hak-4 (N-SED) | 驱动器Samsung PM883 (SED) 
 
 
-| *存储固件包2.164.0* | 2022年10月20日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
-
-
 | *存储固件包2.146.2* | 2022年2月22日 | 7.10.18 | ae3b8cc | 7d8422bc | GXT7404Q | GXT5103Q | 8ENP7101 | 8ENP6101 | HXT7A04Q 
 
 
