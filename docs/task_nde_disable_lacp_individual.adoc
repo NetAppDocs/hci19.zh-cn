@@ -4,7 +4,7 @@ permalink: docs/task_nde_disable_lacp_individual.html
 summary: '了解如何在部署 NetApp HCI 后在已配置的交换机上禁用 `lac-individual` 命令。' 
 keywords: netapp, hci, deployment, review, deploy 
 ---
-= 在已配置的交换机上禁用 lac-individual 命令
+= 在已配置的交换机上禁用 "lac-individual" 命令
 :hardbreaks:
 :allow-uri-read: 
 :nofooter: 
