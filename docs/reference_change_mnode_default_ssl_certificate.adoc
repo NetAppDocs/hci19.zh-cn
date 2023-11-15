@@ -37,6 +37,6 @@ summary: 您可以使用 NetApp Element API 更改集群中存储节点的默认
 
 * https://docs.netapp.com/us-en/element-software/storage/reference_post_deploy_change_default_ssl_certificate.html["更改 Element 软件的默认 SSL 证书"^]
 * https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_are_the_requirements_around_setting_custom_SSL_certificates_in_Element_Software%3F["在Element Software中设置自定义SSL证书有哪些要求？"^]
-* https://www.netapp.com/data-storage/solidfire/documentation["SolidFire 和 Element 资源页面"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 

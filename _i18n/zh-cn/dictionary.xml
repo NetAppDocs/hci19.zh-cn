@@ -1377,16 +1377,7 @@
   <block id="0d5228cf80832928fe934652a94cdf4f" category="paragraph">当节点出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您应将 VMware vSphere Web Client 中故障节点的序列号与此节点背面标签上的序列号进行匹配。</block>
   <block id="51345fe1ab5e7f7efb63a32d183cdda9" category="paragraph">更换 H410C 计算节点时，请考虑以下事项：</block>
   <block id="5d6b6b077cfdeafcbe028bddcb655d4d" category="list-text">H410C 计算节点仅使用高压线（ 200-240 VAC ）运行。向现有 NetApp HCI 系统添加 H410C 节点时，应确保满足电源要求。</block>
-  <block id="9726e8dc43a3741dbccc204feb2a9dda" category="paragraph">下面简要概述了此操作步骤中的步骤：<block ref="417a9ef94ddd6fb6079bf181e8da50c6" category="inline-xref-macro-rx"></block>
-<block ref="450dee795ede92f968238358045ee72c" category="inline-xref-macro-rx"></block>
-<block ref="302025b37ed9a655d26cb02c1523b2a4" category="inline-xref-macro-rx"></block>
-<block ref="133c0f35bcfb7bec627508ed13eaf913" category="inline-xref-macro-rx"></block>
-<block ref="3e9667909114056c0816cabcad3091ec" category="inline-xref-macro-rx"></block></block>
   <block id="cd4a531fb438950b1b12718c24e3a003" category="inline-link-macro">删除见证节点以释放计算资源</block>
-  <block id="693ac156676e30f319b9cd3e020727f7" category="paragraph">以下是一些附加任务，如果您的系统具有适用于这些任务的特定条件，您可能需要执行这些任务：<block ref="6f2e0dd9461f023001b32f634a66ca39" category="inline-link-macro-rx"></block>
-<block ref="96458e97c135f9cdca1845fd2743e79f" category="inline-xref-macro-rx"></block>
-<block ref="d095c71c5d51f56f74c0c624a25acdfc" category="inline-xref-macro-rx"></block></block>
-  <block id="bdf21dc543b5ab0b0d4037a3b86f500e" category="section-title">准备更换计算节点</block>
   <block id="49de3917417cb7a9d4c88a097084490f" category="paragraph">您应将节点上托管的虚拟机（ VM ）迁移到可用主机，并从集群中删除故障节点。您应获取有关故障节点的详细信息，例如序列号和网络信息。</block>
   <block id="d8d7c90a9eba54aa51121a64132d7c53" category="list-text">在 VMware vSphere Web Client 中，执行以下步骤将 VM 迁移到其他可用主机。</block>
   <block id="e2477b6b77307705f07f9d4a9bce00f5" category="admonition">有关迁移步骤，请参见 VMware 文档。</block>
@@ -1402,7 +1393,6 @@
   <block id="030be96a2580787247ec3061b2771b9c" category="list-text">右键单击该节点并选择 * 从清单中删除 * 。</block>
   <block id="99795f9ed04c0bb6ca3b66f13bde3f1d" category="list-text">记下节点 0 序列号，即故障节点的序列号。这有助于您通过将节点背面标签上的序列号与您记下的序列号进行匹配来识别机箱中的节点。</block>
   <block id="7a323f53d4e64c45f636ac4a7040e243" category="list-text">选择故障节点后，选择 * 管理 &gt; 网络 &gt; VMkernel 适配器 * ，然后复制列出的四个 IP 地址。在 VMware ESXi 中执行初始网络配置步骤时，您可以重复使用此信息。</block>
-  <block id="c4aee125828819cff98e36e2ce8cb1a1" category="section-title">更换机箱中的计算节点</block>
   <block id="cf9dd3afde945016d53ec0a6ee2b2237" category="paragraph">从集群中删除故障节点后，您可以从机箱中删除此节点并安装替代节点。</block>
   <block id="a48a58fb7b047fe3c92a6b8ef8c8b880" category="admonition">在执行此处的步骤之前，请确保您已获得防静电保护。</block>
   <block id="a300fbfd884ff458fb7de4f74e2cc07c" category="list-text">Put on antistatic protection.</block>
@@ -1422,7 +1412,6 @@
   <block id="3913668fe99dfd5c0efac354d1dd57e7" category="list-text">将缆线重新连接到最初断开缆线连接的端口。断开电缆连接时所连接的标签有助于指导您完成此操作。</block>
   <block id="2425222ca6c04a8497599ba50e5b39b1" category="admonition">如果机箱后部的通风孔被缆线或标签挡住，则可能会因过热而导致组件过早出现故障。请勿将缆线强行插入端口；否则可能会损坏缆线，端口或两者。</block>
   <block id="4274645a2e2667daa5122269fa953970" category="admonition">确保替代节点的布线方式与机箱中其他节点相同。</block>
-  <block id="3611828f40bf631c043f2a1f9b7d8d80" category="section-title">在 NetApp HCI 1.7 及更高版本中删除计算节点资产</block>
   <block id="fd3ac6bf15d6190cc923c4eac0662f3a" category="paragraph">在 NetApp HCI 1.7 及更高版本中，在物理更换节点后，应使用管理节点 API 删除计算节点资产。要使用 REST API ，存储集群必须运行 NetApp Element 软件 11.5 或更高版本，并且您应已部署运行 11.5 或更高版本的管理节点。</block>
   <block id="65a4d29cbb5e1c44baa414f5cf2dc489" category="list-text">输入管理节点 IP 地址，后跟 /mnode ： `https://[IP address]/mnode`</block>
   <block id="49de61ab68074de5da296d48ffde4acb" category="list-text">选择 * 授权 * 或任何锁定图标，然后输入集群管理员凭据以获得使用 API 的权限。</block>
@@ -1434,7 +1423,6 @@
   <block id="b9bc6e4f464a0c8b1538f9995b92a895" category="list-text">选择 * 执行 * 。在响应正文中向下滚动到 Compute 部分，然后复制出现故障的计算节点的父值和 ID 值。</block>
   <block id="149ab1533be009942aca64f58c4e6d19" category="list-text">选择 * 删除 / 资产 / ｛ asset_id ｝ /compute-nodes/｛ compute_id ｝ * 。</block>
   <block id="79ec8a7988ef4e63af167fe84122742f" category="list-text">选择 * 试用 * 。输入步骤 7 中获得的父值和 ID 值。</block>
-  <block id="4cf099434af6b1eb3de3a02c4d7343f4" category="section-title">将计算节点添加到集群</block>
   <block id="39b2525fb75e02c64814c90f2cbf3407" category="paragraph">您应将计算节点重新添加到集群中。这些步骤因所运行的 NetApp HCI 版本而异。</block>
   <block id="870bd874847cca4294c93fdb50347662" category="section-title">NetApp HCI 1.6P1 及更高版本</block>
   <block id="80fe8777d7b15097b7f93768f900d2f0" category="paragraph">只有在 NetApp HCI 安装运行于 1.6P1 或更高版本时，才能使用 NetApp 混合云控制。</block>
@@ -1597,7 +1585,6 @@
   <block id="2d7b1bce570cfad61bcea75e56445e4c" category="list-text">在适配器详细信息下，选择 * 网络端口绑定 * ，然后选择 * 。</block>
   <block id="09814996c945834d0173335b143561ec" category="list-text">选中 iSCSI-B 和 iSCSI-A 对应的复选框，然后单击确定。此时将显示一条消息，建议重新扫描存储适配器。</block>
   <block id="aeffbcab16d409629a6f42a11f66bf51" category="list-text">选择重新扫描图标。重新扫描完成后，验证集群中的卷在新计算节点（主机）上是否可见。</block>
-  <block id="9c9a41bc801502e6500c79ea7586ba95" category="section-title">为双节点和三节点存储集群重新部署见证节点</block>
   <block id="cec682e94e3f77f9a4e97bcc8d93f2c4" category="paragraph">在物理更换发生故障的计算节点后，如果发生故障的计算节点托管见证节点，则应重新部署 NetApp HCI 见证节点 VM 。这些说明仅适用于包含两个或三节点存储集群的 NetApp HCI 安装中的计算节点。</block>
   <block id="284dc6d1de61ec5c2a96db8bc40dd3ab" category="list-text">收集以下信息：</block>
   <block id="0b579df7695c3410f10a561f05959978" category="list-text">存储集群中的集群名称</block>
@@ -2323,17 +2310,11 @@
   <block id="7dc71fc1ba8b3b46bc5aa180659fd0c4" category="list-text">您已佩戴静电释放（ ESD ）腕带，或者已采取其他防静电保护措施。</block>
   <block id="4177894d92f9956a6f7250cb8b52d834" category="list-text">您已为连接到机箱的每个缆线贴上标签。</block>
   <block id="af230ec2183265faedfc900d2b43745d" category="paragraph">当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。</block>
-  <block id="b1579568b723cfa21964d9882eb934fb" category="paragraph">下面简要概述了此操作步骤中的步骤：<block ref="8b400d38091051616c1c5cc1808de640" category="inline-xref-macro-rx"></block>
-<block ref="3bbd6094cc077cc68f8084464864b066" category="inline-xref-macro-rx"></block>
-<block ref="85d7ff8f1e3fd6efa440dcd74d3d3e02" category="inline-xref-macro-rx"></block>
-<block ref="74302f10271a48c9df46742d43d08db8" category="inline-xref-macro-rx"></block></block>
-  <block id="d7f6ba0367c50b236e879580284dfabe" category="section-title">准备更换节点</block>
   <block id="597e3a12fc6d68edf2363fc3a1d9ff06" category="admonition">如果组件出现故障，而节点仍处于联机状态且正常运行，例如双列直插内存模块（ Dual Inline Memory Module ， DIMM ）出现故障，则应先从集群中删除驱动器，然后再删除故障节点。</block>
   <block id="b3cead0e8121cac5eaa77199cb96bf4b" category="list-text">记下故障节点的序列号。以下屏幕截图仅为示例：</block>
   <block id="c52f4f387b86885b3321d0184a872a28" category="image-alt">显示了 VMware vSphere Web Client 中故障节点的序列号。</block>
   <block id="c2073896d66c7bb59af743cabc382009" category="paragraph">您需要使用序列号来标识机箱，方法是将节点背面标签上的序列号与您记下的序列号进行匹配。</block>
   <block id="7ab682c31b3906d62159c2f9d858b798" category="list-text">单击 * 是 * 确认操作。</block>
-  <block id="4bf11adaae89a783a7925f82b81963ee" category="section-title">更换节点</block>
   <block id="0284c3c24e20ba25bd655bfa5902da86" category="paragraph">从集群中删除故障节点后，您可以删除故障机箱并安装替代机箱。</block>
   <block id="ef3f79bdcf9f4d42d419e2b9c45d5393" category="list-text">拆开新机箱的包装，将其放在水平面上。请保留包装材料，以便在将故障机箱退回 NetApp 时使用。</block>
   <block id="bfc31a5b7c0c06e46b597db93cca8594" category="list-text">为要卸下的机箱背面插入的每个缆线贴上标签。安装新机箱后，必须将缆线重新插入原始端口。</block>
@@ -2346,13 +2327,11 @@
   <block id="8daca91d830ace0c305c774cb41e9ecd" category="list-text">卸下故障机箱两侧的两个电源设备，然后将其插入更换机箱。</block>
   <block id="48609f85b6f3b162f84d5b7d5d7677ae" category="list-text">将缆线重新连接到最初断开缆线连接的端口。断开电缆连接后在这些电缆上添加的标签将有助于指导您完成此操作。</block>
   <block id="8d0dad879dbd06ad1f5f1f5acf51f28b" category="list-text">打开机箱电源。</block>
-  <block id="ff29627b32e07511ae92253ec85e9e61" category="section-title">将节点添加到集群</block>
   <block id="1f2c6dfe21555b473dc802e5b22a343a" category="paragraph">您应将 NetApp HCI 配置为使用新计算节点。</block>
   <block id="c056c0bf5b425a395761cd37de9ac4e3" category="list-text">如果要将节点添加到使用虚拟分布式交换机的部署中，则 NetApp HCI 所使用的 vSphere 实例具有 vSphere Enterprise Plus 许可。</block>
   <block id="d57d6d6a586f9c13fbd97a299e3dfe3a" category="list-text">与 NetApp HCI 一起使用的 vCenter 或 vSphere 实例的许可证均未过期。</block>
   <block id="9a0e16aaba5fc23029c3fe1684661ae2" category="list-text">与现有节点位于同一网段上的 IPv4 地址可用且未使用（新节点必须与此类型的现有节点安装在同一网络上）。</block>
   <block id="94220c63d490d69862d0b6bd8c55bc36" category="list-text">您已准备好 vCenter 管理员帐户凭据。</block>
-  <block id="81dc4810c71d7b8507b965d26011ef81" category="list-text">在 Expand Installation 窗格中，选择 * 展开 * 。浏览器将打开 NetApp 部署引擎。</block>
   <block id="1dbe43ca80d44abbf871801ea5aefb93" category="list-text">单击 Continue （继续）。</block>
   <block id="ac9c7e2c5fd81b24c59b07707afae5c5" category="list-text">选择要添加新计算节点的现有 vSphere 数据中心，或者选择创建新数据中心将新计算节点添加到新数据中心。</block>
   <block id="923d755bd18c8099d341640f86f5615e" category="admonition">如果 NetApp HCI 无法识别您选择进行扩展的集群的网络设置，请确保将用于管理，存储和 vMotion 网络的 vmkernel 和 vmnic 映射设置为部署默认值。</block>
@@ -2360,7 +2339,6 @@
   <block id="b8439da1d3bc0c45b81136dd3a07533a" category="list-text">在 Network Settings 页面上，已从初始部署中检测到一些网络信息。每个新计算节点都会按序列号列出，您应为此节点分配新的网络信息。对于每个新计算节点，请执行以下步骤：</block>
   <block id="bdbca9155105fa70b02878fe37dcd59d" category="list-text">在 "Review" 页面的 "Network Settings" 部分中，新节点以粗体文本显示。如果需要更改任何部分中的信息，请执行以下步骤：</block>
   <block id="e8972e60e4ed1d76df0feffb68866e46" category="list-text">可选：验证 vCenter 中是否显示任何新计算节点。</block>
-  <block id="e8ddb30cd234af505251fddfe210e770" category="section-title">安装 GPU 驱动程序</block>
   <block id="34a9fb6a8c162efa753bd66e9b87e554" category="paragraph">采用 NVIDIA 图形处理单元（ GPU ）的计算节点（如 H610C 节点）需要在 VMware ESXi 中安装 NVIDIA 软件驱动程序，以便能够利用增强的处理能力。要安装 GPU 驱动程序，计算节点必须具有 GPU 卡。</block>
   <block id="d7dc44e401260dbcb4fba3e3f12c02e3" category="list-text">打开浏览器，然后通过以下 URL 浏览到 NVIDIA 许可门户： `https://nvid.nvidia.com/dashboard/`</block>
   <block id="c8d7d8b784ab1d748bdb0f7f739baeb7" category="cell">vSphere 6.0</block>
@@ -2368,7 +2346,6 @@
   <block id="77b0f9ffcb30a7f70c02e260497b2e1b" category="paragraph">NVIDIA-GRID-vSphere-6.5-410.92-410.91-412.16.zip</block>
   <block id="ba2a9a549d747a47e02e9b887742d185" category="paragraph">NVIDIA-GRID-vSphere-6.7-410.92-410.91-412.16.zip</block>
   <block id="b9e90fd8805746049212e3a607805ca8" category="list-text">在您的计算机上解压缩驱动程序软件包。生成的 .VIB 文件为未压缩的驱动程序文件。</block>
-  <block id="69e7c0efe52761dba85359c9648bc4c6" category="list-text">将 .VIB 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。以下每个版本的示例命令均假定此驱动程序位于管理主机上的 $HOME/NVIDIA/ESX6.x/ 目录中。SCP 实用程序可在大多数 Linux 分发版中随时使用，也可作为适用于所有 Windows 版本的可下载实用程序使用：</block>
   <block id="054b4f3ea543c990f6b125f41af6ebf7" category="cell">选项</block>
   <block id="2b66f3a1e27f17f479018be59a0cc7d7" category="cell">ESXi 6.0</block>
   <block id="f0d858488904d8587f0a9f9286dceb97" category="paragraph">SCP $HOME/NVIDIA/ESX6.0/NVIDIN.vib root@ &lt;ESXI_IP_ADDR&gt; ： / 。</block>
@@ -6491,8 +6468,6 @@
   <block id="9e08f10312f3eaa134087c34ad076d92" category="paragraph">这<block ref="f76e21c4f97e9ef2eb0114383d271ddf" category="inline-link-rx"></block> 删除当前安装的SSL证书和专用密钥。然后，集群将生成新的自签名证书和专用密钥。</block>
   <block id="f056eadecebc58790da8eb91b5211492" category="inline-link">在Element Software中设置自定义SSL证书有哪些要求？</block>
   <block id="e3b4df69e2fe4e8545e5e0240eada6a2" category="list-text"><block ref="e3b4df69e2fe4e8545e5e0240eada6a2" category="inline-link-rx"></block></block>
-  <block id="631923a687ff82d68973d99b95597b47" category="inline-link">SolidFire 和 Element 资源页面</block>
-  <block id="238c5b123e3473c57e2925edccb205c2" category="list-text"><block ref="238c5b123e3473c57e2925edccb205c2" category="inline-link-rx"></block></block>
   <block id="ba3433b658d56109d8826f49ee0a8064" category="list-text"><block ref="ba3433b658d56109d8826f49ee0a8064" category="inline-link-rx"></block></block>
   <block id="d5147898f653b5500d1ba07c4204c743" category="list-text"><block ref="9d6606ad3ff5278801234da0e6746362" category="inline-link-rx"></block> 5.8.1 或更高版本的网络验证工具</block>
   <block id="c411aac8cf32395c454762934e85315b" category="list-text"><block ref="c411aac8cf32395c454762934e85315b" category="inline-link-macro-rx"></block></block>
@@ -6575,4 +6550,29 @@
   <block id="732713df3c4c58fb19fab37e747f6f0d" category="list-text"><block ref="732713df3c4c58fb19fab37e747f6f0d" category="inline-link-macro-rx"></block></block>
   <block id="7149d03eb62017e7cc5192a67ff56c1c" category="paragraph">您可能需要允许以下端口通过数据中心的边缘防火墙、以便可以远程管理系统、允许数据中心外部的客户端连接到资源、并确保内部服务可以正常运行。其中某些端口， URL 或 IP 地址可能不是必需的，具体取决于您使用系统的方式。</block>
   <block id="331d6d490990c63b2cee0dc04fe2589b" category="paragraph">除非另有说明、否则所有端口均为TCP端口、并且所有TCP端口都必须支持NetApp支持服务器、管理节点和运行Element软件的节点之间的三次握手通信。例如、管理节点源上的主机通过TCP端口443与存储集群MVIP目标上的主机进行通信、而目标主机则通过任何端口与源主机进行通信。</block>
+  <block id="b0c85ded726a3c8e46cbaafa60707f98" category="inline-link">如何在NetApp HCI计算节点上手动安装ESXi</block>
+  <block id="280e8a9497f3d56d4812b7ef2ce31fc6" category="paragraph">NetApp建议使用NetApp部署引擎添加替代计算节点。如果无法继续使用适用于ESXi的NetApp部署引擎安装、请参见NetApp知识库文章<block ref="d673ea2f9a1bf5256cf7dd0779becf21" category="inline-link-rx"></block>。</block>
+  <block id="4e5f0133d50930ab8acffdd21544c950" category="section-title">第1步：准备更换节点</block>
+  <block id="9385a8fdfdd5ec6a7a983c13d83b5d55" category="section-title">第2步：更换节点</block>
+  <block id="bf96948cb523bea2d786273b1d9e3726" category="section-title">第3步：将节点添加到集群中</block>
+  <block id="667494acc646db65248acfcbfe2a10ab" category="section-title">第4步：安装GPU驱动程序</block>
+  <block id="524202cb16f1d9b45d55ae3cf01846a9" category="list-text">根据您的环境、将驱动程序软件包版本下载到您的计算机。</block>
+  <block id="cdf9b80a781028cfcd33975c9b549a66" category="paragraph">以下示例显示了适用于vSphere 6.0、6.5和6.7的驱动程序包版本：</block>
+  <block id="42531de91f94d49640c00256e0aa3ceb" category="list-text">将 .VIB 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。安全复制协议(SCP)实用程序可在大多数Linux分发版中随时使用、也可作为所有Windows版本的可下载实用程序使用。</block>
+  <block id="7a144dd231d33708e9980e0a26cb3083" category="paragraph">以下示例显示了适用于ESXi 6.0、6.5和6.7的命令。这些命令假定驱动程序位于管理主机上的$HOME/NVIDIA/ESX6.x/目录中：</block>
+  <block id="d908683c495cc5cc655f7cd09695c523" category="paragraph">下面简要概述了此操作步骤中的步骤：
+<block ref="b3fddefb8533cc7fc260062e1b11797b" category="inline-xref-macro-rx"></block>
+<block ref="7fbd89059403f3c320101b5b73d264e9" category="inline-xref-macro-rx"></block>
+<block ref="a1a1a48df94086d036719fc33e283f5e" category="inline-xref-macro-rx"></block>
+<block ref="e2315890dcab7fdfd216149d3ebc535d" category="inline-xref-macro-rx"></block>
+<block ref="f15458d9685a9671cd038c3a408d2679" category="inline-xref-macro-rx"></block></block>
+  <block id="6a1419cffec796a0cf9688c584b108e5" category="paragraph">以下是一些附加任务，如果您的系统具有适用于这些任务的特定条件，您可能需要执行这些任务：</block>
+  <block id="6f2e0dd9461f023001b32f634a66ca39" category="list-text"><block ref="6f2e0dd9461f023001b32f634a66ca39" category="inline-link-macro-rx"></block></block>
+  <block id="d5e0ed137993fa47f6c52eaba475f986" category="list-text"><block ref="96458e97c135f9cdca1845fd2743e79f" category="inline-xref-macro-rx"></block></block>
+  <block id="27e4d3a5ce33dd22d6512ac546804968" category="list-text"><block ref="d095c71c5d51f56f74c0c624a25acdfc" category="inline-xref-macro-rx"></block></block>
+  <block id="fefc802a17eb78beb3791d194d57c778" category="section-title">第1步：准备更换计算节点</block>
+  <block id="c5fe75a9a5a9f7b0e4279644ad5bba34" category="section-title">第2步：更换机箱中的计算节点</block>
+  <block id="527e6719cbc58f7527999477eaac0dd2" category="section-title">第3步：删除NetApp HCI 1.7及更高版本中的计算节点资产</block>
+  <block id="714f787cf5a78abe3413cd3fa33c6c6b" category="section-title">第4步：将计算节点添加到集群中</block>
+  <block id="4b07d1c342b03364f7120990720b53ef" category="section-title">第5步：为双节点和三节点存储集群重新部署见证节点</block>
 </blocks>

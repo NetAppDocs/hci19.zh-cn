@@ -16,9 +16,13 @@ keywords: netapp, hci, H610C, H615C, chassis replacement, node replacement
 [role="lead"]
 您应更换机箱以修复与 CPU ，主板或未通电相关的计算节点故障。如果运行 NetApp HCI Bootstrap OS 1.6 或更高版本的 H610C 计算节点中的 DIMM 出现故障，则可以更换 DIMM ，而无需更换机箱。对于 H615C 节点，如果 DIMM 发生故障，您无需更换机箱；您只能更换发生故障的 DIMM 。
 
+[NOTE]
+====
+对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件。
 
-NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使用，因为节点和机箱并非独立的组件。
+NetApp建议使用NetApp部署引擎添加替代计算节点。如果无法继续使用适用于ESXi的NetApp部署引擎安装、请参见NetApp知识库文章 https://kb.netapp.com/Legacy/NetApp_HCI/OS/How_to_install_ESXi_on_NetApp_HCI_compute_node_manually["如何在NetApp HCI计算节点上手动安装ESXi"^]。
 
+====
 .您需要的内容
 * 您已验证此节点是否出现故障。
 * 您有一个替代机箱。要订购更换部件，您应联系 NetApp 支持部门。
@@ -29,15 +33,9 @@ NOTE: 对于 H610C 和 H615C ，术语 " 节点 " 和 " 机箱 " 可以互换使
 .关于此任务
 当主机出现故障时， VMware vSphere Web Client 中的警报会向您发出警报。您必须将 VMware vSphere Web Client 中故障主机的序列号与节点背面标签上的序列号进行匹配。
 
-.步骤概述
-下面简要概述了此操作步骤中的步骤：<<准备更换节点>>
-<<更换节点>>
-<<将节点添加到集群>>
-<<安装 GPU 驱动程序>>
 
 
-
-== 准备更换节点
+== 第1步：准备更换节点
 
 在更换节点之前，您应将节点上托管的虚拟机（ VM ）迁移到可用主机，并从集群中删除此节点。您应记录有关节点的详细信息、例如序列号和网络连接信息。如果组件发生故障、而节点仍处于联机状态且正常运行、则迁移VM并记录节点详细信息也同样适用、例如双列直插式内存模块(Dual Inline Memory Module、DIMM)发生故障。
 
@@ -63,7 +61,7 @@ image::h610c serial number.gif[显示了 VMware vSphere Web Client 中故障节�
 
 
 
-== 更换节点
+== 第2步：更换节点
 
 从集群中删除故障节点后，您可以删除故障机箱并安装替代机箱。
 
@@ -96,7 +94,7 @@ CAUTION: 如果机箱后部的通风孔被缆线或标签挡住，则可能会�
 
 
 
-== 将节点添加到集群
+== 第3步：将节点添加到集群中
 
 您应将 NetApp HCI 配置为使用新计算节点。
 
@@ -115,7 +113,10 @@ CAUTION: 如果机箱后部的通风孔被缆线或标签挡住，则可能会�
 https://<ManagementNodeIP>
 ----
 . 通过提供 NetApp HCI 存储集群管理员凭据登录到 NetApp 混合云控制。
-. 在 Expand Installation 窗格中，选择 * 展开 * 。浏览器将打开 NetApp 部署引擎。
+. 在 Expand Installation 窗格中，选择 * 展开 * 。
++
+浏览器将打开 NetApp 部署引擎。
+
 . 通过提供本地NetApp HCI存储集群管理员凭据登录到NetApp部署引擎。
 +
 
@@ -183,13 +184,16 @@ TIP: 对于某些计算节点，您可能需要先在 vCenter 版本支持的最
 
 
 
-== 安装 GPU 驱动程序
+== 第4步：安装GPU驱动程序
 
 采用 NVIDIA 图形处理单元（ GPU ）的计算节点（如 H610C 节点）需要在 VMware ESXi 中安装 NVIDIA 软件驱动程序，以便能够利用增强的处理能力。要安装 GPU 驱动程序，计算节点必须具有 GPU 卡。
 
 .步骤
 . 打开浏览器，然后通过以下 URL 浏览到 NVIDIA 许可门户： `https://nvid.nvidia.com/dashboard/`
-. 根据您的环境，将以下驱动程序软件包之一下载到您的计算机：
+. 根据您的环境、将驱动程序软件包版本下载到您的计算机。
++
+以下示例显示了适用于vSphere 6.0、6.5和6.7的驱动程序包版本：
+
 +
 [cols="2*"]
 |===
@@ -211,7 +215,10 @@ NVIDIA-GRID-vSphere-6.7-410.92-410.91-412.16.zip
 
 |===
 . 在您的计算机上解压缩驱动程序软件包。生成的 .VIB 文件为未压缩的驱动程序文件。
-. 将 .VIB 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。以下每个版本的示例命令均假定此驱动程序位于管理主机上的 $HOME/NVIDIA/ESX6.x/ 目录中。SCP 实用程序可在大多数 Linux 分发版中随时使用，也可作为适用于所有 Windows 版本的可下载实用程序使用：
+. 将 .VIB 驱动程序文件从计算机复制到计算节点上运行的 ESXi 。安全复制协议(SCP)实用程序可在大多数Linux分发版中随时使用、也可作为所有Windows版本的可下载实用程序使用。
++
+以下示例显示了适用于ESXi 6.0、6.5和6.7的命令。这些命令假定驱动程序位于管理主机上的$HOME/NVIDIA/ESX6.x/目录中：
+
 +
 [cols="2*"]
 |===
