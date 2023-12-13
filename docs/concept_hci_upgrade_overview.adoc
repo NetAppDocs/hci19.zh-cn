@@ -18,6 +18,9 @@ keywords: netapp, hci, on premise, cluster, upgrade, element
 
 这些组件包括管理服务， HealthTools ， NetApp Hybrid Cloud Control ， Element 软件，管理节点，计算固件，计算驱动程序， 和适用于 vCenter Server 的 Element 插件。​
 
+
+NOTE: 从2023年11月开始、您无法使用NetApp混合云控制或REST API启动组件升级、因为签名密钥证书(私有和公共)已于2023年11月5日到期。您可以按照知识库文章中介绍的临时解决策来解决此问题描述 https://kb.netapp.com/onprem/solidfire/Element_OS/SolidFire_and_HCI_upgrades_unable_to_start_due_to_upgrade_package_upload_error["由于升级软件包上传错误、SolidFire和HCI升级无法启动"^]。
+
 。 <<sys_upgrade_seq,系统升级顺序>> 内容介绍了完成 NetApp HCI 系统升级所需的任务。理想情况下，您可以在较大的升级序列中执行这些过程，而不是孤立执行这些过程。如果需要基于组件的升级或更新，请参见操作步骤前提条件以确保解决其他复杂问题。
 
 。 xref:task_hci_upgrade_all_vsphere.adoc[vSphere 升级顺序] 包括适用于 vCenter Server 的 Element 插件内容介绍了重新安装适用于 vCenter Server 的 Element 插件所需的其他升级前和升级后步骤。

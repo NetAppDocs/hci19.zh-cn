@@ -6575,4 +6575,6 @@
   <block id="527e6719cbc58f7527999477eaac0dd2" category="section-title">第3步：删除NetApp HCI 1.7及更高版本中的计算节点资产</block>
   <block id="714f787cf5a78abe3413cd3fa33c6c6b" category="section-title">第4步：将计算节点添加到集群中</block>
   <block id="4b07d1c342b03364f7120990720b53ef" category="section-title">第5步：为双节点和三节点存储集群重新部署见证节点</block>
+  <block id="df0f8acf74958be223bdd3dabcce5038" category="inline-link">由于升级软件包上传错误、SolidFire和HCI升级无法启动</block>
+  <block id="b9bbae8efe5c0f15ffba3f05d619b861" category="admonition">从2023年11月开始、您无法使用NetApp混合云控制或REST API启动组件升级、因为签名密钥证书(私有和公共)已于2023年11月5日到期。您可以按照知识库文章中介绍的临时解决策来解决此问题描述<block ref="43e83b9864cac922c7475bad0e74a40f" category="inline-link-rx"></block>。</block>
 </blocks>
