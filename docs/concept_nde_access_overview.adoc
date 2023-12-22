@@ -2,7 +2,7 @@
 sidebar: sidebar 
 permalink: docs/concept_nde_access_overview.html 
 summary: 在部署 NetApp HCI 之前，请根据您的环境使用以下几种方法之一访问 NetApp 部署引擎。 
-keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access 
+keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, access, vcp, element, management services, firmware 
 ---
 = NetApp 部署引擎访问选项概述
 :hardbreaks:
@@ -11,7 +11,6 @@ keywords: netapp, hci, netapp deployment engine, deployment, engine, deploy, acc
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:keywords: hci, release notes, vcp, element, management services, firmware
 
 
 [role="lead"]
