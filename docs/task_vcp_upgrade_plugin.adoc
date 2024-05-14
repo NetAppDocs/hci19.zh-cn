@@ -27,7 +27,7 @@ NOTE: 管理服务2.22.7包括适用于vCenter Server 5.0的Element插件、该�
 --
 此升级操作步骤包括以下升级情形：
 
-* 您正在升级到适用于vCenter Server 5.2、5.1或5.0的Element插件。
+* 您正在升级到适用于vCenter Server 5.3、5.2、5.1或5.0的Element插件。
 * 您要升级到8.0或7.0 HTML5 vSphere Web Client。
 
 
@@ -161,8 +161,8 @@ image::vcp_shortcuts_page_accessing_plugin.png[描述了成功升级或安装Ele
 +
 [listing]
 ----
-NetApp Element Plug-in Version: 5.2
-NetApp Element Plug-in Build Number: 12
+NetApp Element Plug-in Version: 5.3
+NetApp Element Plug-in Build Number: 9
 ----
 
 
