@@ -52,8 +52,8 @@ NOTE: 您的网络拓扑可能与此处显示的不同。这只是一个示例�
 阅读以下资源：
 
 * 在安装之前，请使用 NetApp HCI 安装发现工作簿 _ 配置网络。
-* 有关详细信息以及其他支持的配置，请参见 https://www.netapp.com/us/media/tr-4820.pdf["_TR-4820 ：《 NetApp HCI 网络快速规划指南》"^] 和 https://library.netapp.com/ecm/ecm_download_file/ECMLP2856176["_NetApp HCI 安装和设置说明 _"^]。
-* 有关小于四个存储节点的 NetApp HCI 配置的信息，请参见 https://www.netapp.com/us/media/tr-4823.pdf["_TR-4823 ： NetApp HCI 双节点存储集群 _"^]。
+* 有关详细信息和其他支持的配置，请参见 https://www.netapp.com/pdf.html?item=/media/9413-tr4820pdf.pdf["_TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]和 https://library.netapp.com/ecm/ecm_download_file/ECMLP2856176["_NetApp HCI 安装和设置说明 _"^]。
+* 有关小于四个存储节点的NetApp HCI配置的信息，请参见 https://www.netapp.com/pdf.html?item=/media/9489-tr-4823.pdf["_TR-4823 ： NetApp HCI 双节点存储集群 _"^]。
 * 有关在每个存储节点所使用的交换机端口上配置链路聚合控制协议（ LACP ）的详细信息，请参见 link:hci_prereqs_LACP_configuration.html["配置 LCAP 以获得最佳存储性能"]。
 
 
@@ -276,7 +276,7 @@ https://<ManagementNodeIP>
 
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * link:../media/hseries-isi.pdf["《 NetApp HCI 安装和设置说明》"^]
-* https://www.netapp.com/us/media/tr-4820.pdf["TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
+* https://www.netapp.com/pdf.html?item=/media/9413-tr4820pdf.pdf["TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件文档"^]
 * https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp Configuration Advisor"^] 5.8.1 或更高版本的网络验证工具
 * https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]

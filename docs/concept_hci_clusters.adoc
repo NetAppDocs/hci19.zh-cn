@@ -87,7 +87,7 @@ TIP: 在具有两个存储节点和一个见证节点的三节点集合中，如
 
 == 了解更多信息
 
-* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
+* https://www.netapp.com/pdf.html?item=/media/9489-tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]
 

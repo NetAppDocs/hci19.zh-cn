@@ -41,7 +41,7 @@ image::vcp-witnessnode.gif[显示了 NetApp Element 管理 > 集群页面，其�
 
 == 了解更多信息
 
-* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
+* https://www.netapp.com/pdf.html?item=/media/9489-tr-4823.pdf["NetApp HCI 双节点存储集群 | TR-4823"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/us/documentation/hci.aspx["NetApp HCI 资源页面"^]
 * http://docs.netapp.com/sfe-122/index.jsp["SolidFire 和 Element 软件文档中心"^]

@@ -30,7 +30,7 @@ keywords: netapp, hci, vSphere components, upgrade, vCenter, ESXi
 ====
 +
 
-NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf["双节点集群"^]，一次只升级一个计算节点，以便暂时只有一个见证节点不可用，并且可以保持集群仲裁。
+NOTE: 为的计算节点升级ESXi时 https://www.netapp.com/pdf.html?item=/media/9489-tr-4823.pdf["双节点集群"^]、一次仅升级一个计算节点、以便只有一个见证节点暂时不可用并可以保持集群仲裁。
 
 . https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#register-the-plug-in-with-vcenter["注册"^] 适用于 vCenter Server 的 Element 插件。
 . https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html#add-storage-clusters-for-use-with-the-plug-in["添加集群"^] 使用插件。
@@ -44,5 +44,5 @@ NOTE: 升级计算节点的 ESXi 时 https://www.netapp.com/us/media/tr-4823.pdf
 
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 * https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://www.netapp.com/us/media/tr-4823.pdf["NetApp HCI 双节点存储集群技术报告"^]
+* https://www.netapp.com/pdf.html?item=/media/9489-tr-4823.pdf["NetApp HCI 双节点存储集群技术报告"^]
 

@@ -17,7 +17,7 @@ keywords: netapp, hci, environment, requirements
 [role="lead"]
 确保用于安装 NetApp HCI 的机架的电源由交流电源插座提供，并且您的数据中心可以根据 NetApp HCI 安装的规模提供足够的散热。
 
-有关 NetApp HCI 每个组件的详细功能，请参见 NetApp HCI http://www.netapp.com/us/media/ds-3881.pdf["产品规格"^]。
+有关NetApp HCI每个组件的详细功能，请参见NetApp HCI https://www.netapp.com/pdf.html?item=/media/7977-ds-3881.pdf["产品规格"^]。
 
 
 NOTE: H410C 计算节点仅使用高压线（ 200-240 VAC ）运行。在将 H410C 节点添加到现有 NetApp HCI 安装中时，必须确保满足电源要求。
