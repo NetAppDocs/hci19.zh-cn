@@ -283,11 +283,11 @@ IMPORTANT: 与管理服务关联的永久性卷会在安装或升级期间创建
 . 选择 * 是 * 确认此过程。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * link:concept_hci_volumes.html["了解卷"]
 * https://docs.netapp.com/us-en/element-software/index.html["SolidFire 和 Element 软件文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

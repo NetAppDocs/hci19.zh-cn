@@ -66,9 +66,8 @@ TIP: 要查看存储和计算资源的数量，请查看 NetApp 混合云控制�
 
 NOTE: 要在 NetApp Hybrid Cloud Control 中管理计算节点，您必须 https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/How_to_set_up_compute_node_management_in_NetApp_Hybrid_Cloud_Control["将计算节点添加到 vCenter 主机集群"^]。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

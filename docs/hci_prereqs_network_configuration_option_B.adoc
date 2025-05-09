@@ -65,9 +65,8 @@ image::hci_networking_config_scenario_2.png[HCI 网络配置选项 B 图]
 
 NOTE: 某些交换机可能要求在允许的原生列表中包含 VLAN 。请参见适用于您的特定交换机型号和软件版本的文档。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

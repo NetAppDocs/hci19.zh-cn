@@ -67,9 +67,8 @@ NetApp HCI 会为系统组件保留以下 IP 地址范围。在规划网络时�
 
 | 169.254.104.104.0/22 | Docker 网桥网络 
 |===
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

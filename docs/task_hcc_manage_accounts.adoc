@@ -193,11 +193,11 @@ NOTE: 与管理服务关联的永久性卷会在安装或升级期间分配给�
 . 选择 * 是 * 确认删除。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * link:concept_cg_hci_accounts.html["了解客户信息"]
 * http://docs.netapp.com/sfe-122/topic/com.netapp.doc.sfe-ug/GUID-E93D3BAF-5A60-414D-86AF-0C1F86D43F26.html["使用用户帐户"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

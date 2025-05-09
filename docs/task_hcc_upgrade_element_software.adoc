@@ -707,9 +707,8 @@ NOTE: 如果集群还具有非 H610S 节点，则这些非 H610S 节点将免于
 . 按照此步骤中的第 2 阶段升级操作步骤进行操作 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["知识库"^] 完成每个 H610S 节点的升级所需的时间。
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

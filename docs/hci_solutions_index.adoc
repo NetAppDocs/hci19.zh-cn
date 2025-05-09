@@ -19,9 +19,3 @@ NetApp HCI 解决方案可以帮助您在同一基础架构上使用多个工作
 通过NetApp HCI 、您可以在多个公有 云提供商之间和内部部署云服务。您可以使用NetApp HCI 部署与云提供商类似的服务、所有这些服务均采用自助服务模式、无需IT参与。
 
 要了解NetApp HCI 解决方案、请参见 https://docs.netapp.com/us-en/hci-solutions/index.html["NetApp HCI 解决方案文档"^]。
-
-[discrete]
-== 了解更多信息
-
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-

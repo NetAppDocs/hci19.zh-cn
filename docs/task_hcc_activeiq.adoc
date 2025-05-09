@@ -54,10 +54,10 @@ https://<ManagementNodeIP>
 
 TIP: 要查看存储和计算资源的数量，请查看混合云控制（ HCC ）信息板。请参见 link:task_hcc_dashboard.html["使用 HCC 信息板监控存储和计算资源"]。
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

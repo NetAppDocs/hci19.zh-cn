@@ -16,9 +16,8 @@ keywords: netapp, hci, element, storage, protection domains
 [role="lead"]
 NetApp Element 软件支持 link:concept_hci_dataprotection.html#protection-domains["保护域"] 功能，用于优化存储节点上的数据布局，以获得最佳数据可用性。要使用此功能，您应在三个或更多 NetApp H 系列机箱中均匀地拆分存储容量，以获得最佳存储可靠性。在这种情况下，存储集群会自动启用保护域。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

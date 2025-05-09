@@ -79,11 +79,11 @@ NOTE: 要通过每节点 UI 访问集群中的活动节点，需要使用本地�
 
 卷帐户在 NetApp Hybrid Cloud Control Volumes 表中进行管理。
 
-[discrete]
+
+
 == 了解更多信息
 
 * link:task_hcc_manage_accounts.html["管理用户帐户"]
 * link:concept_hci_clusters.html["了解集群"]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 

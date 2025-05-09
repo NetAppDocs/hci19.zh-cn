@@ -51,9 +51,8 @@ NOTE: 如果不禁用 SSH ，它将保持启用状态。启用了 SSH 的配置�
 
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

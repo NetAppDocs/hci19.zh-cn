@@ -123,9 +123,8 @@ NOTE: PDF 和 Microsoft Word 文档输出包含适用于您的部署的交换机
 . 将导出的报告文件发送给您的 NetApp 专业服务代表。
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

@@ -57,9 +57,8 @@ NOTE: 如果您尝试在令牌过期后运行命令，则会显示 `401 Error �
 
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

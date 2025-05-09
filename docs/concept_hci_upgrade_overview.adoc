@@ -77,10 +77,10 @@ NOTE: 升级存储集群上的 Element 软件不再需要升级管理节点操�
 . link:task_hcc_upgrade_compute_node_firmware.html["使用 NetApp Hybrid Cloud Control 更新计算节点固件"] 或 link:task_hcc_upgrade_compute_firmware_ansible.html["利用 Ansible 自动升级计算固件"]。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/element-software/upgrade/concept_element_upgrade_overview.html["升级 NetApp SolidFire 全闪存存储系统"^]
 

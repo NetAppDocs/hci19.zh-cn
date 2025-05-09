@@ -72,9 +72,8 @@ TIP: 使用 `get /services` 命令列出管理节点上的服务。
 . 在响应正文中，选择 * 下载 * 以保存日志输出。
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

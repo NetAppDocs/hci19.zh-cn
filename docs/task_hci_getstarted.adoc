@@ -271,10 +271,10 @@ https://<ManagementNodeIP>
 
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * link:../media/hseries-isi.pdf["《 NetApp HCI 安装和设置说明》"^]
 * https://www.netapp.com/pdf.html?item=/media/9413-tr4820pdf.pdf["TR-4820 ：《 NetApp HCI 网络快速规划指南》"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件文档"^]

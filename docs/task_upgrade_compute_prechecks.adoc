@@ -281,9 +281,8 @@ https://<ManagementNodeIP>/vcenter/1/
 
 | 集群中见证节点的状态是什么？见证节点已启动且正在此 ESXi 主机上运行，备用见证节点已启动且正在另一个 ESXi 主机上运行。 | Node | 此 ESXi 主机上正在本地运行见证节点。准备好升级此 ESXi 主机后，请仅关闭此 ESXi 主机上的见证节点，然后重新运行运行运行状况检查。* HCI 安装中必须始终运行一个见证节点 * 。 | https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_resolve_witness_node_issues_prior_to_upgrading_compute_nodes["请参见此知识库文章"^] 
 |===
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

@@ -27,9 +27,8 @@ keywords: netapp, hci, storage, performance, LACP
 . 在部署 NetApp HCI 之前，请在节点用户界面（也称为终端用户界面或 TUI ）中将所有存储节点上的绑定模式更改为 LACP 。
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

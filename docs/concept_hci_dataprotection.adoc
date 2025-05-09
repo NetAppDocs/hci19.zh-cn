@@ -171,9 +171,9 @@ SnapMirror 在 NetApp ONTAP 控制器上本机运行，并集成到 Element 中�
 
 双 Helix 数据保护是一种复制方法，可在系统中的所有驱动器之间至少分布两个冗余数据副本。通过 " 无 RAID " 方法，系统可以在存储系统的所有级别承受多个并发故障并快速修复。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 

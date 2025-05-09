@@ -181,10 +181,10 @@ image::hcc_dashboard_compute_util_cpu.png[计算利用率窗格]
 . 有关计算信息的进一步分析，请参见 https://activeiq.solidfire.com["NetApp SolidFire Active IQ ，用于提供历史数据"^]。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 

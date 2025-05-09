@@ -53,6 +53,5 @@ NOTE: 存储节点关闭后，它会在 HCC 的存储页面上的节点状态列
 * https://docs.netapp.com/us-en/element-software/api/reference_element_api_enablemaintenancemode.html["使用 Element API 启用维护模式"^]
 * https://docs.netapp.com/us-en/element-software/api/reference_element_api_disablemaintenancemode.html["使用 Element API 禁用维护模式"^]
 * https://docs.netapp.com/us-en/element-software/api/concept_element_api_about_the_api.html["NetApp Element API 文档"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 

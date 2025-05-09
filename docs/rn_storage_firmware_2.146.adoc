@@ -256,10 +256,10 @@ image::bol_list_bugs_found.png[存储固件包发行说明]
 * CVE-2019-0151 ， CVE-2019-0123 ， CVE-2019-0117
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/hci/index.jsp["NetApp HCI 文档中心"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_to_update_iDRAC%2F%2FBIOS_firmware_on_SF_Series_nodes["知识库：如何更新 SF 系列节点上的 iDRAC 或 BIOS 固件"^]
 

@@ -11,7 +11,6 @@ keywords: netapp, hci, timekeeping, NTP, DNS
 :icons: font
 :linkattrs: 
 :imagesdir: ../media/
-:keywords: netapp, hci, timekeeping, NTP, DNS
 
 
 [role="lead"]
@@ -26,9 +25,8 @@ keywords: netapp, hci, timekeeping, NTP, DNS
 * 确保所有存储和计算节点时钟彼此同步，并且用于登录到 NetApp HCI 的设备时钟与 NetApp HCI 节点同步。
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

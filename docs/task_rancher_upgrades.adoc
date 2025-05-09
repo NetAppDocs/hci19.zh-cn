@@ -329,9 +329,8 @@ NOTE: 对于节点操作系统，安全修补程序的无人值守升级会每�
 
 当 `PercentComplete` 指示 `100` ， `results` 指示升级后的版本号时，升级已成功完成。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

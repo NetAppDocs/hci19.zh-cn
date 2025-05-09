@@ -36,12 +36,12 @@ NOTE: 如果您最近扩展了安装，但新资产未自动添加到配置中�
 
 NOTE: 在 NetApp 部署引擎中扩展 NetApp HCI 计算或存储资源时，您应连接到管理现有 NetApp HCI 计算节点的 vCenter 实例。
 
-[discrete]
+
+
 == 了解更多信息
 
 * link:task_hcc_expand_compute.html["展开 NetApp HCI 计算资源"]
 * link:task_hcc_expand_storage.html["展开 NetApp HCI 存储资源"]
 * link:task_hcc_expand_compute_and_storage.html["同时扩展 NetApp HCI 存储和计算资源"]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
 

@@ -37,9 +37,8 @@ keywords: netapp, hci, network, cable, requirements
 
 NOTE: 在六缆线配置中，为 VMware ESXi 预留了两个端口，并由 NetApp 部署引擎设置和管理。您不能使用 Element TUI 或 Element Web 图形用户界面访问或管理这些专用于 ESXi 的端口。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

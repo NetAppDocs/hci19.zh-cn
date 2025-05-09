@@ -52,9 +52,8 @@ NetApp HCI 具有以下交换机要求：
 
 所有 NetApp HCI 节点均可通过专用管理端口提供额外的带外管理功能。NetApp H300S ， H300E ， H500S ， H500E ， H700S ， H700E 和 H410C 节点还支持通过端口 A 进行 IPMI 访问作为最佳实践，您应通过为环境中的所有节点配置带外管理来简化 NetApp HCI 的远程管理。
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

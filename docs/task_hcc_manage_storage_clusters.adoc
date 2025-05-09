@@ -195,6 +195,4 @@ NOTE: 当节点处于维护模式时，它不接受新数据。因此，禁用�
 
 == 了解更多信息
 
-* link:task_mnode_manage_storage_cluster_assets.html["创建和管理存储集群资产"]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
+link:task_mnode_manage_storage_cluster_assets.html["创建和管理存储集群资产"]

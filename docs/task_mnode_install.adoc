@@ -349,12 +349,12 @@ NOTE: 您应在vCenter中创建新的NetApp HCC角色以添加控制器子资产
 
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * link:concept_hci_volumes.html#persistent-volumes["永久性卷"]
 * link:task_mnode_add_assets.html["向管理节点添加计算和控制器资产"]
 * link:task_mnode_install_add_storage_NIC.html["配置存储 NIC"]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

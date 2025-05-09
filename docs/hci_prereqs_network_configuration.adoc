@@ -88,9 +88,8 @@ NOTE: 您可以在部署后调整 NetApp HCI 网络配置，以满足基础架�
 * link:hci_prereqs_network_configuration_option_C.html["网络配置选项 C"]
 
 
-[discrete]
+
+
 == 了解更多信息
 
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-* https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-
+https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]

@@ -100,10 +100,10 @@ keywords: netapp, hci, final preparations, requirements, IPMI
 . 对具有默认 IPMI 密码的任何其他 NetApp HCI H610C ， H615C 或 H610S 节点重复此操作步骤。
 
 
-[discrete]
+
+
 == 了解更多信息
 
 * https://docs.netapp.com/us-en/solidfire-active-iq/index.html["NetApp SolidFire Active IQ 文档"^]
 * https://docs.netapp.com/us-en/vcp/index.html["适用于 vCenter Server 的 NetApp Element 插件"^]
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
 

@@ -20,9 +20,3 @@ keywords: netapp, hci, install, deploy, get started, configure, fqdn, fully qual
 * link:task_mnode_work_overview.html["使用管理节点"]
 * link:concept_nde_hci_power_off_on.html["关闭或打开 NetApp HCI 系统"]
 
-
-[discrete]
-== 了解更多信息
-
-* https://www.netapp.com/hybrid-cloud/hci-documentation/["NetApp HCI 资源页面"^]
-
